@@ -25,7 +25,7 @@
   <header class="nav" data-nav>
     <div class="nav__inner container">
       <a class="nav__logo" href="#topo" aria-label="Scuderia Bandeiras — início">
-        <picture class="nav__logo-img"><source type="image/avif" srcset="assets-build/img/logo-raster-480w-f9c0803034.avif 480w, assets-build/img/logo-raster-800w-f9c0803034.avif 800w, assets-build/img/logo-raster-1280w-f9c0803034.avif 1280w, assets-build/img/logo-raster-1920w-f9c0803034.avif 1920w" sizes="140px"><source type="image/webp" srcset="assets-build/img/logo-raster-480w-f9c0803034.webp 480w, assets-build/img/logo-raster-800w-f9c0803034.webp 800w, assets-build/img/logo-raster-1280w-f9c0803034.webp 1280w, assets-build/img/logo-raster-1920w-f9c0803034.webp 1920w" sizes="140px"><img src="assets-build/img/logo-raster-1920w-f9c0803034.webp" width="8000" height="2392" alt="Scuderia Bandeiras" loading="eager" decoding="sync"></picture>
+        <x-img slug="logo-raster" alt="Scuderia Bandeiras" sizes="140px" loading="eager" class="nav__logo-img"></x-img>
       </a>
 
       <nav class="nav__links" aria-label="Navegação principal">
@@ -55,7 +55,7 @@
 
     <dialog class="nav__dialog" data-menu-dialog aria-label="Menu de navegação">
       <div class="nav__dialog-head">
-        <picture><source type="image/avif" srcset="assets-build/img/logo-raster-480w-f9c0803034.avif 480w, assets-build/img/logo-raster-800w-f9c0803034.avif 800w, assets-build/img/logo-raster-1280w-f9c0803034.avif 1280w, assets-build/img/logo-raster-1920w-f9c0803034.avif 1920w" sizes="120px"><source type="image/webp" srcset="assets-build/img/logo-raster-480w-f9c0803034.webp 480w, assets-build/img/logo-raster-800w-f9c0803034.webp 800w, assets-build/img/logo-raster-1280w-f9c0803034.webp 1280w, assets-build/img/logo-raster-1920w-f9c0803034.webp 1920w" sizes="120px"><img src="assets-build/img/logo-raster-1920w-f9c0803034.webp" width="8000" height="2392" alt="Scuderia Bandeiras" loading="lazy" decoding="async"></picture>
+        <x-img slug="logo-raster" alt="Scuderia Bandeiras" sizes="120px"></x-img>
         <button data-menu-close aria-label="Fechar menu">✕</button>
       </div>
       <nav aria-label="Navegação (menu mobile)">
@@ -77,7 +77,7 @@
 
     <!-- ============================================================ 01 · HERO -->
     <section id="hero" class="hero h-scene">
-      <picture class="hero__bg"><source type="image/avif" srcset="assets-build/img/final-imagem-480w-6d0ed19421.avif 480w, assets-build/img/final-imagem-800w-6d0ed19421.avif 800w, assets-build/img/final-imagem-1280w-6d0ed19421.avif 1280w, assets-build/img/final-imagem-1920w-6d0ed19421.avif 1920w" sizes="100vw"><source type="image/jpeg" srcset="assets-build/img/final-imagem-480w-6d0ed19421.jpg 480w, assets-build/img/final-imagem-800w-6d0ed19421.jpg 800w, assets-build/img/final-imagem-1280w-6d0ed19421.jpg 1280w, assets-build/img/final-imagem-1920w-6d0ed19421.jpg 1920w" sizes="100vw"><img src="assets-build/img/final-imagem-1920w-6d0ed19421.jpg" width="2048" height="1366" alt="A Scuderia Bandeiras em Votorantim" loading="eager" decoding="sync" fetchpriority="high"></picture>
+      <x-img slug="final-imagem" alt="A Scuderia Bandeiras em Votorantim" sizes="100vw" loading="eager" fetchpriority="high" class="hero__bg"></x-img>
       <div class="hero__scrim" aria-hidden="true"></div>
 
       <div class="hero__body container">
@@ -98,7 +98,7 @@
     <section id="sobre" class="section sobre">
       <h2 class="visually-hidden">Sobre a Scuderia Bandeiras</h2>
       <div class="sobre__media" data-reveal>
-        <picture><source type="image/avif" srcset="assets-build/img/complexo-6-480w-11007ca105.avif 480w, assets-build/img/complexo-6-800w-11007ca105.avif 800w, assets-build/img/complexo-6-1280w-11007ca105.avif 1280w" sizes="100vw"><source type="image/webp" srcset="assets-build/img/complexo-6-480w-11007ca105.webp 480w, assets-build/img/complexo-6-800w-11007ca105.webp 800w, assets-build/img/complexo-6-1280w-11007ca105.webp 1280w" sizes="100vw"><img src="assets-build/img/complexo-6-1280w-11007ca105.webp" width="1878" height="1254" alt="Vista aérea do complexo da Scuderia Bandeiras, em Votorantim" loading="lazy" decoding="async"></picture>
+        <x-img slug="complexo-6" alt="Vista aérea do complexo da Scuderia Bandeiras, em Votorantim" sizes="100vw"></x-img>
       </div>
       <div class="container sobre__text">
         <p class="lead" data-reveal>A Scuderia Bandeiras é um dos principais ecossistemas de automobilismo do Brasil.</p>
@@ -148,23 +148,23 @@
 
       <div class="ecossistema__mosaico" data-stagger>
         <figure class="ecossistema__peca" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/piloto-atila-480w-d0d32d1265.avif 480w, assets-build/img/piloto-atila-800w-d0d32d1265.avif 800w" sizes="(min-width: 640px) 20vw, 60vw"><source type="image/jpeg" srcset="assets-build/img/piloto-atila-480w-d0d32d1265.jpg 480w, assets-build/img/piloto-atila-800w-d0d32d1265.jpg 800w" sizes="(min-width: 640px) 20vw, 60vw"><img src="assets-build/img/piloto-atila-800w-d0d32d1265.jpg" width="936" height="1192" alt="" loading="lazy" decoding="async"></picture>
+          <x-img slug="piloto-atila" alt="" sizes="(min-width: 640px) 20vw, 60vw"></x-img>
           <figcaption>Pilotos</figcaption>
         </figure>
         <figure class="ecossistema__peca" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/oque-esporte-480w-ce475b6676.avif 480w, assets-build/img/oque-esporte-800w-ce475b6676.avif 800w, assets-build/img/oque-esporte-1280w-ce475b6676.avif 1280w" sizes="(min-width: 640px) 20vw, 60vw"><source type="image/jpeg" srcset="assets-build/img/oque-esporte-480w-ce475b6676.jpg 480w, assets-build/img/oque-esporte-800w-ce475b6676.jpg 800w, assets-build/img/oque-esporte-1280w-ce475b6676.jpg 1280w" sizes="(min-width: 640px) 20vw, 60vw"><img src="assets-build/img/oque-esporte-1280w-ce475b6676.jpg" width="1416" height="942" alt="" loading="lazy" decoding="async"></picture>
+          <x-img slug="oque-esporte" alt="" sizes="(min-width: 640px) 20vw, 60vw"></x-img>
           <figcaption>Carros</figcaption>
         </figure>
         <figure class="ecossistema__peca" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/race-experience-karts-480w-b662ee37ea.avif 480w, assets-build/img/race-experience-karts-800w-b662ee37ea.avif 800w, assets-build/img/race-experience-karts-1280w-b662ee37ea.avif 1280w, assets-build/img/race-experience-karts-1920w-b662ee37ea.avif 1920w" sizes="(min-width: 640px) 20vw, 60vw"><source type="image/webp" srcset="assets-build/img/race-experience-karts-480w-b662ee37ea.webp 480w, assets-build/img/race-experience-karts-800w-b662ee37ea.webp 800w, assets-build/img/race-experience-karts-1280w-b662ee37ea.webp 1280w, assets-build/img/race-experience-karts-1920w-b662ee37ea.webp 1920w" sizes="(min-width: 640px) 20vw, 60vw"><img src="assets-build/img/race-experience-karts-1920w-b662ee37ea.webp" width="3324" height="1350" alt="" loading="lazy" decoding="async"></picture>
+          <x-img slug="race-experience-karts" alt="" sizes="(min-width: 640px) 20vw, 60vw"></x-img>
           <figcaption>Pista</figcaption>
         </figure>
         <figure class="ecossistema__peca" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/complexo-3-480w-16ee83393e.avif 480w, assets-build/img/complexo-3-800w-16ee83393e.avif 800w, assets-build/img/complexo-3-1280w-16ee83393e.avif 1280w" sizes="(min-width: 640px) 20vw, 60vw"><source type="image/webp" srcset="assets-build/img/complexo-3-480w-16ee83393e.webp 480w, assets-build/img/complexo-3-800w-16ee83393e.webp 800w, assets-build/img/complexo-3-1280w-16ee83393e.webp 1280w" sizes="(min-width: 640px) 20vw, 60vw"><img src="assets-build/img/complexo-3-1280w-16ee83393e.webp" width="1878" height="1254" alt="" loading="lazy" decoding="async"></picture>
+          <x-img slug="complexo-3" alt="" sizes="(min-width: 640px) 20vw, 60vw"></x-img>
           <figcaption>Estrutura</figcaption>
         </figure>
         <figure class="ecossistema__peca" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/oque-experiencias-480w-e47a6309c9.avif 480w, assets-build/img/oque-experiencias-800w-e47a6309c9.avif 800w, assets-build/img/oque-experiencias-1280w-e47a6309c9.avif 1280w" sizes="(min-width: 640px) 20vw, 60vw"><source type="image/jpeg" srcset="assets-build/img/oque-experiencias-480w-e47a6309c9.jpg 480w, assets-build/img/oque-experiencias-800w-e47a6309c9.jpg 800w, assets-build/img/oque-experiencias-1280w-e47a6309c9.jpg 1280w" sizes="(min-width: 640px) 20vw, 60vw"><img src="assets-build/img/oque-experiencias-1280w-e47a6309c9.jpg" width="1416" height="942" alt="" loading="lazy" decoding="async"></picture>
+          <x-img slug="oque-experiencias" alt="" sizes="(min-width: 640px) 20vw, 60vw"></x-img>
           <figcaption>Produção</figcaption>
         </figure>
       </div>
@@ -193,7 +193,7 @@
       </div>
 
       <div class="experiencias__panorama" data-reveal>
-        <picture><source type="image/avif" srcset="assets-build/img/race-experience-karts-480w-b662ee37ea.avif 480w, assets-build/img/race-experience-karts-800w-b662ee37ea.avif 800w, assets-build/img/race-experience-karts-1280w-b662ee37ea.avif 1280w, assets-build/img/race-experience-karts-1920w-b662ee37ea.avif 1920w" sizes="100vw"><source type="image/webp" srcset="assets-build/img/race-experience-karts-480w-b662ee37ea.webp 480w, assets-build/img/race-experience-karts-800w-b662ee37ea.webp 800w, assets-build/img/race-experience-karts-1280w-b662ee37ea.webp 1280w, assets-build/img/race-experience-karts-1920w-b662ee37ea.webp 1920w" sizes="100vw"><img src="assets-build/img/race-experience-karts-1920w-b662ee37ea.webp" width="3324" height="1350" alt="Dinâmica de Team Building da Scuderia Bandeiras" loading="lazy" decoding="async"></picture>
+        <x-img slug="race-experience-karts" alt="Dinâmica de Team Building da Scuderia Bandeiras" sizes="100vw"></x-img>
       </div>
 
       <div class="container">
@@ -287,27 +287,27 @@
 
       <div class="bandeiras__trilho" data-stagger>
         <figure class="bandeiras__cena" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/estrutura-auditorio-480w-c80be78a63.avif 480w" sizes="(min-width: 1024px) 33vw, 90vw"><source type="image/webp" srcset="assets-build/img/estrutura-auditorio-480w-c80be78a63.webp 480w" sizes="(min-width: 1024px) 33vw, 90vw"><img src="assets-build/img/estrutura-auditorio-480w-c80be78a63.webp" width="522" height="1003" alt="Auditório da Scuderia Bandeiras, com capacidade para até 300 pessoas" loading="lazy" decoding="async"></picture>
+          <x-img slug="estrutura-auditorio" alt="Auditório da Scuderia Bandeiras, com capacidade para até 300 pessoas" sizes="(min-width: 1024px) 33vw, 90vw"></x-img>
           <figcaption>Auditório para até 300 pessoas — telão, lounge, camarim, climatização e som</figcaption>
         </figure>
         <figure class="bandeiras__cena" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/estrutura-coworking-480w-97a8f765e6.avif 480w" sizes="(min-width: 1024px) 33vw, 90vw"><source type="image/webp" srcset="assets-build/img/estrutura-coworking-480w-97a8f765e6.webp 480w" sizes="(min-width: 1024px) 33vw, 90vw"><img src="assets-build/img/estrutura-coworking-480w-97a8f765e6.webp" width="522" height="1003" alt="Espaço de coworking do complexo" loading="lazy" decoding="async"></picture>
+          <x-img slug="estrutura-coworking" alt="Espaço de coworking do complexo" sizes="(min-width: 1024px) 33vw, 90vw"></x-img>
           <figcaption>Mais de 40 espaços de coworking</figcaption>
         </figure>
         <figure class="bandeiras__cena" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/estrutura-area-multiuso-480w-3d88a8505a.avif 480w" sizes="(min-width: 1024px) 33vw, 90vw"><source type="image/webp" srcset="assets-build/img/estrutura-area-multiuso-480w-3d88a8505a.webp 480w" sizes="(min-width: 1024px) 33vw, 90vw"><img src="assets-build/img/estrutura-area-multiuso-480w-3d88a8505a.webp" width="522" height="1003" alt="Arena multiuso do complexo" loading="lazy" decoding="async"></picture>
+          <x-img slug="estrutura-area-multiuso" alt="Arena multiuso do complexo" sizes="(min-width: 1024px) 33vw, 90vw"></x-img>
           <figcaption>Espaço Motor (350 m²) e Arena Multiuso (310 m²)</figcaption>
         </figure>
         <figure class="bandeiras__cena" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/estrutura-acesso-aereo-480w-ed24900989.avif 480w" sizes="(min-width: 1024px) 33vw, 90vw"><source type="image/webp" srcset="assets-build/img/estrutura-acesso-aereo-480w-ed24900989.webp 480w" sizes="(min-width: 1024px) 33vw, 90vw"><img src="assets-build/img/estrutura-acesso-aereo-480w-ed24900989.webp" width="522" height="1003" alt="Heliponto do complexo" loading="lazy" decoding="async"></picture>
+          <x-img slug="estrutura-acesso-aereo" alt="Heliponto do complexo" sizes="(min-width: 1024px) 33vw, 90vw"></x-img>
           <figcaption>Heliponto com helicóptero próprio</figcaption>
         </figure>
         <figure class="bandeiras__cena" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/local-gastronomia-480w-ea775a6cc5.avif 480w, assets-build/img/local-gastronomia-800w-ea775a6cc5.avif 800w, assets-build/img/local-gastronomia-1280w-ea775a6cc5.avif 1280w, assets-build/img/local-gastronomia-1920w-ea775a6cc5.avif 1920w" sizes="(min-width: 1024px) 33vw, 90vw"><source type="image/jpeg" srcset="assets-build/img/local-gastronomia-480w-ea775a6cc5.jpg 480w, assets-build/img/local-gastronomia-800w-ea775a6cc5.jpg 800w, assets-build/img/local-gastronomia-1280w-ea775a6cc5.jpg 1280w, assets-build/img/local-gastronomia-1920w-ea775a6cc5.jpg 1920w" sizes="(min-width: 1024px) 33vw, 90vw"><img src="assets-build/img/local-gastronomia-1920w-ea775a6cc5.jpg" width="4088" height="2730" alt="Restaurante do complexo" loading="lazy" decoding="async"></picture>
+          <x-img slug="local-gastronomia" alt="Restaurante do complexo" sizes="(min-width: 1024px) 33vw, 90vw"></x-img>
           <figcaption>Restaurante e área verde</figcaption>
         </figure>
         <figure class="bandeiras__cena" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/estrutura-garagem-480w-0f816df55b.avif 480w" sizes="(min-width: 1024px) 33vw, 90vw"><source type="image/webp" srcset="assets-build/img/estrutura-garagem-480w-0f816df55b.webp 480w" sizes="(min-width: 1024px) 33vw, 90vw"><img src="assets-build/img/estrutura-garagem-480w-0f816df55b.webp" width="522" height="1003" alt="Oficina onde os carros da equipe são preparados" loading="lazy" decoding="async"></picture>
+          <x-img slug="estrutura-garagem" alt="Oficina onde os carros da equipe são preparados" sizes="(min-width: 1024px) 33vw, 90vw"></x-img>
           <figcaption>A oficina onde os carros da equipe são preparados</figcaption>
         </figure>
       </div>
@@ -342,19 +342,19 @@
 
       <div class="conteudo__frames" data-stagger>
         <figure data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/oque-esporte-480w-ce475b6676.avif 480w, assets-build/img/oque-esporte-800w-ce475b6676.avif 800w, assets-build/img/oque-esporte-1280w-ce475b6676.avif 1280w" sizes="(min-width: 1024px) 25vw, 45vw"><source type="image/jpeg" srcset="assets-build/img/oque-esporte-480w-ce475b6676.jpg 480w, assets-build/img/oque-esporte-800w-ce475b6676.jpg 800w, assets-build/img/oque-esporte-1280w-ce475b6676.jpg 1280w" sizes="(min-width: 1024px) 25vw, 45vw"><img src="assets-build/img/oque-esporte-1280w-ce475b6676.jpg" width="1416" height="942" alt="" loading="lazy" decoding="async"></picture>
+          <x-img slug="oque-esporte" alt="" sizes="(min-width: 1024px) 25vw, 45vw"></x-img>
           <figcaption>Oficina</figcaption>
         </figure>
         <figure data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/local-auditorio-480w-dea36b2418.avif 480w, assets-build/img/local-auditorio-800w-dea36b2418.avif 800w, assets-build/img/local-auditorio-1280w-dea36b2418.avif 1280w, assets-build/img/local-auditorio-1920w-dea36b2418.avif 1920w" sizes="(min-width: 1024px) 25vw, 45vw"><source type="image/jpeg" srcset="assets-build/img/local-auditorio-480w-dea36b2418.jpg 480w, assets-build/img/local-auditorio-800w-dea36b2418.jpg 800w, assets-build/img/local-auditorio-1280w-dea36b2418.jpg 1280w, assets-build/img/local-auditorio-1920w-dea36b2418.jpg 1920w" sizes="(min-width: 1024px) 25vw, 45vw"><img src="assets-build/img/local-auditorio-1920w-dea36b2418.jpg" width="4087" height="2730" alt="" loading="lazy" decoding="async"></picture>
+          <x-img slug="local-auditorio" alt="" sizes="(min-width: 1024px) 25vw, 45vw"></x-img>
           <figcaption>Auditório</figcaption>
         </figure>
         <figure data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/evento-truck-lounge-480w-c536e116c0.avif 480w, assets-build/img/evento-truck-lounge-800w-c536e116c0.avif 800w, assets-build/img/evento-truck-lounge-1280w-c536e116c0.avif 1280w" sizes="(min-width: 1024px) 25vw, 45vw"><source type="image/webp" srcset="assets-build/img/evento-truck-lounge-480w-c536e116c0.webp 480w, assets-build/img/evento-truck-lounge-800w-c536e116c0.webp 800w, assets-build/img/evento-truck-lounge-1280w-c536e116c0.webp 1280w" sizes="(min-width: 1024px) 25vw, 45vw"><img src="assets-build/img/evento-truck-lounge-1280w-c536e116c0.webp" width="1819" height="715" alt="" loading="lazy" decoding="async"></picture>
+          <x-img slug="evento-truck-lounge" alt="" sizes="(min-width: 1024px) 25vw, 45vw"></x-img>
           <figcaption>Truck Lounge — Festival de Interlagos</figcaption>
         </figure>
         <figure data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/evento-boxes-480w-ffb678c8af.avif 480w, assets-build/img/evento-boxes-800w-ffb678c8af.avif 800w" sizes="(min-width: 1024px) 25vw, 45vw"><source type="image/webp" srcset="assets-build/img/evento-boxes-480w-ffb678c8af.webp 480w, assets-build/img/evento-boxes-800w-ffb678c8af.webp 800w" sizes="(min-width: 1024px) 25vw, 45vw"><img src="assets-build/img/evento-boxes-800w-ffb678c8af.webp" width="1046" height="709" alt="" loading="lazy" decoding="async"></picture>
+          <x-img slug="evento-boxes" alt="" sizes="(min-width: 1024px) 25vw, 45vw"></x-img>
           <figcaption>Box</figcaption>
         </figure>
       </div>
@@ -390,24 +390,24 @@
 
       <div class="pilotos-time__deck" data-stagger>
         <article class="pilotos-time__card" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/piloto-nelsinho-480w-e31e292ec3.avif 480w, assets-build/img/piloto-nelsinho-800w-e31e292ec3.avif 800w" sizes="(min-width: 1024px) 22vw, 70vw"><source type="image/jpeg" srcset="assets-build/img/piloto-nelsinho-480w-e31e292ec3.jpg 480w, assets-build/img/piloto-nelsinho-800w-e31e292ec3.jpg 800w" sizes="(min-width: 1024px) 22vw, 70vw"><img src="assets-build/img/piloto-nelsinho-800w-e31e292ec3.jpg" width="892" height="1192" alt="Nelsinho Piquet Jr." loading="lazy" decoding="async"></picture>
+          <x-img slug="piloto-nelsinho" alt="Nelsinho Piquet Jr." sizes="(min-width: 1024px) 22vw, 70vw"></x-img>
           <h3>Nelsinho Piquet Jr.</h3>
           <p>Campeão da temporada inaugural da Formula E, em 2014/15, com duas vitórias na campanha.</p>
         </article>
         <article class="pilotos-time__card" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/piloto-christian-480w-3511b5bac7.avif 480w, assets-build/img/piloto-christian-800w-3511b5bac7.avif 800w" sizes="(min-width: 1024px) 22vw, 70vw"><source type="image/jpeg" srcset="assets-build/img/piloto-christian-480w-3511b5bac7.jpg 480w, assets-build/img/piloto-christian-800w-3511b5bac7.jpg 800w" sizes="(min-width: 1024px) 22vw, 70vw"><img src="assets-build/img/piloto-christian-800w-3511b5bac7.jpg" width="930" height="1192" alt="Christian Fittipaldi" loading="lazy" decoding="async"></picture>
+          <x-img slug="piloto-christian" alt="Christian Fittipaldi" sizes="(min-width: 1024px) 22vw, 70vw"></x-img>
           <h3>Christian Fittipaldi</h3>
           <p>Chefe de equipe.</p>
           <p>Ex-piloto de Fórmula 1 e Fórmula Indy. Três vezes vencedor das 24 Horas de Daytona, bicampeão da classe de protótipos do IMSA WeatherTech, tetracampeão da North American Endurance Cup e 12 vitórias na IMSA.</p>
         </article>
         <article class="pilotos-time__card" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/piloto-ingo-480w-eb7fc06afc.avif 480w, assets-build/img/piloto-ingo-800w-eb7fc06afc.avif 800w" sizes="(min-width: 1024px) 22vw, 70vw"><source type="image/jpeg" srcset="assets-build/img/piloto-ingo-480w-eb7fc06afc.jpg 480w, assets-build/img/piloto-ingo-800w-eb7fc06afc.jpg 800w" sizes="(min-width: 1024px) 22vw, 70vw"><img src="assets-build/img/piloto-ingo-800w-eb7fc06afc.jpg" width="899" height="1192" alt="Ingo Hoffmann" loading="lazy" decoding="async"></picture>
+          <x-img slug="piloto-ingo" alt="Ingo Hoffmann" sizes="(min-width: 1024px) 22vw, 70vw"></x-img>
           <h3>Ingo Hoffmann</h3>
           <p>Embaixador.</p>
           <p>12 títulos na Stock Car e uma passagem pela Fórmula 1 com a Copersucar-Fittipaldi.</p>
         </article>
         <article class="pilotos-time__card" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/piloto-atila-480w-d0d32d1265.avif 480w, assets-build/img/piloto-atila-800w-d0d32d1265.avif 800w" sizes="(min-width: 1024px) 22vw, 70vw"><source type="image/jpeg" srcset="assets-build/img/piloto-atila-480w-d0d32d1265.jpg 480w, assets-build/img/piloto-atila-800w-d0d32d1265.jpg 800w" sizes="(min-width: 1024px) 22vw, 70vw"><img src="assets-build/img/piloto-atila-800w-d0d32d1265.jpg" width="936" height="1192" alt="Átila Abreu" loading="lazy" decoding="async"></picture>
+          <x-img slug="piloto-atila" alt="Átila Abreu" sizes="(min-width: 1024px) 22vw, 70vw"></x-img>
           <h3>Átila Abreu</h3>
           <p>Fundador.</p>
           <p>Vice-campeão da Stock Car em 2014, com mais de 320 largadas, 19 vitórias, 13 poles e 49 pódios.</p>
@@ -452,7 +452,7 @@
         <p data-reveal>Hoje tem espaço próprio dentro da estrutura, com identidade visual e exposição de produtos, reforçado pela imagem de Átila como embaixador em seus canais — e já usou o Bandeiras Empresarial para sua própria convenção de vendas.</p>
 
         <div class="marcas__prova" data-reveal>
-          <picture><source type="image/avif" srcset="assets-build/img/piloto-atila-480w-d0d32d1265.avif 480w, assets-build/img/piloto-atila-800w-d0d32d1265.avif 800w" sizes="(min-width: 1024px) 40vw, 80vw"><source type="image/jpeg" srcset="assets-build/img/piloto-atila-480w-d0d32d1265.jpg 480w, assets-build/img/piloto-atila-800w-d0d32d1265.jpg 800w" sizes="(min-width: 1024px) 40vw, 80vw"><img src="assets-build/img/piloto-atila-800w-d0d32d1265.jpg" width="936" height="1192" alt="Átila Abreu, fundador da Scuderia Bandeiras e embaixador da PETRONAS" loading="lazy" decoding="async"></picture>
+          <x-img slug="piloto-atila" alt="Átila Abreu, fundador da Scuderia Bandeiras e embaixador da PETRONAS" sizes="(min-width: 1024px) 40vw, 80vw"></x-img>
         </div>
 
         <h3 class="marcas__subtitulo" data-reveal>Marcas que fazem parte da nossa história</h3>

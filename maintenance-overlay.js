@@ -15,6 +15,30 @@
 
   var MAINTENANCE_MODE = true;
 
+  /* ------------------------------------------------------------
+     GATE DE AMBIENTE LOCAL (adicionado para a reconstrução da nova
+     home — doc/VISUAL-DIRECTION.md §17 item 7).
+     Em produção (qualquer outro host), o comportamento é IDÊNTICO
+     ao de antes: nada muda aqui além de pular o overlay quando o
+     host é reconhecidamente local/LAN, para não atrapalhar a
+     revisão da nova home no navegador do desenvolvedor.
+     Isso NÃO remove o overlay da produção — é reversível e não
+     precisa de deploy para ser desfeito (basta editar esta lista).
+     ------------------------------------------------------------ */
+  var LOCAL_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '::1'
+  ];
+  var host = (typeof location !== 'undefined' && location.hostname) || '';
+  var isLocalHost = LOCAL_HOSTS.indexOf(host) !== -1
+    || /^192\.168\.\d{1,3}\.\d{1,3}$/.test(host)
+    || /^10\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(host)
+    || /^172\.(1[6-9]|2\d|3[0-1])\.\d{1,3}\.\d{1,3}$/.test(host)
+    || host.endsWith('.local');
+
+  if (isLocalHost) return;
+
   if (!MAINTENANCE_MODE) return;
 
   var CONFIG = {

@@ -1,0 +1,194 @@
+/*
+  BASE — reset, layout primitives, tipografia, acessibilidade
+  Fonte: doc/VISUAL-DIRECTION.md §7, §8, §10, §12.5
+*/
+
+@layer reset, base, layout, type, motion-base, utilities;
+
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body { min-height: 100svh; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  img, picture, video, canvas, svg { display: block; max-width: 100%; }
+  /*
+    Correção crítica (achada em QA local): os atributos HTML width/height
+    (necessários para reservar espaço e evitar CLS antes do CSS carregar)
+    viram um "height" presentacional de baixa prioridade. Sem este reset,
+    qualquer <img> que receba um "aspect-ratio" próprio no CSS de componente
+    ignora a proporção pretendida e usa a altura NATURAL do arquivo original
+    (ex.: uma imagem de 1878×1254px ficava 1254px de altura mesmo dentro de
+    um cartão com aspect-ratio:3/4) — inflando a altura de quase todas as
+    dobras da página. `height:auto` aqui garante que o par
+    width:100%+aspect-ratio de cada componente sempre vença.
+  */
+  img { height: auto; }
+  input, button, textarea, select { font: inherit; color: inherit; }
+  p, h1, h2, h3, h4 { overflow-wrap: break-word; }
+  #root, #__next { isolation: isolate; }
+  a { color: inherit; text-decoration: none; }
+  button { background: none; border: 0; cursor: pointer; }
+  ul, ol { list-style: none; padding: 0; }
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto; /* nunca smooth sem gate de reduced-motion — controlado via JS */
+  }
+  body {
+    background: var(--asfalto);
+    color: var(--luz);
+    font-family: var(--ff-text);
+    font-size: var(--t-body);
+    overflow-x: hidden;
+  }
+  [data-surface="papel"] {
+    background: var(--papel);
+    color: var(--tinta);
+  }
+
+  ::selection {
+    background: var(--vermelho);
+    color: var(--asfalto);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--vermelho);
+    outline-offset: 3px;
+  }
+  [data-surface="papel"] :focus-visible {
+    outline-color: var(--vermelho-profundo);
+  }
+
+  /* Skip link (§16 item 18 — microcopy "Ir para o conteúdo" pendente de aprovação;
+     funcional desde já, texto pode ser trocado sem mudar comportamento) */
+  .skip-link {
+    position: fixed;
+    top: -100%;
+    left: var(--space-s);
+    z-index: 1000;
+    background: var(--vermelho);
+    color: var(--asfalto);
+    padding: var(--space-2xs) var(--space-s);
+    font-family: var(--ff-text);
+    font-weight: 600;
+    transition: top var(--dur-fast) var(--ease-brake);
+  }
+  .skip-link:focus {
+    top: var(--space-s);
+  }
+}
+
+@layer layout {
+  .container {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-margin);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--container-gutter);
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(8, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .grid { grid-template-columns: repeat(12, 1fr); }
+  }
+
+  .section {
+    position: relative;
+    padding-block: var(--space-2xl);
+  }
+  .section--breath {
+    padding-block: var(--space-3xl);
+  }
+
+  /* Alturas de tela cheia: svh para cenas fixas (estável com a barra de
+     endereço do mobile), dvh para overlays (acompanha a barra dinâmica) */
+  .h-scene { min-height: 100svh; }
+  .h-overlay { min-height: 100dvh; }
+}
+
+@layer type {
+  h1, h2, h3, .display {
+    font-family: var(--ff-display);
+    font-weight: 400;
+    font-synthesis: none;
+    text-wrap: balance;
+  }
+  .eyebrow {
+    font-family: var(--ff-text);
+    font-size: var(--t-label);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .lead {
+    font-size: var(--t-m);
+    line-height: 1.4;
+    max-width: 64ch;
+  }
+  p, .body-copy {
+    max-width: 60ch;
+    line-height: 1.6;
+  }
+  .num {
+    font-family: var(--ff-display);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+  .unit {
+    font-family: var(--ff-text);
+    font-feature-settings: "case";
+  }
+}
+
+@layer motion-base {
+  /*
+    Regra central (§12.5): o estado-base do CSS é sempre o estado FINAL,
+    visível. Motion é uma camada de cima — nunca um requisito para ler a
+    página. Elementos "revelam" só depois que JS adiciona .js-motion ao
+    <html> (feature-detect + reduced-motion check) E o elemento entra em
+    viewport (.is-in). Sem JS, ou com prefers-reduced-motion, tudo já está
+    visível porque a regra abaixo nunca aplica.
+  */
+  .js-motion [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  .js-motion [data-reveal].is-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity var(--dur-medium) var(--ease-brake),
+      transform var(--dur-medium) var(--ease-brake);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js-motion [data-reveal] {
+      opacity: 1;
+      transform: none;
+    }
+    * {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .no-scroll { overflow: hidden; }
+}

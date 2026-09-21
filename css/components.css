@@ -1,0 +1,448 @@
+/*
+  COMPONENTES — Nova Home Scuderia Bandeiras
+  Fonte: doc/VISUAL-DIRECTION.md §15 (proposta visual de cada dobra)
+*/
+
+@layer components {
+
+  /* ============================================================ BOTÕES */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: var(--space-xs) var(--space-m);
+    font-family: var(--ff-text);
+    font-weight: 600;
+    font-size: var(--t-small);
+    letter-spacing: 0.02em;
+    transition: transform var(--dur-fast) var(--ease-brake);
+  }
+  .btn:active { transform: scale(0.98); }
+
+  .btn--primary {
+    background: var(--vermelho);
+    color: var(--asfalto); /* §9.2: texto escuro sobre vermelho real passa AA (5,70:1) */
+  }
+  [data-surface="papel"] .btn--primary {
+    background: var(--vermelho-profundo);
+    color: var(--branco); /* §9.2: sobre papel, o derivado escuro + texto branco passa AA (5,74:1) */
+  }
+
+  .btn--ghost {
+    background: transparent;
+    color: var(--luz);
+    border: 1px solid var(--luz-2);
+  }
+  [data-surface="papel"] .btn--ghost {
+    color: var(--tinta);
+    border-color: rgba(26, 26, 26, 0.3);
+  }
+
+  /* ============================================================ NAVBAR */
+  .nav {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: 100;
+    background: transparent;
+    transition: background var(--dur-fast) var(--ease-brake), transform var(--dur-medium) var(--ease-brake);
+  }
+  .nav.is-solid { background: var(--asfalto); }
+  .nav.is-hidden { transform: translateY(-100%); }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+    padding-block: var(--space-2xs);
+    height: 64px;
+  }
+
+  .nav__logo-img img { width: 130px; height: auto; }
+
+  .nav__links {
+    display: none;
+    align-items: center;
+    gap: var(--space-l);
+    font-size: var(--t-small);
+  }
+  .nav__group { display: flex; gap: var(--space-s); }
+  .nav__links a {
+    white-space: nowrap;
+    padding-block: var(--space-3xs);
+    border-bottom: 2px solid transparent;
+  }
+  .nav__links a[aria-current="true"] {
+    border-color: var(--vermelho);
+    font-weight: 600;
+  }
+
+  .nav__cta {
+    display: none;
+    background: var(--vermelho);
+    color: var(--asfalto);
+    padding: var(--space-3xs) var(--space-s);
+    font-weight: 600;
+    font-size: var(--t-small);
+    white-space: nowrap;
+  }
+
+  .nav__menu-btn {
+    width: 44px; height: 44px;
+    display: grid; place-items: center;
+  }
+  .nav__menu-icon, .nav__menu-icon::before, .nav__menu-icon::after {
+    content: ""; display: block;
+    width: 22px; height: 2px;
+    background: var(--luz);
+  }
+  .nav__menu-icon { position: relative; }
+  .nav__menu-icon::before { position: absolute; inset-block-start: -7px; }
+  .nav__menu-icon::after { position: absolute; inset-block-start: 7px; }
+
+  @media (min-width: 1280px) {
+    .nav__links { display: flex; }
+    .nav__cta { display: inline-flex; }
+    .nav__menu-btn { display: none; }
+  }
+
+  .nav__dialog {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    background: var(--asfalto);
+    color: var(--luz);
+  }
+  .nav__dialog::backdrop { background: transparent; }
+  .nav__dialog-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-s) var(--gutter);
+  }
+  .nav__dialog-head img { width: 110px; }
+  .nav__dialog-head button {
+    width: 44px; height: 44px;
+    font-size: 1.2rem;
+    color: var(--luz);
+  }
+  .nav__dialog nav {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-m) var(--gutter);
+    font-family: var(--ff-display);
+    font-size: var(--t-xl);
+  }
+  .nav__dialog nav a { padding-block: var(--space-2xs); }
+  .nav__dialog-whatsapp {
+    display: block;
+    margin: var(--space-l) var(--gutter);
+    padding: var(--space-s);
+    text-align: center;
+    background: var(--vermelho);
+    color: var(--asfalto);
+    font-weight: 600;
+  }
+
+  /* ============================================================ 01 · HERO */
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: clip;
+  }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+  .hero__bg img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    /*
+      Correção de QA: com scrim leve, o H1 cruzava a lataria clara do carro
+      na foto e ficava ilegível. Vinheta bem mais escura de baixo para cima
+      (a foto é evidência, mas o texto tem que vencer em qualquer imagem)
+      + text-shadow no H1/eyebrow como segunda camada de garantia.
+    */
+    background: linear-gradient(0deg, rgba(6,6,6,.96) 0%, rgba(8,8,8,.86) 32%, rgba(10,10,10,.5) 62%, rgba(12,12,12,.22) 100%);
+  }
+  .hero__body {
+    padding-block-end: var(--space-2xl);
+    padding-block-start: calc(64px + var(--space-2xl));
+  }
+  .hero__title {
+    font-size: var(--t-mega);
+    line-height: 0.9;
+    margin-block: var(--space-xs) var(--space-m);
+    text-shadow: 0 4px 32px rgba(0,0,0,.55);
+  }
+  .hero .eyebrow,
+  .hero__copy {
+    text-shadow: 0 2px 16px rgba(0,0,0,.6);
+  }
+  .hero__copy { max-width: 46rem; }
+  .hero__copy p + p { margin-block-start: var(--space-2xs); }
+  .hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin-block-start: var(--space-l);
+  }
+
+  @media (max-width: 767px) {
+    .hero { min-height: 100svh; }
+    .hero__bg img { object-position: center 20%; }
+    .hero__body { padding-inline: var(--gutter); }
+  }
+
+  /* ============================================================ 02 · SOBRE */
+  .sobre__media img { width: 100%; aspect-ratio: 16/7; object-fit: cover; }
+  .sobre__text { padding-block-start: var(--space-xl); max-width: 68ch; }
+  .sobre__text p + p { margin-block-start: var(--space-s); }
+  .sobre__close { margin-block-start: var(--space-l); font-size: var(--t-m); }
+
+  @media (max-width: 767px) {
+    .sobre__media img { aspect-ratio: 4/3; }
+  }
+
+  /* ============================================================ FAIXA DE AUTORIDADE */
+  .autoridade { border-block: 1px solid rgba(255,255,255,.12); padding-block: var(--space-l); }
+  .autoridade__row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-m);
+    padding-block-end: var(--space-m);
+  }
+  .autoridade__nome { font-family: var(--ff-display); font-size: var(--t-l); }
+  .autoridade__credencial { color: var(--luz-2); font-size: var(--t-small); margin-block-start: var(--space-3xs); }
+  .autoridade__link { font-weight: 600; border-bottom: 1px solid currentColor; }
+
+  @media (max-width: 767px) {
+    .autoridade__row { grid-template-columns: 1fr; gap: var(--space-s); }
+  }
+
+  /* ============================================================ 03 · ECOSSISTEMA */
+  .ecossistema__sub { color: var(--luz-2); font-size: var(--t-l); margin-block-end: var(--space-m); }
+  .ecossistema__destaque { font-size: var(--t-m); margin-block: var(--space-s) var(--space-l); }
+
+  .ecossistema__mosaico {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 80%;
+    gap: var(--space-xs);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-inline: var(--gutter);
+    margin-block: var(--space-l);
+    scrollbar-width: none;
+  }
+  .ecossistema__mosaico::-webkit-scrollbar { display: none; }
+  .ecossistema__peca {
+    scroll-snap-align: start;
+    position: relative;
+  }
+  .ecossistema__peca img { aspect-ratio: 3/4; object-fit: cover; }
+  .ecossistema__peca figcaption {
+    position: absolute;
+    inset-block-end: var(--space-s);
+    inset-inline-start: var(--space-s);
+    font-family: var(--ff-display);
+    font-size: var(--t-l);
+    text-shadow: 0 2px 12px rgba(0,0,0,.6);
+  }
+
+  @media (min-width: 1024px) {
+    .ecossistema__mosaico {
+      grid-auto-columns: unset;
+      grid-template-columns: repeat(5, 1fr);
+      overflow: visible;
+      padding-inline: var(--container-margin);
+    }
+  }
+
+  .ecossistema__lista {
+    display: grid;
+    gap: var(--space-2xs);
+    margin-block-start: var(--space-s);
+  }
+  .ecossistema__lista li {
+    padding-block: var(--space-2xs);
+    border-block-end: 1px solid rgba(255,255,255,.12);
+  }
+
+  /* ============================================================ 04 · EXPERIÊNCIAS */
+  .experiencias__panorama img { width: 100%; aspect-ratio: 21/9; object-fit: cover; margin-block: var(--space-l); }
+  .experiencias__sub { font-size: var(--t-l); margin-block: var(--space-s); }
+  .experiencias__principios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s) var(--space-m);
+    margin-block: var(--space-m);
+    font-family: var(--ff-display);
+    font-size: var(--t-l);
+  }
+  .experiencias__close { font-size: var(--t-m); margin-block: var(--space-l); }
+  .experiencias__escopo {
+    display: grid;
+    gap: var(--space-m);
+    padding-block: var(--space-l);
+    border-block: 1px solid rgba(255,255,255,.12);
+    margin-block: var(--space-l);
+  }
+  .experiencias__escopo h4 { font-family: var(--ff-text); font-size: var(--t-label); letter-spacing: .12em; text-transform: uppercase; color: var(--luz-2); }
+  .experiencias__escopo-item h5 { font-family: var(--ff-display); font-size: var(--t-l); font-weight: 400; }
+  .experiencias__nota { color: var(--luz-2); font-size: var(--t-small); }
+  .experiencias__fechamento { font-size: var(--t-m); margin-block-end: var(--space-l); }
+
+  @media (min-width: 1024px) {
+    .experiencias__escopo { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* ============================================================ 05 · CATERHAM (fallback tipográfico) */
+  .caterham__ficha {
+    display: grid;
+    gap: var(--space-l);
+    margin-block: var(--space-l);
+  }
+  .caterham__num-valor { font-size: var(--t-num); line-height: 0.85; }
+  .caterham__modelo { font-size: var(--t-small); color: var(--tinta-2); margin-block-start: var(--space-2xs); }
+
+  .caterham__fecho {
+    background: var(--vermelho);
+    color: var(--asfalto);
+    padding-block: var(--space-2xl);
+    text-align: center;
+    margin-block: var(--space-2xl) 0;
+  }
+  .caterham__fecho-linha {
+    font-family: var(--ff-display);
+    font-size: var(--t-xxl);
+    line-height: 0.95;
+  }
+
+  @media (min-width: 1024px) {
+    .caterham__ficha { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ============================================================ 06 · BANDEIRAS EMPRESARIAL */
+  .bandeiras__title { display: flex; flex-direction: column; gap: var(--space-2xs); margin-block-end: var(--space-l); }
+  .bandeiras__title-a { font-size: var(--t-l); }
+  .bandeiras__title-b { font-size: var(--t-xxl); line-height: 0.9; }
+
+  .bandeiras__trilho {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 82%;
+    gap: var(--space-xs);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-inline: var(--gutter);
+    margin-block: var(--space-l);
+    scrollbar-width: none;
+  }
+  .bandeiras__trilho::-webkit-scrollbar { display: none; }
+  .bandeiras__cena { scroll-snap-align: start; }
+  .bandeiras__cena img { aspect-ratio: 4/5; object-fit: cover; }
+  .bandeiras__cena figcaption { font-size: var(--t-small); color: var(--tinta-2); margin-block-start: var(--space-2xs); }
+
+  @media (min-width: 1024px) {
+    .bandeiras__trilho { grid-auto-columns: 30%; }
+  }
+
+  .bandeiras__usos { margin-block: var(--space-s) var(--space-l); }
+  .bandeiras__usos li { padding-block: var(--space-3xs); }
+  .bandeiras__case { font-size: var(--t-m); margin-block-end: var(--space-l); }
+
+  /* ============================================================ 07 · CONTEÚDO */
+  .conteudo__frames {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2xs);
+    margin-block: var(--space-l);
+  }
+  .conteudo__frames img { aspect-ratio: 4/3; object-fit: cover; }
+  .conteudo__frames figcaption { font-size: var(--t-label); color: var(--luz-2); margin-block-start: var(--space-3xs); }
+
+  .conteudo__ofertas {
+    display: grid;
+    gap: var(--space-m);
+    padding-block: var(--space-l);
+    border-block-start: 1px solid rgba(255,255,255,.12);
+  }
+  .conteudo__ofertas h3 { font-family: var(--ff-display); font-weight: 400; font-size: var(--t-l); }
+  .conteudo__nota { color: var(--luz-2); font-size: var(--t-small); margin-block-start: var(--space-2xs); }
+  .conteudo__close { font-size: var(--t-m); margin-block: var(--space-l); }
+
+  @media (min-width: 1024px) {
+    .conteudo__frames { grid-template-columns: repeat(4, 1fr); }
+    .conteudo__ofertas { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ============================================================ 08 · PILOTOS & TIME */
+  .pilotos-time__deck {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 78%;
+    gap: var(--space-s);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-inline: var(--gutter);
+    margin-block: var(--space-l);
+    scrollbar-width: none;
+  }
+  .pilotos-time__deck::-webkit-scrollbar { display: none; }
+  .pilotos-time__card { scroll-snap-align: start; }
+  .pilotos-time__card img { aspect-ratio: 3/4; object-fit: cover; }
+  .pilotos-time__card h3 { font-size: var(--t-l); margin-block: var(--space-s) var(--space-3xs); }
+  .pilotos-time__card p { color: var(--luz-2); font-size: var(--t-small); }
+
+  .pilotos-time__bastidor { padding-block-start: var(--space-l); border-block-start: 1px solid rgba(255,255,255,.12); }
+  .pilotos-time__nota { color: var(--luz-2); margin-block-start: var(--space-s); }
+  .pilotos-time__seta { font-size: var(--t-m); margin-block-start: var(--space-l); }
+
+  @media (min-width: 1024px) {
+    .pilotos-time__deck { grid-auto-columns: unset; grid-template-columns: repeat(4, 1fr); overflow: visible; padding-inline: var(--container-margin); }
+  }
+
+  /* ============================================================ 09 · PALESTRAS */
+  .palestras { background: var(--asfalto-2); }
+  .palestras__coluna { max-width: 56ch; }
+  .palestras__lista { display: grid; gap: var(--space-s); margin-block: var(--space-l); }
+  .palestras__nota { color: var(--luz-2); margin-block-end: var(--space-l); }
+
+  /* ============================================================ 10 · MARCAS / PETRONAS */
+  .marcas__prova img { aspect-ratio: 4/5; object-fit: cover; max-width: 420px; margin-block: var(--space-l); }
+  .marcas__subtitulo { font-size: var(--t-l); margin-block: var(--space-l) var(--space-s); }
+  .marcas__lista { color: var(--luz-2); line-height: 1.8; }
+
+  /* ============================================================ 11 · CTA FINAL */
+  .cta-final { padding-block: var(--space-3xl); text-align: center; }
+  .cta-final__inner { max-width: 48ch; margin-inline: auto; }
+  .cta-final__ctas { display: flex; flex-direction: column; gap: var(--space-s); align-items: center; margin-block-start: var(--space-l); }
+
+  /* ============================================================ FOOTER */
+  .footer { padding-block: var(--space-2xl); background: var(--asfalto); border-block-start: 1px solid rgba(255,255,255,.12); }
+  .footer__marca { font-size: var(--t-l); }
+  .footer__slogan { color: var(--luz-2); margin-block-end: var(--space-l); }
+  .footer__links { display: flex; flex-wrap: wrap; gap: var(--space-s); margin-block-end: var(--space-l); font-size: var(--t-small); }
+  .footer__contato { display: grid; gap: var(--space-s); font-size: var(--t-small); color: var(--luz-2); margin-block-end: var(--space-l); }
+  .footer__contato a { color: var(--luz); }
+  .footer__copy { font-size: var(--t-label); color: var(--luz-2); }
+
+  @media (min-width: 768px) {
+    .footer__contato { grid-template-columns: repeat(3, 1fr); }
+  }
+}

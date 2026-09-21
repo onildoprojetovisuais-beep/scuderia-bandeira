@@ -1,0 +1,83 @@
+/*
+  TOKENS — Nova Home Scuderia Bandeiras
+  Fonte: doc/VISUAL-DIRECTION.md §7 (grid), §8 (tipografia), §9 (cores), §10 (spacing)
+
+  Cor de marca corrigida (§9, §16 item 8): #FF4747 é a cor REAL medida por
+  amostragem de pixel no logo (Brand/1124_Bandeiras_RGB_L-RW.png), não o
+  #F80100 do arquivo desatualizado Brand/paleta de cor.png. Pendência formal
+  registrada — ver doc/VISUAL-DIRECTION.md §16 item 8.
+*/
+
+@layer tokens {
+  :root {
+    /* ===== SUPERFÍCIES ===== */
+    --asfalto: #0f0f0f;
+    --asfalto-2: #1a1a1a;
+    --branco: #ffffff;
+    --papel: #f1eee8;
+    --papel-2: #e8e3da;
+
+    /* ===== VERMELHO (§9.1 — ver §9.2 para a conta de contraste) ===== */
+    --vermelho: #ff4747;          /* cor real do logo — texto/ícone/botão sobre fundo ESCURO */
+    --vermelho-profundo: #c81e1e; /* derivado mais escuro — texto/ícone sobre PAPEL; botão com texto branco */
+
+    /* ===== TEXTO SECUNDÁRIO (substituem alfas que reprovavam AA) ===== */
+    --tinta: #1a1a1a;
+    --tinta-2: rgba(26, 26, 26, 0.76);   /* sobre --papel, ≥4.5:1 */
+    --luz: #ffffff;
+    --luz-2: rgba(255, 255, 255, 0.76); /* sobre --asfalto, ≥4.5:1 */
+
+    /* ===== TIPOGRAFIA ===== */
+    --ff-display: "Special Gothic Condensed One", "Barlow Condensed", sans-serif;
+    --ff-text: "Inter", system-ui, sans-serif;
+
+    --t-mega: clamp(3.5rem, 12.8vw, 11.5rem);   /* H1 Hero */
+    --t-num: clamp(5rem, 22vw, 18.75rem);       /* numerais de ficha (84/490/300) */
+    --t-xxl: clamp(2.75rem, 1.3rem + 6.4vw, 7.5rem);
+    --t-xl: clamp(2.25rem, 1.4rem + 4vw, 5rem);
+    --t-l: clamp(1.75rem, 1.3rem + 2vw, 3rem);
+    --t-m: clamp(1.25rem, 1.1rem + 0.7vw, 1.75rem); /* lead */
+    --t-body: clamp(1rem, 0.95rem + 0.25vw, 1.1875rem); /* nunca <16px */
+    --t-small: 0.875rem;
+    --t-label: 0.75rem; /* mínimo 12px */
+
+    /* ===== SPACING (base 8, passos fluidos) ===== */
+    --space-3xs: 4px;
+    --space-2xs: 8px;
+    --space-xs: 12px;
+    --space-s: clamp(16px, 4vw, 24px);
+    --space-m: clamp(24px, 5vw, 32px);
+    --space-l: clamp(32px, 6vw, 48px);
+    --space-xl: clamp(48px, 8vw, 96px);
+    --space-2xl: clamp(80px, 12vw, 128px);
+    --space-3xl: clamp(96px, 15vw, 192px);
+
+    /* Mobile: gutter lateral reduzido (medido por H: 17px@320, 21px@390, 41px@768) */
+    --gutter: clamp(16px, 5.4vw, 48px);
+
+    /* ===== GRID ===== */
+    --container-max: 1440px;
+    --container-margin: clamp(16px, 4vw, 64px);
+    --container-gutter: clamp(12px, 1.6vw, 24px);
+
+    /* ===== MOTION (§12.2 — contrato único entre design e implementação) ===== */
+    --dur-fast: 160ms;
+    --dur-medium: 360ms;
+    --dur-slow: 720ms;
+    --dur-settle: 1100ms; /* exceção: só mídia assentando e contador da Caterham */
+    --ease-brake: cubic-bezier(0.22, 1, 0.36, 1); /* entradas — frenagem tardia */
+    --ease-drive: cubic-bezier(0.6, 0, 0.2, 1);   /* deslocamentos A→B */
+    --ease-trail: cubic-bezier(0.4, 0, 0.7, 0.2); /* saídas — solta o freio */
+    --ease-linear: linear;                         /* só quando o scroll É o tempo */
+
+    /* ===== RAIOS ===== */
+    --radius: 0; /* §10 — 0 em tudo; única forma não-retangular é o corte-r, só em foto */
+
+    color-scheme: dark;
+  }
+
+  /* Seções que usam o "papel" (Bandeiras Empresarial, blocos claros) invertem color-scheme */
+  [data-surface="papel"] {
+    color-scheme: light;
+  }
+}

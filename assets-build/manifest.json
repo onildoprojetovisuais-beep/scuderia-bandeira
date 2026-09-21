@@ -1,0 +1,558 @@
+{
+  "complexo-1": {
+    "slug": "complexo-1",
+    "source": "Imagens/complexo/1.png",
+    "original_size_bytes": 4007259,
+    "width": 1878,
+    "height": 1254,
+    "aspect_ratio": 1.4976,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/complexo-1-480w-4307820a15.avif",
+      "800": "assets-build/img/complexo-1-800w-4307820a15.avif",
+      "1280": "assets-build/img/complexo-1-1280w-4307820a15.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/complexo-1-480w-4307820a15.webp",
+      "800": "assets-build/img/complexo-1-800w-4307820a15.webp",
+      "1280": "assets-build/img/complexo-1-1280w-4307820a15.webp"
+    }
+  },
+  "complexo-2": {
+    "slug": "complexo-2",
+    "source": "Imagens/complexo/2.png",
+    "original_size_bytes": 4169746,
+    "width": 1878,
+    "height": 1254,
+    "aspect_ratio": 1.4976,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/complexo-2-480w-1f218e30b7.avif",
+      "800": "assets-build/img/complexo-2-800w-1f218e30b7.avif",
+      "1280": "assets-build/img/complexo-2-1280w-1f218e30b7.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/complexo-2-480w-1f218e30b7.webp",
+      "800": "assets-build/img/complexo-2-800w-1f218e30b7.webp",
+      "1280": "assets-build/img/complexo-2-1280w-1f218e30b7.webp"
+    }
+  },
+  "complexo-3": {
+    "slug": "complexo-3",
+    "source": "Imagens/complexo/3.png",
+    "original_size_bytes": 3119354,
+    "width": 1878,
+    "height": 1254,
+    "aspect_ratio": 1.4976,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/complexo-3-480w-16ee83393e.avif",
+      "800": "assets-build/img/complexo-3-800w-16ee83393e.avif",
+      "1280": "assets-build/img/complexo-3-1280w-16ee83393e.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/complexo-3-480w-16ee83393e.webp",
+      "800": "assets-build/img/complexo-3-800w-16ee83393e.webp",
+      "1280": "assets-build/img/complexo-3-1280w-16ee83393e.webp"
+    }
+  },
+  "complexo-4": {
+    "slug": "complexo-4",
+    "source": "Imagens/complexo/4.png",
+    "original_size_bytes": 4303924,
+    "width": 1878,
+    "height": 1254,
+    "aspect_ratio": 1.4976,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/complexo-4-480w-6b1ba9280d.avif",
+      "800": "assets-build/img/complexo-4-800w-6b1ba9280d.avif",
+      "1280": "assets-build/img/complexo-4-1280w-6b1ba9280d.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/complexo-4-480w-6b1ba9280d.webp",
+      "800": "assets-build/img/complexo-4-800w-6b1ba9280d.webp",
+      "1280": "assets-build/img/complexo-4-1280w-6b1ba9280d.webp"
+    }
+  },
+  "complexo-5": {
+    "slug": "complexo-5",
+    "source": "Imagens/complexo/5.png",
+    "original_size_bytes": 3270158,
+    "width": 1878,
+    "height": 1254,
+    "aspect_ratio": 1.4976,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/complexo-5-480w-98a14d19be.avif",
+      "800": "assets-build/img/complexo-5-800w-98a14d19be.avif",
+      "1280": "assets-build/img/complexo-5-1280w-98a14d19be.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/complexo-5-480w-98a14d19be.webp",
+      "800": "assets-build/img/complexo-5-800w-98a14d19be.webp",
+      "1280": "assets-build/img/complexo-5-1280w-98a14d19be.webp"
+    }
+  },
+  "complexo-6": {
+    "slug": "complexo-6",
+    "source": "Imagens/complexo/6.png",
+    "original_size_bytes": 5702303,
+    "width": 1878,
+    "height": 1254,
+    "aspect_ratio": 1.4976,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/complexo-6-480w-11007ca105.avif",
+      "800": "assets-build/img/complexo-6-800w-11007ca105.avif",
+      "1280": "assets-build/img/complexo-6-1280w-11007ca105.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/complexo-6-480w-11007ca105.webp",
+      "800": "assets-build/img/complexo-6-800w-11007ca105.webp",
+      "1280": "assets-build/img/complexo-6-1280w-11007ca105.webp"
+    }
+  },
+  "complexo-7": {
+    "slug": "complexo-7",
+    "source": "Imagens/complexo/7.png",
+    "original_size_bytes": 3522012,
+    "width": 1878,
+    "height": 1254,
+    "aspect_ratio": 1.4976,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/complexo-7-480w-9925a97262.avif",
+      "800": "assets-build/img/complexo-7-800w-9925a97262.avif",
+      "1280": "assets-build/img/complexo-7-1280w-9925a97262.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/complexo-7-480w-9925a97262.webp",
+      "800": "assets-build/img/complexo-7-800w-9925a97262.webp",
+      "1280": "assets-build/img/complexo-7-1280w-9925a97262.webp"
+    }
+  },
+  "local-auditorio": {
+    "slug": "local-auditorio",
+    "source": "Imagens/local/auditorio.jpg",
+    "original_size_bytes": 13649206,
+    "width": 4087,
+    "height": 2730,
+    "aspect_ratio": 1.4971,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/local-auditorio-480w-dea36b2418.avif",
+      "800": "assets-build/img/local-auditorio-800w-dea36b2418.avif",
+      "1280": "assets-build/img/local-auditorio-1280w-dea36b2418.avif",
+      "1920": "assets-build/img/local-auditorio-1920w-dea36b2418.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/local-auditorio-480w-dea36b2418.jpg",
+      "800": "assets-build/img/local-auditorio-800w-dea36b2418.jpg",
+      "1280": "assets-build/img/local-auditorio-1280w-dea36b2418.jpg",
+      "1920": "assets-build/img/local-auditorio-1920w-dea36b2418.jpg"
+    }
+  },
+  "local-gastronomia": {
+    "slug": "local-gastronomia",
+    "source": "Imagens/local/gastronomia.jpg",
+    "original_size_bytes": 9007086,
+    "width": 4088,
+    "height": 2730,
+    "aspect_ratio": 1.4974,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/local-gastronomia-480w-ea775a6cc5.avif",
+      "800": "assets-build/img/local-gastronomia-800w-ea775a6cc5.avif",
+      "1280": "assets-build/img/local-gastronomia-1280w-ea775a6cc5.avif",
+      "1920": "assets-build/img/local-gastronomia-1920w-ea775a6cc5.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/local-gastronomia-480w-ea775a6cc5.jpg",
+      "800": "assets-build/img/local-gastronomia-800w-ea775a6cc5.jpg",
+      "1280": "assets-build/img/local-gastronomia-1280w-ea775a6cc5.jpg",
+      "1920": "assets-build/img/local-gastronomia-1920w-ea775a6cc5.jpg"
+    }
+  },
+  "estrutura-acesso-aereo": {
+    "slug": "estrutura-acesso-aereo",
+    "source": "Imagens/estrutura/acesso aereo.png",
+    "original_size_bytes": 722008,
+    "width": 522,
+    "height": 1003,
+    "aspect_ratio": 0.5204,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/estrutura-acesso-aereo-480w-ed24900989.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/estrutura-acesso-aereo-480w-ed24900989.webp"
+    }
+  },
+  "estrutura-area-multiuso": {
+    "slug": "estrutura-area-multiuso",
+    "source": "Imagens/estrutura/area multiuso.png",
+    "original_size_bytes": 617742,
+    "width": 522,
+    "height": 1003,
+    "aspect_ratio": 0.5204,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/estrutura-area-multiuso-480w-3d88a8505a.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/estrutura-area-multiuso-480w-3d88a8505a.webp"
+    }
+  },
+  "estrutura-auditorio": {
+    "slug": "estrutura-auditorio",
+    "source": "Imagens/estrutura/auditorio.png",
+    "original_size_bytes": 699715,
+    "width": 522,
+    "height": 1003,
+    "aspect_ratio": 0.5204,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/estrutura-auditorio-480w-c80be78a63.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/estrutura-auditorio-480w-c80be78a63.webp"
+    }
+  },
+  "estrutura-coworking": {
+    "slug": "estrutura-coworking",
+    "source": "Imagens/estrutura/coworking.png",
+    "original_size_bytes": 1064636,
+    "width": 522,
+    "height": 1003,
+    "aspect_ratio": 0.5204,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/estrutura-coworking-480w-97a8f765e6.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/estrutura-coworking-480w-97a8f765e6.webp"
+    }
+  },
+  "estrutura-garagem": {
+    "slug": "estrutura-garagem",
+    "source": "Imagens/estrutura/garage by vonder.png",
+    "original_size_bytes": 783185,
+    "width": 522,
+    "height": 1003,
+    "aspect_ratio": 0.5204,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/estrutura-garagem-480w-0f816df55b.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/estrutura-garagem-480w-0f816df55b.webp"
+    }
+  },
+  "estrutura-gastronomia": {
+    "slug": "estrutura-gastronomia",
+    "source": "Imagens/estrutura/gastronom,ia.png",
+    "original_size_bytes": 731676,
+    "width": 522,
+    "height": 1003,
+    "aspect_ratio": 0.5204,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/estrutura-gastronomia-480w-28b7e14c2c.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/estrutura-gastronomia-480w-28b7e14c2c.webp"
+    }
+  },
+  "final-imagem": {
+    "slug": "final-imagem",
+    "source": "Imagens/final/imagem final@2x.png",
+    "original_size_bytes": 4292428,
+    "width": 2048,
+    "height": 1366,
+    "aspect_ratio": 1.4993,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/final-imagem-480w-6d0ed19421.avif",
+      "800": "assets-build/img/final-imagem-800w-6d0ed19421.avif",
+      "1280": "assets-build/img/final-imagem-1280w-6d0ed19421.avif",
+      "1920": "assets-build/img/final-imagem-1920w-6d0ed19421.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/final-imagem-480w-6d0ed19421.jpg",
+      "800": "assets-build/img/final-imagem-800w-6d0ed19421.jpg",
+      "1280": "assets-build/img/final-imagem-1280w-6d0ed19421.jpg",
+      "1920": "assets-build/img/final-imagem-1920w-6d0ed19421.jpg"
+    }
+  },
+  "oque-esporte": {
+    "slug": "oque-esporte",
+    "source": "Imagens/o que é/esporte.png",
+    "original_size_bytes": 1875795,
+    "width": 1416,
+    "height": 942,
+    "aspect_ratio": 1.5032,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/oque-esporte-480w-ce475b6676.avif",
+      "800": "assets-build/img/oque-esporte-800w-ce475b6676.avif",
+      "1280": "assets-build/img/oque-esporte-1280w-ce475b6676.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/oque-esporte-480w-ce475b6676.jpg",
+      "800": "assets-build/img/oque-esporte-800w-ce475b6676.jpg",
+      "1280": "assets-build/img/oque-esporte-1280w-ce475b6676.jpg"
+    }
+  },
+  "oque-estrutura": {
+    "slug": "oque-estrutura",
+    "source": "Imagens/o que é/estrutura.png",
+    "original_size_bytes": 2237488,
+    "width": 1416,
+    "height": 942,
+    "aspect_ratio": 1.5032,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/oque-estrutura-480w-7d9b187fb4.avif",
+      "800": "assets-build/img/oque-estrutura-800w-7d9b187fb4.avif",
+      "1280": "assets-build/img/oque-estrutura-1280w-7d9b187fb4.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/oque-estrutura-480w-7d9b187fb4.jpg",
+      "800": "assets-build/img/oque-estrutura-800w-7d9b187fb4.jpg",
+      "1280": "assets-build/img/oque-estrutura-1280w-7d9b187fb4.jpg"
+    }
+  },
+  "oque-experiencias": {
+    "slug": "oque-experiencias",
+    "source": "Imagens/o que é/experiencias.png",
+    "original_size_bytes": 1745060,
+    "width": 1416,
+    "height": 942,
+    "aspect_ratio": 1.5032,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/oque-experiencias-480w-e47a6309c9.avif",
+      "800": "assets-build/img/oque-experiencias-800w-e47a6309c9.avif",
+      "1280": "assets-build/img/oque-experiencias-1280w-e47a6309c9.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/oque-experiencias-480w-e47a6309c9.jpg",
+      "800": "assets-build/img/oque-experiencias-800w-e47a6309c9.jpg",
+      "1280": "assets-build/img/oque-experiencias-1280w-e47a6309c9.jpg"
+    }
+  },
+  "race-experience-karts": {
+    "slug": "race-experience-karts",
+    "source": "Imagens/race experience/RACE EXPERIENCE.png",
+    "original_size_bytes": 7315820,
+    "width": 3324,
+    "height": 1350,
+    "aspect_ratio": 2.4622,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/race-experience-karts-480w-b662ee37ea.avif",
+      "800": "assets-build/img/race-experience-karts-800w-b662ee37ea.avif",
+      "1280": "assets-build/img/race-experience-karts-1280w-b662ee37ea.avif",
+      "1920": "assets-build/img/race-experience-karts-1920w-b662ee37ea.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/race-experience-karts-480w-b662ee37ea.webp",
+      "800": "assets-build/img/race-experience-karts-800w-b662ee37ea.webp",
+      "1280": "assets-build/img/race-experience-karts-1280w-b662ee37ea.webp",
+      "1920": "assets-build/img/race-experience-karts-1920w-b662ee37ea.webp"
+    }
+  },
+  "evento-truck-lounge": {
+    "slug": "evento-truck-lounge",
+    "source": "Imagens/experiencia do evento/Truck Lounge.png",
+    "original_size_bytes": 2352236,
+    "width": 1819,
+    "height": 715,
+    "aspect_ratio": 2.5441,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/evento-truck-lounge-480w-c536e116c0.avif",
+      "800": "assets-build/img/evento-truck-lounge-800w-c536e116c0.avif",
+      "1280": "assets-build/img/evento-truck-lounge-1280w-c536e116c0.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/evento-truck-lounge-480w-c536e116c0.webp",
+      "800": "assets-build/img/evento-truck-lounge-800w-c536e116c0.webp",
+      "1280": "assets-build/img/evento-truck-lounge-1280w-c536e116c0.webp"
+    }
+  },
+  "evento-arquibancada": {
+    "slug": "evento-arquibancada",
+    "source": "Imagens/experiencia do evento/Arquibancada.png",
+    "original_size_bytes": 1743854,
+    "width": 1302,
+    "height": 713,
+    "aspect_ratio": 1.8261,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/evento-arquibancada-480w-5c47d9a005.avif",
+      "800": "assets-build/img/evento-arquibancada-800w-5c47d9a005.avif",
+      "1280": "assets-build/img/evento-arquibancada-1280w-5c47d9a005.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/evento-arquibancada-480w-5c47d9a005.webp",
+      "800": "assets-build/img/evento-arquibancada-800w-5c47d9a005.webp",
+      "1280": "assets-build/img/evento-arquibancada-1280w-5c47d9a005.webp"
+    }
+  },
+  "evento-camarotes": {
+    "slug": "evento-camarotes",
+    "source": "Imagens/experiencia do evento/Camarotes.png",
+    "original_size_bytes": 1866477,
+    "width": 1635,
+    "height": 704,
+    "aspect_ratio": 2.3224,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/evento-camarotes-480w-97d3d3ce07.avif",
+      "800": "assets-build/img/evento-camarotes-800w-97d3d3ce07.avif",
+      "1280": "assets-build/img/evento-camarotes-1280w-97d3d3ce07.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/evento-camarotes-480w-97d3d3ce07.webp",
+      "800": "assets-build/img/evento-camarotes-800w-97d3d3ce07.webp",
+      "1280": "assets-build/img/evento-camarotes-1280w-97d3d3ce07.webp"
+    }
+  },
+  "evento-boxes": {
+    "slug": "evento-boxes",
+    "source": "Imagens/experiencia do evento/Visitação aos Boxe.png",
+    "original_size_bytes": 1329099,
+    "width": 1046,
+    "height": 709,
+    "aspect_ratio": 1.4753,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/evento-boxes-480w-ffb678c8af.avif",
+      "800": "assets-build/img/evento-boxes-800w-ffb678c8af.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/evento-boxes-480w-ffb678c8af.webp",
+      "800": "assets-build/img/evento-boxes-800w-ffb678c8af.webp"
+    }
+  },
+  "piloto-atila": {
+    "slug": "piloto-atila",
+    "source": "Imagens/pilotos-premium/atila-abreu.jpg",
+    "original_size_bytes": 817334,
+    "width": 936,
+    "height": 1192,
+    "aspect_ratio": 0.7852,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/piloto-atila-480w-d0d32d1265.avif",
+      "800": "assets-build/img/piloto-atila-800w-d0d32d1265.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/piloto-atila-480w-d0d32d1265.jpg",
+      "800": "assets-build/img/piloto-atila-800w-d0d32d1265.jpg"
+    }
+  },
+  "piloto-christian": {
+    "slug": "piloto-christian",
+    "source": "Imagens/pilotos-premium/cristian-fitipalidi.jpg",
+    "original_size_bytes": 799829,
+    "width": 930,
+    "height": 1192,
+    "aspect_ratio": 0.7802,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/piloto-christian-480w-3511b5bac7.avif",
+      "800": "assets-build/img/piloto-christian-800w-3511b5bac7.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/piloto-christian-480w-3511b5bac7.jpg",
+      "800": "assets-build/img/piloto-christian-800w-3511b5bac7.jpg"
+    }
+  },
+  "piloto-ingo": {
+    "slug": "piloto-ingo",
+    "source": "Imagens/pilotos-premium/ingo-hoffman.jpg",
+    "original_size_bytes": 749130,
+    "width": 899,
+    "height": 1192,
+    "aspect_ratio": 0.7542,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/piloto-ingo-480w-eb7fc06afc.avif",
+      "800": "assets-build/img/piloto-ingo-800w-eb7fc06afc.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/piloto-ingo-480w-eb7fc06afc.jpg",
+      "800": "assets-build/img/piloto-ingo-800w-eb7fc06afc.jpg"
+    }
+  },
+  "piloto-nelsinho": {
+    "slug": "piloto-nelsinho",
+    "source": "Imagens/pilotos-premium/nelson-piquet.jpg",
+    "original_size_bytes": 788743,
+    "width": 892,
+    "height": 1192,
+    "aspect_ratio": 0.7483,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/piloto-nelsinho-480w-e31e292ec3.avif",
+      "800": "assets-build/img/piloto-nelsinho-800w-e31e292ec3.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/piloto-nelsinho-480w-e31e292ec3.jpg",
+      "800": "assets-build/img/piloto-nelsinho-800w-e31e292ec3.jpg"
+    }
+  },
+  "logo-raster": {
+    "slug": "logo-raster",
+    "source": "Brand/1124_Bandeiras_RGB_L-RW.png",
+    "original_size_bytes": 183077,
+    "width": 8000,
+    "height": 2392,
+    "aspect_ratio": 3.3445,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/logo-raster-480w-f9c0803034.avif",
+      "800": "assets-build/img/logo-raster-800w-f9c0803034.avif",
+      "1280": "assets-build/img/logo-raster-1280w-f9c0803034.avif",
+      "1920": "assets-build/img/logo-raster-1920w-f9c0803034.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/logo-raster-480w-f9c0803034.webp",
+      "800": "assets-build/img/logo-raster-800w-f9c0803034.webp",
+      "1280": "assets-build/img/logo-raster-1280w-f9c0803034.webp",
+      "1920": "assets-build/img/logo-raster-1920w-f9c0803034.webp"
+    }
+  }
+}
