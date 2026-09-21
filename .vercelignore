@@ -1,2 +1,6 @@
 sites-scuderia.zip
 .claude/
+doc/
+scripts/
+node_modules/
+*.log
