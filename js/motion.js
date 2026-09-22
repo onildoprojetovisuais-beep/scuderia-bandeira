@@ -53,6 +53,36 @@ export function initMotion() {
 }
 
 /*
+  Grifo — destaque animado e REVERSÍVEL nos títulos grandes (.grifo, em
+  index.template.html). Ao contrário do reveal acima (unobserve após o
+  primeiro "entrou"), aqui a marca continua observada e a classe .is-in
+  é ligada/desligada a cada cruzamento: entra em cena → grifo pinta;
+  volta a rolar pra cima e sai de cena → grifo desfaz. threshold 0.4 =
+  dispara perto do meio da viewport, não na borda.
+
+  Só faz sentido dentro de .js-motion (JS + IO + sem reduced-motion) — é
+  exatamente a mesma condição que initMotion() já verificou. Fora dela,
+  css/base.css mantém o grifo sempre pintado (estado final estático).
+*/
+export function initGrifo() {
+  if (!document.documentElement.classList.contains("js-motion")) return;
+
+  const marks = document.querySelectorAll(".grifo");
+  if (!marks.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        entry.target.classList.toggle("is-active", entry.isIntersecting);
+      }
+    },
+    { threshold: 0.4, rootMargin: "0px 0px -15% 0px" }
+  );
+
+  marks.forEach((el) => observer.observe(el));
+}
+
+/*
   Navbar: fundo sólido após rolar, header some ao rolar para baixo (volta ao
   rolar para cima), tudo por sentinela IO — nunca scroll listener contínuo.
 */
@@ -98,4 +128,69 @@ export function initNavbarScroll() {
     },
     { passive: true }
   );
+}
+
+/*
+  Contador (count-up) — núcleo compartilhado. O valor final está SEMPRE no
+  HTML como texto; a animação só reescreve o texto de 0 até ele. Sem JS,
+  sem IO ou com reduced-motion o número final fica estático, nunca vazio.
+
+  Largura travada: antes de contar, o span recebe min-width = largura do
+  valor final (numerais tabulares) e alinha à direita — os dígitos "enchem"
+  da direita pra esquerda e a unidade ao lado não dança durante a contagem.
+*/
+const easeOutExpo = (p) => (p >= 1 ? 1 : 1 - Math.pow(2, -10 * p));
+
+export function animateCount(el, target, { duration = 1100, delay = 0, ease = easeOutExpo } = {}) {
+  el.style.display = "inline-block";
+  el.style.minWidth = `${el.getBoundingClientRect().width}px`;
+  el.style.textAlign = "right";
+  el.textContent = "0";
+
+  let start;
+  function tick(now) {
+    start ??= now + delay;
+    const p = Math.max(0, Math.min((now - start) / duration, 1));
+    el.textContent = Math.round(target * ease(p)).toString();
+    if (p < 1) requestAnimationFrame(tick);
+    else el.textContent = target.toString(); // garante o valor exato ao final
+  }
+  requestAnimationFrame(tick);
+}
+
+/*
+  Números de destaque (trio da abertura do Bandeiras Empresarial).
+  Marcação: <span data-count-up="300" data-count-delay="120">300</span>
+
+  Dispara com o MESMO limiar do reveal (initMotion): o reset para "0"
+  acontece enquanto o <li> ainda está em opacity 0, então nunca se vê o
+  valor final "piscar" antes da contagem. Uma vez só — unobserve após
+  disparar, voltar a rolar não repete. data-count-delay acompanha o
+  stagger do reveal para os três números entrarem em cascata.
+*/
+export function initStatCounters() {
+  if (!document.documentElement.classList.contains("js-motion")) return;
+
+  const nums = document.querySelectorAll("[data-count-up]");
+  if (!nums.length) return;
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const el = entry.target;
+        const target = Number(el.dataset.countUp);
+        if (Number.isFinite(target)) {
+          animateCount(el, target, {
+            duration: 1300,
+            delay: Number(el.dataset.countDelay) || 0,
+          });
+        }
+        io.unobserve(el);
+      }
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+  );
+
+  nums.forEach((el) => io.observe(el));
 }

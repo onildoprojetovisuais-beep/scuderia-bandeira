@@ -44,7 +44,7 @@ MANIFEST: dict[str, str] = {
     "complexo-3": "Imagens/complexo/3.png",
     "complexo-4": "Imagens/complexo/4.png",
     "complexo-5": "Imagens/complexo/5.png",
-    "complexo-6": "Imagens/complexo/6.png",
+    "complexo-6": "Imagens/complexo/image00016.jpeg",
     "complexo-7": "Imagens/complexo/7.png",
     "local-auditorio": "Imagens/local/auditorio.jpg",
     "local-gastronomia": "Imagens/local/gastronomia.jpg",
@@ -56,12 +56,16 @@ MANIFEST: dict[str, str] = {
     "estrutura-gastronomia": "Imagens/estrutura/gastronom,ia.png",
     # Hero / CTA final (fallback enquanto o material Caterham externo não é aprovado)
     "final-imagem": "Imagens/final/imagem final@2x.png",
+    # Hero (topo) — nova imagem aprovada (só a versão mobile; a versão desk
+    # segue excluída, ver EXCLUDED_NOTE)
+    "topo-hero": "Imagens/topo/imagem topo mobile.png",
     # Dobra 03 / 04 / 07 — o que é a Scuderia
     "oque-esporte": "Imagens/o que é/esporte.png",
     "oque-estrutura": "Imagens/o que é/estrutura.png",
     "oque-experiencias": "Imagens/o que é/experiencias.png",
     # Dobra 04 — Team Building (karts/drift; NUNCA legendar como Caterham)
     "race-experience-karts": "Imagens/race experience/RACE EXPERIENCE.png",
+    "team-building": "Imagens/tem-building.jpeg",  # pit stop em equipe — foto do Team Building (04)
     # Dobra 07 — Conteúdo / Festival de Interlagos
     "evento-truck-lounge": "Imagens/experiencia do evento/Truck Lounge.png",
     "evento-arquibancada": "Imagens/experiencia do evento/Arquibancada.png",
@@ -74,17 +78,41 @@ MANIFEST: dict[str, str] = {
     "piloto-nelsinho": "Imagens/pilotos-premium/nelson-piquet.jpg",
     # Logo (interino — raster reduzido; pendência: pedir vetor/SVG real, ver item 9 do VISUAL-DIRECTION)
     "logo-raster": "Brand/1124_Bandeiras_RGB_L-RW.png",
+    # Dobra 05 — Caterham: lockup oficial Scuderia Bandeiras x Caterham Motorsport
+    # Brasil, extraído do projeto aprovado `Projeto-caterham/Caterham - V3`
+    # (site em produção, distinto do material "Festival - Interlagos" pendente acima).
+    "caterham-logo": "Imagens/caterham/logo-scuderia-caterham.png",
+    # Fundo do fecho ("O piloto conduz. Você sente.") — foto real do evento
+    # (Fazenda Capuava), fornecida pelo cliente.
+    "caterham-fecho-photo": "Imagens/caterham/20260528_scuderiabandeiras_raceexperience_fazendacapuava_dudabairros-1000.jpg",
+    # Dobra 08 — mosaico "Somos todos Scuderia Bandeiras" (prova dos 50+ profissionais).
+    # Incluído a pedido do usuário para revisão LOCAL. Item 7 continua aberto:
+    # confirmar que Rubens Barrichello / Rafael Suzuki não estão no mosaico
+    # ANTES de qualquer publicação.
+    "time-mosaico": "Imagens/nosso time/imagem time bandeiras desk.jpg",
+    # Dobra 10 — "Marcas que fazem parte da nossa história": arte pronta fornecida
+    # pelo usuário como ativo oficial (2026-09-22), versão PNG transparente
+    # ("marcas-que-fazem-parte-da-nossa-historia 1.png"). O recorte tira só a
+    # área vazia das bordas; a transparência é preservada (sai AVIF + WebP).
+    # Pendência da copy continua: lista final depende de aprovação comercial/jurídica.
+    "marcas-historia": "Imagens/marcas parceiras/marcas-historia-recorte.png",
+    # Dobra "Também no escopo" — 4 fotos reais dos cards (2026-09-22).
+    "escopo-caterham": "Imagens/escopo/caterham-2032.jpg.jpeg",
+    "escopo-ativacoes": "Imagens/escopo/ativacoes.jpg.jpeg",
+    "escopo-experiencias": "Imagens/escopo/experiencias corporativas.jpg.jpeg",
+    "escopo-projetos": "Imagens/escopo/projetos.JPG.jpeg",
 }
 
 EXCLUDED_NOTE = """
 NÃO PROCESSADOS DE PROPÓSITO (ver doc/VISUAL-DIRECTION.md §16):
   - Projeto-caterham/Caterham - Festival - Interlagos/*  (pendente aprovação de direitos, item 6)
-  - Imagens/nosso time/*                                 (mosaico pendente confirmação Rubens/Suzuki, item 7)
+  - Imagens/nosso time/* exceto o mosaico               (o mosaico entrou só para revisão local; item 7 segue aberto)
   - Imagens/pilotos/*                                    (contém RAFAEL SUZUKI.png)
   - Imagens/pilotos-premium/{rafael-suzuki,rubens-barrichelo,pilotosfinal}.jpg
   - Imagens/topo/hero-conexoes-v2*.png                   (estética proibida: túnel IA, speed lines vermelhas)
-  - Imagens/topo/imagem topo desk/mobile.png             (contém Rubens/Rafael, badge Stock Car, velocímetro)
-  - Imagens/marcas parceiras/MARCAS PARCEIRAS.png        (30 marcas, diverge da lista de 15 da copy)
+  - Imagens/topo/imagem topo desk.png                    (contém Rubens/Rafael, badge Stock Car, velocímetro)
+  - Imagens/marcas parceiras/MARCAS PARCEIRAS.png        (30 marcas, diverge da lista de 15 da copy;
+                                                          a dobra 10 usa marcas-historia-recorte.png)
   - Imagens/lei de incentivo/*, Imagens/stock car em numeros/*  (fora de escopo / dado de terceiro)
   - carros/*, assets/car/*, Imagens/complexo/bg.jpg      (renders 3D / CGI, era Stock Car)
 """

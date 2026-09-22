@@ -1,31 +1,33 @@
 /*
   TOKENS — Nova Home Scuderia Bandeiras
-  Fonte: doc/VISUAL-DIRECTION.md §7 (grid), §8 (tipografia), §9 (cores), §10 (spacing)
-
-  Cor de marca corrigida (§9, §16 item 8): #FF4747 é a cor REAL medida por
-  amostragem de pixel no logo (Brand/1124_Bandeiras_RGB_L-RW.png), não o
-  #F80100 do arquivo desatualizado Brand/paleta de cor.png. Pendência formal
-  registrada — ver doc/VISUAL-DIRECTION.md §16 item 8.
+  Mini design system (redesign 2026-09): grid, tipografia, cor, spacing e
+  motion como contrato único entre as seções. Cor de marca (#ff4747) medida
+  por amostragem de pixel no logo real (Brand/1124_Bandeiras_RGB_L-RW.png).
 */
 
 @layer tokens {
   :root {
-    /* ===== SUPERFÍCIES ===== */
+    /* ===== SUPERFÍCIES ESCURAS (padrão da página) ===== */
     --asfalto: #0f0f0f;
     --asfalto-2: #1a1a1a;
-    --branco: #ffffff;
-    --papel: #f1eee8;
-    --papel-2: #e8e3da;
 
-    /* ===== VERMELHO (§9.1 — ver §9.2 para a conta de contraste) ===== */
-    --vermelho: #ff4747;          /* cor real do logo — texto/ícone/botão sobre fundo ESCURO */
-    --vermelho-profundo: #c81e1e; /* derivado mais escuro — texto/ícone sobre PAPEL; botão com texto branco */
+    /* ===== SUPERFÍCIE CLARA (mudança de registro — só Bandeiras Empresarial) =====
+       Ativada via .section--paper, que também troca --luz/--luz-2/--vermelho/
+       --divisor por seus pares claros, então os componentes existentes (botão,
+       filete, legenda) se adaptam sem precisar de uma segunda folha de regras. */
+    --papel: #f2ede4;
+    --papel-2: #e8e0d1;
+    --tinta: #16130f;
+    --tinta-2: rgba(22, 19, 15, 0.7); /* sobre --papel, ≥4.5:1 */
 
-    /* ===== TEXTO SECUNDÁRIO (substituem alfas que reprovavam AA) ===== */
-    --tinta: #1a1a1a;
-    --tinta-2: rgba(26, 26, 26, 0.76);   /* sobre --papel, ≥4.5:1 */
+    /* ===== VERMELHO ===== */
+    --vermelho: #ff4747; /* cor real do logo — texto/ícone/botão sobre fundo ESCURO */
+    --vermelho-escuro: #c81e1e; /* mesmo matiz, mais escuro — texto/ícone sobre --papel (o vermelho puro reprova AA em fundo claro) */
+
+    /* ===== TEXTO SECUNDÁRIO / DIVISORES ===== */
     --luz: #ffffff;
     --luz-2: rgba(255, 255, 255, 0.76); /* sobre --asfalto, ≥4.5:1 */
+    --divisor: rgba(255, 255, 255, 0.12);
 
     /* ===== TIPOGRAFIA ===== */
     --ff-display: "Special Gothic Condensed One", "Barlow Condensed", sans-serif;
@@ -52,7 +54,8 @@
     --space-2xl: clamp(80px, 12vw, 128px);
     --space-3xl: clamp(96px, 15vw, 192px);
 
-    /* Mobile: gutter lateral reduzido (medido por H: 17px@320, 21px@390, 41px@768) */
+    /* Gutter lateral mobile — cresce mais devagar que o container-margin para
+       não comer largura útil de texto/imagem em telas estreitas. */
     --gutter: clamp(16px, 5.4vw, 48px);
 
     /* ===== GRID ===== */
@@ -60,7 +63,22 @@
     --container-margin: clamp(16px, 4vw, 64px);
     --container-gutter: clamp(12px, 1.6vw, 24px);
 
-    /* ===== MOTION (§12.2 — contrato único entre design e implementação) ===== */
+    /* Distância do texto até a borda do viewport nas seções full-bleed
+       (.media-split): reproduz o inset visual do .container (padding +
+       margem de centralização quando a viewport passa de 1440px), para a
+       coluna de texto continuar alinhada ao grid do site mesmo com a
+       coluna de imagem quebrando o container até a borda da tela. */
+    --content-inset: calc(max(0px, (100vw - var(--sbw, 0px) - var(--container-max)) / 2) + var(--container-margin));
+
+    /* Eixo de conteúdo das seções numeradas. --index-col é a largura da
+       coluna exclusiva do numeral (.section-head__index: 2 dígitos tabulares
+       ≈ 0.94em em --t-xl + o respiro até o eyebrow). --axis é o recuo que o
+       conteúdo usa: 0 por padrão, e vira --index-col só nas seções com
+       .section-head a partir de 1024px (ver components.css › EIXO). */
+    --index-col: calc(var(--t-xl) * 0.94 + var(--space-m));
+    --axis: 0px;
+
+    /* ===== MOTION (contrato único entre design e implementação) ===== */
     --dur-fast: 160ms;
     --dur-medium: 360ms;
     --dur-slow: 720ms;
@@ -71,13 +89,8 @@
     --ease-linear: linear;                         /* só quando o scroll É o tempo */
 
     /* ===== RAIOS ===== */
-    --radius: 0; /* §10 — 0 em tudo; única forma não-retangular é o corte-r, só em foto */
+    --radius: 0; /* 0 em tudo; única forma não-retangular é o corte-r, só em foto */
 
     color-scheme: dark;
-  }
-
-  /* Seções que usam o "papel" (Bandeiras Empresarial, blocos claros) invertem color-scheme */
-  [data-surface="papel"] {
-    color-scheme: light;
   }
 }

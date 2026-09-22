@@ -1,3 +1,7 @@
 .vercel
 *.zip
 .claude/
+__pycache__/
+# vídeos brutos de origem (o site usa os MP4 comprimidos em assets-build/video)
+*.MOV
+*.mov

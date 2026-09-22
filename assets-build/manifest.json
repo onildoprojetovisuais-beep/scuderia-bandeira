@@ -101,22 +101,24 @@
   },
   "complexo-6": {
     "slug": "complexo-6",
-    "source": "Imagens/complexo/6.png",
-    "original_size_bytes": 5702303,
-    "width": 1878,
-    "height": 1254,
-    "aspect_ratio": 1.4976,
-    "has_alpha": true,
-    "fallback_ext": "webp",
+    "source": "Imagens/complexo/image00016.jpeg",
+    "original_size_bytes": 24948736,
+    "width": 8064,
+    "height": 4536,
+    "aspect_ratio": 1.7778,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
     "avif": {
-      "480": "assets-build/img/complexo-6-480w-11007ca105.avif",
-      "800": "assets-build/img/complexo-6-800w-11007ca105.avif",
-      "1280": "assets-build/img/complexo-6-1280w-11007ca105.avif"
+      "480": "assets-build/img/complexo-6-480w-99c76e7a3b.avif",
+      "800": "assets-build/img/complexo-6-800w-99c76e7a3b.avif",
+      "1280": "assets-build/img/complexo-6-1280w-99c76e7a3b.avif",
+      "1920": "assets-build/img/complexo-6-1920w-99c76e7a3b.avif"
     },
-    "webp": {
-      "480": "assets-build/img/complexo-6-480w-11007ca105.webp",
-      "800": "assets-build/img/complexo-6-800w-11007ca105.webp",
-      "1280": "assets-build/img/complexo-6-1280w-11007ca105.webp"
+    "jpg": {
+      "480": "assets-build/img/complexo-6-480w-99c76e7a3b.jpg",
+      "800": "assets-build/img/complexo-6-800w-99c76e7a3b.jpg",
+      "1280": "assets-build/img/complexo-6-1280w-99c76e7a3b.jpg",
+      "1920": "assets-build/img/complexo-6-1920w-99c76e7a3b.jpg"
     }
   },
   "complexo-7": {
@@ -299,6 +301,28 @@
       "800": "assets-build/img/final-imagem-800w-6d0ed19421.jpg",
       "1280": "assets-build/img/final-imagem-1280w-6d0ed19421.jpg",
       "1920": "assets-build/img/final-imagem-1920w-6d0ed19421.jpg"
+    }
+  },
+  "topo-hero": {
+    "slug": "topo-hero",
+    "source": "Imagens/topo/imagem topo mobile.png",
+    "original_size_bytes": 1957730,
+    "width": 1920,
+    "height": 1080,
+    "aspect_ratio": 1.7778,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/topo-hero-480w-1c0e71ca2a.avif",
+      "800": "assets-build/img/topo-hero-800w-1c0e71ca2a.avif",
+      "1280": "assets-build/img/topo-hero-1280w-1c0e71ca2a.avif",
+      "1920": "assets-build/img/topo-hero-1920w-1c0e71ca2a.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/topo-hero-480w-1c0e71ca2a.jpg",
+      "800": "assets-build/img/topo-hero-800w-1c0e71ca2a.jpg",
+      "1280": "assets-build/img/topo-hero-1280w-1c0e71ca2a.jpg",
+      "1920": "assets-build/img/topo-hero-1920w-1c0e71ca2a.jpg"
     }
   },
   "oque-esporte": {
@@ -553,6 +577,202 @@
       "800": "assets-build/img/logo-raster-800w-f9c0803034.webp",
       "1280": "assets-build/img/logo-raster-1280w-f9c0803034.webp",
       "1920": "assets-build/img/logo-raster-1920w-f9c0803034.webp"
+    }
+  },
+  "caterham-logo": {
+    "slug": "caterham-logo",
+    "source": "Imagens/caterham/logo-scuderia-caterham.png",
+    "original_size_bytes": 196595,
+    "width": 6339,
+    "height": 990,
+    "aspect_ratio": 6.403,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/caterham-logo-480w-f4c8182e0a.avif",
+      "800": "assets-build/img/caterham-logo-800w-f4c8182e0a.avif",
+      "1280": "assets-build/img/caterham-logo-1280w-f4c8182e0a.avif",
+      "1920": "assets-build/img/caterham-logo-1920w-f4c8182e0a.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/caterham-logo-480w-f4c8182e0a.webp",
+      "800": "assets-build/img/caterham-logo-800w-f4c8182e0a.webp",
+      "1280": "assets-build/img/caterham-logo-1280w-f4c8182e0a.webp",
+      "1920": "assets-build/img/caterham-logo-1920w-f4c8182e0a.webp"
+    }
+  },
+  "caterham-fecho-photo": {
+    "slug": "caterham-fecho-photo",
+    "source": "Imagens/caterham/20260528_scuderiabandeiras_raceexperience_fazendacapuava_dudabairros-1000.jpg",
+    "original_size_bytes": 352791,
+    "width": 1920,
+    "height": 1279,
+    "aspect_ratio": 1.5012,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/caterham-fecho-photo-480w-e23169ea04.avif",
+      "800": "assets-build/img/caterham-fecho-photo-800w-e23169ea04.avif",
+      "1280": "assets-build/img/caterham-fecho-photo-1280w-e23169ea04.avif",
+      "1920": "assets-build/img/caterham-fecho-photo-1920w-e23169ea04.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/caterham-fecho-photo-480w-e23169ea04.jpg",
+      "800": "assets-build/img/caterham-fecho-photo-800w-e23169ea04.jpg",
+      "1280": "assets-build/img/caterham-fecho-photo-1280w-e23169ea04.jpg",
+      "1920": "assets-build/img/caterham-fecho-photo-1920w-e23169ea04.jpg"
+    }
+  },
+  "time-mosaico": {
+    "slug": "time-mosaico",
+    "source": "Imagens/nosso time/imagem time bandeiras desk.jpg",
+    "original_size_bytes": 1238460,
+    "width": 1920,
+    "height": 720,
+    "aspect_ratio": 2.6667,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/time-mosaico-480w-de37193ac0.avif",
+      "800": "assets-build/img/time-mosaico-800w-de37193ac0.avif",
+      "1280": "assets-build/img/time-mosaico-1280w-de37193ac0.avif",
+      "1920": "assets-build/img/time-mosaico-1920w-de37193ac0.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/time-mosaico-480w-de37193ac0.jpg",
+      "800": "assets-build/img/time-mosaico-800w-de37193ac0.jpg",
+      "1280": "assets-build/img/time-mosaico-1280w-de37193ac0.jpg",
+      "1920": "assets-build/img/time-mosaico-1920w-de37193ac0.jpg"
+    }
+  },
+  "marcas-historia": {
+    "slug": "marcas-historia",
+    "source": "Imagens/marcas parceiras/marcas-historia-recorte.png",
+    "original_size_bytes": 419234,
+    "width": 1392,
+    "height": 680,
+    "aspect_ratio": 2.0471,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/marcas-historia-480w-020cec3697.avif",
+      "800": "assets-build/img/marcas-historia-800w-020cec3697.avif",
+      "1280": "assets-build/img/marcas-historia-1280w-020cec3697.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/marcas-historia-480w-020cec3697.webp",
+      "800": "assets-build/img/marcas-historia-800w-020cec3697.webp",
+      "1280": "assets-build/img/marcas-historia-1280w-020cec3697.webp"
+    }
+  },
+  "escopo-caterham": {
+    "slug": "escopo-caterham",
+    "source": "Imagens/escopo/caterham-2032.jpg.jpeg",
+    "original_size_bytes": 18494691,
+    "width": 5000,
+    "height": 3333,
+    "aspect_ratio": 1.5002,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/escopo-caterham-480w-a9938a592c.avif",
+      "800": "assets-build/img/escopo-caterham-800w-a9938a592c.avif",
+      "1280": "assets-build/img/escopo-caterham-1280w-a9938a592c.avif",
+      "1920": "assets-build/img/escopo-caterham-1920w-a9938a592c.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/escopo-caterham-480w-a9938a592c.jpg",
+      "800": "assets-build/img/escopo-caterham-800w-a9938a592c.jpg",
+      "1280": "assets-build/img/escopo-caterham-1280w-a9938a592c.jpg",
+      "1920": "assets-build/img/escopo-caterham-1920w-a9938a592c.jpg"
+    }
+  },
+  "escopo-ativacoes": {
+    "slug": "escopo-ativacoes",
+    "source": "Imagens/escopo/ativacoes.jpg.jpeg",
+    "original_size_bytes": 11091900,
+    "width": 6000,
+    "height": 4002,
+    "aspect_ratio": 1.4993,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/escopo-ativacoes-480w-b60aae1171.avif",
+      "800": "assets-build/img/escopo-ativacoes-800w-b60aae1171.avif",
+      "1280": "assets-build/img/escopo-ativacoes-1280w-b60aae1171.avif",
+      "1920": "assets-build/img/escopo-ativacoes-1920w-b60aae1171.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/escopo-ativacoes-480w-b60aae1171.jpg",
+      "800": "assets-build/img/escopo-ativacoes-800w-b60aae1171.jpg",
+      "1280": "assets-build/img/escopo-ativacoes-1280w-b60aae1171.jpg",
+      "1920": "assets-build/img/escopo-ativacoes-1920w-b60aae1171.jpg"
+    }
+  },
+  "escopo-experiencias": {
+    "slug": "escopo-experiencias",
+    "source": "Imagens/escopo/experiencias corporativas.jpg.jpeg",
+    "original_size_bytes": 13757938,
+    "width": 5000,
+    "height": 3333,
+    "aspect_ratio": 1.5002,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/escopo-experiencias-480w-b028d3bb6a.avif",
+      "800": "assets-build/img/escopo-experiencias-800w-b028d3bb6a.avif",
+      "1280": "assets-build/img/escopo-experiencias-1280w-b028d3bb6a.avif",
+      "1920": "assets-build/img/escopo-experiencias-1920w-b028d3bb6a.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/escopo-experiencias-480w-b028d3bb6a.jpg",
+      "800": "assets-build/img/escopo-experiencias-800w-b028d3bb6a.jpg",
+      "1280": "assets-build/img/escopo-experiencias-1280w-b028d3bb6a.jpg",
+      "1920": "assets-build/img/escopo-experiencias-1920w-b028d3bb6a.jpg"
+    }
+  },
+  "escopo-projetos": {
+    "slug": "escopo-projetos",
+    "source": "Imagens/escopo/projetos.JPG.jpeg",
+    "original_size_bytes": 868060,
+    "width": 2048,
+    "height": 1367,
+    "aspect_ratio": 1.4982,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/escopo-projetos-480w-80ed2c4522.avif",
+      "800": "assets-build/img/escopo-projetos-800w-80ed2c4522.avif",
+      "1280": "assets-build/img/escopo-projetos-1280w-80ed2c4522.avif",
+      "1920": "assets-build/img/escopo-projetos-1920w-80ed2c4522.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/escopo-projetos-480w-80ed2c4522.jpg",
+      "800": "assets-build/img/escopo-projetos-800w-80ed2c4522.jpg",
+      "1280": "assets-build/img/escopo-projetos-1280w-80ed2c4522.jpg",
+      "1920": "assets-build/img/escopo-projetos-1920w-80ed2c4522.jpg"
+    }
+  },
+  "team-building": {
+    "slug": "team-building",
+    "source": "Imagens/tem-building.jpeg",
+    "original_size_bytes": 9632282,
+    "width": 5000,
+    "height": 3333,
+    "aspect_ratio": 1.5002,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/team-building-480w-01cd651b06.avif",
+      "800": "assets-build/img/team-building-800w-01cd651b06.avif",
+      "1280": "assets-build/img/team-building-1280w-01cd651b06.avif",
+      "1920": "assets-build/img/team-building-1920w-01cd651b06.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/team-building-480w-01cd651b06.jpg",
+      "800": "assets-build/img/team-building-800w-01cd651b06.jpg",
+      "1280": "assets-build/img/team-building-1280w-01cd651b06.jpg",
+      "1920": "assets-build/img/team-building-1920w-01cd651b06.jpg"
     }
   }
 }
