@@ -4,3 +4,8 @@ doc/
 scripts/
 node_modules/
 *.log
+# originais pesados: o site só usa as versões otimizadas de assets-build/
+Imagens/
+*.MOV
+*.mov
+index.template.html
