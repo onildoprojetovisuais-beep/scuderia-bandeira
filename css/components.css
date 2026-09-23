@@ -230,6 +230,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-2xs);
+    transition: background var(--dur-medium) var(--ease-brake);
   }
   .section--paper .card { background: var(--papel); }
   .card::before {
@@ -240,6 +241,7 @@
     width: 32px;
     height: 3px;
     background: var(--vermelho);
+    transition: width var(--dur-slow) var(--ease-brake);
   }
   .card__index {
     font-family: var(--ff-text);
@@ -247,6 +249,7 @@
     font-weight: 600;
     font-feature-settings: "tnum";
     color: var(--luz-2);
+    transition: color var(--dur-medium) var(--ease-brake);
   }
   .card__media {
     display: block;
@@ -261,6 +264,32 @@
     margin: 0;
   }
   .card p { font-size: var(--t-small); color: var(--luz-2); }
+  .card h3, .card h5, .card p {
+    transition: transform var(--dur-slow) var(--ease-brake);
+  }
+
+  /* Hover padrão do sistema de cartão (validado em "O que oferecemos" e
+     estendido aqui a todo .card, ex.: "Também no escopo"): acento do topo
+     corre a largura inteira, o numeral acende em vermelho e o bloco de
+     texto avança alguns pixels — mesma mecânica de .conteudo__ofertas
+     abaixo, só generalizada como comportamento padrão do componente. */
+  @media (hover: hover) and (pointer: fine) {
+    .card:hover { background: var(--asfalto-2); }
+    .section--paper .card:hover { background: var(--papel-2); }
+    .card:hover::before { width: 100%; }
+    .card:hover .card__index { color: var(--vermelho); }
+    .card:hover h3,
+    .card:hover h5,
+    .card:hover p { transform: translateX(6px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card,
+    .card::before,
+    .card__index,
+    .card h3,
+    .card h5,
+    .card p { transition: none; }
+  }
 
   @media (min-width: 640px) {
     .card-grid--4 { grid-template-columns: repeat(2, 1fr); }
@@ -711,11 +740,33 @@
     background: linear-gradient(0deg, rgba(6,6,6,.85) 0%, rgba(6,6,6,0) 100%);
     pointer-events: none;
   }
+  /* Mesmo acento do sistema de cartão (.card::before): reta vermelha de
+     32px no repouso, corre a largura inteira no hover. */
+  .ecossistema__peca::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    z-index: 1;
+    width: 32px;
+    height: 3px;
+    background: var(--vermelho);
+    transition: width var(--dur-slow) var(--ease-brake);
+  }
   .ecossistema__peca figcaption {
     position: absolute;
     z-index: 1;
     inset-block-end: var(--space-s);
     inset-inline-start: var(--space-s);
+    transition: transform var(--dur-slow) var(--ease-brake);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .ecossistema__peca:hover::before { width: 100%; }
+    .ecossistema__peca:hover figcaption { transform: translateX(6px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ecossistema__peca::before,
+    .ecossistema__peca figcaption { transition: none; }
   }
   .ecossistema__peca figcaption .num {
     display: block;
@@ -804,6 +855,41 @@
   .experiencias__texto .lead + p {
     margin-block-start: var(--space-s);
     color: var(--luz-2);
+  }
+
+  /* Refino 2026-09-23: só o bloco Team Building (composição aprovada,
+     imagem full-bleed 58–60% à direita / texto 40–42% à esquerda —
+     .media-split--40-60 já entrega essa proporção). O problema era a
+     coluna de texto: herdava padding-inline-start = --content-inset +
+     --axis (o mesmo recuo que alinha o corpo das seções numeradas ao
+     eixo do numeral). Em telas largas esse recuo cresce mais rápido que
+     a própria coluna de 5fr — a ~2560px de viewport ele chegava a comer
+     ~70% da coluna, sobrando ~340px pro texto (por isso a headline
+     quebrava em 6–7 linhas e os parágrafos pareciam espremidos). Aqui a
+     coluna usa um recuo fixo e mais modesto, só neste bloco — o padrão
+     --content-inset/--axis do .media-split segue intacto nas dobras 02/
+     06/07/09/10. ID em #experiencias garante especificidade suficiente
+     para vencer a regra genérica sem !important. */
+  #experiencias .experiencias__intro > .experiencias__texto {
+    padding-inline-start: clamp(24px, 5vw, 96px);
+    max-width: 34rem;
+  }
+  #experiencias .experiencias__texto h3 { margin-block-end: var(--space-s); }
+  #experiencias .experiencias__sub {
+    max-width: 22ch;
+    font-size: clamp(2rem, 1.2rem + 3vw, 3.75rem);
+    line-height: 0.96;
+    margin-block: 0 var(--space-l);
+  }
+  #experiencias .experiencias__texto .lead {
+    max-width: 30ch;
+    font-size: clamp(1.35rem, 1.15rem + 0.8vw, 1.875rem);
+    line-height: 1.32;
+  }
+  #experiencias .experiencias__texto .lead + p {
+    max-width: 34ch;
+    margin-block-start: var(--space-m);
+    line-height: 1.65;
   }
   /* ============================================================ SCROLL SEQUENCE (numerais em roleta)
      Grade estática de 5 quadros — layout, cards, bordas e títulos nunca se
@@ -2805,6 +2891,41 @@
   .footer__links a:hover { color: var(--luz); }
   .footer__contato { display: grid; gap: var(--space-s); font-size: var(--t-small); color: var(--luz-2); margin-block-end: var(--space-l); }
   .footer__contato a { color: var(--luz); }
+  .footer__social {
+    display: flex;
+    gap: var(--space-s);
+    margin-block-end: var(--space-l);
+    list-style: none;
+    padding: 0;
+  }
+  .footer__social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--divisor);
+    color: var(--luz-2);
+    transition: color var(--dur-fast) var(--ease-brake),
+      border-color var(--dur-fast) var(--ease-brake),
+      transform var(--dur-medium) cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .footer__social a:hover,
+  .footer__social a:focus-visible {
+    color: var(--vermelho);
+    border-color: var(--vermelho);
+    transform: translateY(-4px) scale(1.15);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .footer__social a {
+      transition: color var(--dur-fast) var(--ease-brake), border-color var(--dur-fast) var(--ease-brake);
+    }
+    .footer__social a:hover,
+    .footer__social a:focus-visible {
+      transform: none;
+    }
+  }
   .footer__copy { font-size: var(--t-label); color: var(--luz-2); }
 
   @media (min-width: 768px) {

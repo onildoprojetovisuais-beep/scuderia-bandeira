@@ -407,6 +407,28 @@
       "1920": "assets-build/img/race-experience-karts-1920w-b662ee37ea.webp"
     }
   },
+  "team-building": {
+    "slug": "team-building",
+    "source": "Imagens/tem-building.jpeg",
+    "original_size_bytes": 9632282,
+    "width": 5000,
+    "height": 3333,
+    "aspect_ratio": 1.5002,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/team-building-480w-01cd651b06.avif",
+      "800": "assets-build/img/team-building-800w-01cd651b06.avif",
+      "1280": "assets-build/img/team-building-1280w-01cd651b06.avif",
+      "1920": "assets-build/img/team-building-1920w-01cd651b06.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/team-building-480w-01cd651b06.jpg",
+      "800": "assets-build/img/team-building-800w-01cd651b06.jpg",
+      "1280": "assets-build/img/team-building-1280w-01cd651b06.jpg",
+      "1920": "assets-build/img/team-building-1920w-01cd651b06.jpg"
+    }
+  },
   "evento-truck-lounge": {
     "slug": "evento-truck-lounge",
     "source": "Imagens/experiencia do evento/Truck Lounge.png",
@@ -753,26 +775,110 @@
       "1920": "assets-build/img/escopo-projetos-1920w-80ed2c4522.jpg"
     }
   },
-  "team-building": {
-    "slug": "team-building",
-    "source": "Imagens/tem-building.jpeg",
-    "original_size_bytes": 9632282,
+  "eco-pilotos": {
+    "slug": "eco-pilotos",
+    "source": "Imagens/ecossistema/pilotos.png",
+    "original_size_bytes": 2718946,
+    "width": 1122,
+    "height": 1402,
+    "aspect_ratio": 0.8003,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/eco-pilotos-480w-0ea27b7a26.avif",
+      "800": "assets-build/img/eco-pilotos-800w-0ea27b7a26.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/eco-pilotos-480w-0ea27b7a26.jpg",
+      "800": "assets-build/img/eco-pilotos-800w-0ea27b7a26.jpg"
+    }
+  },
+  "eco-carros": {
+    "slug": "eco-carros",
+    "source": "Imagens/ecossistema/carros.jpeg",
+    "original_size_bytes": 11595527,
     "width": 5000,
     "height": 3333,
     "aspect_ratio": 1.5002,
     "has_alpha": false,
     "fallback_ext": "jpg",
     "avif": {
-      "480": "assets-build/img/team-building-480w-01cd651b06.avif",
-      "800": "assets-build/img/team-building-800w-01cd651b06.avif",
-      "1280": "assets-build/img/team-building-1280w-01cd651b06.avif",
-      "1920": "assets-build/img/team-building-1920w-01cd651b06.avif"
+      "480": "assets-build/img/eco-carros-480w-f429ae5752.avif",
+      "800": "assets-build/img/eco-carros-800w-f429ae5752.avif",
+      "1280": "assets-build/img/eco-carros-1280w-f429ae5752.avif",
+      "1920": "assets-build/img/eco-carros-1920w-f429ae5752.avif"
     },
     "jpg": {
-      "480": "assets-build/img/team-building-480w-01cd651b06.jpg",
-      "800": "assets-build/img/team-building-800w-01cd651b06.jpg",
-      "1280": "assets-build/img/team-building-1280w-01cd651b06.jpg",
-      "1920": "assets-build/img/team-building-1920w-01cd651b06.jpg"
+      "480": "assets-build/img/eco-carros-480w-f429ae5752.jpg",
+      "800": "assets-build/img/eco-carros-800w-f429ae5752.jpg",
+      "1280": "assets-build/img/eco-carros-1280w-f429ae5752.jpg",
+      "1920": "assets-build/img/eco-carros-1920w-f429ae5752.jpg"
+    }
+  },
+  "eco-pista": {
+    "slug": "eco-pista",
+    "source": "Imagens/ecossistema/pista.jpeg",
+    "original_size_bytes": 30169087,
+    "width": 8064,
+    "height": 4536,
+    "aspect_ratio": 1.7778,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/eco-pista-480w-55abec538b.avif",
+      "800": "assets-build/img/eco-pista-800w-55abec538b.avif",
+      "1280": "assets-build/img/eco-pista-1280w-55abec538b.avif",
+      "1920": "assets-build/img/eco-pista-1920w-55abec538b.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/eco-pista-480w-55abec538b.jpg",
+      "800": "assets-build/img/eco-pista-800w-55abec538b.jpg",
+      "1280": "assets-build/img/eco-pista-1280w-55abec538b.jpg",
+      "1920": "assets-build/img/eco-pista-1920w-55abec538b.jpg"
+    }
+  },
+  "eco-estrutura": {
+    "slug": "eco-estrutura",
+    "source": "Imagens/ecossistema/estrutura.JPG.jpeg",
+    "original_size_bytes": 2904125,
+    "width": 4032,
+    "height": 3024,
+    "aspect_ratio": 1.3333,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/eco-estrutura-480w-36f51301d9.avif",
+      "800": "assets-build/img/eco-estrutura-800w-36f51301d9.avif",
+      "1280": "assets-build/img/eco-estrutura-1280w-36f51301d9.avif",
+      "1920": "assets-build/img/eco-estrutura-1920w-36f51301d9.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/eco-estrutura-480w-36f51301d9.jpg",
+      "800": "assets-build/img/eco-estrutura-800w-36f51301d9.jpg",
+      "1280": "assets-build/img/eco-estrutura-1280w-36f51301d9.jpg",
+      "1920": "assets-build/img/eco-estrutura-1920w-36f51301d9.jpg"
+    }
+  },
+  "eco-producao": {
+    "slug": "eco-producao",
+    "source": "Imagens/ecossistema/producoes.jpg.jpeg",
+    "original_size_bytes": 15524466,
+    "width": 6000,
+    "height": 4002,
+    "aspect_ratio": 1.4993,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/eco-producao-480w-8c6f269cb2.avif",
+      "800": "assets-build/img/eco-producao-800w-8c6f269cb2.avif",
+      "1280": "assets-build/img/eco-producao-1280w-8c6f269cb2.avif",
+      "1920": "assets-build/img/eco-producao-1920w-8c6f269cb2.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/eco-producao-480w-8c6f269cb2.jpg",
+      "800": "assets-build/img/eco-producao-800w-8c6f269cb2.jpg",
+      "1280": "assets-build/img/eco-producao-1280w-8c6f269cb2.jpg",
+      "1920": "assets-build/img/eco-producao-1920w-8c6f269cb2.jpg"
     }
   }
 }

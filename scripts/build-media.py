@@ -101,6 +101,13 @@ MANIFEST: dict[str, str] = {
     "escopo-ativacoes": "Imagens/escopo/ativacoes.jpg.jpeg",
     "escopo-experiencias": "Imagens/escopo/experiencias corporativas.jpg.jpeg",
     "escopo-projetos": "Imagens/escopo/projetos.JPG.jpeg",
+    # Dobra 03 — mosaico "O ecossistema" (5 peças): fotos reais fornecidas
+    # pelo usuário (2026-09-23), uma por peça.
+    "eco-pilotos": "Imagens/ecossistema/pilotos.png",
+    "eco-carros": "Imagens/ecossistema/carros.jpeg",
+    "eco-pista": "Imagens/ecossistema/pista.jpeg",
+    "eco-estrutura": "Imagens/ecossistema/estrutura.JPG.jpeg",
+    "eco-producao": "Imagens/ecossistema/producoes.jpg.jpeg",
 }
 
 EXCLUDED_NOTE = """
