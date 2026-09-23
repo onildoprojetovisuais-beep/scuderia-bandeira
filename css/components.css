@@ -951,7 +951,6 @@
      muda — só a pele. Layout de texto é centralizado nesta dobra só (o resto
      da home é alinhado à esquerda) — decisão desta seção, não um token novo. */
   .caterham {
-    background: var(--asfalto);
     text-align: center;
     --asfalto: #010c0e;          /* --ink   Caterham */
     --asfalto-2: #04181a;        /* --ink-1 Caterham */
@@ -961,6 +960,15 @@
     --luz-2: rgba(245, 245, 245, 0.6);
     --divisor: rgba(245, 245, 245, 0.12);
     --ff-display: "IBM Plex Sans Condensed", sans-serif;
+    /* --asfalto (#010c0e) é próximo demais do --asfalto do resto da home
+       (#0f0f0f) — a dobra "mesclava" com a seção anterior. Um brilho verde
+       (lime da marca Caterham) no topo, atrás da logo, e outro mais difuso
+       ao longo da ficha técnica, dão identidade própria à seção sem
+       depender de mudar o preto de fundo. */
+    background:
+      radial-gradient(ellipse 65% 55% at 50% 0%, rgba(202, 211, 2, 0.18), transparent 70%),
+      radial-gradient(ellipse 90% 65% at 50% 60%, rgba(202, 211, 2, 0.09), transparent 75%),
+      var(--asfalto);
   }
   .caterham h2,
   .caterham .num,
