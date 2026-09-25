@@ -9,3 +9,6 @@ __pycache__/
 # pessoas.mp4 sozinho tem 474MB, acima do limite de 100MB do GitHub
 assets/Imagens/novos-assets/*.mp4
 assets/Imagens/novos-assets/*.jpeg
+# vídeo bruto de origem do Legado Ingo (454MB, acima do limite de 100MB do GitHub;
+# o site usa os MP4 comprimidos em assets-build/video)
+assets/videos/pilotos/*.mp4
