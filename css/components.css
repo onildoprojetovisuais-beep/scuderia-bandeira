@@ -39,6 +39,13 @@
   }
   .btn--ghost:hover { border-color: var(--luz); background: rgba(255, 255, 255, 0.08); }
 
+  /* CTA da Caterham: borda branca em repouso, vira o lima da marca no hover. */
+  .btn--ghost-lime:hover {
+    border-color: #cad302;
+    background: #cad302;
+    color: var(--asfalto);
+  }
+
   /* Terciário — peso mínimo: link sublinhado, sem fundo nem borda. Usado
      quando um CTA precisa existir mas não pode competir com o primário. */
   .btn--tertiary {
@@ -235,9 +242,10 @@
     border: 1px solid var(--divisor);
     margin-block: var(--space-l);
   }
-  /* Wrapper full-bleed do .card-grid--4 ("Também no escopo"): mesmo
-     tratamento de .frentes/.experiencias__cena/.bandeiras__ativos — 100vw
-     no desktop em vez de preso ao .container (ver comentário no HTML). */
+  /* Wrapper full-bleed do .card-grid--4/.card-grid--3 ("Também no escopo",
+     "Uma estrutura pensada..."): mesmo tratamento de .frentes/
+     .experiencias__cena — 100vw no desktop em vez de preso ao .container
+     (ver comentário no HTML). */
   .card-grid-bleed {
     padding-inline: var(--container-margin);
   }
@@ -464,7 +472,7 @@
   .hero {
     position: relative;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     overflow: clip;
     text-align: center;
   }
@@ -485,37 +493,25 @@
     .hero__bg img { animation: hero-bg-respira 18s ease-in-out infinite alternate; }
   }
   @keyframes hero-bg-respira {
-    from { transform: scale(1.06); }
-    to   { transform: scale(1.13); }
+    from { transform: scale(1.02); }
+    to   { transform: scale(1.07); }
   }
   .hero__scrim {
     position: absolute;
     inset: 0;
     z-index: -1;
-    /*
-      Correção de QA: com scrim leve, o H1 cruzava a lataria clara do carro
-      na foto e ficava ilegível. Vinheta bem mais escura de baixo para cima
-      (a foto é evidência, mas o texto tem que vencer em qualquer imagem)
-      + text-shadow no H1/eyebrow como segunda camada de garantia.
-    */
-    background: linear-gradient(0deg, rgba(6,6,6,.96) 0%, rgba(8,8,8,.86) 32%, rgba(10,10,10,.5) 62%, rgba(12,12,12,.22) 100%);
+    background: none;
   }
   .hero__body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-block-end: var(--space-2xl);
-    padding-block-start: calc(64px + var(--space-2xl));
+    padding-block: var(--space-2xl);
   }
   .hero__title {
     font-size: var(--t-mega);
     line-height: 0.9;
     margin-block: var(--space-xs) var(--space-m);
-    text-shadow: 0 4px 32px rgba(0,0,0,.55);
-  }
-  .hero .eyebrow,
-  .hero__copy {
-    text-shadow: 0 2px 16px rgba(0,0,0,.6);
   }
   .hero__copy { max-width: 58rem; }
   .hero__ctas {
@@ -797,7 +793,8 @@
     background: var(--asfalto-2);
   }
   .frentes__media { position: absolute; inset: 0; }
-  .frentes__media img { width: 100%; height: 100%; object-fit: cover; }
+  .frentes__media picture { display: block; height: 100%; }
+  .frentes__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-drive); }
   .frentes__media::after {
     content: "";
     position: absolute;
@@ -892,11 +889,19 @@
     .frentes { gap: var(--space-xl); }
     .frentes__painel { overflow: visible; background: none; padding-inline: var(--gutter); }
     .frentes__conteudo { position: relative; height: auto; padding: 0 0 var(--space-s); }
-    .frentes__media { position: relative; aspect-ratio: 4 / 3; }
+    .frentes__media { position: relative; aspect-ratio: 4 / 3; overflow: clip; }
     .frentes__media::after { display: none; }
     .frentes__label,
     .frentes__tags,
     .frentes__link { text-shadow: none; }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .frentes__painel:hover .frentes__media img { transform: scale(1.06); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .frentes__media img { transition: none; }
+    .frentes__painel:hover .frentes__media img { transform: none; }
   }
 
   /* ============================================================ 04 · EXPERIÊNCIAS
@@ -1121,10 +1126,9 @@
 
      Redesenho 2026-09-24: capítulo enxugado para 3 camadas — 1) abertura
      (split + trio de números, preenche a presença da headline) — 2) os
-     espaços, galeria FULL-BLEED em .bandeiras__ativos (rompe a largura da
-     página — cards grandes, legenda em scrim sobre a foto, sensação
-     editorial/cinematográfica, não catálogo), com uma linha de introdução
-     curta acima, ainda dentro do container normal — 3) VIDEO-01
+     espaços, grade FULL-BLEED com o sistema .card/.card-grid padrão do
+     site (2026-09-25, padronização com "Também no escopo"), com uma linha
+     de introdução curta acima, ainda dentro do container normal — 3) VIDEO-01
      real (vídeo institucional do complexo) + CTA único da frente. PETRONAS
      saiu daqui: passa a existir uma única vez, em 07 · MARCAS & PARCEIROS. */
   .bandeiras__intro { margin-block-end: var(--space-l); }
@@ -1206,154 +1210,119 @@
     .bandeiras__intro-texto { justify-content: center; gap: calc(var(--space-xl) * 1.2); }
   }
 
-  /* ---- 2 · OS ESPAÇOS — full-bleed 2026-09-24 (pedido explícito: galeria
-     rompendo a largura da página, "sensação editorial/cinematográfica, não
-     catálogo"). .bandeiras__espacos é um wrapper simples (não .container):
-     guarda o texto de intro dentro do seu próprio .container e a galeria
-     como irmã, fora dele, livre pra ocupar 100% da largura da <section>.
-     Card: moldura 4:5 full-bleed (a moldura define a altura; a foto só
-     preenche com cover) com número/título/descrição em scrim SOBRE a foto
-     — mesma técnica de .experiencias__card/.conteudo__frame — em vez da
-     ficha abaixo da imagem de antes (isso que lia como "catálogo").
-     Carrossel com scroll-snap em qualquer largura: 82% da viewport no
-     mobile/tablet (1 card dominante + espia do próximo) e ~30vw a partir de
-     1024 (aprox. 3 cards grandes + espia do 4º) — nunca vira grade fixa,
-     nunca 3×2. Padding lateral = var(--content-inset): alinha o 1º/último
-     card ao eixo do site mesmo com a faixa em 100vw (mesmo valor usado por
-     .media-split pra alinhar full-bleed ao grid da página). */
+  /* ---- 2 · OS ESPAÇOS — carrossel 2026-09-25: mesmo componente .card de
+     "Também no escopo" (mesma animação de hover: acento no topo, numeral,
+     texto), mas sempre 1 linha só, com affordance explícita de carrossel
+     (setas + contador em bolinha) em vez de grid/scroll-snap mudo.
+     2026-09-26: layout igualado ao de "Também no escopo" — full-bleed de
+     verdade a partir de 1024 (mesmo .card-grid-bleed, ignora o eixo de
+     conteúdo em telas muito largas) e a mesma linha fina entre os cards
+     (gap de 1px revelando --divisor por baixo, técnica de .card-grid, no
+     lugar do espaço vazio de --space-m). Clique infinito: ver goTo() em
+     js/carrossel.js (dá a volta em vez de travar nas pontas). */
   .bandeiras__espacos { margin-block-end: var(--space-xl); }
   .bandeiras__espacos > .container { margin-block-end: var(--space-l); }
   /* Introdução curta — só deixa claro quem a frente recebe, sem repetir os
      números da abertura nem abrir uma 2ª dobra de texto abaixo da galeria. */
   .bandeiras__lede { margin-block: var(--space-m) 0; }
 
-  .bandeiras__ativos {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 82%;
-    gap: var(--space-m);
-    padding-inline: var(--content-inset);
-    scroll-padding-inline: var(--content-inset);
+  .carrossel { position: relative; border-block: 1px solid var(--divisor); }
+  .carrossel__track {
+    display: flex;
+    gap: 1px;
+    background: var(--divisor);
+    padding-inline: var(--container-margin);
+    scroll-padding-inline: var(--container-margin);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
     scrollbar-width: none;
-    /* Affordance de "isso rola": vinheta sutil nas duas bordas da viewport —
-       a lasca do cartão espiado (o próximo/anterior, cortado pela borda da
-       tela) esmaece em vez de ser guilhotinada seca, sinalizando continuidade
-       sem precisar de setas/dots (o site não usa esse chrome em nenhum outro
-       carrossel — ver comentário em .marcas__logos-wrap: o padrão aqui é
-       "borda cortada sinaliza que há mais", isto só suaviza o corte). Largura
-       da pena = --space-m: some só a lasca externa do cartão espiado, que
-       segue majoritariamente visível/nítido — não mexe no padding de
-       alinhamento (--content-inset), que fica intacto para o snap. */
-    mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 var(--space-m),
-      #000 calc(100% - var(--space-m)),
-      transparent 100%
-    );
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 var(--space-m),
-      #000 calc(100% - var(--space-m)),
-      transparent 100%
-    );
   }
-  .bandeiras__ativos::-webkit-scrollbar { display: none; }
-  .bandeiras__ativo { min-width: 0; scroll-snap-align: start; }
+  .carrossel__track::-webkit-scrollbar { display: none; }
+  .carrossel__item {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+  }
+  @media (min-width: 640px) {
+    .carrossel__item { flex-basis: 46%; }
+  }
+  @media (min-width: 1024px) {
+    .carrossel__track { padding-inline: 0; scroll-padding-inline: 0; }
+    .carrossel__item { flex-basis: 29%; }
+  }
 
-  .bandeiras__ativo-media {
-    position: relative;
-    isolation: isolate;
-    aspect-ratio: 4 / 5;
-    overflow: clip;
+  /* Setas: mesmo par claro/escuro do .card (asfalto/papel conforme a
+     seção), hover acende vermelho com texto escuro — igual .btn--primary,
+     já validado AA. Posição fixa nos cantos do carrossel (não acompanha o
+     scroll do track), alinhada ao mesmo eixo do 1º/último card. */
+  .carrossel__seta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset-block-start: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--divisor);
     background: var(--asfalto-2);
+    color: var(--luz);
+    cursor: pointer;
+    transition: background var(--dur-fast) var(--ease-brake),
+      border-color var(--dur-fast) var(--ease-brake),
+      color var(--dur-fast) var(--ease-brake),
+      opacity var(--dur-fast) var(--ease-brake);
   }
-  .bandeiras__ativo-media picture { display: block; height: 100%; }
-  .bandeiras__ativo-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: var(--foco, 50% 50%);
-    transition: transform var(--dur-slow) var(--ease-drive);
+  .section--paper .carrossel__seta { background: var(--papel-2); }
+  .carrossel__seta--prev { inset-inline-start: var(--space-2xs); }
+  .carrossel__seta--next { inset-inline-end: var(--space-2xs); }
+  .carrossel__seta:hover,
+  .carrossel__seta:focus-visible {
+    background: var(--vermelho);
+    border-color: var(--vermelho);
+    color: var(--asfalto);
   }
-  /* scrim: garante contraste da legenda sobre qualquer foto, mesmo dentro
-     da dobra clara — o mesmo tratamento de .experiencias__card/.conteudo__frame */
-  .bandeiras__ativo-media::before {
+  @media (min-width: 640px) {
+    .carrossel__seta { width: 44px; height: 44px; }
+    .carrossel__seta--prev { inset-inline-start: var(--space-m); }
+    .carrossel__seta--next { inset-inline-end: var(--space-m); }
+  }
+
+  /* Contador em bolinha: única affordance de progresso no mobile (onde as
+     setas somem pra não competir com o swipe); no desktop reforça as
+     setas. Alvo de toque real 44px via ::after, disco visível só 8px. */
+  .carrossel__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-block-start: var(--space-l);
+  }
+  .carrossel__dot {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--divisor);
+    cursor: pointer;
+    transition: background var(--dur-fast) var(--ease-brake), transform var(--dur-fast) var(--ease-brake);
+  }
+  .carrossel__dot::after {
     content: "";
     position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background: linear-gradient(0deg, rgba(6, 6, 6, 0.85) 0%, rgba(6, 6, 6, 0.5) 30%, rgba(6, 6, 6, 0) 60%);
+    inset: -14px;
   }
-  /* Legenda em grid, não em coluna solta: número e título ficam no MESMO
-     lockup (mesma linha, alinhados pela base), como em
-     .experiencias__card-legenda — a descrição é a única a ocupar a linha
-     de baixo, largura cheia. Antes o número vivia isolado numa linha só
-     dele, acima do título: pequeno (--t-label, 12px) e vermelho puro sobre
-     foto, sem nada colado do lado, ele lia como uma mancha solta — "um
-     ponto vermelho" — em vez de um numeral de índice. Encostado no título
-     ele vira claramente "01 Auditório". */
-  .bandeiras__ativo-cap {
-    position: absolute;
-    z-index: 2;
-    inset: auto var(--space-s) var(--space-s) var(--space-s);
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: baseline;
-    column-gap: var(--space-2xs);
-    row-gap: 6px;
-  }
-  /* Cores em literais fixos, nunca --vermelho/--luz/--luz-2: a legenda vive
-     sobre foto + scrim ESCURO sempre, mesmo dentro de .section--paper — se
-     usasse os tokens trocáveis da dobra clara, viraria texto escuro sobre
-     scrim escuro (ilegível). Mesma ressalva já documentada em .video-frame. */
-  .bandeiras__ativo-num {
-    grid-column: 1;
-    grid-row: 1;
-    font-family: var(--ff-display);
-    font-size: var(--t-label);
-    color: #ff4747;
-    font-feature-settings: "tnum";
-  }
-  .bandeiras__ativo-titulo {
-    grid-column: 2;
-    grid-row: 1;
-    margin: 0;
-    max-width: none;
-    font-family: var(--ff-display);
-    font-size: clamp(1.15rem, 0.95rem + 1vw, 1.75rem);
-    line-height: 1.02;
-    letter-spacing: -0.005em;
-    text-transform: uppercase;
-    color: #ffffff;
-    text-shadow: 0 1px 10px rgba(6, 6, 6, 0.5);
-  }
-  .bandeiras__ativo-desc {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    margin: 0;
-    max-width: 34ch;
-    font-size: var(--t-small);
-    line-height: 1.4;
-    text-wrap: pretty;
-    color: rgba(255, 255, 255, 0.8);
-    text-shadow: 0 1px 8px rgba(6, 6, 6, 0.5);
-  }
-
-  @media (min-width: 1024px) {
-    .bandeiras__ativos { grid-auto-columns: 30vw; gap: var(--space-l); }
-    .bandeiras__ativo-cap { inset: auto var(--space-m) var(--space-m) var(--space-m); }
-  }
-  @media (hover: hover) and (pointer: fine) {
-    .bandeiras__ativo-media:hover img { transform: scale(1.05); }
+  .carrossel__dot.is-active {
+    background: var(--vermelho);
+    transform: scale(1.4);
   }
   @media (prefers-reduced-motion: reduce) {
-    .bandeiras__ativo-media img { transition: none; }
-    .bandeiras__ativo-media:hover img { transform: none; }
+    .carrossel__seta,
+    .carrossel__dot { transition: none; }
   }
 
   /* ---- 3 · VÍDEO INSTITUCIONAL — vídeo real (não mais placeholder), frame
@@ -1637,12 +1606,13 @@
      protagonista — grade editorial ~70% da faixa + coluna lateral ~30%
      para as demais redes. Cabeçalho (eyebrow + lead) segue o container
      normal da seção; o hub em si (grade + coluna) é a peça full-bleed,
-     mesma técnica de .frentes/.bandeiras__ativos (ver --bleed abaixo). */
+     mesma técnica de .frentes/.card-grid-bleed (ver --bleed abaixo). */
   .conteudo__social-lede { max-width: 46ch; color: var(--luz-2); margin-block-start: var(--space-2xs); }
 
   .conteudo__social-hub {
     display: grid;
     gap: var(--space-l);
+    margin-block-start: var(--space-xl);
   }
   .conteudo__social-hub--bleed {
     padding-inline: var(--container-margin);
@@ -1715,6 +1685,29 @@
     backdrop-filter: blur(2px);
   }
   .conteudo__feed-badge--on { display: flex; }
+
+  /* Métricas estilo rede social (curtidas/comentários) — sempre visíveis,
+     não só no hover: no touch não existe hover, e o pedido era "bem visual",
+     não escondido atrás de interação. Canto oposto ao badge de reel (que
+     fica --inline-end) pra nunca colidir. */
+  .conteudo__feed-meta {
+    position: absolute;
+    inset-block-start: var(--space-2xs);
+    inset-inline-start: var(--space-2xs);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 3px var(--space-2xs);
+    background: rgba(6, 6, 6, .55);
+    backdrop-filter: blur(2px);
+    color: var(--luz);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.6875rem;
+    line-height: 1;
+  }
+  .conteudo__feed-meta-item { display: inline-flex; align-items: center; gap: 3px; }
+  .conteudo__feed-meta svg { flex-shrink: 0; }
   .conteudo__feed-cap {
     position: absolute;
     inset-inline: 0;
@@ -1741,7 +1734,10 @@
   }
 
   /* Coluna lateral: painel compacto, separado do feed por um fio — mesma
-     linguagem de --divisor usada em toda a página, nunca um card "gamer". */
+     linguagem de --divisor usada em toda a página, nunca um card "gamer".
+     Redesenho 2026-09-25 (pedido direto do usuário): a coluna vira
+     .conteudo__redes-corpo (lista + 1 painel único de preview) — nada de 4
+     sub-painéis abrindo em acordeão. */
   .conteudo__redes {
     padding: var(--space-l) var(--gutter);
     display: flex;
@@ -1761,8 +1757,11 @@
     font-size: var(--t-small);
     margin-block-end: var(--space-s);
   }
+
+  .conteudo__redes-corpo { display: flex; flex-direction: column; gap: var(--space-m); }
+
   .conteudo__redes-lista { list-style: none; margin: 0; padding: 0; }
-  .conteudo__redes-lista a {
+  .conteudo__redes-link {
     display: flex;
     align-items: center;
     gap: var(--space-xs);
@@ -1774,29 +1773,136 @@
     letter-spacing: 0.02em;
     transition: color var(--dur-fast) var(--ease-brake);
   }
-  .conteudo__redes-lista li:last-child a { border-block-end: 1px solid var(--divisor); }
-  .conteudo__redes-lista svg { flex-shrink: 0; color: var(--luz-2); transition: color var(--dur-fast) var(--ease-brake); }
-  .conteudo__redes-lista span:not(.conteudo__redes-seta) { flex-grow: 1; }
+  .conteudo__redes-lista li:last-child .conteudo__redes-link { border-block-end: 1px solid var(--divisor); }
+  .conteudo__redes-link svg { flex-shrink: 0; color: var(--luz-2); transition: color var(--dur-fast) var(--ease-brake); }
+  .conteudo__redes-link span:not(.conteudo__redes-seta) { flex-grow: 1; }
   .conteudo__redes-seta {
     color: var(--luz-2);
     transition: transform var(--dur-fast) var(--ease-brake), color var(--dur-fast) var(--ease-brake);
   }
-  .conteudo__redes-lista a:hover,
-  .conteudo__redes-lista a:focus-visible {
-    color: var(--vermelho);
+  /* .is-ativo = a rede que o painel ao lado está mostrando agora (ver
+     js/redes-preview.js) — mesmo tratamento visual do :hover/:focus-visible,
+     só que dirigido pelo JS (toque, ou o estado inicial no Instagram). */
+  .conteudo__redes-link:hover,
+  .conteudo__redes-link:focus-visible,
+  .conteudo__redes-link.is-ativo {
+    color: var(--rede-accent, var(--vermelho));
   }
-  .conteudo__redes-lista a:hover svg,
-  .conteudo__redes-lista a:focus-visible svg,
-  .conteudo__redes-lista a:hover .conteudo__redes-seta,
-  .conteudo__redes-lista a:focus-visible .conteudo__redes-seta {
-    color: var(--vermelho);
+  .conteudo__redes-link:hover svg,
+  .conteudo__redes-link:focus-visible svg,
+  .conteudo__redes-link.is-ativo svg,
+  .conteudo__redes-link:hover .conteudo__redes-seta,
+  .conteudo__redes-link:focus-visible .conteudo__redes-seta,
+  .conteudo__redes-link.is-ativo .conteudo__redes-seta {
+    color: var(--rede-accent, var(--vermelho));
   }
-  .conteudo__redes-lista a:hover .conteudo__redes-seta,
-  .conteudo__redes-lista a:focus-visible .conteudo__redes-seta {
+  .conteudo__redes-link:hover .conteudo__redes-seta,
+  .conteudo__redes-link:focus-visible .conteudo__redes-seta,
+  .conteudo__redes-link.is-ativo .conteudo__redes-seta {
     transform: translateX(4px);
   }
   @media (prefers-reduced-motion: reduce) {
-    .conteudo__redes-lista a:hover .conteudo__redes-seta { transform: none; }
+    .conteudo__redes-link:hover .conteudo__redes-seta,
+    .conteudo__redes-link.is-ativo .conteudo__redes-seta { transform: none; }
+  }
+
+  /* Acento de marca — só aparece aqui (link ativo + rodapé do painel), nunca
+     no resto do site (mono+vermelho). Casa com [data-rede] (link/rodapé) e
+     [data-preview] (a peça do painel). */
+  [data-rede="instagram"], [data-preview="instagram"] { --rede-accent: #e1306c; }
+  [data-rede="linkedin"], [data-preview="linkedin"] { --rede-accent: #0a66c2; }
+  [data-rede="tiktok"], [data-preview="tiktok"] { --rede-accent: #25f4ee; }
+  [data-rede="youtube"], [data-preview="youtube"] { --rede-accent: #ff0000; }
+
+  /* Painel único: as 4 peças ficam empilhadas na mesma célula (inset:0) e
+     só a .is-active tem opacidade — crossfade puro, sem nenhuma delas
+     alterar a altura do painel (teria "pulo" entre Instagram/YouTube/etc).
+     aspect-ratio:1/1 é o compromisso neutro entre o vertical do
+     Instagram/TikTok e o 16:9 de um embed do YouTube (que letterboxa, o que
+     é normal pra embed oficial). */
+  .conteudo__redes-painel {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: clip;
+    background: var(--asfalto-2);
+  }
+  .conteudo__redes-preview {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity var(--dur-medium) var(--ease-brake);
+  }
+  .conteudo__redes-preview.is-active { opacity: 1; }
+  .conteudo__redes-preview-media { flex: 1 1 auto; min-height: 0; }
+  .conteudo__redes-preview-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* LinkedIn institucional e os placeholders pendentes de TikTok/YouTube
+     compartilham o mesmo tratamento: ícone grande + 1 linha de texto,
+     tingido na cor da marca — nunca um post/print inventado. */
+  .conteudo__redes-preview-institucional,
+  .conteudo__redes-preview-pendente-box {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-s);
+    padding: var(--space-l);
+    text-align: center;
+    background: color-mix(in srgb, var(--rede-accent) 12%, var(--asfalto-2));
+    border-block-start: 2px solid var(--rede-accent);
+    color: var(--luz-2);
+  }
+  .conteudo__redes-preview-institucional svg,
+  .conteudo__redes-preview-pendente-box svg { color: var(--rede-accent); flex-shrink: 0; }
+  .conteudo__redes-preview-institucional p,
+  .conteudo__redes-preview-pendente-box p { margin: 0; max-width: 26ch; font-size: var(--t-small); line-height: 1.4; }
+  /* Quando o embed oficial (YouTube iframe / TikTok oEmbed) entra por JS,
+     ele substitui o placeholder e ocupa o quadro inteiro. */
+  .conteudo__redes-preview-pendente-box.is-embed {
+    padding: 0;
+    background: #000;
+    border-block-start: none;
+  }
+  .conteudo__redes-preview-pendente-box.is-embed iframe,
+  .conteudo__redes-preview-pendente-box.is-embed blockquote { width: 100%; height: 100%; border: 0; display: block; }
+
+  .conteudo__redes-preview-rodape {
+    flex: 0 0 auto;
+    padding: var(--space-xs) var(--space-s);
+    background: rgba(6, 6, 6, .55);
+    backdrop-filter: blur(2px);
+  }
+  .conteudo__redes-preview-id {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3xs);
+    font-family: "JetBrains Mono", monospace;
+    font-size: var(--t-label);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--luz);
+  }
+  .conteudo__redes-preview-id svg { color: var(--rede-accent); }
+  .conteudo__redes-preview-rodape p {
+    margin: var(--space-3xs) 0 0;
+    font-size: var(--t-small);
+    color: var(--luz-2);
+    line-height: 1.3;
+  }
+  .conteudo__redes-preview-pendente {
+    display: block;
+    margin-block-start: var(--space-3xs);
+    font-family: "JetBrains Mono", monospace;
+    font-size: var(--t-label);
+    color: var(--luz-2);
+    letter-spacing: 0.02em;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .conteudo__redes-preview { transition: none; }
   }
 
   @media (min-width: 1024px) {
@@ -1813,26 +1919,14 @@
       justify-content: center;
       border-inline-start: 1px solid var(--divisor);
     }
-  }
-
-  /* Mobile (<1024px): coluna lateral vira faixa compacta abaixo do feed —
-     ícone + nome, sem seta, sem lista vertical (pedido explícito: "outras
-     redes ficam abaixo em uma faixa/lista compacta"). */
-  @media (max-width: 1023.98px) {
-    .conteudo__redes { padding: var(--space-m) 0 0; gap: var(--space-xs); }
-    .conteudo__redes-lista {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-xs);
-    }
-    .conteudo__redes-lista li { flex: 1 1 auto; }
-    .conteudo__redes-lista a {
-      border: 1px solid var(--divisor);
-      justify-content: center;
-      padding: var(--space-2xs) var(--space-s);
-    }
-    .conteudo__redes-seta { display: none; }
-    .conteudo__redes-lista span:not(.conteudo__redes-seta) { flex-grow: 0; }
+    /* ≥1024px: painel "ao lado" da lista, de verdade — linha, não coluna.
+       A lista fica com largura de conteúdo (4 nomes curtos) e o painel
+       toma o resto, mas cada um guarda sua própria altura (não é
+       align-items:stretch — o painel é grande por causa do aspect-ratio,
+       não porque foi esticado até a altura da lista). */
+    .conteudo__redes-corpo { flex-direction: row; align-items: flex-start; gap: var(--space-l); }
+    .conteudo__redes-lista { flex: 0 1 9.5rem; min-width: 0; }
+    .conteudo__redes-painel { flex: 1 1 auto; }
   }
 
   .btn--xl {
@@ -2003,18 +2097,22 @@
     .piloto-card__nome { font-size: clamp(1.75rem, 1.1rem + 1.6vw, 2.5rem); }
   }
 
-  /* Bastidor: título à esquerda, texto à direita (desktop), ambos
-     assentados na mesma linha de base — o bloco funciona como legenda de
-     abertura do mosaico logo abaixo, não como parágrafo solto. */
+  /* Bastidor: módulo compacto de Palestras (ex-seção própria, extinta),
+     layout original preservado — título (+ eyebrow) à esquerda, texto de
+     apoio à direita, 2 colunas alinhadas pela base (≥1024px); empilhado
+     no mobile. Funciona como fecho do grid de pilotos logo acima
+     (2026-09-25: conteúdo trocado de lugar com o que antes vivia dentro
+     do mosaico — "o que eles aprenderam correndo" comunica melhor logo
+     após os 4 cards). Sem CTA aqui — o botão vive só dentro do mosaico. */
   .pilotos-time__bastidor {
     display: grid;
     gap: var(--space-s);
     padding-block-start: var(--space-l);
     border-block-start: 1px solid var(--divisor);
   }
+  .pilotos-time__bastidor-eyebrow { margin-block-end: var(--space-m); color: var(--luz-2); }
   .pilotos-time__bastidor-titulo { font-size: var(--t-xl); line-height: 0.95; max-width: 14ch; margin: 0; }
-  .pilotos-time__bastidor-texto p { max-width: 52ch; }
-  .pilotos-time__nota { color: var(--luz-2); margin-block-start: var(--space-s); }
+  .pilotos-time__bastidor-texto { max-width: 52ch; color: var(--luz-2); }
 
   @media (min-width: 1024px) {
     .pilotos-time__bastidor {
@@ -2025,48 +2123,40 @@
   }
 
   /* ------------------------------------------------ MOSAICO DO TIME
-     Prova de escala: a arte original (1920×720) tem dois painéis de
-     retratos de 700px e um bloco cinza central de 520px. Cada lado aqui
-     ocuparia um recorte da mesma imagem (aspect 700/720 + object-position
-     esquerda/direita), mas a foto real do time está desatualizada — os
-     dois lados usam .placeholder-img (IMAGE-TIME-01) até a foto ser
-     atualizada. O bloco central é HTML: mensagem da marca + módulo
-     compacto de Palestras (ex-seção própria, extinta) + CTA — o texto
-     nunca cai sobre um rosto quando a foto voltar.
-     Mobile: sanduíche vertical (retratos → mensagem → retratos), a mesma
-     composição girada 90°. Desktop (≥1024): faixa full-bleed de 3 colunas. */
+     Redesenho 2026-09-26 (pedido explícito do usuário: voltar ao layout
+     de 2 recortes + painel de texto separado — a versão anterior com
+     imagem única full-bleed + vão escuro embutido não dava respiro
+     nítido entre o texto e os retratos). Desktop (≥1024): grid de 3
+     colunas foto|painel|foto, altura igual nas 3 (stretch do grid) — as
+     fotos são a MESMA foto (.time-mosaico-foto), só com object-position
+     oposto em cada flanco, então cada lado mostra um recorte diferente
+     do mosaico. Painel tem fundo sólido próprio (nunca sobrepõe foto).
+     Mobile (<1024): empilha em coluna única, foto → texto → foto, cada
+     bloco full-width, foto com altura fixa em clamp. */
   .time-mosaico {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     margin-block-start: var(--space-xl);
     background: var(--asfalto-2);
   }
-  .time-mosaico__lado {
-    position: relative;
-    aspect-ratio: 700 / 720;
+  .time-mosaico__foto {
+    margin: 0;
+    display: block;
+    height: clamp(180px, 46vw, 280px);
     overflow: clip;
   }
-  .time-mosaico__lado picture { display: block; height: 100%; }
-  .time-mosaico__lado img {
+  .time-mosaico__foto picture,
+  .time-mosaico__foto img {
+    display: block;
     width: 100%;
     height: 100%;
+  }
+  .time-mosaico__foto img {
     object-fit: cover;
-    filter: brightness(0.8) saturate(0.9);
-    transition:
-      filter var(--dur-slow) var(--ease-brake),
-      transform var(--dur-settle) var(--ease-brake);
+    filter: brightness(0.9) saturate(0.94);
   }
-  .time-mosaico__lado--a img { object-position: 0% 50%; }
-  .time-mosaico__lado--b img { object-position: 100% 50%; }
-  /* Vinheta na borda que encosta no centro: funde o recorte com o painel. */
-  .time-mosaico__lado::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-  .time-mosaico__lado--a::after { background: linear-gradient(0deg, rgba(26, 26, 26, 0.7) 0%, rgba(26, 26, 26, 0) 22%); }
-  .time-mosaico__lado--b::after { background: linear-gradient(180deg, rgba(26, 26, 26, 0.7) 0%, rgba(26, 26, 26, 0) 22%); }
-
+  .time-mosaico__foto--esquerda img { object-position: 20% 22%; }
+  .time-mosaico__foto--direita img { object-position: 80% 78%; }
   .time-mosaico__centro {
     position: relative;
     display: flex;
@@ -2074,10 +2164,8 @@
     justify-content: center;
     align-items: flex-start;
     padding: var(--space-xl) var(--gutter);
-    background: var(--asfalto-2);
   }
-  /* Filetes vermelhos nas bordas do painel — a "largada" que separa os dois
-     grids de retratos, no lugar das emendas cinzas da arte original. */
+  /* Filete vermelho no canto do painel — a "largada" que assina o bloco. */
   .time-mosaico__centro::before {
     content: "";
     position: absolute;
@@ -2087,7 +2175,6 @@
     height: 2px;
     background: var(--vermelho);
   }
-  .time-mosaico__eyebrow { margin-block-end: var(--space-m); color: var(--luz-2); }
   .time-mosaico__titulo {
     max-width: 18ch;
     font-family: var(--ff-display);
@@ -2096,17 +2183,15 @@
     text-transform: uppercase;
     letter-spacing: -0.01em;
     text-wrap: balance;
+    margin: 0;
   }
+  .time-mosaico__texto {
+    max-width: 42ch;
+    margin-block-start: var(--space-s);
+    color: var(--luz-2);
+  }
+  .time-mosaico__nota { margin-block-start: var(--space-m); }
   .time-mosaico__cta { margin-block-start: var(--space-l); }
-
-  /* Entrada: além do fade padrão do [data-reveal] no bloco, os retratos
-     "assentam" (zoom 1.06 → 1) com a duração longa de mídia. Estado-base
-     continua sendo o final — só existe dentro de .js-motion. */
-  .js-motion .time-mosaico:not(.is-in) .time-mosaico__lado img { transform: scale(1.06); }
-
-  @media (hover: hover) and (pointer: fine) {
-    .time-mosaico__lado:hover img { filter: brightness(1) saturate(1); transform: scale(1.015); }
-  }
 
   @media (max-width: 639px) {
     .time-mosaico__cta { width: 100%; }
@@ -2115,46 +2200,130 @@
   @media (min-width: 1024px) {
     .time-mosaico {
       --mosaico-centro: clamp(420px, 36vw, 640px);
-      grid-template-columns: minmax(0, 1fr) var(--mosaico-centro) minmax(0, 1fr);
-      /* Altura mínima = altura natural do recorte 700×720 na largura da
-         coluna lateral. Se o painel central pedir mais (viewports ~1024),
-         a linha cresce e o cover corta só as bordas laterais dos retratos. */
-      grid-template-rows: minmax(calc((100vw - var(--sbw, 0px) - var(--mosaico-centro)) / 2 * 720 / 700), auto);
+      display: grid;
+      grid-template-columns: 1fr var(--mosaico-centro) 1fr;
+      align-items: stretch;
     }
-    .time-mosaico__lado { aspect-ratio: auto; }
+    .time-mosaico__foto { height: auto; }
     .time-mosaico__centro {
-      padding: var(--space-l) clamp(32px, 3.2vw, 56px);
+      padding: var(--space-2xl) clamp(28px, 3vw, 56px);
     }
-    .time-mosaico__centro::before { inset-inline-start: clamp(32px, 3.2vw, 56px); }
+    .time-mosaico__centro::before { inset-inline-start: clamp(28px, 3vw, 56px); }
     .time-mosaico__titulo { font-size: clamp(2rem, 0.6rem + 2.3vw, 3.5rem); }
     .time-mosaico__cta { padding-inline: clamp(24px, 2vw, 44px); }
-    .time-mosaico__lado--a::after { background: linear-gradient(270deg, rgba(26, 26, 26, 0.75) 0%, rgba(26, 26, 26, 0) 18%); }
-    .time-mosaico__lado--b::after { background: linear-gradient(90deg, rgba(26, 26, 26, 0.75) 0%, rgba(26, 26, 26, 0) 18%); }
   }
 
   @media (min-width: 1440px) {
     .time-mosaico__cta { white-space: nowrap; }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .time-mosaico__lado img { transition: none; }
-    .time-mosaico__lado:hover img { transform: none; }
+  /* ============================================================ LEGADO · INGO HOFFMANN
+     Pausa emocional full-bleed logo após Pilotos & Time (ver comentário no
+     HTML). Fora do sistema .section de propósito — mas a seção ANTERIOR
+     (.pilotos-time) é um .section normal e carrega padding-block no fim
+     (espaço depois de .time-mosaico); pedido do usuário: zero respiro aqui,
+     o vídeo cola direto no mosaico. margin-block-start negativo do tamanho
+     exato desse padding cancela o espaço sem mexer em .section (usado por
+     várias outras dobras). Scrim em duas faixas (topo/base), nunca a cena
+     inteira: no mobile .legado__conteudo é flex column com space-between
+     (cabeçalho no topo, texto na base, miolo do quadro limpo); no desktop
+     os dois se juntam na base (justify-content:flex-end) e o scrim do topo
+     some — não precisa mais, o cabeçalho desceu. */
+  .legado {
+    position: relative;
+    margin-block-start: calc(-1 * var(--space-2xl));
+    background: var(--asfalto);
   }
-
-  /* Texto de apoio do módulo Palestras, fundido ao centro do time-mosaico
-     (ex-seção PALESTRAS, extinta — ver comentário em index.template.html). */
-  .time-mosaico__texto {
-    max-width: 42ch;
-    margin-block-start: var(--space-s);
+  .legado__frame {
+    position: relative;
+    overflow: clip;
+    aspect-ratio: 4 / 5;
+  }
+  .legado__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .legado__scrim-top {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    height: 36%;
+    background: linear-gradient(180deg, rgba(15, 15, 15, .8) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .legado__scrim-bottom {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline: 0;
+    height: 42%;
+    background: linear-gradient(0deg, rgba(15, 15, 15, .92) 0%, rgba(15, 15, 15, .5) 55%, transparent 100%);
+    pointer-events: none;
+  }
+  /* pointer-events:none aqui é o que faz o botão de som funcionar: sem
+     isso, essa div (z-index:1, inset:0 — cobre o quadro inteiro, mesmo nas
+     áreas "vazias" entre eyebrow/título/texto) fica acima de
+     .video-sound-toggle na pilha (z-index:auto sempre perde pra z-index:1
+     positivo, não importa a ordem no DOM) e rouba todo clique no quadro
+     antes de chegar no botão — o toggle nunca disparava, por isso o som
+     "não fazia nada". Não precisa reativar pointer-events nos filhos: nenhum
+     deles é interativo (só texto). */
+  .legado__conteudo {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--gutter);
+    pointer-events: none;
+  }
+  .legado__cabecalho { display: flex; flex-direction: column; gap: var(--space-xs); }
+  .legado__eyebrow { color: var(--vermelho); text-shadow: 0 1px 10px rgba(0, 0, 0, .7); }
+  /* Fonte própria (não var(--t-xxl) puro) até 1024px: --t-xxl foi calibrado
+     pensando numa coluna quase full-bleed (.h2--statement); aqui o título
+     mora dentro de .legado__conteudo com padding, então o mesmo clamp virava
+     grande demais em telas médias (~600-1000px) — "LEGADO NÃO"/"FICA
+     PARADO." estourava a largura, cada span (bloco fixo) quebrava dentro de
+     si mesmo e o overflow-wrap:break-word global (base.css) chegava a
+     partir "PARADO." ao meio, e o texto vazava para fora de .legado__frame
+     (overflow:clip cortava o topo). .legado__titulo-linha só vira bloco (a
+     quebra de linha exata do briefing) a partir de 1024px, onde já cabe —
+     abaixo disso o título flui como texto normal e quebra sozinho onde
+     houver espaço, nunca no meio de uma palavra. */
+  .legado__titulo {
+    margin: 0;
+    font-size: clamp(2rem, 1.15rem + 5vw, 3rem);
+    line-height: 0.98;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, .55);
+  }
+  .legado__lead {
+    max-width: 34ch;
     color: var(--luz-2);
+    text-shadow: 0 1px 10px rgba(0, 0, 0, .7);
   }
 
-  /* Placeholder da foto do time: a foto real (time-mosaico) está
-     desatualizada — pedido explícito do usuário nesta rodada. Reaproveita
-     .placeholder-img (mesmo padrão do feed do Instagram e do vídeo da
-     PETRONAS); só suprime a vinheta pensada para foto real por cima da
-     textura própria do placeholder. */
-  .time-mosaico__lado.placeholder-img::after { display: none; }
+  @media (min-width: 1024px) {
+    .legado__frame { aspect-ratio: auto; height: 80vh; min-height: 600px; }
+    .legado__scrim-top { display: none; }
+    .legado__scrim-bottom { height: 58%; }
+    .legado__conteudo {
+      justify-content: flex-end;
+      gap: var(--space-m);
+      padding: var(--space-2xl) var(--content-inset);
+    }
+    /* max-width em ch some daqui: .legado__cabecalho não tem font-size
+       próprio (herda o do body, ~17px) — um 20ch nele computava contra ESSE
+       tamanho, não o do título (120px), e travava a coluna em ~240px,
+       forçando "LEGADO NÃO"/"FICA PARADO." a quebrar letra a letra. O limite
+       de largura certo já é o max-width:14ch do próprio .legado__titulo,
+       que carrega seu próprio font-size e computa o ch correto. */
+    .legado__titulo { font-size: var(--t-xxl); max-width: 14ch; }
+    .legado__titulo-linha { display: block; }
+    .legado__lead { font-size: var(--t-m); }
+  }
 
   /* ============================================================ 09 · PALESTRAS */
   /* Os pilotos são o produto; o auditório é o palco. Desktop: palco sticky

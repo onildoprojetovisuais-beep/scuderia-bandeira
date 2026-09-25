@@ -1,7 +1,7 @@
 {
   "complexo-1": {
     "slug": "complexo-1",
-    "source": "Imagens/complexo/1.png",
+    "source": "assets/Imagens/complexo/1.png",
     "original_size_bytes": 4007259,
     "width": 1878,
     "height": 1254,
@@ -21,7 +21,7 @@
   },
   "complexo-2": {
     "slug": "complexo-2",
-    "source": "Imagens/complexo/2.png",
+    "source": "assets/Imagens/complexo/2.png",
     "original_size_bytes": 4169746,
     "width": 1878,
     "height": 1254,
@@ -41,7 +41,7 @@
   },
   "complexo-3": {
     "slug": "complexo-3",
-    "source": "Imagens/complexo/3.png",
+    "source": "assets/Imagens/complexo/3.png",
     "original_size_bytes": 3119354,
     "width": 1878,
     "height": 1254,
@@ -61,7 +61,7 @@
   },
   "complexo-4": {
     "slug": "complexo-4",
-    "source": "Imagens/complexo/4.png",
+    "source": "assets/Imagens/complexo/4.png",
     "original_size_bytes": 4303924,
     "width": 1878,
     "height": 1254,
@@ -81,7 +81,7 @@
   },
   "complexo-5": {
     "slug": "complexo-5",
-    "source": "Imagens/complexo/5.png",
+    "source": "assets/Imagens/complexo/5.png",
     "original_size_bytes": 3270158,
     "width": 1878,
     "height": 1254,
@@ -101,7 +101,7 @@
   },
   "complexo-6": {
     "slug": "complexo-6",
-    "source": "Imagens/complexo/image00016.jpeg",
+    "source": "assets/Imagens/complexo/image00016.jpeg",
     "original_size_bytes": 24948736,
     "width": 8064,
     "height": 4536,
@@ -123,7 +123,7 @@
   },
   "complexo-7": {
     "slug": "complexo-7",
-    "source": "Imagens/complexo/7.png",
+    "source": "assets/Imagens/complexo/7.png",
     "original_size_bytes": 3522012,
     "width": 1878,
     "height": 1254,
@@ -143,7 +143,7 @@
   },
   "local-auditorio": {
     "slug": "local-auditorio",
-    "source": "Imagens/local/auditorio.jpg",
+    "source": "assets/Imagens/local/auditorio.jpg",
     "original_size_bytes": 13649206,
     "width": 4087,
     "height": 2730,
@@ -165,7 +165,7 @@
   },
   "local-gastronomia": {
     "slug": "local-gastronomia",
-    "source": "Imagens/local/gastronomia.jpg",
+    "source": "assets/Imagens/local/gastronomia.jpg",
     "original_size_bytes": 9007086,
     "width": 4088,
     "height": 2730,
@@ -187,23 +187,29 @@
   },
   "estrutura-acesso-aereo": {
     "slug": "estrutura-acesso-aereo",
-    "source": "Imagens/estrutura/acesso aereo.png",
-    "original_size_bytes": 722008,
-    "width": 522,
-    "height": 1003,
-    "aspect_ratio": 0.5204,
-    "has_alpha": true,
-    "fallback_ext": "webp",
+    "source": "assets/Imagens/estrutura/novas-imagens/heliponto.png",
+    "original_size_bytes": 32835792,
+    "width": 5000,
+    "height": 3331,
+    "aspect_ratio": 1.5011,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
     "avif": {
-      "480": "assets-build/img/estrutura-acesso-aereo-480w-ed24900989.avif"
+      "480": "assets-build/img/estrutura-acesso-aereo-480w-a30639dbc9.avif",
+      "800": "assets-build/img/estrutura-acesso-aereo-800w-a30639dbc9.avif",
+      "1280": "assets-build/img/estrutura-acesso-aereo-1280w-a30639dbc9.avif",
+      "1920": "assets-build/img/estrutura-acesso-aereo-1920w-a30639dbc9.avif"
     },
-    "webp": {
-      "480": "assets-build/img/estrutura-acesso-aereo-480w-ed24900989.webp"
+    "jpg": {
+      "480": "assets-build/img/estrutura-acesso-aereo-480w-a30639dbc9.jpg",
+      "800": "assets-build/img/estrutura-acesso-aereo-800w-a30639dbc9.jpg",
+      "1280": "assets-build/img/estrutura-acesso-aereo-1280w-a30639dbc9.jpg",
+      "1920": "assets-build/img/estrutura-acesso-aereo-1920w-a30639dbc9.jpg"
     }
   },
   "estrutura-area-multiuso": {
     "slug": "estrutura-area-multiuso",
-    "source": "Imagens/estrutura/area multiuso.png",
+    "source": "assets/Imagens/estrutura/area multiuso.png",
     "original_size_bytes": 617742,
     "width": 522,
     "height": 1003,
@@ -219,55 +225,95 @@
   },
   "estrutura-auditorio": {
     "slug": "estrutura-auditorio",
-    "source": "Imagens/estrutura/auditorio.png",
-    "original_size_bytes": 699715,
-    "width": 522,
-    "height": 1003,
-    "aspect_ratio": 0.5204,
-    "has_alpha": true,
-    "fallback_ext": "webp",
+    "source": "assets/Imagens/estrutura/novas-imagens/auditorio.jpeg",
+    "original_size_bytes": 13239546,
+    "width": 5000,
+    "height": 3333,
+    "aspect_ratio": 1.5002,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
     "avif": {
-      "480": "assets-build/img/estrutura-auditorio-480w-c80be78a63.avif"
+      "480": "assets-build/img/estrutura-auditorio-480w-3f9c3b1751.avif",
+      "800": "assets-build/img/estrutura-auditorio-800w-3f9c3b1751.avif",
+      "1280": "assets-build/img/estrutura-auditorio-1280w-3f9c3b1751.avif",
+      "1920": "assets-build/img/estrutura-auditorio-1920w-3f9c3b1751.avif"
     },
-    "webp": {
-      "480": "assets-build/img/estrutura-auditorio-480w-c80be78a63.webp"
+    "jpg": {
+      "480": "assets-build/img/estrutura-auditorio-480w-3f9c3b1751.jpg",
+      "800": "assets-build/img/estrutura-auditorio-800w-3f9c3b1751.jpg",
+      "1280": "assets-build/img/estrutura-auditorio-1280w-3f9c3b1751.jpg",
+      "1920": "assets-build/img/estrutura-auditorio-1920w-3f9c3b1751.jpg"
     }
   },
   "estrutura-coworking": {
     "slug": "estrutura-coworking",
-    "source": "Imagens/estrutura/coworking.png",
-    "original_size_bytes": 1064636,
-    "width": 522,
-    "height": 1003,
-    "aspect_ratio": 0.5204,
-    "has_alpha": true,
-    "fallback_ext": "webp",
+    "source": "assets/Imagens/estrutura/novas-imagens/coworking.png.jpeg",
+    "original_size_bytes": 5202048,
+    "width": 4032,
+    "height": 2268,
+    "aspect_ratio": 1.7778,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
     "avif": {
-      "480": "assets-build/img/estrutura-coworking-480w-97a8f765e6.avif"
+      "480": "assets-build/img/estrutura-coworking-480w-40acefe549.avif",
+      "800": "assets-build/img/estrutura-coworking-800w-40acefe549.avif",
+      "1280": "assets-build/img/estrutura-coworking-1280w-40acefe549.avif",
+      "1920": "assets-build/img/estrutura-coworking-1920w-40acefe549.avif"
     },
-    "webp": {
-      "480": "assets-build/img/estrutura-coworking-480w-97a8f765e6.webp"
+    "jpg": {
+      "480": "assets-build/img/estrutura-coworking-480w-40acefe549.jpg",
+      "800": "assets-build/img/estrutura-coworking-800w-40acefe549.jpg",
+      "1280": "assets-build/img/estrutura-coworking-1280w-40acefe549.jpg",
+      "1920": "assets-build/img/estrutura-coworking-1920w-40acefe549.jpg"
+    }
+  },
+  "estrutura-espaco-motor": {
+    "slug": "estrutura-espaco-motor",
+    "source": "assets/Imagens/estrutura/novas-imagens/espaço motor.jpeg",
+    "original_size_bytes": 18875211,
+    "width": 5000,
+    "height": 3333,
+    "aspect_ratio": 1.5002,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/estrutura-espaco-motor-480w-b02ecdbeee.avif",
+      "800": "assets-build/img/estrutura-espaco-motor-800w-b02ecdbeee.avif",
+      "1280": "assets-build/img/estrutura-espaco-motor-1280w-b02ecdbeee.avif",
+      "1920": "assets-build/img/estrutura-espaco-motor-1920w-b02ecdbeee.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/estrutura-espaco-motor-480w-b02ecdbeee.jpg",
+      "800": "assets-build/img/estrutura-espaco-motor-800w-b02ecdbeee.jpg",
+      "1280": "assets-build/img/estrutura-espaco-motor-1280w-b02ecdbeee.jpg",
+      "1920": "assets-build/img/estrutura-espaco-motor-1920w-b02ecdbeee.jpg"
     }
   },
   "estrutura-garagem": {
     "slug": "estrutura-garagem",
-    "source": "Imagens/estrutura/garage by vonder.png",
-    "original_size_bytes": 783185,
-    "width": 522,
-    "height": 1003,
-    "aspect_ratio": 0.5204,
-    "has_alpha": true,
-    "fallback_ext": "webp",
+    "source": "assets/Imagens/estrutura/novas-imagens/oficina.png",
+    "original_size_bytes": 30818103,
+    "width": 5000,
+    "height": 3333,
+    "aspect_ratio": 1.5002,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
     "avif": {
-      "480": "assets-build/img/estrutura-garagem-480w-0f816df55b.avif"
+      "480": "assets-build/img/estrutura-garagem-480w-4914b1e83d.avif",
+      "800": "assets-build/img/estrutura-garagem-800w-4914b1e83d.avif",
+      "1280": "assets-build/img/estrutura-garagem-1280w-4914b1e83d.avif",
+      "1920": "assets-build/img/estrutura-garagem-1920w-4914b1e83d.avif"
     },
-    "webp": {
-      "480": "assets-build/img/estrutura-garagem-480w-0f816df55b.webp"
+    "jpg": {
+      "480": "assets-build/img/estrutura-garagem-480w-4914b1e83d.jpg",
+      "800": "assets-build/img/estrutura-garagem-800w-4914b1e83d.jpg",
+      "1280": "assets-build/img/estrutura-garagem-1280w-4914b1e83d.jpg",
+      "1920": "assets-build/img/estrutura-garagem-1920w-4914b1e83d.jpg"
     }
   },
   "estrutura-gastronomia": {
     "slug": "estrutura-gastronomia",
-    "source": "Imagens/estrutura/gastronom,ia.png",
+    "source": "assets/Imagens/estrutura/gastronom,ia.png",
     "original_size_bytes": 731676,
     "width": 522,
     "height": 1003,
@@ -283,7 +329,7 @@
   },
   "final-imagem": {
     "slug": "final-imagem",
-    "source": "Imagens/final/imagem final@2x.png",
+    "source": "assets/Imagens/final/imagem final@2x.png",
     "original_size_bytes": 4292428,
     "width": 2048,
     "height": 1366,
@@ -305,7 +351,7 @@
   },
   "topo-hero": {
     "slug": "topo-hero",
-    "source": "Imagens/topo/imagem topo mobile.png",
+    "source": "assets/Imagens/topo/imagem topo mobile.png",
     "original_size_bytes": 1957730,
     "width": 1920,
     "height": 1080,
@@ -327,7 +373,7 @@
   },
   "oque-esporte": {
     "slug": "oque-esporte",
-    "source": "Imagens/o que é/esporte.png",
+    "source": "assets/Imagens/o que é/esporte.png",
     "original_size_bytes": 1875795,
     "width": 1416,
     "height": 942,
@@ -347,7 +393,7 @@
   },
   "oque-estrutura": {
     "slug": "oque-estrutura",
-    "source": "Imagens/o que é/estrutura.png",
+    "source": "assets/Imagens/o que é/estrutura.png",
     "original_size_bytes": 2237488,
     "width": 1416,
     "height": 942,
@@ -367,7 +413,7 @@
   },
   "oque-experiencias": {
     "slug": "oque-experiencias",
-    "source": "Imagens/o que é/experiencias.png",
+    "source": "assets/Imagens/o que é/experiencias.png",
     "original_size_bytes": 1745060,
     "width": 1416,
     "height": 942,
@@ -387,7 +433,7 @@
   },
   "race-experience-karts": {
     "slug": "race-experience-karts",
-    "source": "Imagens/race experience/RACE EXPERIENCE.png",
+    "source": "assets/Imagens/race experience/RACE EXPERIENCE.png",
     "original_size_bytes": 7315820,
     "width": 3324,
     "height": 1350,
@@ -409,7 +455,7 @@
   },
   "team-building": {
     "slug": "team-building",
-    "source": "Imagens/tem-building.jpeg",
+    "source": "assets/Imagens/tem-building.jpeg",
     "original_size_bytes": 9632282,
     "width": 5000,
     "height": 3333,
@@ -431,7 +477,7 @@
   },
   "experiencias-bastidores": {
     "slug": "experiencias-bastidores",
-    "source": "Imagens/experiencias/bastidores.jpg",
+    "source": "assets/Imagens/experiencias/bastidores.jpg",
     "original_size_bytes": 11781410,
     "width": 5000,
     "height": 3333,
@@ -453,7 +499,7 @@
   },
   "principio-trabalho-equipe": {
     "slug": "principio-trabalho-equipe",
-    "source": "Imagens/experiencias/principios/trabalho-em-equipe.jpg",
+    "source": "assets/Imagens/experiencias/principios/trabalho-em-equipe.jpg",
     "original_size_bytes": 402200,
     "width": 1920,
     "height": 1279,
@@ -475,7 +521,7 @@
   },
   "principio-confianca": {
     "slug": "principio-confianca",
-    "source": "Imagens/experiencias/principios/confianca.jpg",
+    "source": "assets/Imagens/experiencias/principios/confianca.jpg",
     "original_size_bytes": 275358,
     "width": 1920,
     "height": 1280,
@@ -497,7 +543,7 @@
   },
   "principio-comunicacao": {
     "slug": "principio-comunicacao",
-    "source": "Imagens/experiencias/principios/comunicacao.jpg",
+    "source": "assets/Imagens/experiencias/principios/comunicacao.jpg",
     "original_size_bytes": 223233,
     "width": 1920,
     "height": 1279,
@@ -519,7 +565,7 @@
   },
   "principio-tomada-decisao": {
     "slug": "principio-tomada-decisao",
-    "source": "Imagens/experiencias/principios/tomada-de-decisao.jpg",
+    "source": "assets/Imagens/experiencias/principios/tomada-de-decisao.jpg",
     "original_size_bytes": 362671,
     "width": 1920,
     "height": 1280,
@@ -541,7 +587,7 @@
   },
   "principio-pressao": {
     "slug": "principio-pressao",
-    "source": "Imagens/experiencias/principios/atuacao-sob-pressao.jpg",
+    "source": "assets/Imagens/experiencias/principios/atuacao-sob-pressao.jpg",
     "original_size_bytes": 425620,
     "width": 1920,
     "height": 1280,
@@ -563,7 +609,7 @@
   },
   "evento-truck-lounge": {
     "slug": "evento-truck-lounge",
-    "source": "Imagens/experiencia do evento/Truck Lounge.png",
+    "source": "assets/Imagens/experiencia do evento/Truck Lounge.png",
     "original_size_bytes": 2352236,
     "width": 1819,
     "height": 715,
@@ -583,7 +629,7 @@
   },
   "evento-arquibancada": {
     "slug": "evento-arquibancada",
-    "source": "Imagens/experiencia do evento/Arquibancada.png",
+    "source": "assets/Imagens/experiencia do evento/Arquibancada.png",
     "original_size_bytes": 1743854,
     "width": 1302,
     "height": 713,
@@ -603,7 +649,7 @@
   },
   "evento-camarotes": {
     "slug": "evento-camarotes",
-    "source": "Imagens/experiencia do evento/Camarotes.png",
+    "source": "assets/Imagens/experiencia do evento/Camarotes.png",
     "original_size_bytes": 1866477,
     "width": 1635,
     "height": 704,
@@ -623,7 +669,7 @@
   },
   "evento-boxes": {
     "slug": "evento-boxes",
-    "source": "Imagens/experiencia do evento/Visitação aos Boxe.png",
+    "source": "assets/Imagens/experiencia do evento/Visitação aos Boxe.png",
     "original_size_bytes": 1329099,
     "width": 1046,
     "height": 709,
@@ -641,7 +687,7 @@
   },
   "piloto-atila": {
     "slug": "piloto-atila",
-    "source": "Imagens/pilotos-premium/atila-abreu.jpg",
+    "source": "assets/Imagens/pilotos-premium/atila-abreu.jpg",
     "original_size_bytes": 817334,
     "width": 936,
     "height": 1192,
@@ -659,7 +705,7 @@
   },
   "piloto-christian": {
     "slug": "piloto-christian",
-    "source": "Imagens/pilotos-premium/cristian-fitipalidi.jpg",
+    "source": "assets/Imagens/pilotos-premium/cristian-fitipalidi.jpg",
     "original_size_bytes": 799829,
     "width": 930,
     "height": 1192,
@@ -677,7 +723,7 @@
   },
   "piloto-ingo": {
     "slug": "piloto-ingo",
-    "source": "Imagens/pilotos-premium/ingo-hoffman.jpg",
+    "source": "assets/Imagens/pilotos-premium/ingo-hoffman.jpg",
     "original_size_bytes": 749130,
     "width": 899,
     "height": 1192,
@@ -695,7 +741,7 @@
   },
   "piloto-nelsinho": {
     "slug": "piloto-nelsinho",
-    "source": "Imagens/pilotos-premium/nelson-piquet.jpg",
+    "source": "assets/Imagens/pilotos-premium/nelson-piquet.jpg",
     "original_size_bytes": 788743,
     "width": 892,
     "height": 1192,
@@ -735,7 +781,7 @@
   },
   "caterham-logo": {
     "slug": "caterham-logo",
-    "source": "Imagens/caterham/logo-scuderia-caterham.png",
+    "source": "assets/Imagens/caterham/logo-scuderia-caterham.png",
     "original_size_bytes": 196595,
     "width": 6339,
     "height": 990,
@@ -757,7 +803,7 @@
   },
   "caterham-fecho-photo": {
     "slug": "caterham-fecho-photo",
-    "source": "Imagens/caterham/20260528_scuderiabandeiras_raceexperience_fazendacapuava_dudabairros-1000.jpg",
+    "source": "assets/Imagens/caterham/20260528_scuderiabandeiras_raceexperience_fazendacapuava_dudabairros-1000.jpg",
     "original_size_bytes": 352791,
     "width": 1920,
     "height": 1279,
@@ -779,29 +825,49 @@
   },
   "time-mosaico": {
     "slug": "time-mosaico",
-    "source": "Imagens/nosso time/imagem time bandeiras desk.jpg",
-    "original_size_bytes": 1238460,
-    "width": 1920,
-    "height": 720,
+    "source": "assets/Imagens/nosso time/Mosaico.png",
+    "original_size_bytes": 3307095,
+    "width": 2560,
+    "height": 960,
     "aspect_ratio": 2.6667,
     "has_alpha": false,
     "fallback_ext": "jpg",
     "avif": {
-      "480": "assets-build/img/time-mosaico-480w-de37193ac0.avif",
-      "800": "assets-build/img/time-mosaico-800w-de37193ac0.avif",
-      "1280": "assets-build/img/time-mosaico-1280w-de37193ac0.avif",
-      "1920": "assets-build/img/time-mosaico-1920w-de37193ac0.avif"
+      "480": "assets-build/img/time-mosaico-480w-eb577d1e30.avif",
+      "800": "assets-build/img/time-mosaico-800w-eb577d1e30.avif",
+      "1280": "assets-build/img/time-mosaico-1280w-eb577d1e30.avif",
+      "1920": "assets-build/img/time-mosaico-1920w-eb577d1e30.avif"
     },
     "jpg": {
-      "480": "assets-build/img/time-mosaico-480w-de37193ac0.jpg",
-      "800": "assets-build/img/time-mosaico-800w-de37193ac0.jpg",
-      "1280": "assets-build/img/time-mosaico-1280w-de37193ac0.jpg",
-      "1920": "assets-build/img/time-mosaico-1920w-de37193ac0.jpg"
+      "480": "assets-build/img/time-mosaico-480w-eb577d1e30.jpg",
+      "800": "assets-build/img/time-mosaico-800w-eb577d1e30.jpg",
+      "1280": "assets-build/img/time-mosaico-1280w-eb577d1e30.jpg",
+      "1920": "assets-build/img/time-mosaico-1920w-eb577d1e30.jpg"
+    }
+  },
+  "time-mosaico-foto": {
+    "slug": "time-mosaico-foto",
+    "source": "assets/Imagens/nosso time/Mosaico 1.png",
+    "original_size_bytes": 3373568,
+    "width": 1461,
+    "height": 1503,
+    "aspect_ratio": 0.9721,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/time-mosaico-foto-480w-69d27d2e43.avif",
+      "800": "assets-build/img/time-mosaico-foto-800w-69d27d2e43.avif",
+      "1280": "assets-build/img/time-mosaico-foto-1280w-69d27d2e43.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/time-mosaico-foto-480w-69d27d2e43.webp",
+      "800": "assets-build/img/time-mosaico-foto-800w-69d27d2e43.webp",
+      "1280": "assets-build/img/time-mosaico-foto-1280w-69d27d2e43.webp"
     }
   },
   "marcas-historia": {
     "slug": "marcas-historia",
-    "source": "Imagens/marcas parceiras/marcas-historia-recorte.png",
+    "source": "assets/Imagens/marcas parceiras/marcas-historia-recorte.png",
     "original_size_bytes": 419234,
     "width": 1392,
     "height": 680,
@@ -821,7 +887,7 @@
   },
   "escopo-caterham": {
     "slug": "escopo-caterham",
-    "source": "Imagens/escopo/caterham-2032.jpg.jpeg",
+    "source": "assets/Imagens/escopo/caterham-2032.jpg.jpeg",
     "original_size_bytes": 18494691,
     "width": 5000,
     "height": 3333,
@@ -843,7 +909,7 @@
   },
   "escopo-ativacoes": {
     "slug": "escopo-ativacoes",
-    "source": "Imagens/escopo/ativacoes.jpg.jpeg",
+    "source": "assets/Imagens/escopo/ativacoes.jpg.jpeg",
     "original_size_bytes": 11091900,
     "width": 6000,
     "height": 4002,
@@ -865,7 +931,7 @@
   },
   "escopo-experiencias": {
     "slug": "escopo-experiencias",
-    "source": "Imagens/escopo/experiencias corporativas.jpg.jpeg",
+    "source": "assets/Imagens/escopo/experiencias corporativas.jpg.jpeg",
     "original_size_bytes": 13757938,
     "width": 5000,
     "height": 3333,
@@ -887,7 +953,7 @@
   },
   "escopo-projetos": {
     "slug": "escopo-projetos",
-    "source": "Imagens/escopo/projetos.JPG.jpeg",
+    "source": "assets/Imagens/escopo/projetos.JPG.jpeg",
     "original_size_bytes": 868060,
     "width": 2048,
     "height": 1367,
@@ -909,7 +975,7 @@
   },
   "eco-pilotos": {
     "slug": "eco-pilotos",
-    "source": "Imagens/ecossistema/pilotos.png",
+    "source": "assets/Imagens/ecossistema/pilotos.png",
     "original_size_bytes": 2718946,
     "width": 1122,
     "height": 1402,
@@ -927,7 +993,7 @@
   },
   "eco-carros": {
     "slug": "eco-carros",
-    "source": "Imagens/ecossistema/carros.jpeg",
+    "source": "assets/Imagens/ecossistema/carros.jpeg",
     "original_size_bytes": 11595527,
     "width": 5000,
     "height": 3333,
@@ -949,7 +1015,7 @@
   },
   "eco-pista": {
     "slug": "eco-pista",
-    "source": "Imagens/ecossistema/pista.jpeg",
+    "source": "assets/Imagens/ecossistema/pista.jpeg",
     "original_size_bytes": 30169087,
     "width": 8064,
     "height": 4536,
@@ -971,7 +1037,7 @@
   },
   "eco-estrutura": {
     "slug": "eco-estrutura",
-    "source": "Imagens/ecossistema/estrutura.JPG.jpeg",
+    "source": "assets/Imagens/ecossistema/estrutura.JPG.jpeg",
     "original_size_bytes": 2904125,
     "width": 4032,
     "height": 3024,
@@ -993,7 +1059,7 @@
   },
   "eco-producao": {
     "slug": "eco-producao",
-    "source": "Imagens/ecossistema/producoes.jpg.jpeg",
+    "source": "assets/Imagens/ecossistema/producoes.jpg.jpeg",
     "original_size_bytes": 15524466,
     "width": 6000,
     "height": 4002,

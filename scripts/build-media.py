@@ -48,11 +48,16 @@ MANIFEST: dict[str, str] = {
     "complexo-7": "assets/Imagens/complexo/7.png",
     "local-auditorio": "assets/Imagens/local/auditorio.jpg",
     "local-gastronomia": "assets/Imagens/local/gastronomia.jpg",
-    "estrutura-acesso-aereo": "assets/Imagens/estrutura/acesso aereo.png",
+    # Carrossel "Os Espaços" — fotos atualizadas pelo usuário (2026-09-25,
+    # pasta assets/Imagens/estrutura/novas-imagens/), substituem as
+    # anteriores nos mesmos slugs. "espaço motor.jpeg" é foto nova (o card
+    # usava complexo-7 antes; ganhou slug próprio).
+    "estrutura-acesso-aereo": "assets/Imagens/estrutura/novas-imagens/heliponto.png",
     "estrutura-area-multiuso": "assets/Imagens/estrutura/area multiuso.png",
-    "estrutura-auditorio": "assets/Imagens/estrutura/auditorio.png",
-    "estrutura-coworking": "assets/Imagens/estrutura/coworking.png",
-    "estrutura-garagem": "assets/Imagens/estrutura/garage by vonder.png",
+    "estrutura-auditorio": "assets/Imagens/estrutura/novas-imagens/auditorio.jpeg",
+    "estrutura-coworking": "assets/Imagens/estrutura/novas-imagens/coworking.png.jpeg",
+    "estrutura-espaco-motor": "assets/Imagens/estrutura/novas-imagens/espaço motor.jpeg",
+    "estrutura-garagem": "assets/Imagens/estrutura/novas-imagens/oficina.png",
     "estrutura-gastronomia": "assets/Imagens/estrutura/gastronom,ia.png",
     # Hero / CTA final (fallback enquanto o material Caterham externo não é aprovado)
     "final-imagem": "assets/Imagens/final/imagem final@2x.png",
@@ -99,10 +104,15 @@ MANIFEST: dict[str, str] = {
     # (Fazenda Capuava), fornecida pelo cliente.
     "caterham-fecho-photo": "assets/Imagens/caterham/20260528_scuderiabandeiras_raceexperience_fazendacapuava_dudabairros-1000.jpg",
     # Dobra 08 — mosaico "Somos todos Scuderia Bandeiras" (prova dos 50+ profissionais).
-    # Incluído a pedido do usuário para revisão LOCAL. Item 7 continua aberto:
+    # Arte atualizada pelo usuário (2026-09-25), substitui a versão anterior
+    # ("imagem time bandeiras desk.jpg", removida). Item 7 continua aberto:
     # confirmar que Rubens Barrichello / Rafael Suzuki não estão no mosaico
     # ANTES de qualquer publicação.
-    "time-mosaico": "assets/Imagens/nosso time/imagem time bandeiras desk.jpg",
+    "time-mosaico": "assets/Imagens/nosso time/Mosaico.png",
+    # Redesenho 2026-09-26 (pedido do usuário): volta ao layout de 2 recortes
+    # + painel de texto central (em vez da imagem única full-bleed acima) —
+    # mesma foto usada nos dois flancos (esquerdo/direito) da faixa.
+    "time-mosaico-foto": "assets/Imagens/nosso time/Mosaico 1.png",
     # Dobra 10 — "Marcas que fazem parte da nossa história": arte pronta fornecida
     # pelo usuário como ativo oficial (2026-09-22), versão PNG transparente
     # ("marcas-que-fazem-parte-da-nossa-historia 1.png"). O recorte tira só a

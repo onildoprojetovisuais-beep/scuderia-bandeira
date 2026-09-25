@@ -36,7 +36,7 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const fields = "caption,media_type,media_url,thumbnail_url,permalink,timestamp";
+  const fields = "caption,media_type,media_url,thumbnail_url,permalink,timestamp,like_count,comments_count";
   const url = `https://graph.facebook.com/${GRAPH_VERSION}/${userId}/media?fields=${fields}&limit=${POST_LIMIT}&access_token=${token}`;
 
   try {
@@ -56,6 +56,8 @@ module.exports = async (req, res) => {
       thumbnailUrl: item.thumbnail_url || null,
       permalink: item.permalink,
       timestamp: item.timestamp,
+      likeCount: typeof item.like_count === "number" ? item.like_count : null,
+      commentsCount: typeof item.comments_count === "number" ? item.comments_count : null,
     }));
 
     res.status(200).json({ configured: true, posts });

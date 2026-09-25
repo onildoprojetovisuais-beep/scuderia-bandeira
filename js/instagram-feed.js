@@ -14,6 +14,12 @@
 */
 const ENDPOINT = "/api/instagram-feed";
 
+// 1234 → "1.2k", igual ao formato compacto que o próprio Instagram usa.
+function formatarContagem(n) {
+  if (n >= 1000) return `${(n / 1000).toFixed(n % 1000 >= 100 ? 1 : 0)}k`;
+  return String(n);
+}
+
 export async function initInstagramFeed() {
   const items = document.querySelectorAll("#instagramFeed [data-ig-link]");
   if (!items.length) return;
@@ -37,6 +43,8 @@ export async function initInstagramFeed() {
     const img = link.querySelector("[data-ig-media]");
     const cap = link.querySelector("[data-ig-cap]");
     const badge = link.querySelector("[data-ig-badge]");
+    const likes = link.querySelector("[data-ig-likes]");
+    const comments = link.querySelector("[data-ig-comments]");
     const picture = link.querySelector("picture");
 
     link.href = post.permalink || link.href;
@@ -53,5 +61,10 @@ export async function initInstagramFeed() {
 
     if (cap && post.caption) cap.textContent = post.caption.slice(0, 90);
     if (badge) badge.classList.toggle("conteudo__feed-badge--on", post.mediaType === "VIDEO");
+    // Só troca o placeholder por dado real quando a Graph API devolve o
+    // campo — sem like_count/comments_count (permissão ausente, etc.), o
+    // número ilustrativo do HTML fica como está.
+    if (likes && typeof post.likeCount === "number") likes.textContent = formatarContagem(post.likeCount);
+    if (comments && typeof post.commentsCount === "number") comments.textContent = formatarContagem(post.commentsCount);
   });
 }

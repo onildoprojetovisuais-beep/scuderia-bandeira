@@ -1,14 +1,14 @@
 /*
-  Vídeo institucional (05 · BANDEIRAS EMPRESARIAL) — pedido do usuário: já
-  rodar sozinho na tela, sem precisar dar play. Nenhum navegador libera
-  autoplay com áudio, então o <video> entra mudo/loop e este módulo cuida de
-  duas coisas: play/pause por IntersectionObserver (mesmo padrão de
-  js/caterham.js — não gasta ciclo de vídeo fora de tela, respeita
-  prefers-reduced-motion) e o botão de som sobreposto, pro visitante ativar
-  a narração quando quiser.
+  Vídeo institucional (05 · BANDEIRAS EMPRESARIAL) e vídeo do Ingo (LEGADO,
+  logo após 03 · PILOTOS & TIME) — pedido do usuário: já rodar sozinho na
+  tela, sem precisar dar play. Nenhum navegador libera autoplay com áudio,
+  então o <video> entra mudo/loop e este módulo cuida de duas coisas:
+  play/pause por IntersectionObserver (mesmo padrão de js/caterham.js — não
+  gasta ciclo de vídeo fora de tela, respeita prefers-reduced-motion) e o
+  botão de som sobreposto, pro visitante ativar a narração quando quiser.
 */
 export function initVideoSoundToggle() {
-  const frames = document.querySelectorAll(".bandeiras__video-frame");
+  const frames = document.querySelectorAll(".bandeiras__video-frame, .legado__frame");
   if (!frames.length) return;
 
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
