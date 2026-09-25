@@ -429,6 +429,138 @@
       "1920": "assets-build/img/team-building-1920w-01cd651b06.jpg"
     }
   },
+  "experiencias-bastidores": {
+    "slug": "experiencias-bastidores",
+    "source": "Imagens/experiencias/bastidores.jpg",
+    "original_size_bytes": 11781410,
+    "width": 5000,
+    "height": 3333,
+    "aspect_ratio": 1.5002,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/experiencias-bastidores-480w-9f7b3be16d.avif",
+      "800": "assets-build/img/experiencias-bastidores-800w-9f7b3be16d.avif",
+      "1280": "assets-build/img/experiencias-bastidores-1280w-9f7b3be16d.avif",
+      "1920": "assets-build/img/experiencias-bastidores-1920w-9f7b3be16d.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/experiencias-bastidores-480w-9f7b3be16d.jpg",
+      "800": "assets-build/img/experiencias-bastidores-800w-9f7b3be16d.jpg",
+      "1280": "assets-build/img/experiencias-bastidores-1280w-9f7b3be16d.jpg",
+      "1920": "assets-build/img/experiencias-bastidores-1920w-9f7b3be16d.jpg"
+    }
+  },
+  "principio-trabalho-equipe": {
+    "slug": "principio-trabalho-equipe",
+    "source": "Imagens/experiencias/principios/trabalho-em-equipe.jpg",
+    "original_size_bytes": 402200,
+    "width": 1920,
+    "height": 1279,
+    "aspect_ratio": 1.5012,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/principio-trabalho-equipe-480w-09fdea0e0c.avif",
+      "800": "assets-build/img/principio-trabalho-equipe-800w-09fdea0e0c.avif",
+      "1280": "assets-build/img/principio-trabalho-equipe-1280w-09fdea0e0c.avif",
+      "1920": "assets-build/img/principio-trabalho-equipe-1920w-09fdea0e0c.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/principio-trabalho-equipe-480w-09fdea0e0c.jpg",
+      "800": "assets-build/img/principio-trabalho-equipe-800w-09fdea0e0c.jpg",
+      "1280": "assets-build/img/principio-trabalho-equipe-1280w-09fdea0e0c.jpg",
+      "1920": "assets-build/img/principio-trabalho-equipe-1920w-09fdea0e0c.jpg"
+    }
+  },
+  "principio-confianca": {
+    "slug": "principio-confianca",
+    "source": "Imagens/experiencias/principios/confianca.jpg",
+    "original_size_bytes": 275358,
+    "width": 1920,
+    "height": 1280,
+    "aspect_ratio": 1.5,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/principio-confianca-480w-ec3cf0bf74.avif",
+      "800": "assets-build/img/principio-confianca-800w-ec3cf0bf74.avif",
+      "1280": "assets-build/img/principio-confianca-1280w-ec3cf0bf74.avif",
+      "1920": "assets-build/img/principio-confianca-1920w-ec3cf0bf74.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/principio-confianca-480w-ec3cf0bf74.jpg",
+      "800": "assets-build/img/principio-confianca-800w-ec3cf0bf74.jpg",
+      "1280": "assets-build/img/principio-confianca-1280w-ec3cf0bf74.jpg",
+      "1920": "assets-build/img/principio-confianca-1920w-ec3cf0bf74.jpg"
+    }
+  },
+  "principio-comunicacao": {
+    "slug": "principio-comunicacao",
+    "source": "Imagens/experiencias/principios/comunicacao.jpg",
+    "original_size_bytes": 223233,
+    "width": 1920,
+    "height": 1279,
+    "aspect_ratio": 1.5012,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/principio-comunicacao-480w-8e075e95a0.avif",
+      "800": "assets-build/img/principio-comunicacao-800w-8e075e95a0.avif",
+      "1280": "assets-build/img/principio-comunicacao-1280w-8e075e95a0.avif",
+      "1920": "assets-build/img/principio-comunicacao-1920w-8e075e95a0.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/principio-comunicacao-480w-8e075e95a0.jpg",
+      "800": "assets-build/img/principio-comunicacao-800w-8e075e95a0.jpg",
+      "1280": "assets-build/img/principio-comunicacao-1280w-8e075e95a0.jpg",
+      "1920": "assets-build/img/principio-comunicacao-1920w-8e075e95a0.jpg"
+    }
+  },
+  "principio-tomada-decisao": {
+    "slug": "principio-tomada-decisao",
+    "source": "Imagens/experiencias/principios/tomada-de-decisao.jpg",
+    "original_size_bytes": 362671,
+    "width": 1920,
+    "height": 1280,
+    "aspect_ratio": 1.5,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/principio-tomada-decisao-480w-3eb9ec7b99.avif",
+      "800": "assets-build/img/principio-tomada-decisao-800w-3eb9ec7b99.avif",
+      "1280": "assets-build/img/principio-tomada-decisao-1280w-3eb9ec7b99.avif",
+      "1920": "assets-build/img/principio-tomada-decisao-1920w-3eb9ec7b99.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/principio-tomada-decisao-480w-3eb9ec7b99.jpg",
+      "800": "assets-build/img/principio-tomada-decisao-800w-3eb9ec7b99.jpg",
+      "1280": "assets-build/img/principio-tomada-decisao-1280w-3eb9ec7b99.jpg",
+      "1920": "assets-build/img/principio-tomada-decisao-1920w-3eb9ec7b99.jpg"
+    }
+  },
+  "principio-pressao": {
+    "slug": "principio-pressao",
+    "source": "Imagens/experiencias/principios/atuacao-sob-pressao.jpg",
+    "original_size_bytes": 425620,
+    "width": 1920,
+    "height": 1280,
+    "aspect_ratio": 1.5,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/principio-pressao-480w-08c362310b.avif",
+      "800": "assets-build/img/principio-pressao-800w-08c362310b.avif",
+      "1280": "assets-build/img/principio-pressao-1280w-08c362310b.avif",
+      "1920": "assets-build/img/principio-pressao-1920w-08c362310b.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/principio-pressao-480w-08c362310b.jpg",
+      "800": "assets-build/img/principio-pressao-800w-08c362310b.jpg",
+      "1280": "assets-build/img/principio-pressao-1280w-08c362310b.jpg",
+      "1920": "assets-build/img/principio-pressao-1920w-08c362310b.jpg"
+    }
+  },
   "evento-truck-lounge": {
     "slug": "evento-truck-lounge",
     "source": "Imagens/experiencia do evento/Truck Lounge.png",

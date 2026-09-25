@@ -5,3 +5,7 @@ __pycache__/
 # vídeos brutos de origem (o site usa os MP4 comprimidos em assets-build/video)
 *.MOV
 *.mov
+# fontes brutas de novos-assets/ (o site usa só os otimizados em novos-assets/otimizado/) —
+# pessoas.mp4 sozinho tem 474MB, acima do limite de 100MB do GitHub
+assets/Imagens/novos-assets/*.mp4
+assets/Imagens/novos-assets/*.jpeg

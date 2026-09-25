@@ -39,75 +39,88 @@ JPEG_QUALITY = 78
 # slug -> caminho de origem relativo à raiz do projeto
 MANIFEST: dict[str, str] = {
     # Dobra 02 / 06 — complexo (aéreas e ambientes reais)
-    "complexo-1": "Imagens/complexo/1.png",
-    "complexo-2": "Imagens/complexo/2.png",
-    "complexo-3": "Imagens/complexo/3.png",
-    "complexo-4": "Imagens/complexo/4.png",
-    "complexo-5": "Imagens/complexo/5.png",
-    "complexo-6": "Imagens/complexo/image00016.jpeg",
-    "complexo-7": "Imagens/complexo/7.png",
-    "local-auditorio": "Imagens/local/auditorio.jpg",
-    "local-gastronomia": "Imagens/local/gastronomia.jpg",
-    "estrutura-acesso-aereo": "Imagens/estrutura/acesso aereo.png",
-    "estrutura-area-multiuso": "Imagens/estrutura/area multiuso.png",
-    "estrutura-auditorio": "Imagens/estrutura/auditorio.png",
-    "estrutura-coworking": "Imagens/estrutura/coworking.png",
-    "estrutura-garagem": "Imagens/estrutura/garage by vonder.png",
-    "estrutura-gastronomia": "Imagens/estrutura/gastronom,ia.png",
+    "complexo-1": "assets/Imagens/complexo/1.png",
+    "complexo-2": "assets/Imagens/complexo/2.png",
+    "complexo-3": "assets/Imagens/complexo/3.png",
+    "complexo-4": "assets/Imagens/complexo/4.png",
+    "complexo-5": "assets/Imagens/complexo/5.png",
+    "complexo-6": "assets/Imagens/complexo/image00016.jpeg",
+    "complexo-7": "assets/Imagens/complexo/7.png",
+    "local-auditorio": "assets/Imagens/local/auditorio.jpg",
+    "local-gastronomia": "assets/Imagens/local/gastronomia.jpg",
+    "estrutura-acesso-aereo": "assets/Imagens/estrutura/acesso aereo.png",
+    "estrutura-area-multiuso": "assets/Imagens/estrutura/area multiuso.png",
+    "estrutura-auditorio": "assets/Imagens/estrutura/auditorio.png",
+    "estrutura-coworking": "assets/Imagens/estrutura/coworking.png",
+    "estrutura-garagem": "assets/Imagens/estrutura/garage by vonder.png",
+    "estrutura-gastronomia": "assets/Imagens/estrutura/gastronom,ia.png",
     # Hero / CTA final (fallback enquanto o material Caterham externo não é aprovado)
-    "final-imagem": "Imagens/final/imagem final@2x.png",
+    "final-imagem": "assets/Imagens/final/imagem final@2x.png",
     # Hero (topo) — nova imagem aprovada (só a versão mobile; a versão desk
     # segue excluída, ver EXCLUDED_NOTE)
-    "topo-hero": "Imagens/topo/imagem topo mobile.png",
+    "topo-hero": "assets/Imagens/topo/imagem topo mobile.png",
     # Dobra 03 / 04 / 07 — o que é a Scuderia
-    "oque-esporte": "Imagens/o que é/esporte.png",
-    "oque-estrutura": "Imagens/o que é/estrutura.png",
-    "oque-experiencias": "Imagens/o que é/experiencias.png",
+    "oque-esporte": "assets/Imagens/o que é/esporte.png",
+    "oque-estrutura": "assets/Imagens/o que é/estrutura.png",
+    "oque-experiencias": "assets/Imagens/o que é/experiencias.png",
     # Dobra 04 — Team Building (karts/drift; NUNCA legendar como Caterham)
-    "race-experience-karts": "Imagens/race experience/RACE EXPERIENCE.png",
-    "team-building": "Imagens/tem-building.jpeg",  # pit stop em equipe — foto do Team Building (04)
+    "race-experience-karts": "assets/Imagens/race experience/RACE EXPERIENCE.png",
+    "team-building": "assets/Imagens/tem-building.jpeg",  # pit stop em equipe — foto do Team Building (04)
+    # Dobra 04 — momento audiovisual (emoção.mp4 + apoio): bastidores reais do
+    # pit lane, fornecidos pelo usuário (2026-09-24). Foto de apoio ao vídeo
+    # protagonista, não substitui o Team Building acima.
+    "experiencias-bastidores": "assets/Imagens/experiencias/bastidores.jpg",
+    # Dobra 04 — os 5 cards de princípios ao lado do vídeo (2026-09-24, 3ª
+    # rodada): fotos reais do acervo Caterham (Fazenda Capuava), copiadas
+    # para Imagens/experiencias/principios/ (não dependem mais do projeto
+    # Caterham externo).
+    "principio-trabalho-equipe": "assets/Imagens/experiencias/principios/trabalho-em-equipe.jpg",
+    "principio-confianca": "assets/Imagens/experiencias/principios/confianca.jpg",
+    "principio-comunicacao": "assets/Imagens/experiencias/principios/comunicacao.jpg",
+    "principio-tomada-decisao": "assets/Imagens/experiencias/principios/tomada-de-decisao.jpg",
+    "principio-pressao": "assets/Imagens/experiencias/principios/atuacao-sob-pressao.jpg",
     # Dobra 07 — Conteúdo / Festival de Interlagos
-    "evento-truck-lounge": "Imagens/experiencia do evento/Truck Lounge.png",
-    "evento-arquibancada": "Imagens/experiencia do evento/Arquibancada.png",
-    "evento-camarotes": "Imagens/experiencia do evento/Camarotes.png",
-    "evento-boxes": "Imagens/experiencia do evento/Visitação aos Boxe.png",
+    "evento-truck-lounge": "assets/Imagens/experiencia do evento/Truck Lounge.png",
+    "evento-arquibancada": "assets/Imagens/experiencia do evento/Arquibancada.png",
+    "evento-camarotes": "assets/Imagens/experiencia do evento/Camarotes.png",
+    "evento-boxes": "assets/Imagens/experiencia do evento/Visitação aos Boxe.png",
     # Faixa de Autoridade / Pilotos & Time / Palestras — só os 4 nomes atuais
-    "piloto-atila": "Imagens/pilotos-premium/atila-abreu.jpg",
-    "piloto-christian": "Imagens/pilotos-premium/cristian-fitipalidi.jpg",
-    "piloto-ingo": "Imagens/pilotos-premium/ingo-hoffman.jpg",
-    "piloto-nelsinho": "Imagens/pilotos-premium/nelson-piquet.jpg",
+    "piloto-atila": "assets/Imagens/pilotos-premium/atila-abreu.jpg",
+    "piloto-christian": "assets/Imagens/pilotos-premium/cristian-fitipalidi.jpg",
+    "piloto-ingo": "assets/Imagens/pilotos-premium/ingo-hoffman.jpg",
+    "piloto-nelsinho": "assets/Imagens/pilotos-premium/nelson-piquet.jpg",
     # Logo (interino — raster reduzido; pendência: pedir vetor/SVG real, ver item 9 do VISUAL-DIRECTION)
     "logo-raster": "Brand/1124_Bandeiras_RGB_L-RW.png",
     # Dobra 05 — Caterham: lockup oficial Scuderia Bandeiras x Caterham Motorsport
     # Brasil, extraído do projeto aprovado `Projeto-caterham/Caterham - V3`
     # (site em produção, distinto do material "Festival - Interlagos" pendente acima).
-    "caterham-logo": "Imagens/caterham/logo-scuderia-caterham.png",
+    "caterham-logo": "assets/Imagens/caterham/logo-scuderia-caterham.png",
     # Fundo do fecho ("O piloto conduz. Você sente.") — foto real do evento
     # (Fazenda Capuava), fornecida pelo cliente.
-    "caterham-fecho-photo": "Imagens/caterham/20260528_scuderiabandeiras_raceexperience_fazendacapuava_dudabairros-1000.jpg",
+    "caterham-fecho-photo": "assets/Imagens/caterham/20260528_scuderiabandeiras_raceexperience_fazendacapuava_dudabairros-1000.jpg",
     # Dobra 08 — mosaico "Somos todos Scuderia Bandeiras" (prova dos 50+ profissionais).
     # Incluído a pedido do usuário para revisão LOCAL. Item 7 continua aberto:
     # confirmar que Rubens Barrichello / Rafael Suzuki não estão no mosaico
     # ANTES de qualquer publicação.
-    "time-mosaico": "Imagens/nosso time/imagem time bandeiras desk.jpg",
+    "time-mosaico": "assets/Imagens/nosso time/imagem time bandeiras desk.jpg",
     # Dobra 10 — "Marcas que fazem parte da nossa história": arte pronta fornecida
     # pelo usuário como ativo oficial (2026-09-22), versão PNG transparente
     # ("marcas-que-fazem-parte-da-nossa-historia 1.png"). O recorte tira só a
     # área vazia das bordas; a transparência é preservada (sai AVIF + WebP).
     # Pendência da copy continua: lista final depende de aprovação comercial/jurídica.
-    "marcas-historia": "Imagens/marcas parceiras/marcas-historia-recorte.png",
+    "marcas-historia": "assets/Imagens/marcas parceiras/marcas-historia-recorte.png",
     # Dobra "Também no escopo" — 4 fotos reais dos cards (2026-09-22).
-    "escopo-caterham": "Imagens/escopo/caterham-2032.jpg.jpeg",
-    "escopo-ativacoes": "Imagens/escopo/ativacoes.jpg.jpeg",
-    "escopo-experiencias": "Imagens/escopo/experiencias corporativas.jpg.jpeg",
-    "escopo-projetos": "Imagens/escopo/projetos.JPG.jpeg",
+    "escopo-caterham": "assets/Imagens/escopo/caterham-2032.jpg.jpeg",
+    "escopo-ativacoes": "assets/Imagens/escopo/ativacoes.jpg.jpeg",
+    "escopo-experiencias": "assets/Imagens/escopo/experiencias corporativas.jpg.jpeg",
+    "escopo-projetos": "assets/Imagens/escopo/projetos.JPG.jpeg",
     # Dobra 03 — mosaico "O ecossistema" (5 peças): fotos reais fornecidas
     # pelo usuário (2026-09-23), uma por peça.
-    "eco-pilotos": "Imagens/ecossistema/pilotos.png",
-    "eco-carros": "Imagens/ecossistema/carros.jpeg",
-    "eco-pista": "Imagens/ecossistema/pista.jpeg",
-    "eco-estrutura": "Imagens/ecossistema/estrutura.JPG.jpeg",
-    "eco-producao": "Imagens/ecossistema/producoes.jpg.jpeg",
+    "eco-pilotos": "assets/Imagens/ecossistema/pilotos.png",
+    "eco-carros": "assets/Imagens/ecossistema/carros.jpeg",
+    "eco-pista": "assets/Imagens/ecossistema/pista.jpeg",
+    "eco-estrutura": "assets/Imagens/ecossistema/estrutura.JPG.jpeg",
+    "eco-producao": "assets/Imagens/ecossistema/producoes.jpg.jpeg",
 }
 
 EXCLUDED_NOTE = """

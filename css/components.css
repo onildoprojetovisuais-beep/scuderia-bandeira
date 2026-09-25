@@ -39,6 +39,18 @@
   }
   .btn--ghost:hover { border-color: var(--luz); background: rgba(255, 255, 255, 0.08); }
 
+  /* Terciário — peso mínimo: link sublinhado, sem fundo nem borda. Usado
+     quando um CTA precisa existir mas não pode competir com o primário. */
+  .btn--tertiary {
+    background: transparent;
+    color: var(--luz-2);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--luz-2);
+    padding-inline: var(--space-2xs);
+  }
+  .btn--tertiary:hover { color: var(--luz); text-decoration-color: var(--luz); }
+
   /* ============================================================ PLACEHOLDER DE IMAGEM
      Reserva a proporção e o espaço reais do layout quando falta um asset
      definitivo — nunca skeleton "carregando", nunca caixa cinza sem contexto. */
@@ -100,10 +112,10 @@
   @media (max-width: 1023.98px) {
     /* texto de .media-split e galerias roláveis na mesma margem do container,
        sem abrir um segundo alinhamento (--gutter) a poucos px do primeiro */
-    .section:has(.section-head) :is(.media-split > :not(.media-split__media), .ecossistema__mosaico, .pilotos-time__deck) {
+    .section:has(.section-head) :is(.media-split > :not(.media-split__media), .ecossistema__mosaico, .pilotos-time__cards) {
       padding-inline: var(--container-margin);
     }
-    .section:has(.section-head) :is(.ecossistema__mosaico, .pilotos-time__deck) {
+    .section:has(.section-head) :is(.ecossistema__mosaico, .pilotos-time__cards) {
       scroll-padding-inline: var(--container-margin);
     }
   }
@@ -222,6 +234,15 @@
     background: var(--divisor);
     border: 1px solid var(--divisor);
     margin-block: var(--space-l);
+  }
+  /* Wrapper full-bleed do .card-grid--4 ("Também no escopo"): mesmo
+     tratamento de .frentes/.experiencias__cena/.bandeiras__ativos — 100vw
+     no desktop em vez de preso ao .container (ver comentário no HTML). */
+  .card-grid-bleed {
+    padding-inline: var(--container-margin);
+  }
+  @media (min-width: 1024px) {
+    .card-grid-bleed { padding-inline: 0; }
   }
   .card {
     position: relative;
@@ -457,6 +478,16 @@
     object-fit: cover;
     object-position: center 30%;
   }
+  /* Vida sutil no fundo: respiração lentíssima (18s), nunca um zoom que se
+     perceba como "animação" — só profundidade. object-fit:cover garante que
+     a escala >1 nunca revela borda. */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__bg img { animation: hero-bg-respira 18s ease-in-out infinite alternate; }
+  }
+  @keyframes hero-bg-respira {
+    from { transform: scale(1.06); }
+    to   { transform: scale(1.13); }
+  }
   .hero__scrim {
     position: absolute;
     inset: 0;
@@ -495,14 +526,6 @@
     gap: var(--space-m);
     margin-block-start: var(--space-l);
   }
-  .hero__ctas .btn--ghost {
-    border-color: transparent;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-color: var(--luz-2);
-    padding-inline: var(--space-2xs);
-  }
-  .hero__ctas .btn--ghost:hover { background: transparent; text-decoration-color: var(--luz); }
 
   .hero__scroll {
     position: absolute;
@@ -534,6 +557,47 @@
     .hero { min-height: 100svh; }
     .hero__bg img { object-position: center 20%; }
     .hero__body { padding-inline: var(--gutter); }
+  }
+  /* Mobile: hierarquia 1-2-3 também na forma — primário e secundário viram
+     blocos de largura cheia (alvo de toque generoso), o terciário fica como
+     link centralizado abaixo, sem competir com os dois primeiros. */
+  @media (max-width: 480px) {
+    .hero__ctas { flex-direction: column; align-items: stretch; width: 100%; }
+    .hero__ctas .btn--primary,
+    .hero__ctas .btn--ghost { width: 100%; }
+    .hero__ctas .btn--tertiary { align-self: center; }
+  }
+
+  /* ============================================================ TRANSIÇÃO HERO → SOBRE
+     Faixa fina, sem numeral — mesmo arquétipo de conector que a FAIXA DE
+     AUTORIDADE usa entre 02/03. Reaproveita .statement (a "pausa narrativa"
+     já usada no resto da página) só que centralizada e mais compacta: soa
+     como o gancho "por trás disso existe um ecossistema", não uma nova
+     seção de conteúdo. */
+  .transicao {
+    border-block-end: 1px solid var(--divisor);
+    padding-block: var(--space-l);
+    text-align: center;
+  }
+  .transicao__risco {
+    display: block;
+    width: 64px;
+    height: 2px;
+    margin-inline: auto;
+    margin-block-end: var(--space-m);
+    background: var(--vermelho);
+  }
+  .transicao__frase {
+    margin-inline: auto;
+    margin-block: 0;
+  }
+  /* O risco "se traça" (0 → 64px) em vez de só aparecer — eco mínimo de
+     movimento de pista/bandeirada. Só a largura: opacidade/translateY do
+     risco já vêm do [data-reveal] genérico (base.css, layer motion-base). */
+  .js-motion .transicao__risco { width: 0; }
+  .js-motion .transicao__risco.is-in {
+    width: 64px;
+    transition: width var(--dur-slow) var(--ease-drive);
   }
 
   /* ============================================================ MÍDIA + TEXTO (padrão reaproveitado nas dobras 02, 04, 06, 07, 09, 10)
@@ -705,689 +769,349 @@
     .autoridade__item::after { clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%); }
   }
 
-  /* ============================================================ 03 · ECOSSISTEMA */
-  .ecossistema__sub { color: var(--luz-2); font-size: var(--t-l); margin-block-end: 0; }
-  .ecossistema__pecas {
-    margin-block-start: var(--space-s);
-    color: var(--luz-2);
-    font-size: var(--t-body);
-  }
-
-  .ecossistema__mosaico {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 80%;
-    gap: var(--space-xs);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-inline: var(--gutter);
-    margin-block: var(--space-l);
-    scrollbar-width: none;
-    counter-reset: peca;
-  }
-  .ecossistema__mosaico::-webkit-scrollbar { display: none; }
-  .ecossistema__peca {
-    counter-increment: peca;
-    scroll-snap-align: start;
-    position: relative;
-  }
-  .ecossistema__peca img { aspect-ratio: 3/4; object-fit: cover; }
-  .ecossistema__peca::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 0 0;
-    height: 55%;
-    background: linear-gradient(0deg, rgba(6,6,6,.85) 0%, rgba(6,6,6,0) 100%);
-    pointer-events: none;
-  }
-  /* Mesmo acento do sistema de cartão (.card::before): reta vermelha de
-     32px no repouso, corre a largura inteira no hover. */
-  .ecossistema__peca::before {
-    content: "";
-    position: absolute;
-    inset-block-start: 0;
-    inset-inline-start: 0;
-    z-index: 1;
-    width: 32px;
-    height: 3px;
-    background: var(--vermelho);
-    transition: width var(--dur-slow) var(--ease-brake);
-  }
-  .ecossistema__peca figcaption {
-    position: absolute;
-    z-index: 1;
-    inset-block-end: var(--space-s);
-    inset-inline-start: var(--space-s);
-    transition: transform var(--dur-slow) var(--ease-brake);
-  }
-  @media (hover: hover) and (pointer: fine) {
-    .ecossistema__peca:hover::before { width: 100%; }
-    .ecossistema__peca:hover figcaption { transform: translateX(6px); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .ecossistema__peca::before,
-    .ecossistema__peca figcaption { transition: none; }
-  }
-  .ecossistema__peca figcaption .num {
-    display: block;
-    font-family: var(--ff-text);
-    font-size: var(--t-label);
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: var(--vermelho);
-    margin-block-end: var(--space-3xs);
-  }
-  .ecossistema__peca figcaption .num::before { content: "0" counter(peca) " / "; }
-  .ecossistema__peca figcaption .label {
-    display: block;
-    font-family: var(--ff-display);
-    font-size: var(--t-l);
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-    text-shadow: 0 2px 12px rgba(0,0,0,.6);
-  }
-
-  /* Ritmo de mosaico: colunas alternam altura para não parecer grade
-     básica de cards idênticos — uma "família" com variação controlada. */
-  @media (min-width: 1024px) {
-    .ecossistema__mosaico {
-      grid-auto-columns: unset;
-      grid-template-columns: repeat(5, 1fr);
-      align-items: end;
-      overflow: visible;
-      padding-inline: calc(var(--content-inset) + var(--axis)) var(--content-inset); /* começa no eixo */
-    }
-    .ecossistema__peca { align-self: stretch; }
-    .ecossistema__peca:nth-child(even) { align-self: start; padding-block-end: var(--space-2xl); }
-    .ecossistema__peca img { height: 100%; aspect-ratio: auto; min-height: 22rem; }
-  }
-
-  .ecossistema__lista {
-    display: grid;
-    gap: 0;
-    margin-block-start: var(--space-s);
-    counter-reset: item;
-  }
-  .ecossistema__lista li {
-    counter-increment: item;
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-s);
-    padding-block: var(--space-s);
-    border-block-end: 1px solid var(--divisor);
-  }
-  .ecossistema__lista li::before {
-    content: "0" counter(item);
-    flex-shrink: 0;
-    width: 2.2ch;
+  /* ============================================================ 02 · ECOSSISTEMA — DUAS FRENTES
+     Composição de dois painéis full-bleed (Scuderia Bandeiras / Bandeiras
+     Empresarial), border-a-border como .scrollseq/.conteudo__frames — não
+     recua ao eixo (ver comentário em EIXO DO CONTEÚDO acima), porque não há
+     coluna de texto para alinhar: as duas fotos SÃO a composição. Substitui
+     o antigo mosaico de 5 peças + lista de 8 itens. */
+  /* Microline institucional — discreta de propósito: não é mais um "lead"
+     (parágrafo grande) competindo com o H2, só um registro rápido (sede +
+     fundador) antes de ir direto às duas frentes. */
+  .ecossistema__microline {
+    margin-block-start: var(--space-2xs);
     font-size: var(--t-small);
-    font-weight: 600;
-    color: var(--vermelho);
-    font-feature-settings: "tnum";
-  }
-
-  @media (min-width: 1024px) {
-    .ecossistema__lista { grid-template-columns: repeat(2, 1fr); column-gap: var(--space-2xl); }
-  }
-
-  /* ============================================================ 04 · EXPERIÊNCIAS */
-  .experiencias__intro { margin-block: var(--space-xl) var(--space-l); }
-  /* foco no pit stop (pessoas + roda), não no céu nem no chão */
-  .experiencias__media img { object-position: 45% 55%; }
-  /* Mesma hierarquia da abertura: rótulo → frase-manifesto → lead →
-     texto secundário. Antes a frase ia em --t-xxl (5 linhas) e engolia o
-     bloco; em --t-xl ela ocupa 2–3 linhas e o texto volta a conversar. */
-  .experiencias__texto h3 {
-    font-size: var(--t-m);
-    color: var(--vermelho);
-    letter-spacing: 0.02em;
-    margin-block-end: var(--space-2xs);
-  }
-  .experiencias__sub {
-    font-family: var(--ff-display);
-    font-size: var(--t-xl);
-    line-height: 0.95;
-    text-transform: uppercase;
-    max-width: 14ch;
-    margin-block: 0 var(--space-m);
-  }
-  .experiencias__texto .lead { max-width: 34ch; line-height: 1.35; }
-  .experiencias__texto .lead + p {
-    margin-block-start: var(--space-s);
     color: var(--luz-2);
+    letter-spacing: 0.02em;
   }
 
-  /* Refino 2026-09-23: só o bloco Team Building (composição aprovada,
-     imagem full-bleed 58–60% à direita / texto 40–42% à esquerda —
-     .media-split--40-60 já entrega essa proporção). O problema era a
-     coluna de texto: herdava padding-inline-start = --content-inset +
-     --axis (o mesmo recuo que alinha o corpo das seções numeradas ao
-     eixo do numeral). Em telas largas esse recuo cresce mais rápido que
-     a própria coluna de 5fr — a ~2560px de viewport ele chegava a comer
-     ~70% da coluna, sobrando ~340px pro texto (por isso a headline
-     quebrava em 6–7 linhas e os parágrafos pareciam espremidos). Aqui a
-     coluna usa um recuo fixo e mais modesto, só neste bloco — o padrão
-     --content-inset/--axis do .media-split segue intacto nas dobras 02/
-     06/07/09/10. ID em #experiencias garante especificidade suficiente
-     para vencer a regra genérica sem !important. */
-  #experiencias .experiencias__intro > .experiencias__texto {
-    padding-inline-start: clamp(24px, 5vw, 96px);
-    max-width: 34rem;
-  }
-  #experiencias .experiencias__texto h3 { margin-block-end: var(--space-s); }
-  #experiencias .experiencias__sub {
-    max-width: 22ch;
-    font-size: clamp(2rem, 1.2rem + 3vw, 3.75rem);
-    line-height: 0.96;
-    margin-block: 0 var(--space-l);
-  }
-  #experiencias .experiencias__texto .lead {
-    max-width: 30ch;
-    font-size: clamp(1.35rem, 1.15rem + 0.8vw, 1.875rem);
-    line-height: 1.32;
-  }
-  #experiencias .experiencias__texto .lead + p {
-    max-width: 34ch;
-    margin-block-start: var(--space-m);
-    line-height: 1.65;
-  }
-  /* ============================================================ SCROLL SEQUENCE (numerais em roleta)
-     Grade estática de 5 quadros — layout, cards, bordas e títulos nunca se
-     movem. Só os DÍGITOS do numeral gigante giram, como rolos de roleta,
-     dentro da própria posição do numeral (js/scrollseq.js):
-       - scroll: os rolos giram com a posição real da página (scrub,
-         reversível) e param exatamente no número quando a seção centraliza;
-       - hover no quadro: uma tirada de 2–3 voltas, desaceleração sem bounce,
-         parando de novo no número.
-     Cada rolo é uma janela de 1em com overflow: clip, e o quadro continua
-     com overflow: clip — o numeral segue cortado pela caixa e nunca vaza
-     para o vizinho. Sem JS / prefers-reduced-motion: nenhum rolo é montado,
-     o numeral fica estático como no layout aprovado. */
-  .scrollseq__frames {
+  .frentes {
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    background: var(--divisor);
-    border-block: 1px solid var(--divisor);
+    margin-block-start: var(--space-l);
   }
-  .scrollseq__frames > .scrollseq__frame:first-child { grid-column: 1 / -1; min-height: 10rem; }
-  .scrollseq__frame {
+  .frentes__eixo { display: none; }
+  .frentes__painel {
     position: relative;
     overflow: clip;
-    background: var(--asfalto);
-    padding: var(--space-m) var(--gutter);
-    min-height: 8rem;
-    display: flex;
-    align-items: flex-end;
+    background: var(--asfalto-2);
   }
-  .scrollseq__num {
+  .frentes__media { position: absolute; inset: 0; }
+  .frentes__media img { width: 100%; height: 100%; object-fit: cover; }
+  .frentes__media::after {
+    content: "";
     position: absolute;
-    inset-block-start: -0.3em;
-    inset-inline-end: var(--space-s);
-    font-family: var(--ff-display);
-    font-size: var(--t-num);
-    line-height: 1;
-    color: var(--luz);
-    opacity: 0.07;
-    font-feature-settings: "tnum";
-    display: flex;
-    pointer-events: none;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(6,6,6,.82) 0%, rgba(6,6,6,.4) 24%, rgba(6,6,6,.06) 46%, transparent 62%);
   }
-  .scrollseq__reel {
-    display: block;
-    height: 1em;
-    overflow: clip;
-  }
-  .scrollseq__strip {
+  .frentes__painel--scuderia .frentes__media img { object-position: 50% 65%; }
+  .frentes__conteudo {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    text-align: center;
-    will-change: transform;
+    align-items: flex-start;
+    gap: var(--space-s);
+    height: 100%;
+    justify-content: flex-end;
+    padding: var(--space-m) var(--gutter);
   }
-  .scrollseq__strip > span { display: block; height: 1em; line-height: 1; }
-  .scrollseq__title {
-    position: relative;
+  .frentes__label {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2xs);
+    margin: 0;
     font-family: var(--ff-display);
-    font-weight: 400;
     font-size: var(--t-l);
-    line-height: 0.95;
-    text-transform: uppercase;
-    margin: 0;
-  }
-
-
-  /* ============================================================ PAUSA EDITORIAL
-     Fecho da sequência de princípios: em vez de um paredão de 7 linhas em
-     --t-xl, a frase se divide em dois níveis (afirmação em --t-l, desdobramento
-     menor em --luz-2) com o grifo marcando a virada ("vira contexto"). À
-     esquerda, o texto de apoio vira nota lateral; as duas réguas (cinza fina
-     na nota, vermelha no statement) correm na mesma altura como uma linha
-     técnica única, afastada do conteúdo de cima por --space-2xl. */
-  .pausa {
-    display: grid;
-    gap: var(--space-l);
-    margin-block: var(--space-2xl) var(--space-xl);
-  }
-  /* Nota lateral: mesmo padding-top do statement, então a 1ª linha dela
-     começa na altura da linha de capitulares da headline — as duas colunas
-     leem como uma peça só, não como texto solto no canto. */
-  .pausa__aside {
-    max-width: 30ch;
-    padding-block-start: var(--space-m);
-    border-block-start: 1px solid var(--divisor);
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--luz-2);
-  }
-  /* width: fit-content — a régua vermelha mede exatamente o bloco de texto
-     (a linha mais larga da headline), em vez de atravessar a coluna vazia. */
-  .pausa__statement {
-    width: fit-content;
-    max-width: 100%;
-    margin: 0;
-    padding-block-start: var(--space-m);
-    border-block-start: 2px solid var(--vermelho);
-    font-family: var(--ff-display);
+    line-height: 1;
     text-transform: uppercase;
     letter-spacing: -0.01em;
+    color: var(--luz);
+    text-shadow: 0 2px 16px rgba(0,0,0,.6);
   }
-  .pausa__a {
-    display: block;
-    max-width: 22ch;
-    font-size: var(--t-l);
-    line-height: 0.92;
-    text-wrap: balance;
-  }
-  .pausa__b {
-    display: block;
-    max-width: 30ch;
-    margin-block-start: var(--space-m);
-    font-size: var(--t-m);
-    line-height: 1.14;
-    letter-spacing: 0;
+  .frentes__num { color: var(--vermelho); font-feature-settings: "tnum"; }
+  .frentes__tags {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 0.3em;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.625rem;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
     color: var(--luz-2);
-    text-wrap: balance;
+    text-shadow: 0 2px 12px rgba(0,0,0,.6);
+  }
+  .frentes__tags li { white-space: nowrap; }
+  .frentes__tags li:not(:last-child)::after { content: "·"; margin-inline: 0.3em; color: var(--vermelho); }
+  .frentes__link {
+    font-weight: 600;
+    font-size: var(--t-small);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--luz);
+    border-bottom: 1px solid currentColor;
+    padding-block-end: 2px;
+    text-shadow: 0 2px 12px rgba(0,0,0,.6);
+    transition: color var(--dur-fast) var(--ease-brake);
+  }
+  .frentes__link:hover { color: var(--vermelho); }
+
+  @media (min-width: 1024px) {
+    .frentes { grid-template-columns: 1fr 1fr; }
+    .frentes__painel { min-height: 78vh; }
+    .frentes__eixo {
+      display: block;
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: 50%;
+      width: 2px;
+      z-index: 2;
+      background: var(--vermelho);
+      transform: translateX(-50%);
+    }
+    .frentes__conteudo { padding: var(--space-xl); max-width: 34rem; }
+    .frentes__tags {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      font-size: 0.75rem;
+    }
+    .frentes__tags::-webkit-scrollbar { display: none; }
+  }
+
+  /* <1024px: cada frente vira um bloco vertical fechado — número/título →
+     palavras-chave → CTA → imagem (nessa ordem, já é a ordem do DOM), sem
+     overlay: foto limpa, proporção fixa, conteúdo em fluxo normal. Espaço
+     GRANDE entre as duas frentes (unidades distintas) e espaço PEQUENO
+     dentro de cada uma (a imagem "gruda" no bloco de texto acima dela, não
+     fica solta) — mesmo gutter inscreve texto e imagem na mesma coluna. */
+  @media (max-width: 1023.98px) {
+    .frentes { gap: var(--space-xl); }
+    .frentes__painel { overflow: visible; background: none; padding-inline: var(--gutter); }
+    .frentes__conteudo { position: relative; height: auto; padding: 0 0 var(--space-s); }
+    .frentes__media { position: relative; aspect-ratio: 4 / 3; }
+    .frentes__media::after { display: none; }
+    .frentes__label,
+    .frentes__tags,
+    .frentes__link { text-shadow: none; }
+  }
+
+  /* ============================================================ 04 · EXPERIÊNCIAS
+     Redesenho 2026-09-24, 3ª rodada: os 5 princípios deixam de ser uma faixa
+     horizontal ABAIXO do vídeo e passam a ocupar o espaço negativo à DIREITA
+     dele, como uma coluna de 5 cards editoriais empilhados (mesma técnica de
+     poster de .conteudo__frame — foto full-bleed + scrim + número/título no
+     pé — só que em coluna, não em trilho horizontal). .experiencias__cena é
+     o wrapper que guarda vídeo + cards juntos: em mobile é só empilhamento
+     de bloco (vídeo, depois carrossel); a partir de 1024px vira grid de 2
+     colunas com a mesma altura (vídeo cobre a esquerda, os 5 cards dividem
+     a direita em 5 linhas iguais). bastidores.jpg segue como banner abaixo,
+     sem mudança nesta rodada. */
+  .experiencias__cena {
+    margin-block: var(--space-xl) 0;
+  }
+  .experiencias__momento {
+    position: relative;
+    overflow: clip;
+    aspect-ratio: 3 / 4;
+    max-height: 620px;
+    background: var(--asfalto);
+  }
+  .experiencias__momento-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .experiencias__momento-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 48%, rgba(15, 15, 15, 0.42) 72%, rgba(15, 15, 15, 0.86) 92%, var(--asfalto) 100%);
+  }
+  .experiencias__momento-overlay {
+    /* Race Experience tem mais a ver com Caterham que com o vermelho geral
+       da marca — mesma técnica de .card--caterham: sobrepõe --vermelho por
+       lima só neste escopo (eyebrow e o .grifo do título herdam sozinhos). */
+    --vermelho: #cad302;
+    --vermelho-escuro: #a8b002;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    padding: var(--space-l) var(--gutter);
+  }
+  .experiencias__momento-overlay .eyebrow { color: var(--vermelho); text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7); }
+  .experiencias__momento-titulo {
+    font-family: var(--ff-display);
+    font-size: var(--t-xl);
+    line-height: 0.98;
+    text-transform: uppercase;
+    max-width: 16ch;
+    margin-block: var(--space-2xs) var(--space-s);
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
+  }
+  .experiencias__momento-lead {
+    max-width: 32ch;
+    font-size: var(--t-body);
+    line-height: 1.4;
+    color: var(--luz);
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Cards dos princípios — poster editorial (foto + scrim + número/título no
+     pé), mesma técnica visual de .conteudo__frame. Mobile/tablet: carrossel
+     horizontal com scroll-snap, 1 card dominante + ponta do próximo (sem
+     autoplay, swipe nativo). Desktop (≥1024px, ver .experiencias__cena):
+     coluna de 5 linhas iguais ao lado do vídeo. */
+  .experiencias__cards {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 78vw;
+    gap: 2px;
+    margin-block-start: 2px;
+    padding-inline: var(--gutter);
+    scroll-padding-inline: var(--gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    list-style: none;
+  }
+  .experiencias__cards::-webkit-scrollbar { display: none; }
+  .experiencias__cards:focus-visible { outline: 2px solid var(--vermelho); outline-offset: 4px; }
+
+  .experiencias__card {
+    position: relative;
+    isolation: isolate;
+    aspect-ratio: 4 / 5;
+    overflow: clip;
+    scroll-snap-align: start;
+    background: var(--asfalto-2);
+  }
+  .experiencias__card picture { display: block; height: 100%; }
+  .experiencias__card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--foco, 50% 50%);
+    transition: transform var(--dur-settle) var(--ease-brake);
+  }
+  .experiencias__card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(0deg, rgba(6, 6, 6, 0.88) 0%, rgba(6, 6, 6, 0.58) 32%, rgba(6, 6, 6, 0) 66%);
+  }
+  .experiencias__card-legenda {
+    position: absolute;
+    z-index: 2;
+    inset: auto var(--space-s) var(--space-s) var(--space-s);
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2xs);
+  }
+  .experiencias__card-num {
+    font-family: var(--ff-display);
+    font-size: var(--t-label);
+    color: var(--vermelho);
+    flex-shrink: 0;
+    font-feature-settings: "tnum";
+  }
+  .experiencias__card-titulo {
+    font-family: var(--ff-display);
+    font-size: clamp(1.05rem, 0.85rem + 0.9vw, 1.375rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+    color: var(--luz);
+    text-shadow: 0 1px 10px rgba(6, 6, 6, 0.6);
+  }
+
+  @media (min-width: 768px) {
+    .experiencias__momento { aspect-ratio: 16 / 9; max-height: 74vh; }
+    .experiencias__momento-overlay { max-width: 44rem; }
   }
 
   @media (min-width: 1024px) {
-    /* Colunas do tamanho do conteúdo (nota 30ch + statement fit-content)
-       — antes, 4fr/8fr deixava o statement curto encostado à esquerda da
-       coluna larga. O par começa no eixo da seção (justify-content: start),
-       como o resto do conteúdo numerado, em vez de centralizar no container. */
-    .pausa {
-      grid-template-columns: auto auto;
-      justify-content: start;
-      column-gap: var(--space-xl);
-      align-items: start;
+    .experiencias__cena {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr);
+      gap: 2px;
+      height: clamp(560px, 52vw, 720px);
     }
+    .experiencias__momento { height: 100%; min-height: 0; max-height: none; aspect-ratio: auto; }
+    .experiencias__cards {
+      grid-auto-flow: row;
+      grid-auto-columns: unset;
+      grid-template-rows: repeat(5, 1fr);
+      height: 100%;
+      min-height: 0;
+      margin-block-start: 0;
+      padding-inline: 0;
+      overflow: visible;
+      scroll-snap-type: none;
+    }
+    /* min-height:0 é o pulo do gato: sem isso, o min-height:auto padrão de
+       item de grid deixa a proporção intrínseca da <img> (replaced element)
+       vazar como "conteúdo mínimo" do card, e a linha de 1fr cresce além
+       da altura do container em vez de respeitar os 5 quinhões iguais. */
+    .experiencias__card { aspect-ratio: auto; height: 100%; min-height: 0; }
+    .experiencias__card-legenda { inset: auto var(--space-m) var(--space-s) var(--space-m); }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .experiencias__card:hover img { transform: scale(1.04); }
+    .experiencias__card:hover .experiencias__card-titulo { letter-spacing: 0.01em; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .experiencias__card img { transition: none; }
+    .experiencias__card:hover img { transform: none; }
   }
 
   .mini-head { border-block-start: 1px solid var(--divisor); padding-block-start: var(--space-l); margin-block-start: var(--space-l); }
   .experiencias__nota { color: var(--luz-2); font-size: var(--t-small); }
 
-  /* ============================================================ 05 · CATERHAM
-     Painel de performance: cada modelo é um card de ficha técnica (vídeo +
-     numeral + unidade + peso + modelo), não dois números soltos na página.
-
-     Escopo de marca: dentro de .caterham os tokens de cor/tipografia da home
-     são substituídos pelos da identidade Caterham (paleta e fontes vêm do
-     site aprovado Projeto-caterham/Caterham - V3). Como todo componente
-     abaixo já lê var(--asfalto)/var(--vermelho)/var(--luz)/var(--divisor)/
-     var(--ff-display), o resto dos componentes (contador, botão, grifo) não
-     muda — só a pele. Layout de texto é centralizado nesta dobra só (o resto
-     da home é alinhado à esquerda) — decisão desta seção, não um token novo. */
-  .caterham {
-    text-align: center;
-    --asfalto: #010c0e;          /* --ink   Caterham */
-    --asfalto-2: #04181a;        /* --ink-1 Caterham */
-    --vermelho: #cad302;         /* --lime  Caterham — acento no lugar do vermelho */
-    --vermelho-escuro: #a8b002;  /* --lime-d, hover/estados */
-    --luz: #fbfbfc;              /* --paper Caterham */
-    --luz-2: rgba(245, 245, 245, 0.6);
-    --divisor: rgba(245, 245, 245, 0.12);
-    --ff-display: "IBM Plex Sans Condensed", sans-serif;
-    /* --asfalto (#010c0e) é próximo demais do --asfalto do resto da home
-       (#0f0f0f) — a dobra "mesclava" com a seção anterior. Um brilho verde
-       (lime da marca Caterham) no topo, atrás da logo, e outro mais difuso
-       ao longo da ficha técnica, dão identidade própria à seção sem
-       depender de mudar o preto de fundo. */
-    background:
-      radial-gradient(ellipse 65% 55% at 50% 0%, rgba(202, 211, 2, 0.18), transparent 70%),
-      radial-gradient(ellipse 90% 65% at 50% 60%, rgba(202, 211, 2, 0.09), transparent 75%),
-      var(--asfalto);
+  /* ============================================================ CATERHAM (card)
+     Redesenho 2026-09-24: Caterham deixou de ser um módulo full-viewport
+     (logo + ficha com 2 vídeos + fecho com foto/HUD, quase 2 telas de
+     altura) e passa a ser 1 card dentro do grid "Também no escopo" — pedido
+     explícito do usuário ("módulo, não seção gigante"; o HUD de cantos e
+     régua de telemetria também caía no "gamer" que ele pediu para evitar).
+     .card--caterham só sobrepõe --vermelho/--vermelho-escuro para lima (o
+     resto do token system e do componente .card não muda). id="caterham"
+     fica no card para o crossfade de cursor em js/cursor-trail.js — a área
+     de crossfade agora é o card, não a seção inteira. */
+  .card--caterham {
+    --vermelho: #cad302;
+    --vermelho-escuro: #a8b002;
+    /* Fundo puxando pro verde-lima do Caterham, não só o acento/tipografia
+       — pra se reconhecer o card mesmo antes de ler o texto. */
+    background: color-mix(in srgb, var(--asfalto) 82%, var(--vermelho) 18%);
   }
-  .caterham h2,
-  .caterham .num,
-  .caterham .statement,
-  .caterham .caterham__fecho-linha {
-    font-weight: 700; /* IBM Plex Sans Condensed pede peso 700 (Special Gothic já é ~black em 400) */
+  @media (hover: hover) and (pointer: fine) {
+    .card--caterham:hover {
+      background: color-mix(in srgb, var(--asfalto-2) 80%, var(--vermelho) 20%);
+    }
   }
-  .caterham .num { font-family: "JetBrains Mono", monospace; } /* leitura de telemetria — 84cv/490kg */
-  .caterham .eyebrow,
-  .caterham .caterham__fecho-kicker,
-  .caterham .caterham__modelo {
-    font-family: "IBM Plex Sans Condensed", sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.28em;
-    padding-inline-start: 0.28em; /* compensa o tracking após a última letra */
-  }
-  .caterham h2,
-  .caterham .lead,
-  .caterham > .container > p {
-    margin-inline: auto;
-  }
-  .caterham .eyebrow { justify-content: center; }
-
-  /* Cabeçalho: só a logo (a marca já diz "Caterham" — nada de numeral ou
-     eyebrow repetindo o nome) + título em duas linhas fixas, centralizado —
-     troca o .section-head (linha índice+texto) padrão do resto da home só
-     aqui. */
-  .caterham__head {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 50rem;
-    margin-inline: auto;
-    margin-block-end: var(--space-l);
-  }
-  .caterham__head h2 { max-width: none; }
-  /* 4 linhas fixas: cada <span> é uma linha. nowrap só a partir de tablet —
-     no celular a última linha ("profissional no volante.") pode quebrar. */
-  .caterham__titulo > span { display: block; }
-  @media (min-width: 48rem) {
-    .caterham__head { max-width: none; }
-    .caterham__titulo > span { white-space: nowrap; }
-  }
-  .caterham__logo {
-    display: block;
-    height: 32px;
-    width: auto;
-    margin-block-end: var(--space-l);
-  }
-  .caterham__logo img {
-    display: block;
-    height: 100%;
-    width: auto;
-    margin-inline: auto;
-  }
-
-  .caterham__ficha {
-    display: grid;
-    gap: 1px;
-    background: var(--divisor);
-    border: 1px solid var(--divisor);
-    margin-block: var(--space-l);
-    text-align: center;
-  }
-  .caterham__num {
-    background: var(--asfalto);
-    padding: var(--space-m);
-  }
-  .caterham__num-media {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16/10;
-    object-fit: cover;
-    margin-block-end: var(--space-m);
-    background: var(--asfalto-2);
-  }
-  .caterham__num-valor { font-size: var(--t-num); line-height: 0.8; text-align: center; }
-  .caterham__peso {
-    color: var(--luz-2);
-    font-size: var(--t-m);
-    margin-block-start: var(--space-2xs);
-    text-align: center;
-  }
-  .caterham__modelo {
-    font-size: var(--t-small);
-    color: var(--luz-2);
+  .card--caterham__cta.btn {
+    align-self: flex-start;
     margin-block-start: var(--space-s);
-    padding-block-start: var(--space-s);
-    border-block-start: 1px solid var(--divisor);
-    text-transform: uppercase;
-    text-align: center;
-    max-width: none; /* anula o 60ch global do p, que prendia o nome à esquerda */
-  }
-
-  /* Fecho — uma composição só: foto full-bleed + HUD técnico + headline +
-     lead/apoio + CTA dentro do mesmo quadro. O overlay escurece só bordas
-     e base (onde o texto de apoio mora) e deixa o centro — o cockpit — mais
-     aberto. O lima (--vermelho neste escopo) se repete em kicker, grifo,
-     cantos do HUD e botão, para ler como sistema e não como cor avulsa. */
-  .caterham__fecho {
-    position: relative;
-    isolation: isolate;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    min-height: max(100svh, 720px);
-    margin-block: var(--space-2xl) calc(var(--space-2xl) * -1);
-    padding: var(--space-3xl) var(--gutter) var(--space-2xl);
-    background: var(--asfalto);
-    color: var(--luz);
-    text-align: center;
-    overflow: clip;
-  }
-  .caterham__fecho-bg {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-  }
-  .caterham__fecho-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% 40%;
-    filter: saturate(1.05);
-  }
-  .caterham__fecho::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background:
-      /* base: onde lead, apoio e CTA ficam — escuro sólido no pé */
-      linear-gradient(180deg, transparent 38%, rgba(1, 12, 14, 0.55) 58%, rgba(1, 12, 14, 0.92) 80%, var(--asfalto) 100%),
-      /* topo: funde com a seção acima, sem corte reto */
-      linear-gradient(180deg, var(--asfalto) 0%, transparent 16%),
-      /* sombra macia só atrás da headline — segura o branco sobre o céu
-         sem apagar o cockpit */
-      radial-gradient(ellipse 42% 26% at 50% 40%, rgba(1, 12, 14, 0.38), transparent 100%),
-      /* laterais + vinheta: o centro fica aberto */
-      radial-gradient(ellipse 70% 62% at 50% 42%, transparent 45%, rgba(1, 12, 14, 0.7) 100%),
-      linear-gradient(90deg, rgba(1, 12, 14, 0.6) 0%, transparent 18%, transparent 82%, rgba(1, 12, 14, 0.6) 100%);
-  }
-
-  /* HUD técnico — enquadramento de câmera onboard, discreto */
-  .caterham__hud {
-    position: absolute;
-    inset: clamp(72px, 9vw, 120px) var(--gutter) clamp(24px, 4vw, 48px);
-    z-index: 0;
-    pointer-events: none;
-    color: rgba(245, 245, 245, 0.82);
-  }
-  .caterham__hud-canto {
-    position: absolute;
-    width: clamp(18px, 2.4vw, 32px);
-    aspect-ratio: 1;
-    border: 0 solid var(--vermelho);
-    opacity: 0.8;
-  }
-  .caterham__hud-canto--tl { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
-  .caterham__hud-canto--tr { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
-  .caterham__hud-canto--bl { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; }
-  .caterham__hud-canto--br { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
-  .caterham__hud-label {
-    position: absolute;
-    top: calc(clamp(18px, 2.4vw, 32px) + 10px);
-    display: none;
-    align-items: center;
-    gap: 8px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: var(--t-label);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.9), 0 1px 12px rgba(0, 0, 0, 0.8);
-  }
-  .caterham__hud-label--tl { left: 0; }
-  .caterham__hud-label--tr { right: 0; }
-  .caterham__hud-rec {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--vermelho);
-  }
-  /* régua de telemetria no pé do quadro, entre os cantos inferiores */
-  .caterham__hud-escala {
-    position: absolute;
-    bottom: 0;
-    left: calc(clamp(18px, 2.4vw, 32px) + 16px);
-    right: calc(clamp(18px, 2.4vw, 32px) + 16px);
-    height: 8px;
-    display: none;
-    background:
-      repeating-linear-gradient(90deg, rgba(245, 245, 245, 0.28) 0 1px, transparent 1px 12px) bottom / 100% 4px no-repeat,
-      repeating-linear-gradient(90deg, rgba(245, 245, 245, 0.45) 0 1px, transparent 1px 120px) bottom / 100% 8px no-repeat;
-    mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .caterham__hud-rec { animation: hud-rec 1.6s var(--ease-drive) infinite; }
-    @keyframes hud-rec { 50% { opacity: 0.25; } }
-  }
-
-  .caterham__fecho-inner {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 56rem;
-  }
-  .caterham__fecho-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    color: var(--vermelho);
-    font-size: var(--t-label);
-    text-transform: uppercase;
-    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
-    margin-block-end: var(--space-s);
-  }
-  .caterham__fecho-kicker::before,
-  .caterham__fecho-kicker::after {
-    content: "";
-    width: 24px;
-    height: 1px;
-    background: currentColor;
-  }
-  .caterham__fecho-titulo {
-    font-family: var(--ff-display);
-    font-size: var(--t-xxl);
-    line-height: 0.95;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-    text-shadow: 0 2px 32px rgba(0, 0, 0, 0.35);
-  }
-  .caterham__fecho-titulo > span { display: block; }
-  .caterham__fecho-titulo > span + span { margin-block-start: 0.08em; }
-  .caterham__fecho-titulo .grifo { text-shadow: none; }
-  .caterham__fecho-copy {
-    max-width: 38rem;
-    margin-block-start: var(--space-m);
-  }
-  .caterham__fecho-lead {
-    font-size: var(--t-m);
-    font-weight: 500;
-    line-height: 1.3;
-    color: var(--luz);
-    text-wrap: balance;
-  }
-  .caterham__fecho-apoio {
-    max-width: 32rem;
-    margin: var(--space-xs) auto 0;
-    font-size: var(--t-small);
-    line-height: 1.6;
-    color: var(--luz-2);
-    text-wrap: pretty;
-  }
-  .caterham__fecho-cta { margin-block-start: var(--space-m); }
-
-
-  /* Fecho — MOBILE (< 768px). Composição editorial: a foto vira uma banda
-     no topo (4:5) e respira; selo + headline ficam no céu, sem caixa
-     chapada — "Você sente." ganha só um traço fino lima; o degradê escuro
-     começa na metade da foto e apoia lead, apoio e CTA. Desktop intacto.
-     Variante [data-mobile="editorial"]: mesma lógica, alinhada à esquerda. */
-  @media (max-width: 767.98px) {
-    .caterham__fecho {
-      --img-h: min(125vw, 640px);
-      display: block;
-      min-height: 0;
-      padding: 0 var(--gutter) var(--space-2xl);
-    }
-    .caterham__fecho-bg { bottom: auto; height: var(--img-h); }
-    .caterham__fecho-bg img { object-position: 50% 30%; }
-    .caterham__fecho::after {
-      bottom: auto;
-      height: calc(var(--img-h) + 2px);
-      background:
-        /* só um véu leve no topo para o branco segurar sobre o céu */
-        linear-gradient(180deg, var(--asfalto) 0%, rgba(1, 12, 14, 0.42) 9%, rgba(1, 12, 14, 0.12) 30%, transparent 42%),
-        /* base: degradê progressivo do meio da foto até o preto da seção */
-        linear-gradient(180deg, transparent 50%, rgba(1, 12, 14, 0.6) 70%, rgba(1, 12, 14, 0.92) 86%, var(--asfalto) 100%);
-    }
-    .caterham__hud {
-      inset: 16px var(--gutter) auto;
-      height: calc(var(--img-h) * 0.58);
-    }
-    .caterham__fecho-inner { padding-block-start: clamp(40px, 11vw, 56px); }
-    .caterham__fecho-kicker { margin-block-end: var(--space-xs); }
-    .caterham__fecho-titulo {
-      font-size: min(var(--t-xxl), 10.4vw);
-      line-height: 0.98;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 24px rgba(0, 0, 0, 0.4);
-      /* empurra o texto corrido para a zona do degradê, abaixo do cockpit */
-      margin-block-end: calc(var(--img-h) * 0.4);
-    }
-    .caterham__fecho-titulo > span { white-space: nowrap; }
-    .caterham__fecho-titulo > span + span { margin-block-start: 0.04em; }
-    .caterham__fecho-titulo .grifo {
-      --grifo-h: 0.09em;
-      --grifo-y: 92%;
-      --grifo-ink: var(--luz);
-      padding-inline: 0;
-      margin-inline: 0;
-      text-shadow: inherit;
-    }
-    .caterham__fecho-copy { margin-block-start: 0; }
-    .caterham__fecho-lead { font-size: 1.1875rem; line-height: 1.35; }
-    .caterham__fecho-apoio { margin-block-start: var(--space-s); }
-    .caterham__fecho-cta {
-      width: 100%;
-      max-width: 22rem;
-      margin-block-start: var(--space-l);
-      padding-inline: var(--space-s);
-    }
-
-    .caterham__fecho[data-mobile="editorial"] { text-align: left; }
-    .caterham__fecho[data-mobile="editorial"] .caterham__fecho-inner { align-items: flex-start; }
-    .caterham__fecho[data-mobile="editorial"] .caterham__fecho-kicker::after { display: none; }
-    .caterham__fecho[data-mobile="editorial"] .caterham__fecho-lead { text-wrap: pretty; }
-    .caterham__fecho[data-mobile="editorial"] .caterham__fecho-apoio { margin-inline: 0; }
-    .caterham__fecho[data-mobile="editorial"] .caterham__fecho-cta { width: auto; }
-  }
-
-  @media (min-width: 768px) {
-    .caterham__hud-label,
-    .caterham__hud-escala { display: flex; }
-    .caterham__fecho-inner { max-width: none; }
-    .caterham__fecho-titulo > span { white-space: nowrap; }
-  }
-
-  @media (min-width: 1024px) {
-    .caterham__ficha { grid-template-columns: repeat(2, 1fr); }
+    /* Fixa o texto em --asfalto (escuro): o fundo do .btn--primary aqui é o
+       lima local do Caterham (--vermelho sobreposto acima), então o texto
+       precisa continuar escuro por contraste — explícito para não depender
+       da ordem de cascata com .btn--primary. */
+    color: var(--asfalto);
   }
 
   /* ============================================================ 06 · BANDEIRAS EMPRESARIAL
@@ -1395,15 +1119,14 @@
      — muda de temperatura em relação ao resto da página escura, ecoando o
      material real (tijolo/concreto/âmbar) e sinalizando "outro tipo de visita".
 
-     Capítulo em 4 camadas, cada uma com seu próprio dispositivo de
-     hierarquia (eyebrow/mini-head), para ler como narrativa única em vez de
-     mosaico solto: 1) abertura (split + trio de números, preenche a
-     presença da headline) — 2) os espaços (grade editorial UNIFORME, sem
-     proporção assimétrica — a variação aleatória de tamanho era o problema
-     relatado) — 3) bloco editorial (texto institucional + lista gráfica de
-     usos, no lugar do textão solto abaixo da galeria) — 4) prova social
-     PETRONAS + CTA como case em destaque (.case + .video-frame), dentro
-     do grid do site, com o texto alinhado ao topo do vídeo. */
+     Redesenho 2026-09-24: capítulo enxugado para 3 camadas — 1) abertura
+     (split + trio de números, preenche a presença da headline) — 2) os
+     espaços, galeria FULL-BLEED em .bandeiras__ativos (rompe a largura da
+     página — cards grandes, legenda em scrim sobre a foto, sensação
+     editorial/cinematográfica, não catálogo), com uma linha de introdução
+     curta acima, ainda dentro do container normal — 3) VIDEO-01
+     real (vídeo institucional do complexo) + CTA único da frente. PETRONAS
+     saiu daqui: passa a existir uma única vez, em 07 · MARCAS & PARCEIROS. */
   .bandeiras__intro { margin-block-end: var(--space-l); }
   .bandeiras__intro-texto {
     display: flex;
@@ -1483,237 +1206,215 @@
     .bandeiras__intro-texto { justify-content: center; gap: calc(var(--space-xl) * 1.2); }
   }
 
-  /* ---- 2 · OS ESPAÇOS — grade modular
-     Um só card, repetido 6×, com todas as medidas em tokens locais:
-       moldura 4:5 (a moldura define a altura; a foto só preenche com cover)
-       → --cap-offset → fio → --cap-pad → numeral + título (1 linha)
-       → --cap-stack → descrição (2 linhas reservadas).
-     A ficha tem altura FIXA (min-height = linhas reservadas), então todo card
-     mede o mesmo e cada fileira tem o mesmo passo vertical. Um único --gap
-     serve colunas e fileiras. Fio da mini-head → eyebrow → grade usam o mesmo
-     intervalo (--space-l), e a grade vive no .container: começa e termina
-     nas mesmas verticais do eyebrow e do restante da página.
-     3 colunas (≥1200) · 2 (≥640) · carrossel com snap (<640). */
-  .bandeiras__espacos {
-    --gap: 16px;
-    --cap-offset: 16px;
-    --cap-pad: 12px;
-    --cap-stack: 4px;
-    --num-col: 2.25rem;
-    --title-lh: 1.3;
-    --desc-lh: 1.5;
-    --desc-lines: 2;
-    margin-block-end: var(--space-2xl);
-  }
+  /* ---- 2 · OS ESPAÇOS — full-bleed 2026-09-24 (pedido explícito: galeria
+     rompendo a largura da página, "sensação editorial/cinematográfica, não
+     catálogo"). .bandeiras__espacos é um wrapper simples (não .container):
+     guarda o texto de intro dentro do seu próprio .container e a galeria
+     como irmã, fora dele, livre pra ocupar 100% da largura da <section>.
+     Card: moldura 4:5 full-bleed (a moldura define a altura; a foto só
+     preenche com cover) com número/título/descrição em scrim SOBRE a foto
+     — mesma técnica de .experiencias__card/.conteudo__frame — em vez da
+     ficha abaixo da imagem de antes (isso que lia como "catálogo").
+     Carrossel com scroll-snap em qualquer largura: 82% da viewport no
+     mobile/tablet (1 card dominante + espia do próximo) e ~30vw a partir de
+     1024 (aprox. 3 cards grandes + espia do 4º) — nunca vira grade fixa,
+     nunca 3×2. Padding lateral = var(--content-inset): alinha o 1º/último
+     card ao eixo do site mesmo com a faixa em 100vw (mesmo valor usado por
+     .media-split pra alinhar full-bleed ao grid da página). */
+  .bandeiras__espacos { margin-block-end: var(--space-xl); }
+  .bandeiras__espacos > .container { margin-block-end: var(--space-l); }
+  /* Introdução curta — só deixa claro quem a frente recebe, sem repetir os
+     números da abertura nem abrir uma 2ª dobra de texto abaixo da galeria. */
+  .bandeiras__lede { margin-block: var(--space-m) 0; }
+
   .bandeiras__ativos {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 80%;
-    gap: var(--gap);
-    margin-block-start: var(--space-l);
-    /* carrossel sangra até a borda, mas o 1º card começa na vertical do eyebrow */
-    margin-inline: calc(var(--container-margin) * -1);
-    padding-inline: var(--container-margin);
-    scroll-padding-inline: var(--container-margin);
+    grid-auto-columns: 82%;
+    gap: var(--space-m);
+    padding-inline: var(--content-inset);
+    scroll-padding-inline: var(--content-inset);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    /* Affordance de "isso rola": vinheta sutil nas duas bordas da viewport —
+       a lasca do cartão espiado (o próximo/anterior, cortado pela borda da
+       tela) esmaece em vez de ser guilhotinada seca, sinalizando continuidade
+       sem precisar de setas/dots (o site não usa esse chrome em nenhum outro
+       carrossel — ver comentário em .marcas__logos-wrap: o padrão aqui é
+       "borda cortada sinaliza que há mais", isto só suaviza o corte). Largura
+       da pena = --space-m: some só a lasca externa do cartão espiado, que
+       segue majoritariamente visível/nítido — não mexe no padding de
+       alinhamento (--content-inset), que fica intacto para o snap. */
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--space-m),
+      #000 calc(100% - var(--space-m)),
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--space-m),
+      #000 calc(100% - var(--space-m)),
+      transparent 100%
+    );
   }
   .bandeiras__ativos::-webkit-scrollbar { display: none; }
-  .bandeiras__ativo {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    scroll-snap-align: start;
-  }
+  .bandeiras__ativo { min-width: 0; scroll-snap-align: start; }
 
   .bandeiras__ativo-media {
     position: relative;
-    flex: none;
+    isolation: isolate;
     aspect-ratio: 4 / 5;
     overflow: clip;
     background: var(--asfalto-2);
   }
-  /* fio interno comum a todas as molduras: borda idêntica em qualquer foto */
-  .bandeiras__ativo-media::after {
+  .bandeiras__ativo-media picture { display: block; height: 100%; }
+  .bandeiras__ativo-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--foco, 50% 50%);
+    transition: transform var(--dur-slow) var(--ease-drive);
+  }
+  /* scrim: garante contraste da legenda sobre qualquer foto, mesmo dentro
+     da dobra clara — o mesmo tratamento de .experiencias__card/.conteudo__frame */
+  .bandeiras__ativo-media::before {
     content: "";
     position: absolute;
     inset: 0;
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+    z-index: 1;
     pointer-events: none;
+    background: linear-gradient(0deg, rgba(6, 6, 6, 0.85) 0%, rgba(6, 6, 6, 0.5) 30%, rgba(6, 6, 6, 0) 60%);
   }
-  /* foto fora do fluxo: o tamanho natural do arquivo nunca mexe na moldura */
-  .bandeiras__ativo-media picture,
-  .bandeiras__ativo-media img { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .bandeiras__ativo-media img { object-fit: cover; object-position: var(--foco, 50% 50%); }
-
+  /* Legenda em grid, não em coluna solta: número e título ficam no MESMO
+     lockup (mesma linha, alinhados pela base), como em
+     .experiencias__card-legenda — a descrição é a única a ocupar a linha
+     de baixo, largura cheia. Antes o número vivia isolado numa linha só
+     dele, acima do título: pequeno (--t-label, 12px) e vermelho puro sobre
+     foto, sem nada colado do lado, ele lia como uma mancha solta — "um
+     ponto vermelho" — em vez de um numeral de índice. Encostado no título
+     ele vira claramente "01 Auditório". */
   .bandeiras__ativo-cap {
-    flex: 1;
+    position: absolute;
+    z-index: 2;
+    inset: auto var(--space-s) var(--space-s) var(--space-s);
     display: grid;
-    grid-template-columns: var(--num-col) minmax(0, 1fr);
-    grid-template-rows: auto 1fr;
-    row-gap: var(--cap-stack);
-    align-content: start;
-    min-height: calc(
-      var(--cap-pad) + 1px
-      + var(--t-body) * var(--title-lh)
-      + var(--cap-stack)
-      + var(--t-small) * var(--desc-lh) * var(--desc-lines)
-    );
-    margin-block-start: var(--cap-offset);
-    padding-block-start: var(--cap-pad);
-    border-block-start: 1px solid var(--divisor);
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    column-gap: var(--space-2xs);
+    row-gap: 6px;
   }
-  .bandeiras__ativo-cap .num {
+  /* Cores em literais fixos, nunca --vermelho/--luz/--luz-2: a legenda vive
+     sobre foto + scrim ESCURO sempre, mesmo dentro de .section--paper — se
+     usasse os tokens trocáveis da dobra clara, viraria texto escuro sobre
+     scrim escuro (ilegível). Mesma ressalva já documentada em .video-frame. */
+  .bandeiras__ativo-num {
+    grid-column: 1;
     grid-row: 1;
-    align-self: baseline;
-    font-family: var(--ff-text);
-    font-weight: 600;
-    font-size: var(--t-small);
-    line-height: var(--title-lh);
-    letter-spacing: 0.02em;
-    color: var(--vermelho);
+    font-family: var(--ff-display);
+    font-size: var(--t-label);
+    color: #ff4747;
     font-feature-settings: "tnum";
   }
   .bandeiras__ativo-titulo {
     grid-column: 2;
     grid-row: 1;
-    align-self: baseline;
     margin: 0;
     max-width: none;
-    font-family: var(--ff-text);
-    font-weight: 700;
-    font-size: var(--t-body);
-    line-height: var(--title-lh);
+    font-family: var(--ff-display);
+    font-size: clamp(1.15rem, 0.95rem + 1vw, 1.75rem);
+    line-height: 1.02;
     letter-spacing: -0.005em;
-    text-transform: none;
-    text-wrap: balance;
-    color: var(--tinta);
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 0 1px 10px rgba(6, 6, 6, 0.5);
   }
   .bandeiras__ativo-desc {
-    grid-column: 2;
+    grid-column: 1 / -1;
     grid-row: 2;
-    max-width: 38ch;
+    margin: 0;
+    max-width: 34ch;
     font-size: var(--t-small);
-    line-height: var(--desc-lh);
+    line-height: 1.4;
     text-wrap: pretty;
-    color: var(--luz-2);
-  }
-
-  /* Mobile: número + título → imagem → descrição. O nome do espaço vem
-     antes da foto (leitura de ficha editorial). A ficha "abre" com
-     display: contents para que número, título e descrição virem células do
-     próprio card, e o card usa subgrid nas 4 linhas do carrossel: título,
-     foto e descrição ficam na mesma altura em todos os cards. O título
-     encosta sempre na foto (alinhado ao pé da linha); quando outro card tem
-     título em 2 linhas, a sobra vai entre o número e o título — nunca entre
-     título e imagem. */
-  @media (max-width: 639.98px) {
-    .bandeiras__ativos {
-      grid-template-rows: repeat(4, auto);
-      row-gap: 0;
-    }
-    .bandeiras__ativo {
-      display: grid;
-      grid-row: span 4;
-      grid-template-rows: subgrid;
-      grid-template-columns: minmax(0, 1fr);
-      padding-block-start: var(--space-xs);
-      border-block-start: 1px solid var(--divisor);
-    }
-    .bandeiras__ativo-cap { display: contents; }
-    .bandeiras__ativo > *,
-    .bandeiras__ativo-cap > * { grid-column: 1; }
-    .bandeiras__ativo-cap .num {
-      grid-row: 1;
-      font-size: var(--t-label);
-      line-height: 1;
-      letter-spacing: 0.08em;
-      padding-block-end: var(--space-2xs);
-    }
-    .bandeiras__ativo-titulo {
-      grid-row: 2;
-      align-self: end;
-      font-size: 1.125rem;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      padding-block-end: var(--space-xs);
-    }
-    .bandeiras__ativo-media { grid-row: 3; }
-    .bandeiras__ativo-desc {
-      grid-row: 4;
-      padding-block-start: var(--space-xs);
-    }
-  }
-
-  @media (min-width: 640px) {
-    .bandeiras__espacos { --gap: 24px; }
-    .bandeiras__ativos {
-      grid-auto-flow: row;
-      grid-auto-columns: auto;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      /* fileiras: 1,5 × --gap — proximidade: a ficha fica sempre mais perto
-         da própria foto (--cap-offset) do que da foto de baixo */
-      row-gap: calc(var(--gap) * 1.5);
-      margin-inline: 0;
-      padding-inline: 0;
-      overflow: visible;
-    }
-  }
-  /* 3 colunas só a partir de 1200: abaixo disso o card fica < 340px e as
-     fichas passariam das 2 linhas reservadas (medido em 1024) */
-  @media (min-width: 1200px) {
-    .bandeiras__espacos { --gap: 32px; --cap-offset: 20px; --cap-pad: 14px; --cap-stack: 6px; }
-    .bandeiras__ativos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  }
-
-  /* ---- 3 · BLOCO EDITORIAL — texto institucional + lista gráfica
-     Eyebrow com respiro próprio antes do conteúdo; texto e lista começam na
-     mesma linha (topo da lista = filete, alinhado à 1ª linha do texto). */
-  .bandeiras__editorial .mini-head { margin-block-end: var(--space-m); }
-  .bandeiras__editorial-texto p + p { margin-block-start: var(--space-s); }
-  .bandeiras__editorial-texto p:last-child { font-weight: 600; } /* "É a frente que recebe empresas:" puxa a lista */
-
-  .bandeiras__usos {
-    display: grid;
-    margin-block-start: var(--space-l);
-    border-block-start: 1px solid var(--divisor);
-    counter-reset: uso;
-  }
-  .bandeiras__usos li {
-    counter-increment: uso;
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-s);
-    padding-block: var(--space-xs);
-    border-block-end: 1px solid var(--divisor);
-    font-weight: 600;
-  }
-  .bandeiras__usos li::before {
-    content: "0" counter(uso);
-    flex-shrink: 0;
-    width: 2.2ch;
-    font-size: var(--t-small);
-    font-weight: 600;
-    color: var(--vermelho);
-    font-feature-settings: "tnum";
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 8px rgba(6, 6, 6, 0.5);
   }
 
   @media (min-width: 1024px) {
-    .bandeiras__editorial-grid {
-      display: grid;
-      grid-template-columns: 5fr 6fr;
-      column-gap: var(--space-2xl);
-      align-items: start;
-    }
-    .bandeiras__usos { margin-block-start: 0; }
-    .bandeiras__usos li:first-child { padding-block-start: var(--space-2xs); }
+    .bandeiras__ativos { grid-auto-columns: 30vw; gap: var(--space-l); }
+    .bandeiras__ativo-cap { inset: auto var(--space-m) var(--space-m) var(--space-m); }
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .bandeiras__ativo-media:hover img { transform: scale(1.05); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bandeiras__ativo-media img { transition: none; }
+    .bandeiras__ativo-media:hover img { transform: none; }
   }
 
-  /* ---- 4 · CASE PETRONAS — case em destaque, dentro do grid do site
-     (não mais full-bleed): vídeo à esquerda, texto à direita com o topo
-     do eyebrow alinhado ao topo do frame. Um filete fino separa o case do
-     bloco institucional acima, com --space-2xl de respiro de cada lado. */
+  /* ---- 3 · VÍDEO INSTITUCIONAL — vídeo real (não mais placeholder), frame
+     simples (sem cantoneiras/REC/tempo do .video-frame — esse continua
+     reservado para os placeholders "a inserir", como o case PETRONAS em 07):
+     controls nativos, então a legenda vive ABAIXO do frame, nunca sobreposta
+     (evita disputar espaço com a barra de controle do player). */
+  .bandeiras__video { margin-block-start: var(--space-l); }
+  .bandeiras__video-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: clip;
+    background: var(--asfalto);
+    margin-block-start: var(--space-l);
+  }
+  .bandeiras__video-frame video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Botão de som sobreposto — o vídeo entra mudo/autoplay (nenhum navegador
+     libera autoplay com áudio), então precisa de um jeito visível de ativar
+     a narração sem sair do fluxo do vídeo. */
+  .video-sound-toggle {
+    position: absolute;
+    z-index: 1;
+    inset-block-end: var(--space-s);
+    inset-inline-end: var(--space-s);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(6, 6, 6, .55);
+    backdrop-filter: blur(4px);
+    color: var(--luz);
+    transition: background var(--dur-fast) var(--ease-brake);
+  }
+  .video-sound-toggle:hover,
+  .video-sound-toggle:focus-visible { background: rgba(6, 6, 6, .8); }
+  .video-sound-toggle__icon--on { display: none; }
+  .video-sound-toggle[aria-pressed="true"] .video-sound-toggle__icon--off { display: none; }
+  .video-sound-toggle[aria-pressed="true"] .video-sound-toggle__icon--on { display: block; }
+  .bandeiras__video-legenda {
+    margin-block-start: var(--space-xs);
+    font-family: "JetBrains Mono", monospace;
+    font-size: var(--t-label);
+    letter-spacing: 0.02em;
+    color: var(--luz-2);
+  }
+  .bandeiras__cta { margin-block-start: var(--space-l); }
+
+  /* ============================================================ CASE PETRONAS (07 · MARCAS & PARCEIROS)
+     Não faz mais parte de 06 · BANDEIRAS EMPRESARIAL (o case saiu de lá —
+     ver comentário no topo da dobra). Case em destaque, dentro do grid do
+     site (não mais full-bleed): vídeo à esquerda, texto à direita com o
+     topo do eyebrow alinhado ao topo do frame. Um filete fino separa o case
+     da faixa de logos acima, com --space-2xl de respiro de cada lado. */
   .case {
     display: grid;
     gap: var(--space-l);
@@ -1867,229 +1568,272 @@
     .video-frame__play { transition: none; }
   }
 
-  /* ============================================================ 07 · CONTEÚDO */
-  /* Diagramação de revista: a lista de locações vira linha de abertura em
-     corpo grande, os dois parágrafos correm em colunas de jornal logo
-     abaixo, e a foto entra como retrato vertical DENTRO do grid, à
-     esquerda — texto e imagem na mesma página, não em metades de tela. */
-  .conteudo__editorial {
-    display: grid;
-    gap: var(--space-l);
-    margin-block-end: var(--space-l);
-  }
+  /* ============================================================ 06 · CONTEÚDO
+     Reconstrução 2026-09-24: seção mais curta, prova social viva —
+     bastidores, público, vídeo, Instagram — sem repetir pilotos (03) /
+     experiências (04) / bandeiras empresarial (05). Duas peças novas:
+     .conteudo__showcase (texto curto + CTA de um lado, vídeo pessoas.mp4 do
+     outro) e .conteudo__bastidores (trio de fotos + destaque de Instagram).
+     A galeria de 4 quadros (Oficina/Auditório/Truck Lounge/Box) e o retrato
+     solto da rodada anterior saíram do HTML — CSS removido junto. */
+  .conteudo__cta { margin-block-start: var(--space-m); }
+
   .conteudo__abertura {
     max-width: 24ch;
-    font-size: clamp(1.75rem, 1.2rem + 2vw, 3.25rem);
+    font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.75rem);
     font-weight: 500;
-    line-height: 1.08;
-    letter-spacing: -0.025em;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
     text-wrap: balance;
   }
-  .conteudo__colunas {
+
+  /* Vitrine: texto+CTA de um lado, vídeo do outro. Mobile: o vídeo sobe
+     para o topo via order (a leitura do DOM continua texto → vídeo). */
+  .conteudo__showcase {
     display: grid;
-    gap: var(--space-s);
-    padding-block-start: var(--space-s);
-    border-block-start: 1px solid var(--divisor);
-    color: var(--luz-2);
+    gap: var(--space-l);
+    margin-block-end: var(--space-xl);
   }
-  .conteudo__retrato { margin: 0; }
-  .conteudo__retrato picture { display: block; overflow: clip; }
-  .conteudo__retrato img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
-  @media (min-width: 640px) {
-    .conteudo__colunas { grid-template-columns: 1fr 1fr; column-gap: var(--space-l); }
-  }
-  @media (min-width: 1024px) {
-    .conteudo__editorial {
-      grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-      column-gap: var(--space-xl);
-      row-gap: var(--space-l);
-      margin-block: var(--space-m) var(--space-xl);
-    }
-    /* o retrato acompanha a altura do texto (abertura + colunas) — sem vão
-       entre os dois blocos da direita */
-    .conteudo__retrato { grid-column: 1; grid-row: 1 / 3; }
-    .conteudo__retrato picture { height: 100%; }
-    .conteudo__retrato img { aspect-ratio: auto; height: 100%; min-height: 22rem; }
-    .conteudo__abertura { grid-column: 2; grid-row: 1; }
-    .conteudo__colunas { grid-column: 2; grid-row: 2; }
-  }
-  /* Galeria em capítulos: cada foto é um "capítulo" numerado com a legenda
-     composta sobre a própria imagem (número vermelho → título display →
-     descriptor). Mobile/tablet = trilho com scroll-snap mostrando a ponta
-     da próxima foto; desktop = faixa contínua full-bleed com larguras
-     desiguais (ritmo editorial) e emendas de 2px no tom do asfalto, sem
-     gaps claros. O gradiente só cobre o terço inferior: a foto segue
-     protagonista, a legenda só ganha contraste onde está. */
-  .conteudo__frames {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 84vw;
-    gap: 2px;
-    margin-block: var(--space-l);
-    padding-inline: var(--gutter);
-    scroll-padding-inline: var(--gutter);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
-  }
-  .conteudo__frames::-webkit-scrollbar { display: none; }
-  .conteudo__frames:focus-visible { outline: 2px solid var(--vermelho); outline-offset: 4px; }
-
-  .conteudo__frame {
-    position: relative;
-    isolation: isolate;
-    aspect-ratio: 4/5;
-    overflow: clip;
-    scroll-snap-align: start;
-    background: var(--asfalto-2);
-  }
-  .conteudo__frame picture { display: block; height: 100%; }
-  .conteudo__frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--dur-settle) var(--ease-brake);
-  }
-
-  /* Duas camadas de gradiente: ::before é o contraste de base; ::after, um
-     pouco mais denso, só acende no hover (anima opacity, não o gradiente). */
-  .conteudo__frame::before,
-  .conteudo__frame::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-  }
-  .conteudo__frame::before {
-    background: linear-gradient(0deg, rgba(6, 6, 6, 0.88) 0%, rgba(6, 6, 6, 0.62) 26%, rgba(6, 6, 6, 0.28) 42%, rgba(6, 6, 6, 0) 62%);
-  }
-  .conteudo__frame::after {
-    background: linear-gradient(0deg, rgba(6, 6, 6, 0.5) 0%, rgba(6, 6, 6, 0.2) 34%, rgba(6, 6, 6, 0) 64%);
-    opacity: 0;
-    transition: opacity var(--dur-slow) var(--ease-brake);
-  }
-
-  .conteudo__legenda {
-    position: absolute;
-    z-index: 2;
-    inset: auto var(--space-m) var(--space-m) var(--space-m);
+  .conteudo__editorial {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: var(--space-s);
   }
-  .conteudo__legenda-num {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2xs);
-    margin-block-end: var(--space-xs);
+  .conteudo__editorial p:not(.conteudo__abertura) { max-width: 42ch; color: var(--luz-2); }
+  .conteudo__video-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: clip;
+    background: var(--asfalto-2);
+  }
+  .conteudo__video-frame video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .conteudo__video-legenda {
+    margin-block-start: var(--space-xs);
+    font-family: "JetBrains Mono", monospace;
     font-size: var(--t-label);
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    color: var(--vermelho);
-    font-feature-settings: "tnum";
-    text-shadow: 0 1px 12px rgba(6, 6, 6, 0.6);
-  }
-  /* Filete que "puxa" o número — cresce no hover como uma reta de largada. */
-  .conteudo__legenda-num::after {
-    content: "";
-    width: 20px;
-    height: 2px;
-    background: currentColor;
-    transition: width var(--dur-slow) var(--ease-brake);
-  }
-  .conteudo__legenda-titulo {
-    font-family: var(--ff-display);
-    font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.75rem);
-    line-height: 0.9;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-    color: var(--luz);
-    transform-origin: left bottom;
-    transition:
-      letter-spacing var(--dur-slow) var(--ease-brake),
-      transform var(--dur-slow) var(--ease-brake);
-  }
-  .conteudo__legenda-desc {
-    margin-block-start: var(--space-2xs);
-    font-size: var(--t-small);
-    line-height: 1.3;
+    letter-spacing: 0.02em;
     color: var(--luz-2);
   }
+  @media (max-width: 1023.98px) {
+    .conteudo__video { order: -1; }
+  }
+  @media (min-width: 1024px) {
+    .conteudo__showcase {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      column-gap: var(--space-2xl);
+      align-items: center;
+    }
+  }
 
-  .conteudo__nota { color: var(--luz-2); font-size: var(--t-small); margin-block-start: var(--space-2xs); }
+  /* ============================================================ NOS BASTIDORES · HUB DE REDES
+     Redesenho 2026-09-25 (pedido direto do usuário): Instagram como
+     protagonista — grade editorial ~70% da faixa + coluna lateral ~30%
+     para as demais redes. Cabeçalho (eyebrow + lead) segue o container
+     normal da seção; o hub em si (grade + coluna) é a peça full-bleed,
+     mesma técnica de .frentes/.bandeiras__ativos (ver --bleed abaixo). */
+  .conteudo__social-lede { max-width: 46ch; color: var(--luz-2); margin-block-start: var(--space-2xs); }
 
-  /* Ofertas: mesmo .card do sistema, com o numeral promovido a peça gráfica
-     (display em cinza apagado no repouso, vermelho sólido só no hover) e o
-     título no corpo das legendas. No hover o acento do topo corre a largura
-     inteira como uma reta de largada, o numeral acende e o bloco de texto
-     avança alguns pixels — tudo dentro da célula, sem mexer nas emendas. */
-  .conteudo__ofertas .card {
-    gap: var(--space-xs);
-    padding: var(--space-l) var(--space-m) var(--space-l);
-    transition: background var(--dur-medium) var(--ease-brake);
+  .conteudo__social-hub {
+    display: grid;
+    gap: var(--space-l);
   }
-  .conteudo__ofertas .card::before {
-    transition: width var(--dur-slow) var(--ease-brake);
+  .conteudo__social-hub--bleed {
+    padding-inline: var(--container-margin);
   }
-  .conteudo__ofertas .card__index {
-    margin-block-end: var(--space-s);
-    font-family: var(--ff-display);
-    font-weight: 400;
-    font-size: clamp(3.5rem, 2.4rem + 3.2vw, 5.5rem);
-    line-height: 0.8;
-    color: rgba(255, 255, 255, 0.16); /* low emphasis: o vermelho só entra no hover */
-    transition: color var(--dur-medium) var(--ease-brake);
+  @media (min-width: 1024px) {
+    .conteudo__social-hub--bleed { padding-inline: 0; }
+    .conteudo__social-hub {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+      gap: 0;
+    }
   }
-  .conteudo__ofertas .card h3 {
-    font-size: clamp(2.25rem, 1.5rem + 2.2vw, 3.5rem);
-    line-height: 0.9;
+
+  /* Grade do feed: bento editorial, não grid uniforme de widget — 1 card
+     em destaque (2x2) + 1 card largo (2x1) quebram a repetição de módulos
+     idênticos. gap 2px + fundo --asfalto-2 = mesma costura fina de
+     .conteudo__foto (herança direta do trio antigo). */
+  .conteudo__feed {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas:
+      "a a"
+      "b c"
+      "d e"
+      "f f"
+      "g h";
+    aspect-ratio: 2 / 5;
+    gap: 2px;
+    background: var(--asfalto-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .conteudo__feed-item { position: relative; overflow: clip; background: var(--asfalto-2); }
+  .conteudo__feed-item:nth-child(1) { grid-area: a; }
+  .conteudo__feed-item:nth-child(2) { grid-area: b; }
+  .conteudo__feed-item:nth-child(3) { grid-area: c; }
+  .conteudo__feed-item:nth-child(4) { grid-area: d; }
+  .conteudo__feed-item:nth-child(5) { grid-area: e; }
+  .conteudo__feed-item:nth-child(6) { grid-area: f; }
+  .conteudo__feed-item:nth-child(7) { grid-area: g; }
+  .conteudo__feed-item:nth-child(8) { grid-area: h; }
+  .conteudo__feed-link { display: block; position: relative; width: 100%; height: 100%; }
+  .conteudo__feed-link picture { display: block; width: 100%; height: 100%; }
+  .conteudo__feed-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--dur-slow) var(--ease-drive);
+  }
+  .conteudo__feed-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(6, 6, 6, .85) 0%, rgba(6, 6, 6, 0) 55%);
+    opacity: 0;
+    transition: opacity var(--dur-medium) var(--ease-brake);
+  }
+  .conteudo__feed-badge {
+    display: none;
+    position: absolute;
+    inset-block-start: var(--space-2xs);
+    inset-inline-end: var(--space-2xs);
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(6, 6, 6, .55);
+    color: var(--luz);
+    backdrop-filter: blur(2px);
+  }
+  .conteudo__feed-badge--on { display: flex; }
+  .conteudo__feed-cap {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    padding: var(--space-2xs) var(--space-s);
+    font-size: var(--t-small);
+    line-height: 1.3;
+    color: var(--luz);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .6);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity var(--dur-medium) var(--ease-brake), transform var(--dur-medium) var(--ease-brake);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .conteudo__feed-link:hover .conteudo__feed-media,
+    .conteudo__feed-link:focus-visible .conteudo__feed-media { transform: scale(1.05); }
+    .conteudo__feed-link:hover .conteudo__feed-scrim,
+    .conteudo__feed-link:focus-visible .conteudo__feed-scrim,
+    .conteudo__feed-link:hover .conteudo__feed-cap,
+    .conteudo__feed-link:focus-visible .conteudo__feed-cap { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .conteudo__feed-media { transition: none; }
+  }
+
+  /* Coluna lateral: painel compacto, separado do feed por um fio — mesma
+     linguagem de --divisor usada em toda a página, nunca um card "gamer". */
+  .conteudo__redes {
+    padding: var(--space-l) var(--gutter);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+  .conteudo__redes-titulo {
+    font-family: var(--ff-text);
+    font-weight: 700;
+    font-size: var(--t-small);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    letter-spacing: -0.005em;
   }
-  .conteudo__ofertas .card h3,
-  .conteudo__ofertas .card p {
-    transition: transform var(--dur-slow) var(--ease-brake);
+  .conteudo__redes-handle {
+    color: var(--luz-2);
+    font-family: "JetBrains Mono", monospace;
+    font-size: var(--t-small);
+    margin-block-end: var(--space-s);
   }
-  .conteudo__ofertas .card p:not(.conteudo__nota) { font-size: var(--t-body); color: var(--luz); max-width: 30ch; }
-  .conteudo__ofertas .conteudo__nota {
-    margin-block-start: auto; /* nota desce para a base da célula */
-    padding-block-start: var(--space-s);
+  .conteudo__redes-lista { list-style: none; margin: 0; padding: 0; }
+  .conteudo__redes-lista a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding-block: var(--space-xs);
     border-block-start: 1px solid var(--divisor);
+    color: var(--luz);
+    font-weight: 600;
+    font-size: var(--t-small);
+    letter-spacing: 0.02em;
+    transition: color var(--dur-fast) var(--ease-brake);
+  }
+  .conteudo__redes-lista li:last-child a { border-block-end: 1px solid var(--divisor); }
+  .conteudo__redes-lista svg { flex-shrink: 0; color: var(--luz-2); transition: color var(--dur-fast) var(--ease-brake); }
+  .conteudo__redes-lista span:not(.conteudo__redes-seta) { flex-grow: 1; }
+  .conteudo__redes-seta {
+    color: var(--luz-2);
+    transition: transform var(--dur-fast) var(--ease-brake), color var(--dur-fast) var(--ease-brake);
+  }
+  .conteudo__redes-lista a:hover,
+  .conteudo__redes-lista a:focus-visible {
+    color: var(--vermelho);
+  }
+  .conteudo__redes-lista a:hover svg,
+  .conteudo__redes-lista a:focus-visible svg,
+  .conteudo__redes-lista a:hover .conteudo__redes-seta,
+  .conteudo__redes-lista a:focus-visible .conteudo__redes-seta {
+    color: var(--vermelho);
+  }
+  .conteudo__redes-lista a:hover .conteudo__redes-seta,
+  .conteudo__redes-lista a:focus-visible .conteudo__redes-seta {
+    transform: translateX(4px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .conteudo__redes-lista a:hover .conteudo__redes-seta { transform: none; }
   }
 
   @media (min-width: 1024px) {
-    .conteudo__ofertas .card { min-height: 26rem; padding: var(--space-l) var(--space-l) var(--space-l) var(--space-m); }
+    .conteudo__feed {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-areas:
+        "a a b c"
+        "a a d e"
+        "f f g h";
+      aspect-ratio: 4 / 3;
+    }
+    .conteudo__redes {
+      justify-content: center;
+      border-inline-start: 1px solid var(--divisor);
+    }
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    .conteudo__ofertas .card:hover { background: var(--asfalto-2); }
-    .conteudo__ofertas .card:hover::before { width: 100%; }
-    .conteudo__ofertas .card:hover .card__index { color: var(--vermelho); }
-    .conteudo__ofertas .card:hover h3,
-    .conteudo__ofertas .card:hover p { transform: translateX(6px); }
+  /* Mobile (<1024px): coluna lateral vira faixa compacta abaixo do feed —
+     ícone + nome, sem seta, sem lista vertical (pedido explícito: "outras
+     redes ficam abaixo em uma faixa/lista compacta"). */
+  @media (max-width: 1023.98px) {
+    .conteudo__redes { padding: var(--space-m) 0 0; gap: var(--space-xs); }
+    .conteudo__redes-lista {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .conteudo__redes-lista li { flex: 1 1 auto; }
+    .conteudo__redes-lista a {
+      border: 1px solid var(--divisor);
+      justify-content: center;
+      padding: var(--space-2xs) var(--space-s);
+    }
+    .conteudo__redes-seta { display: none; }
+    .conteudo__redes-lista span:not(.conteudo__redes-seta) { flex-grow: 0; }
   }
-
-  /* Fecho: o headline deixa de ser uma coluna estreita e passa a ocupar a
-     largura do container — régua vermelha de ponta a ponta, três linhas
-     compostas à mão no desktop. O CTA divide a célula com o texto e se
-     alinha à base da última linha (a mais curta), ocupando exatamente o
-     vão que antes sobrava vazio à direita. */
-  .conteudo__fecho {
-    --fecho-fs: clamp(2.75rem, 1rem + 4.6vw, 6.5rem);
-    --fecho-lh: 0.88;
-    margin-block-start: var(--space-xl);
-  }
-  .conteudo__statement {
-    max-width: none;
-    margin: 0;
-    padding-block-start: var(--space-l);
-    font-size: var(--fecho-fs);
-    line-height: var(--fecho-lh);
-    text-wrap: balance;
-  }
-  .conteudo__cta { margin-block-start: var(--space-l); }
 
   .btn--xl {
     min-height: 64px;
@@ -2111,106 +1855,153 @@
   @media (hover: hover) and (pointer: fine) {
     .btn--xl:hover::after { width: 48px; }
   }
-
-  @media (max-width: 639px) {
-    .conteudo__cta { width: 100%; }
-  }
-
-  /* Desktop: três linhas compostas à mão e CTA na direita. Até 1599px ele
-     desce para a linha de baixo, formando diagonal com "DA SUA MARCA."; a
-     partir de 1600px (headline grande o bastante) sobe e senta na linha de
-     base da última linha, com a altura das maiúsculas — nunca encosta na
-     linha de cima. */
-  @media (min-width: 1024px) {
-    .conteudo__fecho { display: grid; }
-    .conteudo__statement { text-wrap: wrap; }
-    .conteudo__statement > span { display: block; }
-    .conteudo__cta { justify-self: end; min-height: 76px; margin-block-start: var(--space-m); }
-  }
-  @media (min-width: 1600px) {
-    .conteudo__statement,
-    .conteudo__cta { grid-area: 1 / 1; }
-    .conteudo__cta {
-      align-self: end;
-      margin: 0 0 calc(var(--fecho-fs) * 0.1);
-      min-height: calc(var(--fecho-fs) * 0.68);
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .conteudo__ofertas .card,
-    .conteudo__ofertas .card::before,
-    .conteudo__ofertas .card__index,
-    .conteudo__ofertas .card h3,
-    .conteudo__ofertas .card p,
     .btn--xl::after { transition: none; }
   }
 
-  @media (min-width: 640px) {
-    .conteudo__frames { grid-auto-columns: 58vw; }
-  }
-
-  /* Desktop: sai o trilho, entra a faixa. Larguras desiguais atribuídas pelo
-     conteúdo de cada foto — o Truck Lounge (caminhão + carro, cena mais
-     horizontal) fica com a coluna mais larga; o Auditório, cuja ação está
-     concentrada no centro (palco + plateia), aguenta a mais estreita. */
-  @media (min-width: 1024px) {
-    .conteudo__frames {
-      grid-auto-flow: row;
-      grid-auto-columns: unset;
-      grid-template-columns: 1.15fr 0.85fr 1.45fr 1fr;
-      height: clamp(380px, 34vw, 600px);
-      padding-inline: 0;
-      overflow: visible;
-      scroll-snap-type: none;
-    }
-    .conteudo__frame { aspect-ratio: auto; height: 100%; }
-    .conteudo__legenda { inset: auto var(--space-l) var(--space-l) var(--space-m); }
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .conteudo__frame:hover img { transform: scale(1.03); }
-    .conteudo__frame:hover::after { opacity: 1; }
-    .conteudo__frame:hover .conteudo__legenda-titulo { letter-spacing: 0.015em; transform: scale(1.03); }
-    .conteudo__frame:hover .conteudo__legenda-num::after { width: 40px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .conteudo__frame img,
-    .conteudo__frame::after,
-    .conteudo__legenda-titulo,
-    .conteudo__legenda-num::after { transition: none; }
-    .conteudo__frame:hover img,
-    .conteudo__frame:hover .conteudo__legenda-titulo { transform: none; }
-  }
-
-  /* ============================================================ 08 · PILOTOS & TIME */
-  .pilotos-time__deck {
+  /* ============================================================ 03 · PILOTOS & TIME
+     Card-poster compacto (foto de fundo + scrim + texto sobreposto no
+     rodapé) — mesma técnica de .frentes__painel/.frentes__media (dobra 02),
+     em escala de card, não de painel full-height. Mobile: rail horizontal
+     com scroll-snap (grid-auto-columns, 1 card dominante + respiro do
+     próximo). Desktop (≥1024px): os 4 lado a lado num grid de 4 colunas,
+     mesma altura, sem scroll — nunca 4 blocos de página inteira.
+     Estado padrão (2026-09-24, revisão): reportado como "feio" ter todo o
+     texto (cargo + nome + credenciais) permanentemente sobre a foto,
+     escurecendo o retrato o tempo todo. Agora o padrão mostra só cargo +
+     nome, num scrim baixo/discreto; hover (mouse), foco (teclado) ou toque
+     (.is-active, ver js/pilotos.js) sobem um scrim mais escuro e revelam
+     as credenciais — a foto fica limpa até alguém interagir. */
+  .pilotos-time__cards {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 78%;
+    grid-auto-columns: 74%;
     gap: var(--space-s);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding-inline: var(--gutter);
-    margin-block: var(--space-l);
+    margin-block: var(--space-l) var(--space-xl);
     scrollbar-width: none;
   }
-  .pilotos-time__deck::-webkit-scrollbar { display: none; }
-  .pilotos-time__card {
+  .pilotos-time__cards::-webkit-scrollbar { display: none; }
+
+  .piloto-card {
+    position: relative;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    aspect-ratio: 3 / 4;
+    overflow: clip;
+    background: var(--asfalto-2);
+  }
+  .piloto-card__num {
+    position: absolute;
+    z-index: 2;
+    inset-block-start: var(--space-xs);
+    inset-inline-start: var(--space-xs);
+    font-family: var(--ff-display);
+    font-size: var(--t-small);
+    color: var(--vermelho);
+    font-feature-settings: "tnum";
+    text-shadow: 0 2px 8px rgba(0,0,0,.7);
+  }
+  .piloto-card__media { position: absolute; inset: 0; }
+  .piloto-card__media img {
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+    transition: transform var(--dur-slow) var(--ease-drive);
   }
-  .pilotos-time__card img { aspect-ratio: 3/4; object-fit: cover; }
-  .pilotos-time__card h3 {
+  .piloto-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(6,6,6,.9) 0%, rgba(6,6,6,.5) 20%, rgba(6,6,6,0) 42%, transparent 100%);
+    transition: background var(--dur-medium) var(--ease-brake);
+  }
+  .piloto-card__conteudo {
+    position: relative;
+    z-index: 1;
+    padding: var(--space-s);
+  }
+  .piloto-card__cargo {
+    margin: 0 0 var(--space-3xs);
+    font-size: var(--t-label);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--luz-2);
+    text-shadow: 0 2px 8px rgba(0,0,0,.6);
+  }
+  .piloto-card__nome {
+    margin: 0;
     font-size: var(--t-l);
-    margin-block: var(--space-s) var(--space-3xs);
-    padding-block-start: var(--space-s);
-    border-block-start: 2px solid var(--vermelho);
+    line-height: 0.95;
+    text-transform: uppercase;
+    max-width: none;
+    text-shadow: 0 2px 12px rgba(0,0,0,.6);
   }
-  .pilotos-time__card p { color: var(--luz-2); font-size: var(--t-small); }
-  .pilotos-time__card p + p { margin-block-start: var(--space-2xs); }
+  /* Credenciais: escondidas por padrão (só cargo + nome ficam visíveis
+     sobre a foto). max-height anima a "subida" do texto junto com o scrim
+     mais escuro — só aparecem em hover/foco/toque (ver seletores abaixo). */
+  .piloto-card__creds {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--t-small);
+    color: var(--luz-2);
+    text-shadow: 0 2px 8px rgba(0,0,0,.6);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height var(--dur-medium) var(--ease-brake), opacity var(--dur-fast) var(--ease-brake), margin-block-start var(--dur-medium) var(--ease-brake);
+  }
+
+  .piloto-card:focus-visible { outline: 2px solid var(--vermelho); outline-offset: -2px; }
+
+  .piloto-card.is-active .piloto-card__media::after,
+  .piloto-card:focus-visible .piloto-card__media::after {
+    background: linear-gradient(0deg, rgba(6,6,6,.97) 0%, rgba(6,6,6,.85) 45%, rgba(6,6,6,.25) 78%, transparent 100%);
+  }
+  .piloto-card.is-active .piloto-card__creds,
+  .piloto-card:focus-visible .piloto-card__creds {
+    max-height: 6em;
+    opacity: 1;
+    margin-block-start: var(--space-2xs);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .piloto-card:hover .piloto-card__media img { transform: scale(1.06); }
+    .piloto-card:hover .piloto-card__media::after {
+      background: linear-gradient(0deg, rgba(6,6,6,.97) 0%, rgba(6,6,6,.85) 45%, rgba(6,6,6,.25) 78%, transparent 100%);
+    }
+    .piloto-card:hover .piloto-card__creds {
+      max-height: 6em;
+      opacity: 1;
+      margin-block-start: var(--space-2xs);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .piloto-card__media img { transition: none; }
+    .piloto-card:hover .piloto-card__media img { transform: none; }
+  }
+
+  @media (min-width: 1024px) {
+    .pilotos-time__cards {
+      grid-auto-columns: unset;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-m);
+      overflow: visible;
+      padding-inline: calc(var(--content-inset) + var(--axis)) var(--content-inset);
+    }
+    .piloto-card { aspect-ratio: 3 / 3.9; }
+    .piloto-card__conteudo { padding: var(--space-m); }
+    .piloto-card__num { inset-block-start: var(--space-s); inset-inline-start: var(--space-s); }
+    .piloto-card__nome { font-size: clamp(1.75rem, 1.1rem + 1.6vw, 2.5rem); }
+  }
 
   /* Bastidor: título à esquerda, texto à direita (desktop), ambos
      assentados na mesma linha de base — o bloco funciona como legenda de
@@ -2235,12 +2026,13 @@
 
   /* ------------------------------------------------ MOSAICO DO TIME
      Prova de escala: a arte original (1920×720) tem dois painéis de
-     retratos de 700px e um bloco cinza central de 520px com o lettering
-     "Somos todos Scuderia Bandeiras". Cada lado aqui é um recorte da mesma
-     imagem (aspect 700/720 + object-position esquerda/direita = recorte
-     exato do painel), e o bloco central vira HTML: a mensagem da marca
-     continua, agora com o fecho da dobra e o CTA — o texto nunca cai sobre
-     um rosto.
+     retratos de 700px e um bloco cinza central de 520px. Cada lado aqui
+     ocuparia um recorte da mesma imagem (aspect 700/720 + object-position
+     esquerda/direita), mas a foto real do time está desatualizada — os
+     dois lados usam .placeholder-img (IMAGE-TIME-01) até a foto ser
+     atualizada. O bloco central é HTML: mensagem da marca + módulo
+     compacto de Palestras (ex-seção própria, extinta) + CTA — o texto
+     nunca cai sobre um rosto quando a foto voltar.
      Mobile: sanduíche vertical (retratos → mensagem → retratos), a mesma
      composição girada 90°. Desktop (≥1024): faixa full-bleed de 3 colunas. */
   .time-mosaico {
@@ -2349,9 +2141,20 @@
     .time-mosaico__lado:hover img { transform: none; }
   }
 
-  @media (min-width: 1024px) {
-    .pilotos-time__deck { grid-auto-columns: unset; grid-template-columns: repeat(4, 1fr); overflow: visible; padding-inline: calc(var(--content-inset) + var(--axis)) var(--content-inset); }
+  /* Texto de apoio do módulo Palestras, fundido ao centro do time-mosaico
+     (ex-seção PALESTRAS, extinta — ver comentário em index.template.html). */
+  .time-mosaico__texto {
+    max-width: 42ch;
+    margin-block-start: var(--space-s);
+    color: var(--luz-2);
   }
+
+  /* Placeholder da foto do time: a foto real (time-mosaico) está
+     desatualizada — pedido explícito do usuário nesta rodada. Reaproveita
+     .placeholder-img (mesmo padrão do feed do Instagram e do vídeo da
+     PETRONAS); só suprime a vinheta pensada para foto real por cima da
+     textura própria do placeholder. */
+  .time-mosaico__lado.placeholder-img::after { display: none; }
 
   /* ============================================================ 09 · PALESTRAS */
   /* Os pilotos são o produto; o auditório é o palco. Desktop: palco sticky
@@ -2849,24 +2652,17 @@
   .cta-final__ctas .btn--ghost:hover { background: transparent; text-decoration-color: var(--luz); }
 
   /* ============================================================ MICRO-INTERAÇÕES · zoom em imagens ao passar o mouse */
-  .ecossistema__peca picture,
-  .pilotos-time__card picture {
+  .ecossistema__peca picture {
     overflow: clip;
   }
-  .ecossistema__peca img,
-  .bandeiras__ativo img,
-  .pilotos-time__card img {
+  .ecossistema__peca img {
     transition: transform var(--dur-slow) var(--ease-drive);
   }
-  .ecossistema__peca:hover img,
-  .bandeiras__ativo:hover img,
-  .pilotos-time__card:hover img {
+  .ecossistema__peca:hover img {
     transform: scale(1.06);
   }
   @media (prefers-reduced-motion: reduce) {
-    .ecossistema__peca:hover img,
-    .bandeiras__ativo:hover img,
-    .pilotos-time__card:hover img {
+    .ecossistema__peca:hover img {
       transform: none;
     }
   }
@@ -2931,4 +2727,54 @@
   @media (min-width: 768px) {
     .footer__contato { grid-template-columns: repeat(3, 1fr); }
   }
+}
+
+/* ============================================================ HERO · cascata de entrada
+   Fora de @layer components de propósito: a ordem de layers (tokens.css)
+   é reset, base, layout, type, components, motion-base, utilities — regras
+   de motion-base sempre vencem components no mesmo elemento/propriedade
+   (transition-delay incluso, via o shorthand `transition` do reveal
+   genérico em base.css). Para o hero entrar em cascata (eyebrow → título →
+   texto → CTAs 1-2-3) sem alterar o reveal genérico de nenhuma outra seção,
+   o override precisa estar neste MESMO layer, com seletor mais específico
+   (prefixo .hero) que a regra genérica `.js-motion [data-reveal].is-in`. */
+@layer motion-base {
+  .js-motion .hero .eyebrow.is-in { transition-delay: 0ms; }
+  .js-motion .hero .hero__title.is-in { transition-delay: 90ms; }
+  .js-motion .hero .hero__copy.is-in { transition-delay: 170ms; }
+  .js-motion .hero .hero__ctas .btn:nth-child(1).is-in { transition-delay: 260ms; }
+  .js-motion .hero .hero__ctas .btn:nth-child(2).is-in { transition-delay: 330ms; }
+  .js-motion .hero .hero__ctas .btn:nth-child(3).is-in { transition-delay: 400ms; }
+}
+
+/* ============================================================ ECOSSISTEMA · DUAS FRENTES
+   Mesmo motivo do risco da transição do Hero: o eixo central "se traça" ao
+   entrar em cena, as fotos assentam com leve escala (não só fade) e as
+   palavras-chave entram em sequência curta — motion só onde ajuda a
+   explicar a relação entre os dois universos (nunca decoração solta). */
+@layer motion-base {
+  .js-motion .frentes__eixo { height: 0; }
+  .js-motion .frentes__eixo.is-in {
+    height: 100%;
+    transition: height var(--dur-slow) var(--ease-drive);
+  }
+
+  .js-motion .frentes__media { transform: scale(1.05); }
+  .js-motion .frentes__media.is-in {
+    transform: scale(1);
+    transition: opacity var(--dur-slow) var(--ease-brake), transform var(--dur-slow) var(--ease-brake);
+  }
+
+  .js-motion .frentes__tags li:nth-child(1).is-in { transition-delay: 0ms; }
+  .js-motion .frentes__tags li:nth-child(2).is-in { transition-delay: 60ms; }
+  .js-motion .frentes__tags li:nth-child(3).is-in { transition-delay: 120ms; }
+  .js-motion .frentes__tags li:nth-child(4).is-in { transition-delay: 180ms; }
+  .js-motion .frentes__tags li:nth-child(5).is-in { transition-delay: 240ms; }
+  .js-motion .frentes__tags li:nth-child(6).is-in { transition-delay: 300ms; }
+  .js-motion .frentes__tags li:nth-child(7).is-in { transition-delay: 360ms; }
+
+  .js-motion .piloto-card:nth-child(1).is-in { transition-delay: 0ms; }
+  .js-motion .piloto-card:nth-child(2).is-in { transition-delay: 80ms; }
+  .js-motion .piloto-card:nth-child(3).is-in { transition-delay: 160ms; }
+  .js-motion .piloto-card:nth-child(4).is-in { transition-delay: 240ms; }
 }
