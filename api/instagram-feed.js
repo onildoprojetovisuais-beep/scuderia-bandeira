@@ -18,6 +18,10 @@
 const GRAPH_VERSION = "v21.0";
 const POST_LIMIT = 8;
 const CACHE_HEADER = "public, s-maxage=3600, stale-while-revalidate=86400";
+// Sem posts (env ausente, erro da Meta, token expirado): cache CURTO — assim, ao configurar
+// as variáveis ou renovar o token, o feed real aparece em ~1 min e não em até 1 h (Sprint 05).
+const CACHE_HEADER_EMPTY = "public, s-maxage=60, stale-while-revalidate=300";
+const GRAPH_TIMEOUT_MS = 5000;
 
 module.exports = async (req, res) => {
   if (req.method !== "GET") {
@@ -26,7 +30,7 @@ module.exports = async (req, res) => {
     return;
   }
 
-  res.setHeader("Cache-Control", CACHE_HEADER);
+  res.setHeader("Cache-Control", CACHE_HEADER_EMPTY);
 
   const userId = process.env.IG_USER_ID;
   const token = process.env.IG_ACCESS_TOKEN;
@@ -39,8 +43,12 @@ module.exports = async (req, res) => {
   const fields = "caption,media_type,media_url,thumbnail_url,permalink,timestamp,like_count,comments_count";
   const url = `https://graph.facebook.com/${GRAPH_VERSION}/${userId}/media?fields=${fields}&limit=${POST_LIMIT}&access_token=${token}`;
 
+  // Timeout: uma chamada pendurada à Meta não pode segurar a função até o limite da plataforma.
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), GRAPH_TIMEOUT_MS);
+
   try {
-    const graphRes = await fetch(url);
+    const graphRes = await fetch(url, { signal: controller.signal });
     if (!graphRes.ok) {
       console.error("instagram-feed: Graph API respondeu", graphRes.status);
       res.status(200).json({ configured: true, posts: [] });
@@ -60,9 +68,13 @@ module.exports = async (req, res) => {
       commentsCount: typeof item.comments_count === "number" ? item.comments_count : null,
     }));
 
+    if (posts.length) res.setHeader("Cache-Control", CACHE_HEADER);
     res.status(200).json({ configured: true, posts });
   } catch (err) {
-    console.error("instagram-feed: falha ao buscar Graph API", err);
+    // Só nome/mensagem: o objeto de erro pode carregar a URL (com o access_token) em alguns runtimes.
+    console.error("instagram-feed: falha ao buscar Graph API:", err && err.name, err && err.message ? String(err.message).split(token).join("[token]") : "");
     res.status(200).json({ configured: true, posts: [] });
+  } finally {
+    clearTimeout(timer);
   }
 };

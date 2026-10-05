@@ -118,6 +118,9 @@ export function initNavbarScroll() {
     ticking = false;
   }
 
+  // QA-027: foco por teclado nunca pode ficar num link de navbar escondida
+  nav.addEventListener("focusin", () => nav.classList.remove("is-hidden"));
+
   window.addEventListener(
     "scroll",
     () => {

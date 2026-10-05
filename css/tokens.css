@@ -5,6 +5,37 @@
   por amostragem de pixel no logo real (Brand/1124_Bandeiras_RGB_L-RW.png).
 */
 
+/*
+  Fontes hospedadas (Sprint 04 / performance): mesmos arquivos latin que o Google
+  Fonts entregava (Special Gothic Condensed One, Inter variável, JetBrains Mono 400),
+  agora do próprio domínio — sem CSS de terceiro bloqueando o render, sem 3 conexões
+  extras e com preload dos dois críticos no <head>. Fora do @layer de propósito.
+*/
+@font-face {
+  font-family: "Special Gothic Condensed One";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets-build/fonts/special-gothic-condensed-one-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../assets-build/fonts/inter-var-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets-build/fonts/jetbrains-mono-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 @layer tokens {
   :root {
     /* ===== SUPERFÍCIES ESCURAS (padrão da página) ===== */
@@ -22,6 +53,14 @@
 
     /* ===== VERMELHO ===== */
     --vermelho: #ff4747; /* cor real do logo — texto/ícone/botão sobre fundo ESCURO */
+    /* Botão vermelho (QA-076): UM token global para todo fundo vermelho com
+       rótulo pequeno. Texto branco (#fff) sobre #d92b2b = 4,85:1 (AA ≥ 4,5:1);
+       hover #b71c1c = 6,57:1; ativo #9f1414 ≈ 8:1. Valores fixos, nunca
+       remapeados por .section--paper (é isso que escurecia o hover no QA-078). */
+    --vermelho-botao: #d92b2b;
+    --vermelho-botao-hover: #b71c1c;
+    --vermelho-botao-active: #9f1414;
+    --on-vermelho: #ffffff;
     --vermelho-escuro: #c81e1e; /* mesmo matiz, mais escuro — texto/ícone sobre --papel (o vermelho puro reprova AA em fundo claro) */
 
     /* ===== TEXTO SECUNDÁRIO / DIVISORES ===== */

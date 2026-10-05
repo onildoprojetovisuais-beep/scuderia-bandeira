@@ -44,6 +44,19 @@ function whatsappUrl(origin) {
 }
 
 export function initCTAs() {
+  // QA-021: o href real (wa.me + mensagem) já vem no HTML, então o link
+  // funciona sem JS (copiar link, abrir em nova aba, ctrl/cmd/middle-click).
+  // Rede de segurança: se algum CTA chegar com href vazio/"#", preenche aqui.
+  document.querySelectorAll("[data-cta]").forEach((el) => {
+    const href = el.getAttribute("href");
+    if (href && href !== "#") return;
+    const origin = el.dataset.origin || (el.dataset.cta === "project" ? "hero" : "direto");
+    el.setAttribute("href", whatsappUrl(origin));
+    el.setAttribute("target", "_blank");
+    el.setAttribute("rel", "noopener");
+  });
+
+  // O JS só mede: nunca cancela a navegação nativa do link.
   document.addEventListener("click", (event) => {
     const trigger = event.target.closest("[data-cta]");
     if (!trigger) return;
@@ -51,23 +64,18 @@ export function initCTAs() {
     const kind = trigger.dataset.cta;
 
     if (kind === "project") {
-      // §13.5: sem endpoint aprovado, todo CTA de projeto abre WhatsApp.
       if (FORM_ENDPOINT) {
         // Reservado para quando o endpoint existir: abrir o modal em vez
-        // de sair para o WhatsApp. (Componente ainda não implementado
-        // nesta fase — ver doc/VISUAL-DIRECTION.md §17 passo 6.)
+        // de sair para o WhatsApp (componente ainda não implementado).
+        event.preventDefault();
         return;
       }
-      event.preventDefault();
       const origin = trigger.dataset.origin || "hero";
-      window.open(whatsappUrl(origin), "_blank", "noopener");
       trackEvent("cta_click", { origin, destination: "whatsapp" });
     }
 
     if (kind === "whatsapp") {
-      event.preventDefault();
       const origin = trigger.dataset.origin || "direto";
-      window.open(whatsappUrl(origin), "_blank", "noopener");
       trackEvent("whatsapp_click", { origin });
     }
   });

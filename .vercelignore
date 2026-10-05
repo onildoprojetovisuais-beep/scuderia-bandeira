@@ -10,3 +10,11 @@ Imagens/
 *.mov
 index.template.html
 assets/videos/pilotos
+# Sprint 05 — fora do deploy: material interno/QA, caminhos-fonte, CSS-fonte comentado
+qa/
+media-kit/
+.vercel/
+assets-build/manifest.json
+css/base.css
+css/components.css
+css/tokens.css

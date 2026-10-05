@@ -687,74 +687,74 @@
   },
   "piloto-atila": {
     "slug": "piloto-atila",
-    "source": "assets/Imagens/pilotos-premium/atila-abreu.jpg",
-    "original_size_bytes": 817334,
-    "width": 936,
-    "height": 1192,
+    "source": "assets/Imagens/pilotos-premium/atila.png",
+    "original_size_bytes": 2079292,
+    "width": 1111,
+    "height": 1415,
     "aspect_ratio": 0.7852,
     "has_alpha": false,
     "fallback_ext": "jpg",
     "avif": {
-      "480": "assets-build/img/piloto-atila-480w-d0d32d1265.avif",
-      "800": "assets-build/img/piloto-atila-800w-d0d32d1265.avif"
+      "480": "assets-build/img/piloto-atila-480w-4b7fd65884.avif",
+      "800": "assets-build/img/piloto-atila-800w-4b7fd65884.avif"
     },
     "jpg": {
-      "480": "assets-build/img/piloto-atila-480w-d0d32d1265.jpg",
-      "800": "assets-build/img/piloto-atila-800w-d0d32d1265.jpg"
+      "480": "assets-build/img/piloto-atila-480w-4b7fd65884.jpg",
+      "800": "assets-build/img/piloto-atila-800w-4b7fd65884.jpg"
     }
   },
   "piloto-christian": {
     "slug": "piloto-christian",
-    "source": "assets/Imagens/pilotos-premium/cristian-fitipalidi.jpg",
-    "original_size_bytes": 799829,
-    "width": 930,
-    "height": 1192,
-    "aspect_ratio": 0.7802,
+    "source": "assets/Imagens/pilotos-premium/cristian.png",
+    "original_size_bytes": 2221973,
+    "width": 1111,
+    "height": 1415,
+    "aspect_ratio": 0.7852,
     "has_alpha": false,
     "fallback_ext": "jpg",
     "avif": {
-      "480": "assets-build/img/piloto-christian-480w-3511b5bac7.avif",
-      "800": "assets-build/img/piloto-christian-800w-3511b5bac7.avif"
+      "480": "assets-build/img/piloto-christian-480w-6dab6d6c5e.avif",
+      "800": "assets-build/img/piloto-christian-800w-6dab6d6c5e.avif"
     },
     "jpg": {
-      "480": "assets-build/img/piloto-christian-480w-3511b5bac7.jpg",
-      "800": "assets-build/img/piloto-christian-800w-3511b5bac7.jpg"
+      "480": "assets-build/img/piloto-christian-480w-6dab6d6c5e.jpg",
+      "800": "assets-build/img/piloto-christian-800w-6dab6d6c5e.jpg"
     }
   },
   "piloto-ingo": {
     "slug": "piloto-ingo",
-    "source": "assets/Imagens/pilotos-premium/ingo-hoffman.jpg",
-    "original_size_bytes": 749130,
-    "width": 899,
-    "height": 1192,
-    "aspect_ratio": 0.7542,
+    "source": "assets/Imagens/pilotos-premium/ingo.png",
+    "original_size_bytes": 2089435,
+    "width": 1111,
+    "height": 1415,
+    "aspect_ratio": 0.7852,
     "has_alpha": false,
     "fallback_ext": "jpg",
     "avif": {
-      "480": "assets-build/img/piloto-ingo-480w-eb7fc06afc.avif",
-      "800": "assets-build/img/piloto-ingo-800w-eb7fc06afc.avif"
+      "480": "assets-build/img/piloto-ingo-480w-0ae0d06f6e.avif",
+      "800": "assets-build/img/piloto-ingo-800w-0ae0d06f6e.avif"
     },
     "jpg": {
-      "480": "assets-build/img/piloto-ingo-480w-eb7fc06afc.jpg",
-      "800": "assets-build/img/piloto-ingo-800w-eb7fc06afc.jpg"
+      "480": "assets-build/img/piloto-ingo-480w-0ae0d06f6e.jpg",
+      "800": "assets-build/img/piloto-ingo-800w-0ae0d06f6e.jpg"
     }
   },
   "piloto-nelsinho": {
     "slug": "piloto-nelsinho",
-    "source": "assets/Imagens/pilotos-premium/nelson-piquet.jpg",
-    "original_size_bytes": 788743,
-    "width": 892,
-    "height": 1192,
-    "aspect_ratio": 0.7483,
+    "source": "assets/Imagens/pilotos-premium/nelson.png",
+    "original_size_bytes": 2144112,
+    "width": 1111,
+    "height": 1415,
+    "aspect_ratio": 0.7852,
     "has_alpha": false,
     "fallback_ext": "jpg",
     "avif": {
-      "480": "assets-build/img/piloto-nelsinho-480w-e31e292ec3.avif",
-      "800": "assets-build/img/piloto-nelsinho-800w-e31e292ec3.avif"
+      "480": "assets-build/img/piloto-nelsinho-480w-953649222c.avif",
+      "800": "assets-build/img/piloto-nelsinho-800w-953649222c.avif"
     },
     "jpg": {
-      "480": "assets-build/img/piloto-nelsinho-480w-e31e292ec3.jpg",
-      "800": "assets-build/img/piloto-nelsinho-800w-e31e292ec3.jpg"
+      "480": "assets-build/img/piloto-nelsinho-480w-953649222c.jpg",
+      "800": "assets-build/img/piloto-nelsinho-800w-953649222c.jpg"
     }
   },
   "logo-raster": {
@@ -863,6 +863,26 @@
       "480": "assets-build/img/time-mosaico-foto-480w-69d27d2e43.webp",
       "800": "assets-build/img/time-mosaico-foto-800w-69d27d2e43.webp",
       "1280": "assets-build/img/time-mosaico-foto-1280w-69d27d2e43.webp"
+    }
+  },
+  "time-mosaico-foto-2": {
+    "slug": "time-mosaico-foto-2",
+    "source": "assets/Imagens/nosso time/Mosaico 2.png",
+    "original_size_bytes": 3360129,
+    "width": 1461,
+    "height": 1503,
+    "aspect_ratio": 0.9721,
+    "has_alpha": true,
+    "fallback_ext": "webp",
+    "avif": {
+      "480": "assets-build/img/time-mosaico-foto-2-480w-6d312e4ba2.avif",
+      "800": "assets-build/img/time-mosaico-foto-2-800w-6d312e4ba2.avif",
+      "1280": "assets-build/img/time-mosaico-foto-2-1280w-6d312e4ba2.avif"
+    },
+    "webp": {
+      "480": "assets-build/img/time-mosaico-foto-2-480w-6d312e4ba2.webp",
+      "800": "assets-build/img/time-mosaico-foto-2-800w-6d312e4ba2.webp",
+      "1280": "assets-build/img/time-mosaico-foto-2-1280w-6d312e4ba2.webp"
     }
   },
   "marcas-historia": {
@@ -1011,6 +1031,28 @@
       "800": "assets-build/img/eco-carros-800w-f429ae5752.jpg",
       "1280": "assets-build/img/eco-carros-1280w-f429ae5752.jpg",
       "1920": "assets-build/img/eco-carros-1920w-f429ae5752.jpg"
+    }
+  },
+  "eco-espaco-scuderia": {
+    "slug": "eco-espaco-scuderia",
+    "source": "assets/Imagens/complexo/imagem-scuderia-complexo.png",
+    "original_size_bytes": 30818103,
+    "width": 5000,
+    "height": 3333,
+    "aspect_ratio": 1.5002,
+    "has_alpha": false,
+    "fallback_ext": "jpg",
+    "avif": {
+      "480": "assets-build/img/eco-espaco-scuderia-480w-4914b1e83d.avif",
+      "800": "assets-build/img/eco-espaco-scuderia-800w-4914b1e83d.avif",
+      "1280": "assets-build/img/eco-espaco-scuderia-1280w-4914b1e83d.avif",
+      "1920": "assets-build/img/eco-espaco-scuderia-1920w-4914b1e83d.avif"
+    },
+    "jpg": {
+      "480": "assets-build/img/eco-espaco-scuderia-480w-4914b1e83d.jpg",
+      "800": "assets-build/img/eco-espaco-scuderia-800w-4914b1e83d.jpg",
+      "1280": "assets-build/img/eco-espaco-scuderia-1280w-4914b1e83d.jpg",
+      "1920": "assets-build/img/eco-espaco-scuderia-1920w-4914b1e83d.jpg"
     }
   },
   "eco-pista": {

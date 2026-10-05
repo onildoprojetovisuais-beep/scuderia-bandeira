@@ -51,6 +51,8 @@
     outline: 2px solid var(--vermelho);
     outline-offset: 3px;
   }
+  /* QA-027: <main tabindex="-1"> recebe foco programático do skip-link; sem anel nele */
+  main:focus { outline: none; }
 
   /* Skip link (§16 item 18 — microcopy "Ir para o conteúdo" pendente de aprovação;
      funcional desde já, texto pode ser trocado sem mudar comportamento) */
@@ -215,9 +217,12 @@
       opacity: 1;
       transform: none;
     }
-    * {
+    *, *::before, *::after {
       animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      animation-delay: 0s !important;
       transition-duration: 0.001ms !important;
+      transition-delay: 0s !important;
       scroll-behavior: auto !important;
     }
   }

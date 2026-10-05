@@ -108,6 +108,10 @@ def main() -> None:
 
     output = TAG_RE.sub(replace, template)
 
+    # Sprint 04: comentarios HTML sao documentacao interna (~15 KB) - fora do build publico.
+    output = re.sub(r"<!--.*?-->", "", output, flags=re.S)
+    output = re.sub(r"\n[ \t]*(?:\n[ \t]*)+\n", "\n\n", output)
+
     if errors:
         print("ERROS ao expandir <x-img>:", file=sys.stderr)
         for e in errors:

@@ -47,7 +47,8 @@ export async function initInstagramFeed() {
     const comments = link.querySelector("[data-ig-comments]");
     const picture = link.querySelector("picture");
 
-    link.href = post.permalink || link.href;
+    // só links reais do Instagram (defesa em profundidade; o dado vem da API da Meta)
+    if (/^https:\/\/www\.instagram\.com\//.test(post.permalink || "")) link.href = post.permalink;
 
     if (img) {
       // Mídia vem direto do CDN da Graph API — sem srcset local, então os

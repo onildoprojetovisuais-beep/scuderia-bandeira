@@ -1,13 +1,11 @@
 import { initMotion, initGrifo, initNavbarScroll, initStatCounters } from "./motion.js";
 import { initMobileMenu, initScrollSpy } from "./nav.js";
 import { initCTAs } from "./cta.js";
-import { initCaterhamCounters, initCaterhamVideo } from "./caterham.js";
-import { initScrollSequences } from "./scrollseq.js?v=roleta1";
 import { initPilotoCards } from "./pilotos.js";
-import { initVideoSoundToggle } from "./video-sound-toggle.js";
+import { initVideoSoundToggle, initBastidoresPreload } from "./video-sound-toggle.js";
 import { initInstagramFeed } from "./instagram-feed.js";
-import { initRedesPreview } from "./redes-preview.js";
 import { initCarrossel } from "./carrossel.js";
+import { initExperiencias } from "./experiencias.js";
 
 // Largura da barra de rolagem em --sbw: 100vw a inclui, o .container não —
 // sem isso o --content-inset (tokens.css) fica meia barra à direita do eixo.
@@ -23,11 +21,9 @@ initNavbarScroll();
 initMobileMenu();
 initScrollSpy();
 initCTAs();
-initCaterhamCounters();
-initCaterhamVideo();
-initScrollSequences();
 initPilotoCards();
 initVideoSoundToggle();
+initBastidoresPreload();
 initInstagramFeed();
-initRedesPreview();
 initCarrossel();
+initExperiencias();

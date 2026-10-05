@@ -20,17 +20,42 @@
     font-size: var(--t-small);
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    white-space: nowrap; /* texto do botão sempre em uma linha */
     transition: transform var(--dur-fast) var(--ease-brake),
       background var(--dur-fast) var(--ease-brake),
       border-color var(--dur-fast) var(--ease-brake);
   }
+  @media (max-width: 480px) {
+    .btn { padding-inline: var(--space-s); font-size: 0.75rem; letter-spacing: 0.03em; }
+  }
+  @media (max-width: 380px) { .btn[data-origin="cta-final"][data-cta="whatsapp"] { white-space: normal; text-align: center; } } /* única frase longa: só aqui pode quebrar, para não estourar o 320px */
+  .btn--tertiary, .btn[data-origin="cta-final"][data-cta="whatsapp"] { max-width: 100%; } /* frase longa nunca estoura a tela */
   .btn:active { transform: scale(0.98); }
 
-  .btn--primary {
-    background: var(--vermelho);
-    color: var(--asfalto); /* §9.2: texto escuro sobre vermelho real passa AA (5,70:1) */
+  /* Botão vermelho — padrão único (QA-076/QA-078): .btn--primary, .nav__cta e
+     .nav__dialog-whatsapp compartilham fundo/hover/ativo/visitado. Texto branco
+     fixo, sem depender de --luz/--asfalto (remapeados em .section--paper). */
+  .btn--primary,
+  .nav__cta,
+  .nav__dialog-whatsapp {
+    background: var(--vermelho-botao);
+    color: var(--on-vermelho);
   }
-  .btn--primary:hover { background: var(--luz); }
+  .btn--primary:visited,
+  .nav__cta:visited,
+  .nav__dialog-whatsapp:visited { color: var(--on-vermelho); }
+  .btn--primary:hover,
+  .nav__cta:hover,
+  .nav__dialog-whatsapp:hover {
+    background: var(--vermelho-botao-hover);
+    color: var(--on-vermelho);
+  }
+  .btn--primary:active,
+  .nav__cta:active,
+  .nav__dialog-whatsapp:active {
+    background: var(--vermelho-botao-active);
+    color: var(--on-vermelho);
+  }
 
   .btn--ghost {
     background: transparent;
@@ -92,6 +117,7 @@
     align-items: flex-start;
     margin-block-end: var(--space-l);
   }
+  .section-head > :not(.section-head__index) { min-width: 0; } /* QA-038: texto grande não estoura a linha */
   .section-head__index {
     flex-shrink: 0;
     font-family: var(--ff-display);
@@ -290,6 +316,7 @@
     font-family: var(--ff-display);
     font-weight: 400;
     font-size: var(--t-l);
+    line-height: 1.5; /* QA-006: o h3 global é 1.05; 1.5 = valor herdado quando eram h5 (visual idêntico) */
     margin: 0;
   }
   .card p { font-size: var(--t-small); color: var(--luz-2); }
@@ -343,6 +370,8 @@
   }
   .nav.is-solid { background: var(--asfalto); }
   .nav.is-hidden { transform: translateY(-100%); }
+  main :is(a[href], button, video, [tabindex="0"]) { scroll-margin-top: 80px; } /* QA-027: foco não fica sob a navbar fixa (sem scroll-padding global: não desloca as âncoras) */
+  .nav.is-hidden:focus-within { transform: none; } /* QA-027: foco nunca fica em navbar escondida */
 
   .nav__inner {
     display: flex;
@@ -388,8 +417,6 @@
 
   .nav__cta {
     display: none;
-    background: var(--vermelho);
-    color: var(--asfalto);
     padding: var(--space-3xs) var(--space-s);
     font-weight: 600;
     font-size: var(--t-small);
@@ -398,7 +425,6 @@
     white-space: nowrap;
     transition: background var(--dur-fast) var(--ease-brake);
   }
-  .nav__cta:hover { background: var(--luz); }
 
   .nav__menu-btn {
     width: 44px; height: 44px;
@@ -417,6 +443,15 @@
     .nav__links { display: flex; }
     .nav__cta { display: inline-flex; }
     .nav__menu-btn { display: none; }
+  }
+  /* 1280–1439px: logo + 6 links + CTA não cabiam no container (CTA cortado em
+     1280, QA-057 no limite). Compacta gaps/tracking só nessa faixa; em ≥1440
+     o layout aprovado (QA-033) permanece intacto. */
+  @media (min-width: 1280px) and (max-width: 1439.98px) {
+    .nav__inner { gap: var(--space-s); }
+    .nav__links { gap: var(--space-xs); letter-spacing: 0.01em; font-size: 0.8125rem; }
+    .nav__group { gap: var(--space-2xs); }
+    .nav__links a { padding-inline: 0; }
   }
 
   .nav__dialog {
@@ -459,14 +494,11 @@
     margin: var(--space-l) var(--gutter);
     padding: var(--space-s);
     text-align: center;
-    background: var(--vermelho);
-    color: var(--asfalto);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     transition: background var(--dur-fast) var(--ease-brake);
   }
-  .nav__dialog-whatsapp:hover { background: var(--luz); }
 
   /* ============================================================ 01 · HERO */
   .hero {
@@ -523,32 +555,6 @@
     margin-block-start: var(--space-l);
   }
 
-  .hero__scroll {
-    position: absolute;
-    inset-inline-end: var(--container-margin);
-    inset-block-end: var(--space-l);
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-2xs);
-    color: var(--luz-2);
-    font-size: var(--t-label);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    writing-mode: vertical-rl;
-  }
-  .hero__scroll::after {
-    content: "";
-    display: block;
-    width: 1px;
-    height: 56px;
-    background: linear-gradient(var(--luz-2), transparent);
-  }
-
-  @media (max-width: 1023px) {
-    .hero__scroll { display: none; }
-  }
   @media (max-width: 767px) {
     .hero { min-height: 100svh; }
     .hero__bg img { object-position: center 20%; }
@@ -799,16 +805,17 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(0deg, rgba(6,6,6,.82) 0%, rgba(6,6,6,.4) 24%, rgba(6,6,6,.06) 46%, transparent 62%);
+    background: linear-gradient(0deg, rgba(6,6,6,.88) 0%, rgba(6,6,6,.78) 26%, rgba(6,6,6,.6) 42%, rgba(6,6,6,.25) 58%, transparent 72%); /* QA-064: numeral vermelho ≥3:1 */
   }
-  .frentes__painel--scuderia .frentes__media img { object-position: 50% 65%; }
+  .frentes__painel--scuderia .frentes__media img { object-position: 38% 50%; } /* QA-053: logo + entrada da sede no enquadramento */
   .frentes__conteudo {
     position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-s);
+    gap: var(--space-m);
+    min-width: 0;
     height: 100%;
     justify-content: flex-end;
     padding: var(--space-m) var(--gutter);
@@ -827,21 +834,6 @@
     text-shadow: 0 2px 16px rgba(0,0,0,.6);
   }
   .frentes__num { color: var(--vermelho); font-feature-settings: "tnum"; }
-  .frentes__tags {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 0.3em;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-size: 0.625rem;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    color: var(--luz-2);
-    text-shadow: 0 2px 12px rgba(0,0,0,.6);
-  }
-  .frentes__tags li { white-space: nowrap; }
-  .frentes__tags li:not(:last-child)::after { content: "·"; margin-inline: 0.3em; color: var(--vermelho); }
   .frentes__link {
     font-weight: 600;
     font-size: var(--t-small);
@@ -856,7 +848,7 @@
   .frentes__link:hover { color: var(--vermelho); }
 
   @media (min-width: 1024px) {
-    .frentes { grid-template-columns: 1fr 1fr; }
+    .frentes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .frentes__painel { min-height: 78vh; }
     .frentes__eixo {
       display: block;
@@ -868,19 +860,11 @@
       background: var(--vermelho);
       transform: translateX(-50%);
     }
-    .frentes__conteudo { padding: var(--space-xl); max-width: 34rem; }
-    .frentes__tags {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      font-size: 0.75rem;
-    }
-    .frentes__tags::-webkit-scrollbar { display: none; }
+    .frentes__conteudo { padding: var(--space-xl); max-width: 34rem; min-width: 0; }
   }
 
   /* <1024px: cada frente vira um bloco vertical fechado — número/título →
-     palavras-chave → CTA → imagem (nessa ordem, já é a ordem do DOM), sem
+     CTA → imagem (nessa ordem, já é a ordem do DOM), sem
      overlay: foto limpa, proporção fixa, conteúdo em fluxo normal. Espaço
      GRANDE entre as duas frentes (unidades distintas) e espaço PEQUENO
      dentro de cada uma (a imagem "gruda" no bloco de texto acima dela, não
@@ -892,7 +876,6 @@
     .frentes__media { position: relative; aspect-ratio: 4 / 3; overflow: clip; }
     .frentes__media::after { display: none; }
     .frentes__label,
-    .frentes__tags,
     .frentes__link { text-shadow: none; }
   }
 
@@ -970,81 +953,118 @@
     text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
   }
 
-  /* Cards dos princípios — poster editorial (foto + scrim + número/título no
-     pé), mesma técnica visual de .conteudo__frame. Mobile/tablet: carrossel
-     horizontal com scroll-snap, 1 card dominante + ponta do próximo (sem
-     autoplay, swipe nativo). Desktop (≥1024px, ver .experiencias__cena):
-     coluna de 5 linhas iguais ao lado do vídeo. */
+  /* Painel dos princípios (2026-10, hierarquia: vídeo > princípio ativo >
+     demais). Os 5 <li class="exp-item"> = cabeçalho (número + título) + foto.
+     Base (sem JS / .is-enhanced ausente): lista simples, os 5 com foto.
+     Com js/experiencias.js (.is-enhanced):
+       · <1024px  = accordion vertical — só o item aberto revela a foto
+         (grid 0fr→1fr, sem altura fixa em px); os fechados ficam em linhas
+         de 60px com número + título + indicador "+".
+       · ≥1024px  = foto-palco que ocupa a coluna inteira ao lado do vídeo
+         (as 5 fotos empilhadas em absoluto, uma visível por vez, crossfade
+         curto + leve assentar de escala) com a lista de navegação por cima,
+         ancorada no pé, sobre scrim. Todas as fotos continuam usadas. */
   .experiencias__cards {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 78vw;
-    gap: 2px;
-    margin-block-start: 2px;
-    padding-inline: var(--gutter);
-    scroll-padding-inline: var(--gutter);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
     list-style: none;
-  }
-  .experiencias__cards::-webkit-scrollbar { display: none; }
-  .experiencias__cards:focus-visible { outline: 2px solid var(--vermelho); outline-offset: 4px; }
-
-  .experiencias__card {
-    position: relative;
+    margin-block-start: 2px;
+    padding: 0;
     isolation: isolate;
-    aspect-ratio: 4 / 5;
-    overflow: clip;
-    scroll-snap-align: start;
-    background: var(--asfalto-2);
   }
-  .experiencias__card picture { display: block; height: 100%; }
-  .experiencias__card img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: var(--foco, 50% 50%);
-    transition: transform var(--dur-settle) var(--ease-brake);
-  }
-  .experiencias__card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background: linear-gradient(0deg, rgba(6, 6, 6, 0.88) 0%, rgba(6, 6, 6, 0.58) 32%, rgba(6, 6, 6, 0) 66%);
-  }
-  .experiencias__card-legenda {
-    position: absolute;
-    z-index: 2;
-    inset: auto var(--space-s) var(--space-s) var(--space-s);
+  .exp-item { border-block-end: 1px solid var(--divisor); }
+  .exp-item__cab {
     display: flex;
     align-items: baseline;
-    gap: var(--space-2xs);
+    gap: var(--space-xs);
+    padding: var(--space-s) var(--gutter);
   }
-  .experiencias__card-num {
+  .exp-item__num {
     font-family: var(--ff-display);
     font-size: var(--t-label);
-    color: var(--vermelho);
-    flex-shrink: 0;
+    color: var(--luz-2);
     font-feature-settings: "tnum";
+    flex-shrink: 0;
   }
-  .experiencias__card-titulo {
+  .exp-item__titulo {
     font-family: var(--ff-display);
-    font-size: clamp(1.05rem, 0.85rem + 0.9vw, 1.375rem);
+    font-size: clamp(1.15rem, 0.95rem + 0.9vw, 1.5rem);
     line-height: 1.05;
     text-transform: uppercase;
     letter-spacing: -0.005em;
     color: var(--luz);
-    text-shadow: 0 1px 10px rgba(6, 6, 6, 0.6);
   }
+  .exp-item__moldura { background: var(--asfalto-2); }
+  .exp-item__moldura picture { display: block; }
+  .exp-item__moldura img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: var(--foco, 50% 50%);
+  }
+  /* QA-080: rosto de Átila inteiro no item Comunicação (3º) em todos os recortes */
+  .exp-item:nth-child(3) { --foco: 100% 30%; }
 
-  @media (min-width: 768px) {
-    .experiencias__momento { aspect-ratio: 16 / 9; max-height: 74vh; }
-    .experiencias__momento-overlay { max-width: 44rem; }
+  /* ---- Com JS ---- */
+  .experiencias__cards.is-enhanced .exp-item__cab { margin: 0; padding: 0; }
+  .exp-item__btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    width: 100%;
+    min-height: 60px;
+    padding: var(--space-xs) var(--gutter);
+    text-align: start;
+    color: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .exp-item__btn:focus-visible { outline: 2px solid var(--luz); outline-offset: -4px; }
+  .exp-item__btn .exp-item__titulo { flex: 1; min-width: 0; color: var(--luz-2); transition: color var(--dur-medium) var(--ease-brake); }
+  .exp-item__btn .exp-item__num { transition: color var(--dur-medium) var(--ease-brake); }
+  /* indicador "+" que vira "–" no item aberto (vermelho = ativo) */
+  .exp-item__ind {
+    position: relative;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--luz-2);
+  }
+  .exp-item__ind::before,
+  .exp-item__ind::after {
+    content: "";
+    position: absolute;
+    inset: 50% 2px auto;
+    height: 2px;
+    margin-block-start: -1px;
+    background: currentColor;
+    transition: transform var(--dur-medium) var(--ease-brake), opacity var(--dur-medium) var(--ease-brake);
+  }
+  .exp-item__ind::after { transform: rotate(90deg); }
+  .exp-item.is-active .exp-item__ind { color: var(--vermelho); }
+  .exp-item.is-active .exp-item__ind::after { transform: rotate(0deg); opacity: 0; }
+  .exp-item.is-active .exp-item__num { color: var(--vermelho); }
+  .exp-item.is-active .exp-item__btn .exp-item__titulo { color: var(--luz); }
+
+  /* accordion: o painel fecha em 0fr (visibility atrasada tira as fotos
+     fechadas da árvore de acessibilidade e do foco) */
+  .experiencias__cards.is-enhanced .exp-item__painel {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows var(--dur-medium) var(--ease-brake), visibility 0s linear var(--dur-medium);
+  }
+  .experiencias__cards.is-enhanced .exp-item.is-active .exp-item__painel {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+  .experiencias__cards.is-enhanced .exp-item__moldura { min-height: 0; overflow: clip; }
+  .exp-item.is-active { border-block-end-color: var(--vermelho); }
+
+  @media (min-width: 640px) and (max-width: 1023.98px) {
+    .exp-item__moldura img { aspect-ratio: 16 / 9; }
   }
 
   @media (min-width: 1024px) {
@@ -1053,35 +1073,121 @@
       grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
       grid-template-rows: minmax(0, 1fr);
       gap: 2px;
-      height: clamp(560px, 52vw, 720px);
     }
+    .experiencias__cena.is-enhanced { height: clamp(560px, 52vw, 720px); }
     .experiencias__momento { height: 100%; min-height: 0; max-height: none; aspect-ratio: auto; }
-    .experiencias__cards {
-      grid-auto-flow: row;
-      grid-auto-columns: unset;
-      grid-template-rows: repeat(5, 1fr);
+    .experiencias__cards { margin-block-start: 0; }
+    .experiencias__cards:not(.is-enhanced) .exp-item__moldura img { aspect-ratio: 16 / 9; }
+
+    /* Foto-palco + lista de navegação */
+    .experiencias__cards.is-enhanced {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
       height: 100%;
       min-height: 0;
-      margin-block-start: 0;
-      padding-inline: 0;
-      overflow: visible;
-      scroll-snap-type: none;
+      overflow: clip;
+      background: var(--asfalto-2);
     }
-    /* min-height:0 é o pulo do gato: sem isso, o min-height:auto padrão de
-       item de grid deixa a proporção intrínseca da <img> (replaced element)
-       vazar como "conteúdo mínimo" do card, e a linha de 1fr cresce além
-       da altura do container em vez de respeitar os 5 quinhões iguais. */
-    .experiencias__card { aspect-ratio: auto; height: 100%; min-height: 0; }
-    .experiencias__card-legenda { inset: auto var(--space-m) var(--space-s) var(--space-m); }
+    .experiencias__cards.is-enhanced::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(0deg, rgba(6, 6, 6, 0.94) 0%, rgba(6, 6, 6, 0.82) 34%, rgba(6, 6, 6, 0.3) 58%, rgba(6, 6, 6, 0) 76%),
+        linear-gradient(180deg, rgba(6, 6, 6, 0.28) 0%, rgba(6, 6, 6, 0) 22%);
+    }
+    .experiencias__cards.is-enhanced .exp-item { border-block-end: 0; }
+    .experiencias__cards.is-enhanced .exp-item__cab { position: relative; z-index: 2; }
+    .experiencias__cards.is-enhanced .exp-item__painel {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--dur-medium) var(--ease-brake), visibility 0s linear var(--dur-medium);
+    }
+    .experiencias__cards.is-enhanced .exp-item.is-active .exp-item__painel {
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0s;
+    }
+    .experiencias__cards.is-enhanced .exp-item__moldura,
+    .experiencias__cards.is-enhanced .exp-item__moldura picture,
+    .experiencias__cards.is-enhanced .exp-item__moldura img { height: 100%; }
+    .experiencias__cards.is-enhanced .exp-item__moldura img {
+      aspect-ratio: auto;
+      transform: scale(1.06);
+      transition: transform var(--dur-settle) var(--ease-brake);
+    }
+    .experiencias__cards.is-enhanced .exp-item.is-active .exp-item__moldura img { transform: scale(1); }
+
+    .exp-item__btn {
+      min-height: 50px;
+      padding: var(--space-2xs) var(--space-m);
+      gap: var(--space-s);
+    }
+    .exp-item__ind { display: none; }
+    .exp-item__titulo { font-size: clamp(1.05rem, 0.7rem + 0.9vw, 1.5rem); text-shadow: 0 1px 10px rgba(6, 6, 6, 0.6); }
+    /* linha-indicador: cresce à esquerda do número no item ativo e o texto
+       desliza para dar lugar a ela */
+    .exp-item__btn::before {
+      content: "";
+      position: absolute;
+      inset-inline-start: var(--space-m);
+      inset-block-start: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--vermelho);
+      transition: width var(--dur-medium) var(--ease-brake);
+    }
+    .exp-item__btn .exp-item__num,
+    .exp-item__btn .exp-item__titulo { transition: color var(--dur-medium) var(--ease-brake), transform var(--dur-medium) var(--ease-brake); }
+    .exp-item.is-active .exp-item__btn::before { width: 20px; }
+    .exp-item.is-active .exp-item__btn .exp-item__num,
+    .exp-item.is-active .exp-item__btn .exp-item__titulo { transform: translateX(30px); }
+    .exp-item__btn:hover .exp-item__titulo { color: var(--luz); }
+    .exp-item__btn:focus-visible { outline-offset: -3px; }
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    .experiencias__card:hover img { transform: scale(1.04); }
-    .experiencias__card:hover .experiencias__card-titulo { letter-spacing: 0.01em; }
-  }
   @media (prefers-reduced-motion: reduce) {
-    .experiencias__card img { transition: none; }
-    .experiencias__card:hover img { transform: none; }
+    .exp-item__painel,
+    .exp-item__moldura img,
+    .exp-item__btn::before,
+    .exp-item__ind::before,
+    .exp-item__ind::after,
+    .exp-item__btn .exp-item__num,
+    .exp-item__btn .exp-item__titulo { transition: none !important; }
+    .experiencias__cards.is-enhanced .exp-item__moldura img { transform: none; }
+  }
+
+  /* QA-079 (proposta conservadora, reversível — apagar este bloco restaura o
+     desenho anterior): um só título forte por vez. O título do vídeo fica menor
+     que o h2 da seção e o eyebrow repetido sai. Lead e CTA preservados. */
+  .experiencias__momento-overlay .eyebrow { display: none; }
+  .experiencias__momento-titulo { font-size: var(--t-l); max-width: 22ch; }
+
+  /* Mobile (<768px): vídeo primeiro, inteiro e sem texto por cima; headline e
+     lead entram logo abaixo, no fluxo, e depois a lista dos princípios. */
+  @media (max-width: 767.98px) {
+    .experiencias__momento { aspect-ratio: auto; max-height: none; overflow: visible; background: none; }
+    .experiencias__momento-video { position: relative; inset: auto; aspect-ratio: 4 / 5; height: auto; background: var(--asfalto); }
+    .experiencias__momento-scrim { display: none; }
+    .experiencias__momento-overlay { height: auto; padding: var(--space-l) var(--gutter) var(--space-m); }
+    .experiencias__momento-titulo,
+    .experiencias__momento-lead { text-shadow: none; }
+    .experiencias__momento-lead { max-width: 36ch; color: var(--luz-2); }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023.98px) {
+    .experiencias__momento { aspect-ratio: 16 / 9; max-height: 74vh; }
+  }
+  @media (min-width: 768px) {
+    .experiencias__momento-overlay { max-width: 44rem; }
   }
 
   .mini-head { border-block-start: 1px solid var(--divisor); padding-block-start: var(--space-l); margin-block-start: var(--space-l); }
@@ -1116,8 +1222,12 @@
        lima local do Caterham (--vermelho sobreposto acima), então o texto
        precisa continuar escuro por contraste — explícito para não depender
        da ordem de cascata com .btn--primary. */
+    background: var(--vermelho); /* aqui = lima local do card, não o vermelho de botão */
     color: var(--asfalto);
   }
+  .card--caterham__cta.btn:visited { color: var(--asfalto); }
+  .card--caterham__cta.btn:hover,
+  .card--caterham__cta.btn:active { background: var(--luz); color: var(--asfalto); }
 
   /* ============================================================ 06 · BANDEIRAS EMPRESARIAL
      Única dobra em registro claro (.section--paper no <section>, ver base.css)
@@ -1229,6 +1339,7 @@
   .carrossel { position: relative; border-block: 1px solid var(--divisor); }
   .carrossel__track {
     display: flex;
+    overflow-y: hidden; /* QA-027 */
     gap: 1px;
     background: var(--divisor);
     padding-inline: var(--container-margin);
@@ -1297,37 +1408,47 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--space-xs);
-    margin-block-start: var(--space-l);
+    gap: 0;
+    /* caixas de toque de 44px somam ~36px à linha; compensa para a página não crescer */
+    margin-block-start: calc(var(--space-l) - 18px);
   }
+  /* QA-008: cada indicador é uma caixa de toque 44×44 SEM sobreposição; o
+     disco visível (8px) vive no ::before. */
   .carrossel__dot {
     position: relative;
-    width: 8px;
-    height: 8px;
+    width: 44px;
+    height: 44px;
     padding: 0;
     border: none;
-    border-radius: 50%;
-    background: var(--divisor);
+    border-radius: 0;
+    background: none;
     cursor: pointer;
-    transition: background var(--dur-fast) var(--ease-brake), transform var(--dur-fast) var(--ease-brake);
   }
-  .carrossel__dot::after {
+  .carrossel__dot::before {
     content: "";
     position: absolute;
-    inset: -14px;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px;
+    border-radius: 50%;
+    background: var(--divisor);
+    transition: background var(--dur-fast) var(--ease-brake), transform var(--dur-fast) var(--ease-brake);
   }
-  .carrossel__dot.is-active {
+  .carrossel__dot.is-active::before {
     background: var(--vermelho);
     transform: scale(1.4);
   }
+  .carrossel__dot:focus-visible { outline: 2px solid var(--vermelho); outline-offset: -6px; border-radius: 50%; }
   @media (prefers-reduced-motion: reduce) {
     .carrossel__seta,
-    .carrossel__dot { transition: none; }
+    .carrossel__dot::before { transition: none; }
   }
 
   /* ---- 3 · VÍDEO INSTITUCIONAL — vídeo real (não mais placeholder), frame
      simples (sem cantoneiras/REC/tempo do .video-frame — esse continua
-     reservado para os placeholders "a inserir", como o case PETRONAS em 07):
+     removido (QA-002)):
      controls nativos, então a legenda vive ABAIXO do frame, nunca sobreposta
      (evita disputar espaço com a barra de controle do player). */
   .bandeiras__video { margin-block-start: var(--space-l); }
@@ -1348,11 +1469,19 @@
   /* Botão de som sobreposto — o vídeo entra mudo/autoplay (nenhum navegador
      libera autoplay com áudio), então precisa de um jeito visível de ativar
      a narração sem sair do fluxo do vídeo. */
-  .video-sound-toggle {
+  /* Grupo de controles (pausa + som) — canto superior direito do quadro, longe
+     do texto ancorado embaixo (QA-003/QA-060). Alvos de 44×44. */
+  .video-controls {
     position: absolute;
-    z-index: 1;
-    inset-block-end: var(--space-s);
+    z-index: 2;
+    inset-block-start: var(--space-s);
     inset-inline-end: var(--space-s);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+  .video-sound-toggle,
+  .video-pause-toggle {
     width: 44px;
     height: 44px;
     display: flex;
@@ -1361,11 +1490,16 @@
     border-radius: 999px;
     background: rgba(6, 6, 6, .55);
     backdrop-filter: blur(4px);
-    color: var(--luz);
+    color: #fff;
     transition: background var(--dur-fast) var(--ease-brake);
   }
-  .video-sound-toggle:hover,
-  .video-sound-toggle:focus-visible { background: rgba(6, 6, 6, .8); }
+  .video-pause-toggle:hover,
+  .video-pause-toggle:focus-visible { background: rgba(6, 6, 6, .8); }
+  .video-pause-toggle__icon--play { display: none; }
+  .video-pause-toggle.is-paused .video-pause-toggle__icon--pause { display: none; }
+  .video-pause-toggle.is-paused .video-pause-toggle__icon--play { display: block; }
+  .video-controls :focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .experiencias__momento { position: relative; }
   .video-sound-toggle__icon--on { display: none; }
   .video-sound-toggle[aria-pressed="true"] .video-sound-toggle__icon--off { display: none; }
   .video-sound-toggle[aria-pressed="true"] .video-sound-toggle__icon--on { display: block; }
@@ -1393,6 +1527,16 @@
        do .container — uma border atravessaria o padding até a borda da tela */
     background: linear-gradient(var(--divisor), var(--divisor)) top center / calc(100% - 2 * var(--container-margin)) 1px no-repeat;
   }
+  /* Imagem estática editorial (QA-002): sem player, sem play, sem legenda de mídia. */
+  .case__media {
+    margin: 0;
+    aspect-ratio: 16 / 9;
+    overflow: clip;
+    background: var(--asfalto);
+  }
+  .case__media picture,
+  .case__img { display: block; width: 100%; height: 100%; }
+  .case__media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; display: block; }
   .case__texto {
     display: flex;
     flex-direction: column;
@@ -1426,116 +1570,8 @@
       align-items: stretch;
     }
     .case__media { align-self: center; }
-    .case__texto .btn { margin-block-start: auto; }
   }
 
-  /* ============================================================ VIDEO-FRAME
-     Placeholder de vídeo com cara de mídia de verdade: 16:9, fundo asfalto
-     fixo (não herda o --papel da dobra clara), cantos técnicos na linguagem
-     do POV da Caterham, play discreto e legenda/tempo de player. Cores
-     escritas com tokens fixos (--asfalto/--papel), nunca --luz, porque
-     dentro de .section--paper --luz vira tinta escura. */
-  .video-frame {
-    --vf-ink: var(--papel);
-    position: relative;
-    aspect-ratio: 16 / 9;
-    overflow: clip;
-    color: var(--vf-ink);
-    background:
-      radial-gradient(120% 90% at 50% 45%, rgba(255, 255, 255, 0.07), transparent 60%),
-      repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 14px),
-      var(--asfalto);
-  }
-  /* cantos técnicos (4 cantoneiras em um único pseudo, via gradientes) */
-  .video-frame::before {
-    content: "";
-    position: absolute;
-    inset: var(--space-s);
-    pointer-events: none;
-    --c: rgba(242, 237, 228, 0.55);
-    --l: 22px;
-    background:
-      linear-gradient(var(--c), var(--c)) top left / var(--l) 1px,
-      linear-gradient(var(--c), var(--c)) top left / 1px var(--l),
-      linear-gradient(var(--c), var(--c)) top right / var(--l) 1px,
-      linear-gradient(var(--c), var(--c)) top right / 1px var(--l),
-      linear-gradient(var(--c), var(--c)) bottom left / var(--l) 1px,
-      linear-gradient(var(--c), var(--c)) bottom left / 1px var(--l),
-      linear-gradient(var(--c), var(--c)) bottom right / var(--l) 1px,
-      linear-gradient(var(--c), var(--c)) bottom right / 1px var(--l);
-    background-repeat: no-repeat;
-  }
-  .video-frame__tag,
-  .video-frame__legenda,
-  .video-frame__tempo {
-    position: absolute;
-    font-family: "JetBrains Mono", monospace;
-    font-size: var(--t-label);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    opacity: 0.72;
-  }
-  .video-frame__tag {
-    inset-block-start: calc(var(--space-s) + 14px);
-    inset-inline-start: calc(var(--space-s) + 14px);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .video-frame__tag::before { /* ponto "REC" no vermelho da marca */
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--vermelho-escuro);
-    box-shadow: 0 0 0 3px rgba(200, 30, 30, 0.25);
-  }
-  .video-frame__legenda {
-    inset-block-end: calc(var(--space-s) + 14px);
-    inset-inline-start: calc(var(--space-s) + 14px);
-    max-width: 60%;
-    text-transform: none;
-    letter-spacing: 0.02em;
-  }
-  .video-frame__tempo {
-    inset-block-end: calc(var(--space-s) + 14px);
-    inset-inline-end: calc(var(--space-s) + 14px);
-    font-feature-settings: "tnum";
-  }
-  .video-frame__play {
-    position: absolute;
-    inset: 50% auto auto 50%;
-    width: clamp(56px, 6vw, 80px);
-    aspect-ratio: 1;
-    translate: -50% -50%;
-    border: 1px solid rgba(242, 237, 228, 0.5);
-    border-radius: 50%;
-    transition: border-color var(--dur-fast) var(--ease-brake), scale var(--dur-fast) var(--ease-brake);
-  }
-  .video-frame__play::after { /* triângulo do play, ligeiramente à direita do centro óptico */
-    content: "";
-    position: absolute;
-    inset: 50% auto auto 54%;
-    translate: -50% -50%;
-    border-block: 8px solid transparent;
-    border-inline-start: 13px solid var(--vf-ink);
-  }
-  .video-frame:hover .video-frame__play { border-color: var(--vf-ink); scale: 1.04; }
-  .video-frame video,
-  .video-frame iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border: 0;
-  }
-  @media (max-width: 639px) {
-    .video-frame__legenda { display: none; } /* no mobile o frame é pequeno demais para 3 rótulos */
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .video-frame__play { transition: none; }
-  }
 
   /* ============================================================ 06 · CONTEÚDO
      Reconstrução 2026-09-24: seção mais curta, prova social viva —
@@ -1576,6 +1612,7 @@
     overflow: clip;
     background: var(--asfalto-2);
   }
+  .conteudo__video-frame video:focus-visible { outline-offset: -3px; } /* QA-027 */
   .conteudo__video-frame video {
     position: absolute;
     inset: 0;
@@ -1656,6 +1693,7 @@
   .conteudo__feed-item:nth-child(7) { grid-area: g; }
   .conteudo__feed-item:nth-child(8) { grid-area: h; }
   .conteudo__feed-link { display: block; position: relative; width: 100%; height: 100%; }
+  .conteudo__feed-link:focus-visible { outline-offset: -3px; } /* QA-027: o item tem overflow:clip, o anel de fora era cortado */
   .conteudo__feed-link picture { display: block; width: 100%; height: 100%; }
   .conteudo__feed-media {
     width: 100%;
@@ -1780,130 +1818,30 @@
     color: var(--luz-2);
     transition: transform var(--dur-fast) var(--ease-brake), color var(--dur-fast) var(--ease-brake);
   }
-  /* .is-ativo = a rede que o painel ao lado está mostrando agora (ver
-     js/redes-preview.js) — mesmo tratamento visual do :hover/:focus-visible,
-     só que dirigido pelo JS (toque, ou o estado inicial no Instagram). */
   .conteudo__redes-link:hover,
-  .conteudo__redes-link:focus-visible,
-  .conteudo__redes-link.is-ativo {
+  .conteudo__redes-link:focus-visible {
     color: var(--rede-accent, var(--vermelho));
   }
   .conteudo__redes-link:hover svg,
   .conteudo__redes-link:focus-visible svg,
-  .conteudo__redes-link.is-ativo svg,
   .conteudo__redes-link:hover .conteudo__redes-seta,
-  .conteudo__redes-link:focus-visible .conteudo__redes-seta,
-  .conteudo__redes-link.is-ativo .conteudo__redes-seta {
+  .conteudo__redes-link:focus-visible .conteudo__redes-seta {
     color: var(--rede-accent, var(--vermelho));
   }
   .conteudo__redes-link:hover .conteudo__redes-seta,
-  .conteudo__redes-link:focus-visible .conteudo__redes-seta,
-  .conteudo__redes-link.is-ativo .conteudo__redes-seta {
+  .conteudo__redes-link:focus-visible .conteudo__redes-seta {
     transform: translateX(4px);
   }
   @media (prefers-reduced-motion: reduce) {
-    .conteudo__redes-link:hover .conteudo__redes-seta,
-    .conteudo__redes-link.is-ativo .conteudo__redes-seta { transform: none; }
+    .conteudo__redes-link:hover .conteudo__redes-seta { transform: none; }
   }
 
-  /* Acento de marca — só aparece aqui (link ativo + rodapé do painel), nunca
-     no resto do site (mono+vermelho). Casa com [data-rede] (link/rodapé) e
-     [data-preview] (a peça do painel). */
-  [data-rede="instagram"], [data-preview="instagram"] { --rede-accent: #e1306c; }
-  [data-rede="linkedin"], [data-preview="linkedin"] { --rede-accent: #0a66c2; }
-  [data-rede="tiktok"], [data-preview="tiktok"] { --rede-accent: #25f4ee; }
-  [data-rede="youtube"], [data-preview="youtube"] { --rede-accent: #ff0000; }
+  /* Acento de marca — só aparece aqui (hover/foco do link), nunca no resto do site. */
+  [data-rede="instagram"] { --rede-accent: #e1306c; }
+  [data-rede="linkedin"] { --rede-accent: #0a66c2; }
+  [data-rede="tiktok"] { --rede-accent: #25f4ee; }
+  [data-rede="youtube"] { --rede-accent: #ff0000; }
 
-  /* Painel único: as 4 peças ficam empilhadas na mesma célula (inset:0) e
-     só a .is-active tem opacidade — crossfade puro, sem nenhuma delas
-     alterar a altura do painel (teria "pulo" entre Instagram/YouTube/etc).
-     aspect-ratio:1/1 é o compromisso neutro entre o vertical do
-     Instagram/TikTok e o 16:9 de um embed do YouTube (que letterboxa, o que
-     é normal pra embed oficial). */
-  .conteudo__redes-painel {
-    position: relative;
-    aspect-ratio: 1 / 1;
-    overflow: clip;
-    background: var(--asfalto-2);
-  }
-  .conteudo__redes-preview {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    transition: opacity var(--dur-medium) var(--ease-brake);
-  }
-  .conteudo__redes-preview.is-active { opacity: 1; }
-  .conteudo__redes-preview-media { flex: 1 1 auto; min-height: 0; }
-  .conteudo__redes-preview-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-  /* LinkedIn institucional e os placeholders pendentes de TikTok/YouTube
-     compartilham o mesmo tratamento: ícone grande + 1 linha de texto,
-     tingido na cor da marca — nunca um post/print inventado. */
-  .conteudo__redes-preview-institucional,
-  .conteudo__redes-preview-pendente-box {
-    flex: 1 1 auto;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-s);
-    padding: var(--space-l);
-    text-align: center;
-    background: color-mix(in srgb, var(--rede-accent) 12%, var(--asfalto-2));
-    border-block-start: 2px solid var(--rede-accent);
-    color: var(--luz-2);
-  }
-  .conteudo__redes-preview-institucional svg,
-  .conteudo__redes-preview-pendente-box svg { color: var(--rede-accent); flex-shrink: 0; }
-  .conteudo__redes-preview-institucional p,
-  .conteudo__redes-preview-pendente-box p { margin: 0; max-width: 26ch; font-size: var(--t-small); line-height: 1.4; }
-  /* Quando o embed oficial (YouTube iframe / TikTok oEmbed) entra por JS,
-     ele substitui o placeholder e ocupa o quadro inteiro. */
-  .conteudo__redes-preview-pendente-box.is-embed {
-    padding: 0;
-    background: #000;
-    border-block-start: none;
-  }
-  .conteudo__redes-preview-pendente-box.is-embed iframe,
-  .conteudo__redes-preview-pendente-box.is-embed blockquote { width: 100%; height: 100%; border: 0; display: block; }
-
-  .conteudo__redes-preview-rodape {
-    flex: 0 0 auto;
-    padding: var(--space-xs) var(--space-s);
-    background: rgba(6, 6, 6, .55);
-    backdrop-filter: blur(2px);
-  }
-  .conteudo__redes-preview-id {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-3xs);
-    font-family: "JetBrains Mono", monospace;
-    font-size: var(--t-label);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--luz);
-  }
-  .conteudo__redes-preview-id svg { color: var(--rede-accent); }
-  .conteudo__redes-preview-rodape p {
-    margin: var(--space-3xs) 0 0;
-    font-size: var(--t-small);
-    color: var(--luz-2);
-    line-height: 1.3;
-  }
-  .conteudo__redes-preview-pendente {
-    display: block;
-    margin-block-start: var(--space-3xs);
-    font-family: "JetBrains Mono", monospace;
-    font-size: var(--t-label);
-    color: var(--luz-2);
-    letter-spacing: 0.02em;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .conteudo__redes-preview { transition: none; }
-  }
 
   @media (min-width: 1024px) {
     .conteudo__feed {
@@ -1919,14 +1857,6 @@
       justify-content: center;
       border-inline-start: 1px solid var(--divisor);
     }
-    /* ≥1024px: painel "ao lado" da lista, de verdade — linha, não coluna.
-       A lista fica com largura de conteúdo (4 nomes curtos) e o painel
-       toma o resto, mas cada um guarda sua própria altura (não é
-       align-items:stretch — o painel é grande por causa do aspect-ratio,
-       não porque foi esticado até a altura da lista). */
-    .conteudo__redes-corpo { flex-direction: row; align-items: flex-start; gap: var(--space-l); }
-    .conteudo__redes-lista { flex: 0 1 9.5rem; min-width: 0; }
-    .conteudo__redes-painel { flex: 1 1 auto; }
   }
 
   .btn--xl {
@@ -1952,6 +1882,15 @@
   @media (prefers-reduced-motion: reduce) {
     .btn--xl::after { transition: none; }
   }
+  /* Celular: mantém o texto em uma linha encolhendo tipografia/filete. */
+  @media (max-width: 639px) {
+    .btn--xl { padding-inline: var(--space-s); gap: var(--space-xs); font-size: 0.8125rem; letter-spacing: 0.04em; }
+    .btn--xl::after { width: 20px; }
+  }
+  @media (max-width: 400px) {
+    .btn--xl { font-size: 0.75rem; letter-spacing: 0.02em; }
+    .btn--xl::after { display: none; }
+  }
 
   /* ============================================================ 03 · PILOTOS & TIME
      Card-poster compacto (foto de fundo + scrim + texto sobreposto no
@@ -1972,6 +1911,7 @@
     grid-auto-columns: 74%;
     gap: var(--space-s);
     overflow-x: auto;
+    overflow-y: hidden; /* QA-027: sem rolagem vertical interna (o translateY do reveal criava 24px e "prendia" a roda) */
     scroll-snap-type: x mandatory;
     margin-block: var(--space-l) var(--space-xl);
     scrollbar-width: none;
@@ -2097,30 +2037,21 @@
     .piloto-card__nome { font-size: clamp(1.75rem, 1.1rem + 1.6vw, 2.5rem); }
   }
 
-  /* Bastidor: módulo compacto de Palestras (ex-seção própria, extinta),
-     layout original preservado — título (+ eyebrow) à esquerda, texto de
-     apoio à direita, 2 colunas alinhadas pela base (≥1024px); empilhado
-     no mobile. Funciona como fecho do grid de pilotos logo acima
-     (2026-09-25: conteúdo trocado de lugar com o que antes vivia dentro
-     do mosaico — "o que eles aprenderam correndo" comunica melhor logo
-     após os 4 cards). Sem CTA aqui — o botão vive só dentro do mosaico. */
+  /* Bastidor: chamada de Palestras, centralizada (QA-072); o parágrafo lateral
+     saiu (QA-073). Uma coluna, sem vazio ao lado. Fecho do grid de pilotos. */
   .pilotos-time__bastidor {
     display: grid;
-    gap: var(--space-s);
+    justify-items: center;
+    text-align: center;
     padding-block-start: var(--space-l);
+    padding-inline: var(--container-margin); /* simétrico: centraliza no viewport, não no eixo assimétrico do .container */
     border-block-start: 1px solid var(--divisor);
   }
-  .pilotos-time__bastidor-eyebrow { margin-block-end: var(--space-m); color: var(--luz-2); }
-  .pilotos-time__bastidor-titulo { font-size: var(--t-xl); line-height: 0.95; max-width: 14ch; margin: 0; }
-  .pilotos-time__bastidor-texto { max-width: 52ch; color: var(--luz-2); }
-
-  @media (min-width: 1024px) {
-    .pilotos-time__bastidor {
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      align-items: end;
-      column-gap: var(--space-xl);
-    }
-  }
+  /* mais específico que .section:has(.section-head) .container (recuo do eixo, ≥1024) */
+  .section:has(.section-head) .container.pilotos-time__bastidor { padding-inline: var(--container-margin); }
+  .pilotos-time__bastidor-titulo-col { width: 100%; }
+  .pilotos-time__bastidor-eyebrow { justify-content: center; max-width: none; margin-block-end: var(--space-m); color: var(--luz-2); }
+  .pilotos-time__bastidor-titulo { font-size: var(--t-xl); line-height: 0.95; max-width: 20ch; margin: 0 auto; text-wrap: balance; }
 
   /* ------------------------------------------------ MOSAICO DO TIME
      Redesenho 2026-09-26 (pedido explícito do usuário: voltar ao layout
@@ -2155,8 +2086,10 @@
     object-fit: cover;
     filter: brightness(0.9) saturate(0.94);
   }
-  .time-mosaico__foto--esquerda img { object-position: 20% 22%; }
-  .time-mosaico__foto--direita img { object-position: 80% 78%; }
+  /* QA-054: cada flanco mostra o SEU mosaico oficial (Mosaico 1 / Mosaico 2),
+     centralizado. No mobile é uma faixa recortada pelo topo (mantém a página curta). */
+  .time-mosaico__foto--esquerda img,
+  .time-mosaico__foto--direita img { object-position: 50% 0; }
   .time-mosaico__centro {
     position: relative;
     display: flex;
@@ -2199,23 +2132,35 @@
 
   @media (min-width: 1024px) {
     .time-mosaico {
-      --mosaico-centro: clamp(420px, 36vw, 640px);
+      --mosaico-centro: clamp(380px, 26vw, 560px);
       display: grid;
-      grid-template-columns: 1fr var(--mosaico-centro) 1fr;
+      grid-template-columns: minmax(0, 1fr) var(--mosaico-centro) minmax(0, 1fr);
       align-items: stretch;
     }
-    .time-mosaico__foto { height: auto; }
-    .time-mosaico__centro {
-      padding: var(--space-2xl) clamp(28px, 3vw, 56px);
+    /* Altura = a do mosaico inteiro na largura do flanco (proporção 1461×1503),
+       nunca menos: o painel de texto só estica se precisar (QA-054: sem corte
+       excessivo do mosaico oficial). */
+    .time-mosaico__foto {
+      position: relative;
+      height: auto;
+      /* largura do flanco × (1503/1461) = altura do mosaico inteiro */
+      min-height: calc((100vw - var(--sbw, 0px) - var(--mosaico-centro)) / 2 * 1.0287);
     }
+    .time-mosaico__foto picture,
+    .time-mosaico__foto img { position: absolute; inset: 0; }
+    .time-mosaico__foto img { object-position: 50% 50%; }
+    .time-mosaico__centro {
+      padding: var(--space-l) clamp(28px, 3vw, 56px);
+    }
+    /* painel compacto: quanto mais baixo, mais do mosaico oficial aparece (QA-054) */
+    .time-mosaico__texto { font-size: 0.9375rem; margin-block-start: var(--space-xs); }
+    .time-mosaico__nota { margin-block-start: var(--space-s); }
+    .time-mosaico__cta { margin-block-start: var(--space-m); min-height: 52px; }
     .time-mosaico__centro::before { inset-inline-start: clamp(28px, 3vw, 56px); }
-    .time-mosaico__titulo { font-size: clamp(2rem, 0.6rem + 2.3vw, 3.5rem); }
+    .time-mosaico__titulo { font-size: clamp(1.75rem, 0.6rem + 2vw, 3rem); }
     .time-mosaico__cta { padding-inline: clamp(24px, 2vw, 44px); }
   }
 
-  @media (min-width: 1440px) {
-    .time-mosaico__cta { white-space: nowrap; }
-  }
 
   /* ============================================================ LEGADO · INGO HOFFMANN
      Pausa emocional full-bleed logo após Pilotos & Time (ver comentário no
@@ -2281,6 +2226,14 @@
     pointer-events: none;
   }
   .legado__cabecalho { display: flex; flex-direction: column; gap: var(--space-xs); }
+  /* reserva a coluna dos controles de vídeo (44px + respiro) — QA-003/QA-060 */
+  @media (max-width: 1023.98px) {
+    .legado__cabecalho { padding-inline-end: 3.5rem; }
+    /* QA-038: o conteúdo entra no fluxo (grid 1×1 sobre o vídeo) para o quadro
+       CRESCER com texto grande em vez de cortar; no tamanho normal continua 4/5. */
+    .legado__frame { display: grid; }
+    .legado__conteudo { position: relative; inset: auto; grid-area: 1 / 1; }
+  }
   .legado__eyebrow { color: var(--vermelho); text-shadow: 0 1px 10px rgba(0, 0, 0, .7); }
   /* Fonte própria (não var(--t-xxl) puro) até 1024px: --t-xxl foi calibrado
      pensando numa coluna quase full-bleed (.h2--statement); aqui o título
@@ -2721,6 +2674,13 @@
     scrollbar-width: none;
   }
   .marcas__logos-wrap::-webkit-scrollbar { display: none; }
+  /* QA-062: borda direita esmaecida sinaliza que há mais logos; região
+     focável por teclado (tabindex no HTML) com foco visível. Só no estreito. */
+  .marcas__logos-wrap {
+    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 40px), transparent);
+    mask-image: linear-gradient(90deg, #000 calc(100% - 40px), transparent);
+  }
+  .marcas__logos-wrap:focus-visible { outline: 2px solid var(--vermelho); outline-offset: -2px; }
   .marcas__logos { display: block; }
   .marcas__logos img {
     display: block;
@@ -2757,7 +2717,7 @@
        em duas colunas. A arte já traz respiro interno nos logos, então o
        gap até o título fica curto. */
     .marcas__faixa { gap: var(--space-m); }
-    .marcas__logos-wrap { overflow: visible; padding-inline: var(--content-inset); }
+    .marcas__logos-wrap { overflow: visible; padding-inline: var(--content-inset); -webkit-mask-image: none; mask-image: none; }
     .marcas__logos img {
       width: 100%;
       padding-inline: 0;
@@ -2934,13 +2894,6 @@
     transition: opacity var(--dur-slow) var(--ease-brake), transform var(--dur-slow) var(--ease-brake);
   }
 
-  .js-motion .frentes__tags li:nth-child(1).is-in { transition-delay: 0ms; }
-  .js-motion .frentes__tags li:nth-child(2).is-in { transition-delay: 60ms; }
-  .js-motion .frentes__tags li:nth-child(3).is-in { transition-delay: 120ms; }
-  .js-motion .frentes__tags li:nth-child(4).is-in { transition-delay: 180ms; }
-  .js-motion .frentes__tags li:nth-child(5).is-in { transition-delay: 240ms; }
-  .js-motion .frentes__tags li:nth-child(6).is-in { transition-delay: 300ms; }
-  .js-motion .frentes__tags li:nth-child(7).is-in { transition-delay: 360ms; }
 
   .js-motion .piloto-card:nth-child(1).is-in { transition-delay: 0ms; }
   .js-motion .piloto-card:nth-child(2).is-in { transition-delay: 80ms; }

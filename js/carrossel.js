@@ -9,6 +9,7 @@
   prev no primeiro vai pro último — goTo() dá a volta (wrap), nunca trava.
 */
 export function initCarrossel() {
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
   document.querySelectorAll("[data-carrossel]").forEach((root) => {
     const track = root.querySelector("[data-carrossel-track]");
     if (!track) return;
@@ -20,16 +21,37 @@ export function initCarrossel() {
     const dotsRoot = root.parentElement?.querySelector("[data-carrossel-dots]");
     const dots = dotsRoot ? [...dotsRoot.querySelectorAll("[data-carrossel-dot]")] : [];
 
+    const status = dotsRoot?.parentElement?.querySelector("[data-carrossel-status]");
+
     let active = 0;
+    // QA-029: no desktop o track trava antes dos últimos itens (scrollWidth −
+    // clientWidth < posição deles), então o scroll nunca "chega" neles. O clique
+    // fixa o índice escolhido (lock) até o scroll assentar; ao fim do track o
+    // item ativo é o último.
+    let lock = null;
+    let lockTimer = null;
+    const atEnd = () => track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
 
     function setActive(index) {
       active = index;
-      dots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("is-active", i === index);
+        dot.setAttribute("aria-current", i === index ? "true" : "false"); // QA-007
+      });
     }
 
     function goTo(index) {
       const wrapped = ((index % items.length) + items.length) % items.length;
-      items[wrapped].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+      setActive(wrapped);
+      lock = wrapped;
+      clearTimeout(lockTimer);
+      lockTimer = setTimeout(() => (lock = null), 900);
+      // anúncio só para ação por botão (nunca no swipe/scroll) — sem ruído
+      if (status) {
+        const title = items[wrapped].querySelector("h3")?.textContent?.trim();
+        status.textContent = `Espaço ${wrapped + 1} de ${items.length}${title ? `: ${title}` : ""}`;
+      }
+      items[wrapped].scrollIntoView({ behavior: reduced.matches ? "auto" : "smooth", inline: "start", block: "nearest" });
     }
 
     function closestIndex() {
@@ -55,7 +77,10 @@ export function initCarrossel() {
       "scroll",
       () => {
         if (raf) cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => setActive(closestIndex()));
+        raf = requestAnimationFrame(() => {
+          if (lock !== null) return;
+          setActive(atEnd() ? items.length - 1 : closestIndex());
+        });
       },
       { passive: true }
     );

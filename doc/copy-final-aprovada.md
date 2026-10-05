@@ -277,7 +277,7 @@ Vice-campeão da Stock Car em 2014, com mais de **320 largadas, 19 vitórias, 13
 
 Mais de **50 profissionais**, marketing, eventos, design, produção de conteúdo, fotografia e atendimento, por trás de cada projeto.
 
-*Átila participa diretamente de projetos comerciais; Nelsinho, Christian e Ingo, mediante consulta prévia de agenda.*
+*Projetos comerciais e palestras podem contar com a participação de Átila Abreu, Nelson Piquet Jr., Christian Fittipaldi e Ingo Hoffmann, mediante consulta prévia de agenda.* (QA-075, copy do time 30/09/2026)
 
 ### **O que eles aprenderam correndo, sua empresa pode ouvir de perto. ↓**
 

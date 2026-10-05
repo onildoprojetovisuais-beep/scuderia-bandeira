@@ -90,10 +90,10 @@ MANIFEST: dict[str, str] = {
     "evento-camarotes": "assets/Imagens/experiencia do evento/Camarotes.png",
     "evento-boxes": "assets/Imagens/experiencia do evento/Visitação aos Boxe.png",
     # Faixa de Autoridade / Pilotos & Time / Palestras — só os 4 nomes atuais
-    "piloto-atila": "assets/Imagens/pilotos-premium/atila-abreu.jpg",
-    "piloto-christian": "assets/Imagens/pilotos-premium/cristian-fitipalidi.jpg",
-    "piloto-ingo": "assets/Imagens/pilotos-premium/ingo-hoffman.jpg",
-    "piloto-nelsinho": "assets/Imagens/pilotos-premium/nelson-piquet.jpg",
+    "piloto-atila": "assets/Imagens/pilotos-premium/atila.png",
+    "piloto-christian": "assets/Imagens/pilotos-premium/cristian.png",
+    "piloto-ingo": "assets/Imagens/pilotos-premium/ingo.png",
+    "piloto-nelsinho": "assets/Imagens/pilotos-premium/nelson.png",
     # Logo (interino — raster reduzido; pendência: pedir vetor/SVG real, ver item 9 do VISUAL-DIRECTION)
     "logo-raster": "Brand/1124_Bandeiras_RGB_L-RW.png",
     # Dobra 05 — Caterham: lockup oficial Scuderia Bandeiras x Caterham Motorsport
@@ -113,6 +113,9 @@ MANIFEST: dict[str, str] = {
     # + painel de texto central (em vez da imagem única full-bleed acima) —
     # mesma foto usada nos dois flancos (esquerdo/direito) da faixa.
     "time-mosaico-foto": "assets/Imagens/nosso time/Mosaico 1.png",
+    # QA-054 (2026-09-30): o flanco direito deixa de repetir a mesma metade —
+    # usa a parte complementar fornecida pelo time ("Mosaico 2.png").
+    "time-mosaico-foto-2": "assets/Imagens/nosso time/Mosaico 2.png",
     # Dobra 10 — "Marcas que fazem parte da nossa história": arte pronta fornecida
     # pelo usuário como ativo oficial (2026-09-22), versão PNG transparente
     # ("marcas-que-fazem-parte-da-nossa-historia 1.png"). O recorte tira só a
@@ -128,6 +131,9 @@ MANIFEST: dict[str, str] = {
     # pelo usuário (2026-09-23), uma por peça.
     "eco-pilotos": "assets/Imagens/ecossistema/pilotos.png",
     "eco-carros": "assets/Imagens/ecossistema/carros.jpeg",
+    # QA-053 (2026-09-30): foto aprovada do espaço físico da Scuderia (fachada
+    # com o logo, pátio e mural) para o painel 01 do Ecossistema.
+    "eco-espaco-scuderia": "assets/Imagens/complexo/imagem-scuderia-complexo.png",
     "eco-pista": "assets/Imagens/ecossistema/pista.jpeg",
     "eco-estrutura": "assets/Imagens/ecossistema/estrutura.JPG.jpeg",
     "eco-producao": "assets/Imagens/ecossistema/producoes.jpg.jpeg",
@@ -148,11 +154,22 @@ NÃO PROCESSADOS DE PROPÓSITO (ver doc/VISUAL-DIRECTION.md §16):
 """
 
 
+# Sprint 05 (cache immutable): o hash do nome do arquivo é calculado sobre o ARQUIVO-FONTE.
+# O vercel.json serve assets-build/img/*-<hash>.* com "Cache-Control: immutable" (1 ano).
+# Por isso, se QUALQUER parâmetro de saída mudar (WIDTHS, AVIF_QUALITY, JPEG_QUALITY,
+# recorte/redimensionamento) com a fonte igual, os bytes mudariam mantendo o mesmo nome e
+# navegadores/CDN reteriam a versão antiga. Nesse caso, bumpe PIPELINE_VERSION: ele entra no
+# hash e TODOS os nomes mudam. Vazio = hashes atuais inalterados.
+PIPELINE_VERSION = ""
+
+
 def content_hash(path: Path, length: int = 10) -> str:
     h = hashlib.sha256()
     with path.open("rb") as f:
         for chunk in iter(lambda: f.read(1 << 16), b""):
             h.update(chunk)
+    if PIPELINE_VERSION:
+        h.update(PIPELINE_VERSION.encode("utf-8"))
     return h.hexdigest()[:length]
 
 

@@ -9,6 +9,18 @@ export function initPilotoCards() {
   const cards = document.querySelectorAll(".piloto-card");
   if (!cards.length) return;
 
+  // QA-027: na faixa horizontal (<1024) o foco por teclado precisa trazer o card
+  // para a área visível — o navegador não rola quando ele está parcialmente visível.
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  cards.forEach((card) => {
+    card.addEventListener("focus", () => {
+      const strip = card.parentElement;
+      if (strip && strip.scrollWidth > strip.clientWidth + 1) {
+        card.scrollIntoView({ inline: "center", block: "nearest", behavior: reduced.matches ? "auto" : "smooth" });
+      }
+    });
+  });
+
   const hasFineHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   if (hasFineHover) return; // mouse já resolve via :hover/:focus-visible no CSS
 

@@ -10,25 +10,52 @@
   <meta property="og:description" content="Um ecossistema de automobilismo que conecta performance, pessoas, marcas, negócios e experiências.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
+  <link rel="canonical" href="https://www.scuderiabandeiras.com.br/">
+  <meta property="og:url" content="https://www.scuderiabandeiras.com.br/">
+  <meta property="og:site_name" content="Scuderia Bandeiras">
+  <meta property="og:image" content="https://www.scuderiabandeiras.com.br/assets-build/img/og-scuderia-bandeiras-1200x630.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Fachada da Scuderia Bandeiras com o mural de pilotos históricos no pátio do complexo">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Scuderia Bandeiras: muito além das pistas.">
+  <meta name="twitter:description" content="Um ecossistema de automobilismo que conecta performance, pessoas, marcas, negócios e experiências.">
+  <meta name="twitter:image" content="https://www.scuderiabandeiras.com.br/assets-build/img/og-scuderia-bandeiras-1200x630.jpg">
+  <meta name="twitter:image:alt" content="Fachada da Scuderia Bandeiras com o mural de pilotos históricos no pátio do complexo">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets-build/favicon/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets-build/favicon/favicon-16.png">
   <link rel="icon" type="image/png" sizes="48x48" href="assets-build/favicon/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets-build/favicon/favicon-180.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/tokens.css?v=ritmo2">
-  <link rel="stylesheet" href="css/base.css?v=ritmo2">
-  <link rel="stylesheet" href="css/components.css?v=ritmo13">
+  <link rel="preload" href="assets-build/fonts/special-gothic-condensed-one-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets-build/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/site.min.css?v=perf1">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Scuderia Bandeiras",
+  "url": "https://www.scuderiabandeiras.com.br/",
+  "sameAs": [
+    "https://www.instagram.com/scuderiabandeiras/",
+    "https://www.linkedin.com/company/scuderiabandeiras/",
+    "https://www.tiktok.com/@scuderiabandeiras",
+    "https://www.youtube.com/@ScuderiaBandeiras"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Avenida Ireno da Silva Venâncio, 199, Galpão 5D",
+    "addressLocality": "Votorantim",
+    "addressRegion": "SP",
+    "addressCountry": "BR"
+  }
+}
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo-principal">Ir para o conteúdo</a>
 
-  <!-- ============================================================ NAVBAR
-       Refatoração estrutural (arquitetura enxuta): Scuderia+Ecossistema
-       viraram um único destino (#ecossistema), Palestras deixou de ser
-       destino próprio (módulo dentro de Pilotos & Time) e Caterham passou a
-       apontar direto para o site externo (deixou de ser seção própria). -->
   <header class="nav" data-nav>
     <div class="nav__inner container">
       <a class="nav__logo" href="#topo" aria-label="Voltar ao início da Scuderia Bandeiras">
@@ -37,7 +64,8 @@
 
       <nav class="nav__links" aria-label="Navegação principal">
         <div class="nav__group">
-          <a data-nav-link href="#ecossistema">Scuderia / Ecossistema</a>
+          <a data-nav-link href="#ecossistema">Ecossistema</a>
+          <a data-nav-link href="#pilotos">Pilotos &amp; Time</a>
         </div>
         <div class="nav__group">
           <a data-nav-link href="#experiencias">Experiências</a>
@@ -45,14 +73,13 @@
           <a data-nav-link href="#conteudo">Conteúdo</a>
         </div>
         <div class="nav__group">
-          <a data-nav-link href="#pilotos">Pilotos &amp; Time</a>
-          <a href="https://caterham.scuderiabandeiras.com/" target="_blank" rel="noopener">Caterham</a>
+          <a href="https://caterham.scuderiabandeiras.com/" target="_blank" rel="noopener">Caterham<span class="visually-hidden"> (abre em nova aba)</span></a>
         </div>
       </nav>
 
-      <a class="nav__cta" data-cta="whatsapp" data-origin="navbar" href="#">Fale com o time</a>
+      <a class="nav__cta" data-cta="whatsapp" data-origin="navbar" href="https://wa.me/5515998570854?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Scuderia%20Bandeiras%20e%20tenho%20interesse%20em%3A%20Ainda%20n%C3%A3o%20sei." target="_blank" rel="noopener">Fale com o time</a>
 
-      <button class="nav__menu-btn" data-menu-open aria-haspopup="dialog">
+      <button class="nav__menu-btn" data-menu-open aria-haspopup="dialog" aria-expanded="false">
         <span class="visually-hidden">Abrir menu</span>
         <span aria-hidden="true" class="nav__menu-icon"></span>
       </button>
@@ -64,21 +91,20 @@
         <button data-menu-close aria-label="Fechar menu">✕</button>
       </div>
       <nav aria-label="Navegação (menu mobile)">
-        <a href="#ecossistema">Scuderia / Ecossistema</a>
+        <a href="#ecossistema">Ecossistema</a>
+        <a href="#pilotos">Pilotos &amp; Time</a>
         <a href="#experiencias">Experiências</a>
         <a href="#bandeiras-empresarial">Bandeiras Empresarial</a>
         <a href="#conteudo">Conteúdo</a>
-        <a href="#pilotos">Pilotos &amp; Time</a>
-        <a href="https://caterham.scuderiabandeiras.com/" target="_blank" rel="noopener">Caterham</a>
+        <a href="https://caterham.scuderiabandeiras.com/" target="_blank" rel="noopener">Caterham<span class="visually-hidden"> (abre em nova aba)</span></a>
       </nav>
-      <a class="nav__dialog-whatsapp" data-cta="whatsapp" data-origin="menu-mobile" href="#">Fale com o time</a>
+      <a class="nav__dialog-whatsapp" data-cta="whatsapp" data-origin="menu-mobile" href="https://wa.me/5515998570854?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Scuderia%20Bandeiras%20e%20tenho%20interesse%20em%3A%20Ainda%20n%C3%A3o%20sei." target="_blank" rel="noopener">Fale com o time</a>
     </dialog>
   </header>
 
-  <main id="conteudo-principal">
+  <main id="conteudo-principal" tabindex="-1">
     <div id="topo" data-nav-sentinel aria-hidden="true"></div>
 
-    <!-- ============================================================ 01 · HERO — CONGELADO (aprovado, não alterar nesta etapa) -->
     <section id="hero" class="hero h-scene">
       <picture class="hero__bg"><source type="image/avif" srcset="assets-build/img/topo-hero-480w-1c0e71ca2a.avif 480w, assets-build/img/topo-hero-800w-1c0e71ca2a.avif 800w, assets-build/img/topo-hero-1280w-1c0e71ca2a.avif 1280w, assets-build/img/topo-hero-1920w-1c0e71ca2a.avif 1920w" sizes="100vw"><source type="image/jpeg" srcset="assets-build/img/topo-hero-480w-1c0e71ca2a.jpg 480w, assets-build/img/topo-hero-800w-1c0e71ca2a.jpg 800w, assets-build/img/topo-hero-1280w-1c0e71ca2a.jpg 1280w, assets-build/img/topo-hero-1920w-1c0e71ca2a.jpg 1920w" sizes="100vw"><img src="assets-build/img/topo-hero-1920w-1c0e71ca2a.jpg" width="1920" height="1080" alt="Caterhams da Scuderia Bandeiras na pista, ao entardecer" loading="eager" decoding="sync" fetchpriority="high"></picture>
       <div class="hero__scrim" aria-hidden="true"></div>
@@ -94,29 +120,20 @@
         </div>
         <div class="hero__ctas">
           <a class="btn btn--primary" href="#ecossistema" data-reveal>Conheça o Ecossistema</a>
-          <a class="btn btn--ghost btn--ghost-lime" href="https://caterham.scuderiabandeiras.com/" target="_blank" rel="noopener" data-reveal>Conheça a Caterham</a>
-          <a class="btn btn--tertiary" data-cta="project" data-origin="hero" href="#" data-reveal>Crie seu projeto →</a>
+          <a class="btn btn--ghost btn--ghost-lime" href="https://caterham.scuderiabandeiras.com/" target="_blank" rel="noopener" data-reveal>Conheça a Caterham<span class="visually-hidden"> (abre em nova aba)</span></a>
+          <a class="btn btn--tertiary" data-cta="project" data-origin="hero" href="https://wa.me/5515998570854?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Scuderia%20Bandeiras%20e%20tenho%20interesse%20em%3A%20Ainda%20n%C3%A3o%20sei." target="_blank" rel="noopener" data-reveal>Crie seu projeto →</a>
         </div>
       </div>
 
-      <p class="hero__scroll" aria-hidden="true">Role</p>
     </section>
 
-    <!-- ============================================================ TRANSIÇÃO HERO → ECOSSISTEMA — CONGELADA (aprovada) -->
-    <section class="transicao" aria-label="Transição">
+    <section class="transicao">
       <div class="container">
         <span class="transicao__risco" data-reveal aria-hidden="true"></span>
         <p class="statement transicao__frase" data-reveal>A pista é só o <mark class="grifo">começo</mark>.</p>
       </div>
     </section>
 
-    <!-- ============================================================ 02 · ECOSSISTEMA
-         Refatoração estrutural: fusão de SOBRE + ECOSSISTEMA. Preserva só o
-         institucional essencial (sede, fundador, dimensão) — as biografias
-         dos 4 pilotos NÃO são reapresentadas aqui; vivem só em
-         03 · PILOTOS & TIME. O statement de fecho já prepara (sem redesenhar)
-         as duas frentes do ecossistema: Scuderia Bandeiras + Bandeiras
-         Empresarial. -->
     <section id="ecossistema" class="section ecossistema">
       <div class="container">
         <div class="section-head">
@@ -129,52 +146,22 @@
         <p class="ecossistema__microline" data-reveal>Votorantim, SP · Fundada por Átila Abreu</p>
       </div>
 
-      <!-- Composição principal: dois painéis full-bleed, mesmo peso visual —
-           substitui o antigo mosaico de 5 peças + lista de 8 itens (mesma
-           ideia, lida num olhar só). Fotografia real do projeto: eco-carros
-           (frota Caterham, já usada em miniatura no mosaico antigo, agora
-           promovida a protagonista) e complexo-3 (pátio do complexo ao
-           entardecer, nunca usada na página) — nenhuma das duas é retrato de
-           piloto. Palavras-chave no lugar de descrição; CTA discreto,
-           editorial, sem "crie seu projeto" (já forte no Hero). -->
       <div class="frentes">
         <span class="frentes__eixo" data-reveal aria-hidden="true"></span>
 
-        <!-- Ordem no DOM = ordem de leitura no mobile (número → título →
-             palavras-chave → CTA → imagem, fluxo normal, cada painel uma
-             unidade fechada). No desktop não muda nada: .frentes__media e
-             .frentes__conteudo são absolutamente posicionados um sobre o
-             outro, e a ordem de exibição ali vem do z-index, não do DOM. -->
         <article class="frentes__painel frentes__painel--scuderia">
           <div class="frentes__conteudo">
             <p class="frentes__label" data-reveal><span class="frentes__num">01</span> Scuderia Bandeiras</p>
-            <ul class="frentes__tags" data-stagger>
-              <li data-reveal>Motorsport</li>
-              <li data-reveal>Pilotos</li>
-              <li data-reveal>Caterham</li>
-              <li data-reveal>Race Experience</li>
-              <li data-reveal>Team Building</li>
-              <li data-reveal>Ativações</li>
-              <li data-reveal>Conteúdo</li>
-            </ul>
             <a class="frentes__link" href="#experiencias" data-reveal>Explorar experiências →</a>
           </div>
           <div class="frentes__media" data-reveal>
-            <picture><source type="image/avif" srcset="assets-build/img/eco-carros-480w-f429ae5752.avif 480w, assets-build/img/eco-carros-800w-f429ae5752.avif 800w, assets-build/img/eco-carros-1280w-f429ae5752.avif 1280w, assets-build/img/eco-carros-1920w-f429ae5752.avif 1920w" sizes="(min-width: 1024px) 50vw, 100vw"><source type="image/jpeg" srcset="assets-build/img/eco-carros-480w-f429ae5752.jpg 480w, assets-build/img/eco-carros-800w-f429ae5752.jpg 800w, assets-build/img/eco-carros-1280w-f429ae5752.jpg 1280w, assets-build/img/eco-carros-1920w-f429ae5752.jpg 1920w" sizes="(min-width: 1024px) 50vw, 100vw"><img src="assets-build/img/eco-carros-1920w-f429ae5752.jpg" width="5000" height="3333" alt="Frota de Caterham da Scuderia Bandeiras pronta no pit antes de um evento" loading="lazy" decoding="async"></picture>
+            <picture><source type="image/avif" srcset="assets-build/img/eco-espaco-scuderia-480w-4914b1e83d.avif 480w, assets-build/img/eco-espaco-scuderia-800w-4914b1e83d.avif 800w, assets-build/img/eco-espaco-scuderia-1280w-4914b1e83d.avif 1280w, assets-build/img/eco-espaco-scuderia-1920w-4914b1e83d.avif 1920w" sizes="(min-width: 1024px) 50vw, 100vw"><source type="image/jpeg" srcset="assets-build/img/eco-espaco-scuderia-480w-4914b1e83d.jpg 480w, assets-build/img/eco-espaco-scuderia-800w-4914b1e83d.jpg 800w, assets-build/img/eco-espaco-scuderia-1280w-4914b1e83d.jpg 1280w, assets-build/img/eco-espaco-scuderia-1920w-4914b1e83d.jpg 1920w" sizes="(min-width: 1024px) 50vw, 100vw"><img src="assets-build/img/eco-espaco-scuderia-1920w-4914b1e83d.jpg" width="5000" height="3333" alt="Fachada da sede da Scuderia Bandeiras, com o logotipo, o pátio interno e o mural de pilotos" loading="lazy" decoding="async"></picture>
           </div>
         </article>
 
         <article class="frentes__painel frentes__painel--empresarial">
           <div class="frentes__conteudo">
             <p class="frentes__label" data-reveal><span class="frentes__num">02</span> Bandeiras Empresarial</p>
-            <ul class="frentes__tags" data-stagger>
-              <li data-reveal>Estrutura</li>
-              <li data-reveal>Eventos</li>
-              <li data-reveal>Hospitalidade</li>
-              <li data-reveal>Coworking</li>
-              <li data-reveal>Convenções</li>
-              <li data-reveal>Networking</li>
-            </ul>
             <a class="frentes__link" href="#bandeiras-empresarial" data-reveal>Conhecer a estrutura →</a>
           </div>
           <div class="frentes__media" data-reveal>
@@ -184,22 +171,6 @@
       </div>
     </section>
 
-    <!-- ============================================================ 03 · PILOTOS & TIME
-         Seção única e definitiva para os 4 nomes. Absorve a função da
-         extinta FAIXA DE AUTORIDADE e da extinta seção PALESTRAS (agora
-         módulo compacto no fecho, sem repetir bios/fotos).
-         Redesenho 2026-09-24 (v2 — v1 com 4 linhas editoriais em
-         .media-split ficou alta demais, quase uma viewport por piloto,
-         contra o objetivo de reduzir o comprimento do site): volta a um
-         conjunto compacto de cards (.piloto-card) — poster editorial (foto
-         de fundo + scrim + nome/cargo/credenciais sobrepostos), não mais
-         blocos de página inteira. Mobile: rail horizontal com snap, 1 card
-         dominante + respiro do próximo. Desktop (≥1024px): os 4 lado a
-         lado, mesma altura, sem scroll. Só 2-3 credenciais mais fortes por
-         piloto (o resto da copy mais completa de 2026-09-24 seguiu cortado
-         aqui de propósito — cabe no .pilotos-time__bastidor/memória de
-         sessão, não no card). Hover (só pointer:fine): imagem ganha escala
-         mínima, scrim intensifica, credenciais reforçam (opacity). -->
     <section id="pilotos" class="section pilotos-time">
       <div class="container">
         <div class="section-head">
@@ -212,14 +183,14 @@
       </div>
 
       <div class="pilotos-time__cards" data-stagger>
-        <article class="piloto-card" data-reveal tabindex="0">
+        <article class="piloto-card" data-reveal tabindex="0" role="group" aria-labelledby="piloto-nome-atila">
           <span class="piloto-card__num" aria-hidden="true">01</span>
           <div class="piloto-card__media">
-            <picture><source type="image/avif" srcset="assets-build/img/piloto-atila-480w-d0d32d1265.avif 480w, assets-build/img/piloto-atila-800w-d0d32d1265.avif 800w" sizes="(min-width: 1024px) 25vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/piloto-atila-480w-d0d32d1265.jpg 480w, assets-build/img/piloto-atila-800w-d0d32d1265.jpg 800w" sizes="(min-width: 1024px) 25vw, 78vw"><img src="assets-build/img/piloto-atila-800w-d0d32d1265.jpg" width="936" height="1192" alt="Átila Abreu" loading="lazy" decoding="async"></picture>
+            <picture><source type="image/avif" srcset="assets-build/img/piloto-atila-480w-4b7fd65884.avif 480w, assets-build/img/piloto-atila-800w-4b7fd65884.avif 800w" sizes="(min-width: 1024px) 20vw, 68vw"><source type="image/jpeg" srcset="assets-build/img/piloto-atila-480w-4b7fd65884.jpg 480w, assets-build/img/piloto-atila-800w-4b7fd65884.jpg 800w" sizes="(min-width: 1024px) 20vw, 68vw"><img src="assets-build/img/piloto-atila-800w-4b7fd65884.jpg" width="1111" height="1415" alt="Átila Abreu" loading="lazy" decoding="async"></picture>
           </div>
           <div class="piloto-card__conteudo">
             <p class="piloto-card__cargo">Piloto e fundador</p>
-            <h3 class="piloto-card__nome">Átila Abreu</h3>
+            <h3 class="piloto-card__nome" id="piloto-nome-atila">Átila Abreu</h3>
             <ul class="piloto-card__creds">
               <li>Vice-campeão da Stock Car Brasil (2014)</li>
               <li>320+ largadas, 19 vitórias, 13 poles, 49 pódios</li>
@@ -227,14 +198,14 @@
           </div>
         </article>
 
-        <article class="piloto-card" data-reveal tabindex="0">
+        <article class="piloto-card" data-reveal tabindex="0" role="group" aria-labelledby="piloto-nome-nelsinho">
           <span class="piloto-card__num" aria-hidden="true">02</span>
           <div class="piloto-card__media">
-            <picture><source type="image/avif" srcset="assets-build/img/piloto-nelsinho-480w-e31e292ec3.avif 480w, assets-build/img/piloto-nelsinho-800w-e31e292ec3.avif 800w" sizes="(min-width: 1024px) 25vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/piloto-nelsinho-480w-e31e292ec3.jpg 480w, assets-build/img/piloto-nelsinho-800w-e31e292ec3.jpg 800w" sizes="(min-width: 1024px) 25vw, 78vw"><img src="assets-build/img/piloto-nelsinho-800w-e31e292ec3.jpg" width="892" height="1192" alt="Nelsinho Piquet Jr." loading="lazy" decoding="async"></picture>
+            <picture><source type="image/avif" srcset="assets-build/img/piloto-nelsinho-480w-953649222c.avif 480w, assets-build/img/piloto-nelsinho-800w-953649222c.avif 800w" sizes="(min-width: 1024px) 20vw, 68vw"><source type="image/jpeg" srcset="assets-build/img/piloto-nelsinho-480w-953649222c.jpg 480w, assets-build/img/piloto-nelsinho-800w-953649222c.jpg 800w" sizes="(min-width: 1024px) 20vw, 68vw"><img src="assets-build/img/piloto-nelsinho-800w-953649222c.jpg" width="1111" height="1415" alt="Nelson Piquet Jr." loading="lazy" decoding="async"></picture>
           </div>
           <div class="piloto-card__conteudo">
             <p class="piloto-card__cargo">Piloto</p>
-            <h3 class="piloto-card__nome">Nelsinho Piquet Jr.</h3>
+            <h3 class="piloto-card__nome" id="piloto-nome-nelsinho">Nelson Piquet Jr.</h3>
             <ul class="piloto-card__creds">
               <li>1º campeão da história da Fórmula E (2014/15)</li>
               <li>Ex-F1 · campeão da Fórmula 3 Britânica</li>
@@ -242,14 +213,14 @@
           </div>
         </article>
 
-        <article class="piloto-card" data-reveal tabindex="0">
+        <article class="piloto-card" data-reveal tabindex="0" role="group" aria-labelledby="piloto-nome-christian">
           <span class="piloto-card__num" aria-hidden="true">03</span>
           <div class="piloto-card__media">
-            <picture><source type="image/avif" srcset="assets-build/img/piloto-christian-480w-3511b5bac7.avif 480w, assets-build/img/piloto-christian-800w-3511b5bac7.avif 800w" sizes="(min-width: 1024px) 25vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/piloto-christian-480w-3511b5bac7.jpg 480w, assets-build/img/piloto-christian-800w-3511b5bac7.jpg 800w" sizes="(min-width: 1024px) 25vw, 78vw"><img src="assets-build/img/piloto-christian-800w-3511b5bac7.jpg" width="930" height="1192" alt="Christian Fittipaldi" loading="lazy" decoding="async"></picture>
+            <picture><source type="image/avif" srcset="assets-build/img/piloto-christian-480w-6dab6d6c5e.avif 480w, assets-build/img/piloto-christian-800w-6dab6d6c5e.avif 800w" sizes="(min-width: 1024px) 20vw, 68vw"><source type="image/jpeg" srcset="assets-build/img/piloto-christian-480w-6dab6d6c5e.jpg 480w, assets-build/img/piloto-christian-800w-6dab6d6c5e.jpg 800w" sizes="(min-width: 1024px) 20vw, 68vw"><img src="assets-build/img/piloto-christian-800w-6dab6d6c5e.jpg" width="1111" height="1415" alt="Christian Fittipaldi" loading="lazy" decoding="async"></picture>
           </div>
           <div class="piloto-card__conteudo">
             <p class="piloto-card__cargo">Chefe de equipe</p>
-            <h3 class="piloto-card__nome">Christian Fittipaldi</h3>
+            <h3 class="piloto-card__nome" id="piloto-nome-christian">Christian Fittipaldi</h3>
             <ul class="piloto-card__creds">
               <li>3x vencedor das 24 Horas de Daytona</li>
               <li>Ex-F1 e Fórmula Indy · tetra North American Endurance Cup</li>
@@ -257,14 +228,14 @@
           </div>
         </article>
 
-        <article class="piloto-card" data-reveal tabindex="0">
+        <article class="piloto-card" data-reveal tabindex="0" role="group" aria-labelledby="piloto-nome-ingo">
           <span class="piloto-card__num" aria-hidden="true">04</span>
           <div class="piloto-card__media">
-            <picture><source type="image/avif" srcset="assets-build/img/piloto-ingo-480w-eb7fc06afc.avif 480w, assets-build/img/piloto-ingo-800w-eb7fc06afc.avif 800w" sizes="(min-width: 1024px) 25vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/piloto-ingo-480w-eb7fc06afc.jpg 480w, assets-build/img/piloto-ingo-800w-eb7fc06afc.jpg 800w" sizes="(min-width: 1024px) 25vw, 78vw"><img src="assets-build/img/piloto-ingo-800w-eb7fc06afc.jpg" width="899" height="1192" alt="Ingo Hoffmann" loading="lazy" decoding="async"></picture>
+            <picture><source type="image/avif" srcset="assets-build/img/piloto-ingo-480w-0ae0d06f6e.avif 480w, assets-build/img/piloto-ingo-800w-0ae0d06f6e.avif 800w" sizes="(min-width: 1024px) 20vw, 68vw"><source type="image/jpeg" srcset="assets-build/img/piloto-ingo-480w-0ae0d06f6e.jpg 480w, assets-build/img/piloto-ingo-800w-0ae0d06f6e.jpg 800w" sizes="(min-width: 1024px) 20vw, 68vw"><img src="assets-build/img/piloto-ingo-800w-0ae0d06f6e.jpg" width="1111" height="1415" alt="Ingo Hoffmann" loading="lazy" decoding="async"></picture>
           </div>
           <div class="piloto-card__conteudo">
             <p class="piloto-card__cargo">Piloto e embaixador</p>
-            <h3 class="piloto-card__nome">Ingo Hoffmann</h3>
+            <h3 class="piloto-card__nome" id="piloto-nome-ingo">Ingo Hoffmann</h3>
             <ul class="piloto-card__creds">
               <li>12x campeão da Stock Car Brasil</li>
               <li>Maior campeão da história da categoria</li>
@@ -273,13 +244,6 @@
         </article>
       </div>
 
-      <!-- Bastidor: módulo compacto de Palestras (ex-seção própria, extinta)
-           fundido logo após o grid de pilotos — comunica direto com os 4
-           cards acima. Layout original preservado (título à esquerda,
-           texto de apoio à direita, 2 colunas ≥1024px); só o conteúdo
-           mudou (2026-09-25: agora traz "o que eles aprenderam correndo",
-           puxado do mosaico abaixo, ver comentário em .time-mosaico). Sem
-           CTA aqui — o botão vive só dentro do mosaico. -->
       <div class="container pilotos-time__bastidor">
         <div class="pilotos-time__bastidor-titulo-col">
           <p class="eyebrow eyebrow--brand pilotos-time__bastidor-eyebrow" data-reveal>
@@ -288,72 +252,29 @@
           </p>
           <h3 class="pilotos-time__bastidor-titulo" data-reveal>O que eles aprenderam correndo, sua empresa pode <mark class="grifo">ouvir de perto</mark>.</h3>
         </div>
-        <p class="pilotos-time__bastidor-texto" data-reveal>Esses nomes também levam suas histórias de carreira, resiliência e alta performance para fora da pista, em convenções, encontros de liderança, eventos corporativos e conteúdo de marca.</p>
       </div>
 
-      <!-- Mosaico do time — redesenho 2026-09-26 (pedido explícito do
-           usuário: voltar ao layout de 2 recortes + painel de texto
-           separado, no lugar da imagem única full-bleed com vão escuro
-           embutido — não dava respiro claro entre texto e retratos).
-           3 colunas no desktop: foto | painel de texto (fundo sólido,
-           sem sobrepor foto) | foto — cada flanco mostra um recorte
-           diferente da mesma foto (object-position esquerda/direita).
-           Mobile: empilha na ordem foto → texto → foto, cada bloco
-           full-width. -->
       <div class="time-mosaico" data-reveal>
         <figure class="time-mosaico__foto time-mosaico__foto--esquerda">
-          <picture><source type="image/avif" srcset="assets-build/img/time-mosaico-foto-480w-69d27d2e43.avif 480w, assets-build/img/time-mosaico-foto-800w-69d27d2e43.avif 800w, assets-build/img/time-mosaico-foto-1280w-69d27d2e43.avif 1280w" sizes="(min-width: 1024px) 30vw, 100vw"><source type="image/webp" srcset="assets-build/img/time-mosaico-foto-480w-69d27d2e43.webp 480w, assets-build/img/time-mosaico-foto-800w-69d27d2e43.webp 800w, assets-build/img/time-mosaico-foto-1280w-69d27d2e43.webp 1280w" sizes="(min-width: 1024px) 30vw, 100vw"><img src="assets-build/img/time-mosaico-foto-1280w-69d27d2e43.webp" width="1461" height="1503" alt="Mosaico com retratos do time da Scuderia Bandeiras" loading="lazy" decoding="async"></picture>
+          <picture><source type="image/avif" srcset="assets-build/img/time-mosaico-foto-480w-69d27d2e43.avif 480w, assets-build/img/time-mosaico-foto-800w-69d27d2e43.avif 800w, assets-build/img/time-mosaico-foto-1280w-69d27d2e43.avif 1280w" sizes="(min-width: 1024px) 38vw, 100vw"><source type="image/webp" srcset="assets-build/img/time-mosaico-foto-480w-69d27d2e43.webp 480w, assets-build/img/time-mosaico-foto-800w-69d27d2e43.webp 800w, assets-build/img/time-mosaico-foto-1280w-69d27d2e43.webp 1280w" sizes="(min-width: 1024px) 38vw, 100vw"><img src="assets-build/img/time-mosaico-foto-1280w-69d27d2e43.webp" width="1461" height="1503" alt="Mosaico com retratos do time da Scuderia Bandeiras" loading="lazy" decoding="async"></picture>
         </figure>
         <div class="time-mosaico__centro">
           <p class="time-mosaico__titulo">Muito além dos nomes conhecidos.</p>
-          <p class="time-mosaico__texto">Mais de 50 profissionais de marketing, eventos, design, produção de conteúdo, fotografia e atendimento por trás de cada projeto.</p>
-          <p class="time-mosaico__texto time-mosaico__nota"><em>Átila participa diretamente de projetos comerciais e de palestras; Nelsinho, Christian e Ingo, mediante consulta prévia de agenda.</em></p>
-          <a class="btn btn--primary btn--xl time-mosaico__cta" data-cta="project" data-origin="palestra" href="#">Crie um projeto com a Scuderia</a>
+          <p class="time-mosaico__texto">Mais de 50 profissionais! Engenheiros, mecânicos, audiovisual, atendimento, eventos e marketing trabalhando nos bastidores de cada projeto.</p>
+          <p class="time-mosaico__texto time-mosaico__nota"><em>Projetos comerciais e palestras podem contar com a participação de Átila Abreu, Nelson Piquet Jr., Christian Fittipaldi e Ingo Hoffmann, mediante consulta prévia de agenda.</em></p>
+          <a class="btn btn--primary btn--xl time-mosaico__cta" data-cta="project" data-origin="palestra" href="https://wa.me/5515998570854?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Scuderia%20Bandeiras%20e%20tenho%20interesse%20em%3A%20Palestra%20com%20piloto." target="_blank" rel="noopener">Crie um projeto com a Scuderia</a>
         </div>
         <figure class="time-mosaico__foto time-mosaico__foto--direita">
-          <picture><source type="image/avif" srcset="assets-build/img/time-mosaico-foto-480w-69d27d2e43.avif 480w, assets-build/img/time-mosaico-foto-800w-69d27d2e43.avif 800w, assets-build/img/time-mosaico-foto-1280w-69d27d2e43.avif 1280w" sizes="(min-width: 1024px) 30vw, 100vw"><source type="image/webp" srcset="assets-build/img/time-mosaico-foto-480w-69d27d2e43.webp 480w, assets-build/img/time-mosaico-foto-800w-69d27d2e43.webp 800w, assets-build/img/time-mosaico-foto-1280w-69d27d2e43.webp 1280w" sizes="(min-width: 1024px) 30vw, 100vw"><img src="assets-build/img/time-mosaico-foto-1280w-69d27d2e43.webp" width="1461" height="1503" alt="Mosaico com retratos do time da Scuderia Bandeiras" loading="lazy" decoding="async"></picture>
+          <picture><source type="image/avif" srcset="assets-build/img/time-mosaico-foto-2-480w-6d312e4ba2.avif 480w, assets-build/img/time-mosaico-foto-2-800w-6d312e4ba2.avif 800w, assets-build/img/time-mosaico-foto-2-1280w-6d312e4ba2.avif 1280w" sizes="(min-width: 1024px) 38vw, 100vw"><source type="image/webp" srcset="assets-build/img/time-mosaico-foto-2-480w-6d312e4ba2.webp 480w, assets-build/img/time-mosaico-foto-2-800w-6d312e4ba2.webp 800w, assets-build/img/time-mosaico-foto-2-1280w-6d312e4ba2.webp 1280w" sizes="(min-width: 1024px) 38vw, 100vw"><img src="assets-build/img/time-mosaico-foto-2-1280w-6d312e4ba2.webp" width="1461" height="1503" alt="Mosaico com retratos de mais integrantes do time da Scuderia Bandeiras" loading="lazy" decoding="async"></picture>
         </figure>
       </div>
     </section>
 
-    <!-- ============================================================ LEGADO · INGO HOFFMANN
-         Nova dobra 2026-09-25, pedido explícito do usuário: pausa emocional/
-         cinematográfica logo após Pilotos & Time — não é uma seção numerada
-         (sem .section-head, sem numeral, fora do sistema .section para não
-         herdar padding-block grande — a intenção é ler como continuação
-         direta do mosaico do time, não como "capítulo 04"). Propositalmente
-         SEM stats, conquistas ou CTA: isso já vive no card do Ingo (03) e no
-         resto da página; aqui é só vídeo + 1 frase.
-
-         Vídeo fonte: assets/videos/pilotos/Ingo_Anúncio_Horizontal.mp4
-         (3840×2160, 24fps, 85s, ~454 MB, original preservado intacto).
-         Recorte 48.5s–79s (30.5s): deliberadamente pula a largada do vídeo
-         (pódio + montagem de arquivo com marcas de época — já é "conquista",
-         repetiria 03) e também o card de logo final. Fica só o miolo
-         emocional real do anúncio: retrato sépia de arquivo → morph para o
-         Ingo de hoje (parede de tijolo) → chegada ao time, cercado por
-         camisas Scuderia Bandeiras → Ingo falando na garagem, capacete na
-         mão, banner "seja bem-vindo" ao fundo. Isso É o "legado não fica
-         parado" em imagem, sem precisar narrar de novo.
-
-         Transcodificado para assets-build/video/legado-ingo-desktop-1920w.mp4
-         (1920×1080, H.264 High, CRF 23, ~12,7 MB) e legado-ingo-mobile-720w.mp4
-         (recorte vertical 9:16 do quadro original — crop central, não letterbox
-         — 720×1280, CRF 27, ~4,3 MB), poster real extraído do próprio recorte
-         (legado-ingo-poster.jpg, retrato de parede de tijolo, ~56.5s).
-         Autoplay/loop mudo (nenhum navegador libera autoplay com som) + botão
-         de som (.video-sound-toggle, mesmo componente de 05 · BANDEIRAS
-         EMPRESARIAL, reaproveitado via seletor extra em video-sound-toggle.js
-         — não duplica CSS nem JS). Scrim só no topo/base (nunca a cena
-         inteira): no mobile cobre eyebrow+título (topo) e o texto (base),
-         deixando a faixa central do rosto limpa; no desktop (≥1024px) o
-         topo some e cabeçalho+texto se juntam embaixo, mesmo eixo de
-         --content-inset usado em .media-split. -->
     <section id="legado" class="legado">
       <div class="legado__frame">
-        <video class="legado__video" autoplay muted loop playsinline preload="metadata" poster="assets-build/img/legado-ingo-poster.jpg" aria-label="Ingo Hoffmann, embaixador da Scuderia Bandeiras: do retrato de arquivo ao piloto de hoje, chegando à Scuderia">
+        <video class="legado__video" muted loop playsinline preload="none" poster="assets-build/img/legado-ingo-poster-1440w.jpg" aria-label="Ingo Hoffmann, embaixador da Scuderia Bandeiras: do retrato de arquivo ao piloto de hoje, chegando à Scuderia">
           <source src="assets-build/video/legado-ingo-mobile-720w.mp4" media="(max-width: 1023px)" type="video/mp4">
-          <source src="assets-build/video/legado-ingo-desktop-1920w.mp4" type="video/mp4">
+          <source src="assets-build/video/legado-ingo-desktop-1440w.mp4" type="video/mp4">
         </video>
         <div class="legado__scrim-top" aria-hidden="true"></div>
         <div class="legado__scrim-bottom" aria-hidden="true"></div>
@@ -361,40 +282,25 @@
           <div class="legado__cabecalho">
             <p class="eyebrow legado__eyebrow" data-reveal>INGO HOFFMANN · EMBAIXADOR</p>
             <h2 class="legado__titulo" data-reveal>
-              <span class="legado__titulo-linha">LEGADO NÃO</span>
-              <span class="legado__titulo-linha">FICA <mark class="grifo">PARADO.</mark></span>
+              <span class="legado__titulo-linha">Legado não</span>
+              <span class="legado__titulo-linha">fica <mark class="grifo">parado.</mark></span>
             </h2>
           </div>
           <p class="lead legado__lead" data-reveal>Uma trajetória que ajudou a escrever a história do automobilismo brasileiro. Hoje, esse legado também faz parte da Scuderia Bandeiras.</p>
         </div>
-        <button type="button" class="video-sound-toggle" aria-pressed="false" aria-label="Ativar som do vídeo">
+        <div class="video-controls">
+          <button type="button" class="video-pause-toggle" aria-label="Pausar vídeo">
+            <svg class="video-pause-toggle__icon video-pause-toggle__icon--pause" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+            <svg class="video-pause-toggle__icon video-pause-toggle__icon--play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg>
+          </button>
+          <button type="button" class="video-sound-toggle" aria-pressed="false" aria-label="Som do vídeo">
           <svg class="video-sound-toggle__icon video-sound-toggle__icon--off" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><line x1="16" y1="9" x2="21" y2="15"/><line x1="21" y1="9" x2="16" y2="15"/></svg>
           <svg class="video-sound-toggle__icon video-sound-toggle__icon--on" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>
         </button>
+        </div>
       </div>
     </section>
 
-    <!-- ============================================================ 04 · EXPERIÊNCIAS & PROJETOS
-         Redesenho 2026-09-24, 3ª rodada: a faixa horizontal dos 5 princípios
-         (que ficava abaixo do vídeo) foi removida — o espaço negativo à
-         direita do vídeo agora é ocupado pelos 5 princípios como cards
-         editoriais empilhados (.experiencias__cena > .experiencias__momento
-         + .experiencias__cards). Desktop: vídeo à esquerda, 5 cards em
-         coluna à direita, mesma altura. Mobile: vídeo em cima (agora com
-         fonte própria, vertical, recortada de
-         Projeto-caterham/.../assets/videos/mobiile/mobile.mp4 — não é mais
-         o mesmo vídeo do desktop), cards em carrossel horizontal com
-         scroll-snap logo abaixo. Fotos dos 5 cards vieram do acervo real do
-         Caterham (Fazenda Capuava), copiadas para assets/Imagens/experiencias/
-         principios/ e processadas pelo pipeline normal (build-media.py,
-         slugs principio-*). O banner "BASTIDORES DA EXPERIÊNCIA"
-         (.experiencias__bastidores, bastidores.jpg) foi removido a pedido do
-         usuário nesta mesma rodada — não existe mais entre os cards e o
-         statement "O automobilismo deixa de ser...".
-
-         Caterham (ex-seção própria) continua 1 card dentro do grid de
-         formatos (não é reaberto nesta rodada). id="caterham" preservado
-         no card para o crossfade de cursor em js/cursor-trail.js. -->
     <section id="experiencias" class="section experiencias">
       <div class="container intro-split">
         <div class="section-head">
@@ -410,16 +316,19 @@
         </div>
       </div>
 
-      <!-- CENA — vídeo protagonista (emoção) à esquerda + coluna de 5 cards de
-           princípios à direita (empilhados no desktop, carrossel no mobile,
-           ver .experiencias__cena/.experiencias__cards em components.css) -->
       <div class="experiencias__cena">
         <div class="experiencias__momento">
-          <video class="experiencias__momento-video" autoplay muted loop playsinline poster="assets-build/img/experiencias-emocao-poster.jpg" aria-label="Convidados vivendo a Race Experience a bordo dos Caterham da Scuderia Bandeiras">
+          <video class="experiencias__momento-video" muted loop playsinline preload="none" poster="assets-build/img/experiencias-emocao-poster.jpg" aria-label="Convidados vivendo a Race Experience a bordo dos Caterham da Scuderia Bandeiras">
             <source src="assets-build/video/experiencias-emocao-mobile-540w.mp4" media="(max-width: 767px)" type="video/mp4">
             <source src="assets-build/video/experiencias-emocao-960w.mp4" media="(min-width: 640px)" type="video/mp4">
             <source src="assets-build/video/experiencias-emocao-600w.mp4" type="video/mp4">
           </video>
+          <div class="video-controls">
+            <button type="button" class="video-pause-toggle" aria-label="Pausar vídeo">
+            <svg class="video-pause-toggle__icon video-pause-toggle__icon--pause" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+            <svg class="video-pause-toggle__icon video-pause-toggle__icon--play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg>
+          </button>
+          </div>
           <div class="experiencias__momento-scrim" aria-hidden="true"></div>
           <div class="experiencias__momento-overlay">
             <p class="eyebrow" data-reveal>TEAM BUILDING · RACE EXPERIENCE</p>
@@ -428,41 +337,36 @@
           </div>
         </div>
 
-        <ul class="experiencias__cards" data-stagger>
-          <li class="experiencias__card" data-reveal>
-            <picture><source type="image/avif" srcset="assets-build/img/principio-trabalho-equipe-480w-09fdea0e0c.avif 480w, assets-build/img/principio-trabalho-equipe-800w-09fdea0e0c.avif 800w, assets-build/img/principio-trabalho-equipe-1280w-09fdea0e0c.avif 1280w, assets-build/img/principio-trabalho-equipe-1920w-09fdea0e0c.avif 1920w" sizes="(min-width: 1024px) 32vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/principio-trabalho-equipe-480w-09fdea0e0c.jpg 480w, assets-build/img/principio-trabalho-equipe-800w-09fdea0e0c.jpg 800w, assets-build/img/principio-trabalho-equipe-1280w-09fdea0e0c.jpg 1280w, assets-build/img/principio-trabalho-equipe-1920w-09fdea0e0c.jpg 1920w" sizes="(min-width: 1024px) 32vw, 78vw"><img src="assets-build/img/principio-trabalho-equipe-1920w-09fdea0e0c.jpg" width="1920" height="1279" alt="Equipe trabalhando junta nos bastidores da Race Experience" loading="lazy" decoding="async"></picture>
-            <div class="experiencias__card-legenda">
-              <span class="experiencias__card-num">01</span>
-              <h3 class="experiencias__card-titulo">Trabalho em equipe</h3>
-            </div>
+        <ul class="experiencias__cards" data-exp-painel data-reveal aria-label="Princípios do Team Building">
+          <li class="exp-item">
+            <h3 class="exp-item__cab"><span class="exp-item__num">01</span><span class="exp-item__titulo">Trabalho em equipe</span></h3>
+            <div class="exp-item__painel"><div class="exp-item__moldura">
+              <picture><source type="image/avif" srcset="assets-build/img/principio-trabalho-equipe-480w-09fdea0e0c.avif 480w, assets-build/img/principio-trabalho-equipe-800w-09fdea0e0c.avif 800w, assets-build/img/principio-trabalho-equipe-1280w-09fdea0e0c.avif 1280w, assets-build/img/principio-trabalho-equipe-1920w-09fdea0e0c.avif 1920w" sizes="(min-width: 1024px) 40vw, 100vw"><source type="image/jpeg" srcset="assets-build/img/principio-trabalho-equipe-480w-09fdea0e0c.jpg 480w, assets-build/img/principio-trabalho-equipe-800w-09fdea0e0c.jpg 800w, assets-build/img/principio-trabalho-equipe-1280w-09fdea0e0c.jpg 1280w, assets-build/img/principio-trabalho-equipe-1920w-09fdea0e0c.jpg 1920w" sizes="(min-width: 1024px) 40vw, 100vw"><img src="assets-build/img/principio-trabalho-equipe-1920w-09fdea0e0c.jpg" width="1920" height="1279" alt="Equipe trabalhando junta nos bastidores da Race Experience" loading="lazy" decoding="async"></picture>
+            </div></div>
           </li>
-          <li class="experiencias__card" data-reveal>
-            <picture><source type="image/avif" srcset="assets-build/img/principio-confianca-480w-ec3cf0bf74.avif 480w, assets-build/img/principio-confianca-800w-ec3cf0bf74.avif 800w, assets-build/img/principio-confianca-1280w-ec3cf0bf74.avif 1280w, assets-build/img/principio-confianca-1920w-ec3cf0bf74.avif 1920w" sizes="(min-width: 1024px) 32vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/principio-confianca-480w-ec3cf0bf74.jpg 480w, assets-build/img/principio-confianca-800w-ec3cf0bf74.jpg 800w, assets-build/img/principio-confianca-1280w-ec3cf0bf74.jpg 1280w, assets-build/img/principio-confianca-1920w-ec3cf0bf74.jpg 1920w" sizes="(min-width: 1024px) 32vw, 78vw"><img src="assets-build/img/principio-confianca-1920w-ec3cf0bf74.jpg" width="1920" height="1280" alt="Abraço entre colegas ao lado do Caterham, depois de uma volta na pista" loading="lazy" decoding="async"></picture>
-            <div class="experiencias__card-legenda">
-              <span class="experiencias__card-num">02</span>
-              <h3 class="experiencias__card-titulo">Confiança</h3>
-            </div>
+          <li class="exp-item">
+            <h3 class="exp-item__cab"><span class="exp-item__num">02</span><span class="exp-item__titulo">Confiança</span></h3>
+            <div class="exp-item__painel"><div class="exp-item__moldura">
+              <picture><source type="image/avif" srcset="assets-build/img/principio-confianca-480w-ec3cf0bf74.avif 480w, assets-build/img/principio-confianca-800w-ec3cf0bf74.avif 800w, assets-build/img/principio-confianca-1280w-ec3cf0bf74.avif 1280w, assets-build/img/principio-confianca-1920w-ec3cf0bf74.avif 1920w" sizes="(min-width: 1024px) 40vw, 100vw"><source type="image/jpeg" srcset="assets-build/img/principio-confianca-480w-ec3cf0bf74.jpg 480w, assets-build/img/principio-confianca-800w-ec3cf0bf74.jpg 800w, assets-build/img/principio-confianca-1280w-ec3cf0bf74.jpg 1280w, assets-build/img/principio-confianca-1920w-ec3cf0bf74.jpg 1920w" sizes="(min-width: 1024px) 40vw, 100vw"><img src="assets-build/img/principio-confianca-1920w-ec3cf0bf74.jpg" width="1920" height="1280" alt="Abraço entre colegas ao lado do Caterham, depois de uma volta na pista" loading="lazy" decoding="async"></picture>
+            </div></div>
           </li>
-          <li class="experiencias__card" data-reveal>
-            <picture><source type="image/avif" srcset="assets-build/img/principio-comunicacao-480w-8e075e95a0.avif 480w, assets-build/img/principio-comunicacao-800w-8e075e95a0.avif 800w, assets-build/img/principio-comunicacao-1280w-8e075e95a0.avif 1280w, assets-build/img/principio-comunicacao-1920w-8e075e95a0.avif 1920w" sizes="(min-width: 1024px) 32vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/principio-comunicacao-480w-8e075e95a0.jpg 480w, assets-build/img/principio-comunicacao-800w-8e075e95a0.jpg 800w, assets-build/img/principio-comunicacao-1280w-8e075e95a0.jpg 1280w, assets-build/img/principio-comunicacao-1920w-8e075e95a0.jpg 1920w" sizes="(min-width: 1024px) 32vw, 78vw"><img src="assets-build/img/principio-comunicacao-1920w-8e075e95a0.jpg" width="1920" height="1279" alt="Apresentador da Scuderia Bandeiras se comunicando com o grupo antes da Race Experience" loading="lazy" decoding="async"></picture>
-            <div class="experiencias__card-legenda">
-              <span class="experiencias__card-num">03</span>
-              <h3 class="experiencias__card-titulo">Comunicação</h3>
-            </div>
+          <li class="exp-item">
+            <h3 class="exp-item__cab"><span class="exp-item__num">03</span><span class="exp-item__titulo">Comunicação</span></h3>
+            <div class="exp-item__painel"><div class="exp-item__moldura">
+              <picture><source type="image/avif" srcset="assets-build/img/principio-comunicacao-480w-8e075e95a0.avif 480w, assets-build/img/principio-comunicacao-800w-8e075e95a0.avif 800w, assets-build/img/principio-comunicacao-1280w-8e075e95a0.avif 1280w, assets-build/img/principio-comunicacao-1920w-8e075e95a0.avif 1920w" sizes="(min-width: 1024px) 40vw, 100vw"><source type="image/jpeg" srcset="assets-build/img/principio-comunicacao-480w-8e075e95a0.jpg 480w, assets-build/img/principio-comunicacao-800w-8e075e95a0.jpg 800w, assets-build/img/principio-comunicacao-1280w-8e075e95a0.jpg 1280w, assets-build/img/principio-comunicacao-1920w-8e075e95a0.jpg 1920w" sizes="(min-width: 1024px) 40vw, 100vw"><img src="assets-build/img/principio-comunicacao-1920w-8e075e95a0.jpg" width="1920" height="1279" alt="Apresentador da Scuderia Bandeiras se comunicando com o grupo antes da Race Experience" loading="lazy" decoding="async"></picture>
+            </div></div>
           </li>
-          <li class="experiencias__card" data-reveal>
-            <picture><source type="image/avif" srcset="assets-build/img/principio-tomada-decisao-480w-3eb9ec7b99.avif 480w, assets-build/img/principio-tomada-decisao-800w-3eb9ec7b99.avif 800w, assets-build/img/principio-tomada-decisao-1280w-3eb9ec7b99.avif 1280w, assets-build/img/principio-tomada-decisao-1920w-3eb9ec7b99.avif 1920w" sizes="(min-width: 1024px) 32vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/principio-tomada-decisao-480w-3eb9ec7b99.jpg 480w, assets-build/img/principio-tomada-decisao-800w-3eb9ec7b99.jpg 800w, assets-build/img/principio-tomada-decisao-1280w-3eb9ec7b99.jpg 1280w, assets-build/img/principio-tomada-decisao-1920w-3eb9ec7b99.jpg 1920w" sizes="(min-width: 1024px) 32vw, 78vw"><img src="assets-build/img/principio-tomada-decisao-1920w-3eb9ec7b99.jpg" width="1920" height="1280" alt="Piloto concentrado, em análise antes de uma decisão de pista" loading="lazy" decoding="async"></picture>
-            <div class="experiencias__card-legenda">
-              <span class="experiencias__card-num">04</span>
-              <h3 class="experiencias__card-titulo">Tomada de decisão</h3>
-            </div>
+          <li class="exp-item">
+            <h3 class="exp-item__cab"><span class="exp-item__num">04</span><span class="exp-item__titulo">Tomada de decisão</span></h3>
+            <div class="exp-item__painel"><div class="exp-item__moldura">
+              <picture><source type="image/avif" srcset="assets-build/img/principio-tomada-decisao-480w-3eb9ec7b99.avif 480w, assets-build/img/principio-tomada-decisao-800w-3eb9ec7b99.avif 800w, assets-build/img/principio-tomada-decisao-1280w-3eb9ec7b99.avif 1280w, assets-build/img/principio-tomada-decisao-1920w-3eb9ec7b99.avif 1920w" sizes="(min-width: 1024px) 40vw, 100vw"><source type="image/jpeg" srcset="assets-build/img/principio-tomada-decisao-480w-3eb9ec7b99.jpg 480w, assets-build/img/principio-tomada-decisao-800w-3eb9ec7b99.jpg 800w, assets-build/img/principio-tomada-decisao-1280w-3eb9ec7b99.jpg 1280w, assets-build/img/principio-tomada-decisao-1920w-3eb9ec7b99.jpg 1920w" sizes="(min-width: 1024px) 40vw, 100vw"><img src="assets-build/img/principio-tomada-decisao-1920w-3eb9ec7b99.jpg" width="1920" height="1280" alt="Piloto concentrado, em análise antes de uma decisão de pista" loading="lazy" decoding="async"></picture>
+            </div></div>
           </li>
-          <li class="experiencias__card" data-reveal>
-            <picture><source type="image/avif" srcset="assets-build/img/principio-pressao-480w-08c362310b.avif 480w, assets-build/img/principio-pressao-800w-08c362310b.avif 800w, assets-build/img/principio-pressao-1280w-08c362310b.avif 1280w, assets-build/img/principio-pressao-1920w-08c362310b.avif 1920w" sizes="(min-width: 1024px) 32vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/principio-pressao-480w-08c362310b.jpg 480w, assets-build/img/principio-pressao-800w-08c362310b.jpg 800w, assets-build/img/principio-pressao-1280w-08c362310b.jpg 1280w, assets-build/img/principio-pressao-1920w-08c362310b.jpg 1920w" sizes="(min-width: 1024px) 32vw, 78vw"><img src="assets-build/img/principio-pressao-1920w-08c362310b.jpg" width="1920" height="1280" alt="Bandeira quadriculada abaixo do pórtico Race Experience, Caterhams cruzando a linha de chegada" loading="lazy" decoding="async"></picture>
-            <div class="experiencias__card-legenda">
-              <span class="experiencias__card-num">05</span>
-              <h3 class="experiencias__card-titulo">Atuação sob pressão</h3>
-            </div>
+          <li class="exp-item">
+            <h3 class="exp-item__cab"><span class="exp-item__num">05</span><span class="exp-item__titulo">Atuação sob pressão</span></h3>
+            <div class="exp-item__painel"><div class="exp-item__moldura">
+              <picture><source type="image/avif" srcset="assets-build/img/principio-pressao-480w-08c362310b.avif 480w, assets-build/img/principio-pressao-800w-08c362310b.avif 800w, assets-build/img/principio-pressao-1280w-08c362310b.avif 1280w, assets-build/img/principio-pressao-1920w-08c362310b.avif 1920w" sizes="(min-width: 1024px) 40vw, 100vw"><source type="image/jpeg" srcset="assets-build/img/principio-pressao-480w-08c362310b.jpg 480w, assets-build/img/principio-pressao-800w-08c362310b.jpg 800w, assets-build/img/principio-pressao-1280w-08c362310b.jpg 1280w, assets-build/img/principio-pressao-1920w-08c362310b.jpg 1920w" sizes="(min-width: 1024px) 40vw, 100vw"><img src="assets-build/img/principio-pressao-1920w-08c362310b.jpg" width="1920" height="1280" alt="Bandeira quadriculada abaixo do pórtico Race Experience, Caterhams cruzando a linha de chegada" loading="lazy" decoding="async"></picture>
+            </div></div>
           </li>
         </ul>
       </div>
@@ -475,37 +379,32 @@
         </div>
       </div>
 
-      <!-- Full-bleed, mesmo tratamento de .frentes/.experiencias__cena/
-           .card-grid-bleed: grid de cartões ocupando 100vw no desktop,
-           em vez de ficar preso ao .container (que, somado ao recuo do
-           eixo do numeral de seção, deixava esse bloco visivelmente mais
-           estreito que as galerias vizinhas em telas largas). -->
       <div class="card-grid-bleed">
         <div class="card-grid card-grid--4">
           <div id="caterham" class="card card--caterham" data-reveal>
             <span class="card__index">01</span>
-            <picture class="card__media"><source type="image/avif" srcset="assets-build/img/escopo-caterham-480w-a9938a592c.avif 480w, assets-build/img/escopo-caterham-800w-a9938a592c.avif 800w, assets-build/img/escopo-caterham-1280w-a9938a592c.avif 1280w, assets-build/img/escopo-caterham-1920w-a9938a592c.avif 1920w" sizes="(min-width: 1200px) 24vw, (min-width: 640px) 46vw, 90vw"><source type="image/jpeg" srcset="assets-build/img/escopo-caterham-480w-a9938a592c.jpg 480w, assets-build/img/escopo-caterham-800w-a9938a592c.jpg 800w, assets-build/img/escopo-caterham-1280w-a9938a592c.jpg 1280w, assets-build/img/escopo-caterham-1920w-a9938a592c.jpg 1920w" sizes="(min-width: 1200px) 24vw, (min-width: 640px) 46vw, 90vw"><img src="assets-build/img/escopo-caterham-1920w-a9938a592c.jpg" width="5000" height="3333" alt="Caterham da Scuderia Bandeiras em evento corporativo" loading="lazy" decoding="async"></picture>
-            <h5>Caterham para Empresas</h5>
+            <picture class="card__media"><source type="image/avif" srcset="assets-build/img/escopo-caterham-480w-a9938a592c.avif 480w, assets-build/img/escopo-caterham-800w-a9938a592c.avif 800w, assets-build/img/escopo-caterham-1280w-a9938a592c.avif 1280w, assets-build/img/escopo-caterham-1920w-a9938a592c.avif 1920w" sizes="(min-width: 1200px) 21vw, (min-width: 1024px) 44vw, (min-width: 640px) 38vw, 79vw"><source type="image/jpeg" srcset="assets-build/img/escopo-caterham-480w-a9938a592c.jpg 480w, assets-build/img/escopo-caterham-800w-a9938a592c.jpg 800w, assets-build/img/escopo-caterham-1280w-a9938a592c.jpg 1280w, assets-build/img/escopo-caterham-1920w-a9938a592c.jpg 1920w" sizes="(min-width: 1200px) 21vw, (min-width: 1024px) 44vw, (min-width: 640px) 38vw, 79vw"><img src="assets-build/img/escopo-caterham-1920w-a9938a592c.jpg" width="5000" height="3333" alt="Caterham da Scuderia Bandeiras em evento corporativo" loading="lazy" decoding="async"></picture>
+            <h3>Caterham para Empresas</h3>
             <p>Um Caterham. Um piloto profissional. Uma experiência difícil de explicar fora da pista. Transforme o Caterham no momento que seus convidados vão lembrar.</p>
-            <a class="card--caterham__cta btn btn--primary" href="https://caterham.scuderiabandeiras.com/" target="_blank" rel="noopener">Conheça o Caterham →</a>
+            <a class="card--caterham__cta btn btn--primary" href="https://caterham.scuderiabandeiras.com/" target="_blank" rel="noopener">Conheça o Caterham →<span class="visually-hidden"> (abre em nova aba)</span></a>
           </div>
           <div class="card" data-reveal>
             <span class="card__index">02</span>
-            <picture class="card__media"><source type="image/avif" srcset="assets-build/img/escopo-ativacoes-480w-b60aae1171.avif 480w, assets-build/img/escopo-ativacoes-800w-b60aae1171.avif 800w, assets-build/img/escopo-ativacoes-1280w-b60aae1171.avif 1280w, assets-build/img/escopo-ativacoes-1920w-b60aae1171.avif 1920w" sizes="(min-width: 1200px) 24vw, (min-width: 640px) 46vw, 90vw"><source type="image/jpeg" srcset="assets-build/img/escopo-ativacoes-480w-b60aae1171.jpg 480w, assets-build/img/escopo-ativacoes-800w-b60aae1171.jpg 800w, assets-build/img/escopo-ativacoes-1280w-b60aae1171.jpg 1280w, assets-build/img/escopo-ativacoes-1920w-b60aae1171.jpg 1920w" sizes="(min-width: 1200px) 24vw, (min-width: 640px) 46vw, 90vw"><img src="assets-build/img/escopo-ativacoes-1920w-b60aae1171.jpg" width="6000" height="4002" alt="Ativação de marca da Scuderia Bandeiras" loading="lazy" decoding="async"></picture>
-            <h5>Ativações de Marca</h5>
+            <picture class="card__media"><source type="image/avif" srcset="assets-build/img/escopo-ativacoes-480w-b60aae1171.avif 480w, assets-build/img/escopo-ativacoes-800w-b60aae1171.avif 800w, assets-build/img/escopo-ativacoes-1280w-b60aae1171.avif 1280w, assets-build/img/escopo-ativacoes-1920w-b60aae1171.avif 1920w" sizes="(min-width: 1200px) 21vw, (min-width: 1024px) 44vw, (min-width: 640px) 38vw, 79vw"><source type="image/jpeg" srcset="assets-build/img/escopo-ativacoes-480w-b60aae1171.jpg 480w, assets-build/img/escopo-ativacoes-800w-b60aae1171.jpg 800w, assets-build/img/escopo-ativacoes-1280w-b60aae1171.jpg 1280w, assets-build/img/escopo-ativacoes-1920w-b60aae1171.jpg 1920w" sizes="(min-width: 1200px) 21vw, (min-width: 1024px) 44vw, (min-width: 640px) 38vw, 79vw"><img src="assets-build/img/escopo-ativacoes-1920w-b60aae1171.jpg" width="6000" height="4002" alt="Ativação de marca da Scuderia Bandeiras" loading="lazy" decoding="async"></picture>
+            <h3>Ativações de Marca</h3>
             <p>Carros, pilotos, estrutura, conteúdo e experiências, conforme o formato criado com a marca.</p>
             <p class="experiencias__nota"><em>Inventário aprovado caso a caso.</em></p>
           </div>
           <div class="card" data-reveal>
             <span class="card__index">03</span>
-            <picture class="card__media"><source type="image/avif" srcset="assets-build/img/escopo-experiencias-480w-b028d3bb6a.avif 480w, assets-build/img/escopo-experiencias-800w-b028d3bb6a.avif 800w, assets-build/img/escopo-experiencias-1280w-b028d3bb6a.avif 1280w, assets-build/img/escopo-experiencias-1920w-b028d3bb6a.avif 1920w" sizes="(min-width: 1200px) 24vw, (min-width: 640px) 46vw, 90vw"><source type="image/jpeg" srcset="assets-build/img/escopo-experiencias-480w-b028d3bb6a.jpg 480w, assets-build/img/escopo-experiencias-800w-b028d3bb6a.jpg 800w, assets-build/img/escopo-experiencias-1280w-b028d3bb6a.jpg 1280w, assets-build/img/escopo-experiencias-1920w-b028d3bb6a.jpg 1920w" sizes="(min-width: 1200px) 24vw, (min-width: 640px) 46vw, 90vw"><img src="assets-build/img/escopo-experiencias-1920w-b028d3bb6a.jpg" width="5000" height="3333" alt="Experiência corporativa da Scuderia Bandeiras" loading="lazy" decoding="async"></picture>
-            <h5>Experiências Corporativas</h5>
+            <picture class="card__media"><source type="image/avif" srcset="assets-build/img/escopo-experiencias-480w-b028d3bb6a.avif 480w, assets-build/img/escopo-experiencias-800w-b028d3bb6a.avif 800w, assets-build/img/escopo-experiencias-1280w-b028d3bb6a.avif 1280w, assets-build/img/escopo-experiencias-1920w-b028d3bb6a.avif 1920w" sizes="(min-width: 1200px) 21vw, (min-width: 1024px) 44vw, (min-width: 640px) 38vw, 79vw"><source type="image/jpeg" srcset="assets-build/img/escopo-experiencias-480w-b028d3bb6a.jpg 480w, assets-build/img/escopo-experiencias-800w-b028d3bb6a.jpg 800w, assets-build/img/escopo-experiencias-1280w-b028d3bb6a.jpg 1280w, assets-build/img/escopo-experiencias-1920w-b028d3bb6a.jpg 1920w" sizes="(min-width: 1200px) 21vw, (min-width: 1024px) 44vw, (min-width: 640px) 38vw, 79vw"><img src="assets-build/img/escopo-experiencias-1920w-b028d3bb6a.jpg" width="5000" height="3333" alt="Experiência corporativa da Scuderia Bandeiras" loading="lazy" decoding="async"></picture>
+            <h3>Experiências Corporativas</h3>
             <p>Dias construídos para relacionamento com clientes e parceiros.</p>
           </div>
           <div class="card" data-reveal>
             <span class="card__index">04</span>
-            <picture class="card__media"><source type="image/avif" srcset="assets-build/img/escopo-projetos-480w-80ed2c4522.avif 480w, assets-build/img/escopo-projetos-800w-80ed2c4522.avif 800w, assets-build/img/escopo-projetos-1280w-80ed2c4522.avif 1280w, assets-build/img/escopo-projetos-1920w-80ed2c4522.avif 1920w" sizes="(min-width: 1200px) 24vw, (min-width: 640px) 46vw, 90vw"><source type="image/jpeg" srcset="assets-build/img/escopo-projetos-480w-80ed2c4522.jpg 480w, assets-build/img/escopo-projetos-800w-80ed2c4522.jpg 800w, assets-build/img/escopo-projetos-1280w-80ed2c4522.jpg 1280w, assets-build/img/escopo-projetos-1920w-80ed2c4522.jpg 1920w" sizes="(min-width: 1200px) 24vw, (min-width: 640px) 46vw, 90vw"><img src="assets-build/img/escopo-projetos-1920w-80ed2c4522.jpg" width="2048" height="1367" alt="Projeto personalizado da Scuderia Bandeiras" loading="lazy" decoding="async"></picture>
-            <h5>Projetos Personalizados</h5>
+            <picture class="card__media"><source type="image/avif" srcset="assets-build/img/escopo-projetos-480w-80ed2c4522.avif 480w, assets-build/img/escopo-projetos-800w-80ed2c4522.avif 800w, assets-build/img/escopo-projetos-1280w-80ed2c4522.avif 1280w, assets-build/img/escopo-projetos-1920w-80ed2c4522.avif 1920w" sizes="(min-width: 1200px) 21vw, (min-width: 1024px) 44vw, (min-width: 640px) 38vw, 79vw"><source type="image/jpeg" srcset="assets-build/img/escopo-projetos-480w-80ed2c4522.jpg 480w, assets-build/img/escopo-projetos-800w-80ed2c4522.jpg 800w, assets-build/img/escopo-projetos-1280w-80ed2c4522.jpg 1280w, assets-build/img/escopo-projetos-1920w-80ed2c4522.jpg 1920w" sizes="(min-width: 1200px) 21vw, (min-width: 1024px) 44vw, (min-width: 640px) 38vw, 79vw"><img src="assets-build/img/escopo-projetos-1920w-80ed2c4522.jpg" width="2048" height="1367" alt="Projeto personalizado da Scuderia Bandeiras" loading="lazy" decoding="async"></picture>
+            <h3>Projetos Personalizados</h3>
             <p>Quando o objetivo não cabe nos formatos acima, a Scuderia combina as frentes e desenha um.</p>
           </div>
         </div>
@@ -513,29 +412,12 @@
 
       <div class="container">
         <p class="statement statement--wide" data-reveal>Viver o automobilismo por um dia é uma experiência. Fazer essa experiência continuar dentro da empresa é outro trabalho.</p>
-        <a class="btn btn--primary" data-cta="project" data-origin="team-building" href="#">Crie um projeto com a Scuderia</a>
+        <a class="btn btn--primary" data-cta="project" data-origin="team-building" href="https://wa.me/5515998570854?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Scuderia%20Bandeiras%20e%20tenho%20interesse%20em%3A%20Team%20Building." target="_blank" rel="noopener">Crie um projeto com a Scuderia</a>
       </div>
     </section>
 
-    <!-- ============================================================ 05 · BANDEIRAS EMPRESARIAL
-         Redesenho 2026-09-24: seção enxugada para 3 camadas (registro claro,
-         .section--paper), estrutura física como PROVA VISUAL, não texto:
-         1) abertura (split hero + trio de números, count-up) — 2) os
-         espaços, galeria editorial COMPACTA em carrossel até 1023px (74%
-         da viewport, o mesmo padrão de .pilotos-time__cards — 1 card
-         predominante + espia do próximo) e grade fixa de 6 colunas, sem
-         scroll, a partir de 1024 (mesmo corte de .pilotos-time__cards e
-         .conteudo__frames — nunca 3×2), com uma única linha de
-         introdução acima (os usos não são mais listados em 6 linhas, e os
-         números não se repetem) — 3) VIDEO-01 agora é um vídeo real
-         (assets-build/video/bandeiras-complexo-institucional.mp4 — tour
-         pelo complexo, sem áudio autoplay: controls + preload=metadata),
-         seguido do único CTA da frente (data-origin="bandeiras-empresarial",
-         já mapeado em js/cta.js, nunca usado até então). PETRONAS não
-         aparece aqui — vive uma única vez em 07 · MARCAS & PARCEIROS, como
-         case histórico. -->
     <section id="bandeiras-empresarial" class="section bandeiras section--paper">
-      <!-- 1 · ABERTURA -->
+      
       <div class="media-split media-split--60-40 bandeiras__intro">
         <div class="media-split__media" data-reveal>
           <picture><source type="image/avif" srcset="assets-build/img/complexo-4-480w-6b1ba9280d.avif 480w, assets-build/img/complexo-4-800w-6b1ba9280d.avif 800w, assets-build/img/complexo-4-1280w-6b1ba9280d.avif 1280w" sizes="(min-width: 1024px) 55vw, 100vw"><source type="image/webp" srcset="assets-build/img/complexo-4-480w-6b1ba9280d.webp 480w, assets-build/img/complexo-4-800w-6b1ba9280d.webp 800w, assets-build/img/complexo-4-1280w-6b1ba9280d.webp 1280w" sizes="(min-width: 1024px) 55vw, 100vw"><img src="assets-build/img/complexo-4-1280w-6b1ba9280d.webp" width="1878" height="1254" alt="Torre de acesso do Bandeiras Centro Empresarial, com a mensagem 'Você chegou ao topo'" loading="lazy" decoding="async"></picture>
@@ -561,15 +443,6 @@
         </div>
       </div>
 
-      <!-- 2 · OS ESPAÇOS — carrossel 2026-09-25 (pedido explícito: tudo
-           enfileirado em 1 linha só, com affordance explícita de carrossel —
-           setas ao lado + contador em bolinha embaixo, não só scroll-snap
-           mudo). Mesmo componente .card de "Também no escopo" (mesma
-           animação de hover), só o container que muda de grid pra
-           .carrossel (ver initCarrossel em js/carrossel.js). Fotos
-           atualizadas 2026-09-26 (pasta novas-imagens/); Espaço Motor
-           ganhou slug próprio (estrutura-espaco-motor, antes usava
-           complexo-7, foto genérica compartilhada). -->
       <div class="bandeiras__espacos">
         <div class="container">
           <div class="mini-head">
@@ -577,42 +450,42 @@
           </div>
           <p class="lead bandeiras__lede" data-reveal>Eventos, convenções, hospitalidade e experiências convivem no mesmo endereço.</p>
         </div>
-        <div class="carrossel" data-carrossel>
+        <div class="carrossel" data-carrossel role="group" aria-roledescription="carrossel" aria-label="Espaços do complexo">
           <div class="carrossel__track" data-carrossel-track>
-            <div class="card carrossel__item" data-reveal>
+            <div class="card carrossel__item" data-reveal role="group" aria-roledescription="slide" aria-label="1 de 6">
               <span class="card__index">01</span>
-              <picture class="card__media"><source type="image/avif" srcset="assets-build/img/estrutura-auditorio-480w-3f9c3b1751.avif 480w, assets-build/img/estrutura-auditorio-800w-3f9c3b1751.avif 800w, assets-build/img/estrutura-auditorio-1280w-3f9c3b1751.avif 1280w, assets-build/img/estrutura-auditorio-1920w-3f9c3b1751.avif 1920w" sizes="(min-width: 1024px) 30vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/estrutura-auditorio-480w-3f9c3b1751.jpg 480w, assets-build/img/estrutura-auditorio-800w-3f9c3b1751.jpg 800w, assets-build/img/estrutura-auditorio-1280w-3f9c3b1751.jpg 1280w, assets-build/img/estrutura-auditorio-1920w-3f9c3b1751.jpg 1920w" sizes="(min-width: 1024px) 30vw, 78vw"><img src="assets-build/img/estrutura-auditorio-1920w-3f9c3b1751.jpg" width="5000" height="3333" alt="Auditório da Scuderia Bandeiras, com capacidade para até 300 pessoas" loading="lazy" decoding="async"></picture>
-              <h5>Auditório</h5>
+              <picture class="card__media"><source type="image/avif" srcset="assets-build/img/estrutura-auditorio-480w-3f9c3b1751.avif 480w, assets-build/img/estrutura-auditorio-800w-3f9c3b1751.avif 800w, assets-build/img/estrutura-auditorio-1280w-3f9c3b1751.avif 1280w, assets-build/img/estrutura-auditorio-1920w-3f9c3b1751.avif 1920w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 34vw, 60vw"><source type="image/jpeg" srcset="assets-build/img/estrutura-auditorio-480w-3f9c3b1751.jpg 480w, assets-build/img/estrutura-auditorio-800w-3f9c3b1751.jpg 800w, assets-build/img/estrutura-auditorio-1280w-3f9c3b1751.jpg 1280w, assets-build/img/estrutura-auditorio-1920w-3f9c3b1751.jpg 1920w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 34vw, 60vw"><img src="assets-build/img/estrutura-auditorio-1920w-3f9c3b1751.jpg" width="5000" height="3333" alt="Auditório da Scuderia Bandeiras, com capacidade para até 300 pessoas" loading="lazy" decoding="async"></picture>
+              <h3>Auditório</h3>
               <p>Para até 300&nbsp;pessoas, com telão, lounge, camarim, climatização e som.</p>
             </div>
-            <div class="card carrossel__item" data-reveal>
+            <div class="card carrossel__item" data-reveal role="group" aria-roledescription="slide" aria-label="2 de 6">
               <span class="card__index">02</span>
-              <picture class="card__media"><source type="image/avif" srcset="assets-build/img/estrutura-coworking-480w-40acefe549.avif 480w, assets-build/img/estrutura-coworking-800w-40acefe549.avif 800w, assets-build/img/estrutura-coworking-1280w-40acefe549.avif 1280w, assets-build/img/estrutura-coworking-1920w-40acefe549.avif 1920w" sizes="(min-width: 1024px) 30vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/estrutura-coworking-480w-40acefe549.jpg 480w, assets-build/img/estrutura-coworking-800w-40acefe549.jpg 800w, assets-build/img/estrutura-coworking-1280w-40acefe549.jpg 1280w, assets-build/img/estrutura-coworking-1920w-40acefe549.jpg 1920w" sizes="(min-width: 1024px) 30vw, 78vw"><img src="assets-build/img/estrutura-coworking-1920w-40acefe549.jpg" width="4032" height="2268" alt="Espaço de coworking do complexo" loading="lazy" decoding="async"></picture>
-              <h5>Coworking</h5>
+              <picture class="card__media"><source type="image/avif" srcset="assets-build/img/estrutura-coworking-480w-40acefe549.avif 480w, assets-build/img/estrutura-coworking-800w-40acefe549.avif 800w, assets-build/img/estrutura-coworking-1280w-40acefe549.avif 1280w, assets-build/img/estrutura-coworking-1920w-40acefe549.avif 1920w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 34vw, 60vw"><source type="image/jpeg" srcset="assets-build/img/estrutura-coworking-480w-40acefe549.jpg 480w, assets-build/img/estrutura-coworking-800w-40acefe549.jpg 800w, assets-build/img/estrutura-coworking-1280w-40acefe549.jpg 1280w, assets-build/img/estrutura-coworking-1920w-40acefe549.jpg 1920w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 34vw, 60vw"><img src="assets-build/img/estrutura-coworking-1920w-40acefe549.jpg" width="4032" height="2268" alt="Espaço de coworking do complexo" loading="lazy" decoding="async"></picture>
+              <h3>Coworking</h3>
               <p>Mais de 40&nbsp;espaços de coworking.</p>
             </div>
-            <div class="card carrossel__item" data-reveal>
+            <div class="card carrossel__item" data-reveal role="group" aria-roledescription="slide" aria-label="3 de 6">
               <span class="card__index">03</span>
-              <picture class="card__media"><source type="image/avif" srcset="assets-build/img/estrutura-espaco-motor-480w-b02ecdbeee.avif 480w, assets-build/img/estrutura-espaco-motor-800w-b02ecdbeee.avif 800w, assets-build/img/estrutura-espaco-motor-1280w-b02ecdbeee.avif 1280w, assets-build/img/estrutura-espaco-motor-1920w-b02ecdbeee.avif 1920w" sizes="(min-width: 1024px) 30vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/estrutura-espaco-motor-480w-b02ecdbeee.jpg 480w, assets-build/img/estrutura-espaco-motor-800w-b02ecdbeee.jpg 800w, assets-build/img/estrutura-espaco-motor-1280w-b02ecdbeee.jpg 1280w, assets-build/img/estrutura-espaco-motor-1920w-b02ecdbeee.jpg 1920w" sizes="(min-width: 1024px) 30vw, 78vw"><img src="assets-build/img/estrutura-espaco-motor-1920w-b02ecdbeee.jpg" width="5000" height="3333" alt="Fórmula 3 de Átila Abreu exposta na parede do Espaço Motor" loading="lazy" decoding="async"></picture>
-              <h5>Espaço Motor &amp; Arena Multiuso</h5>
+              <picture class="card__media"><source type="image/avif" srcset="assets-build/img/estrutura-espaco-motor-480w-b02ecdbeee.avif 480w, assets-build/img/estrutura-espaco-motor-800w-b02ecdbeee.avif 800w, assets-build/img/estrutura-espaco-motor-1280w-b02ecdbeee.avif 1280w, assets-build/img/estrutura-espaco-motor-1920w-b02ecdbeee.avif 1920w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 34vw, 60vw"><source type="image/jpeg" srcset="assets-build/img/estrutura-espaco-motor-480w-b02ecdbeee.jpg 480w, assets-build/img/estrutura-espaco-motor-800w-b02ecdbeee.jpg 800w, assets-build/img/estrutura-espaco-motor-1280w-b02ecdbeee.jpg 1280w, assets-build/img/estrutura-espaco-motor-1920w-b02ecdbeee.jpg 1920w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 34vw, 60vw"><img src="assets-build/img/estrutura-espaco-motor-1920w-b02ecdbeee.jpg" width="5000" height="3333" alt="Fórmula 3 de Átila Abreu exposta na parede do Espaço Motor" loading="lazy" decoding="async"></picture>
+              <h3>Espaço Motor &amp; Arena Multiuso</h3>
               <p>Espaço Motor (350&nbsp;m²) e Arena&nbsp;Multiuso (310&nbsp;m²).</p>
             </div>
-            <div class="card carrossel__item" data-reveal>
+            <div class="card carrossel__item" data-reveal role="group" aria-roledescription="slide" aria-label="4 de 6">
               <span class="card__index">04</span>
-              <picture class="card__media"><source type="image/avif" srcset="assets-build/img/estrutura-acesso-aereo-480w-a30639dbc9.avif 480w, assets-build/img/estrutura-acesso-aereo-800w-a30639dbc9.avif 800w, assets-build/img/estrutura-acesso-aereo-1280w-a30639dbc9.avif 1280w, assets-build/img/estrutura-acesso-aereo-1920w-a30639dbc9.avif 1920w" sizes="(min-width: 1024px) 30vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/estrutura-acesso-aereo-480w-a30639dbc9.jpg 480w, assets-build/img/estrutura-acesso-aereo-800w-a30639dbc9.jpg 800w, assets-build/img/estrutura-acesso-aereo-1280w-a30639dbc9.jpg 1280w, assets-build/img/estrutura-acesso-aereo-1920w-a30639dbc9.jpg 1920w" sizes="(min-width: 1024px) 30vw, 78vw"><img src="assets-build/img/estrutura-acesso-aereo-1920w-a30639dbc9.jpg" width="5000" height="3331" alt="Heliponto do complexo" loading="lazy" decoding="async"></picture>
-              <h5>Heliponto</h5>
+              <picture class="card__media"><source type="image/avif" srcset="assets-build/img/estrutura-acesso-aereo-480w-a30639dbc9.avif 480w, assets-build/img/estrutura-acesso-aereo-800w-a30639dbc9.avif 800w, assets-build/img/estrutura-acesso-aereo-1280w-a30639dbc9.avif 1280w, assets-build/img/estrutura-acesso-aereo-1920w-a30639dbc9.avif 1920w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 34vw, 60vw"><source type="image/jpeg" srcset="assets-build/img/estrutura-acesso-aereo-480w-a30639dbc9.jpg 480w, assets-build/img/estrutura-acesso-aereo-800w-a30639dbc9.jpg 800w, assets-build/img/estrutura-acesso-aereo-1280w-a30639dbc9.jpg 1280w, assets-build/img/estrutura-acesso-aereo-1920w-a30639dbc9.jpg 1920w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 34vw, 60vw"><img src="assets-build/img/estrutura-acesso-aereo-1920w-a30639dbc9.jpg" width="5000" height="3331" alt="Heliponto do complexo" loading="lazy" decoding="async"></picture>
+              <h3>Heliponto</h3>
               <p>Com helicóptero próprio.</p>
             </div>
-            <div class="card carrossel__item" data-reveal>
+            <div class="card carrossel__item" data-reveal role="group" aria-roledescription="slide" aria-label="5 de 6">
               <span class="card__index">05</span>
-              <picture class="card__media"><source type="image/avif" srcset="assets-build/img/local-gastronomia-480w-ea775a6cc5.avif 480w, assets-build/img/local-gastronomia-800w-ea775a6cc5.avif 800w, assets-build/img/local-gastronomia-1280w-ea775a6cc5.avif 1280w, assets-build/img/local-gastronomia-1920w-ea775a6cc5.avif 1920w" sizes="(min-width: 1024px) 30vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/local-gastronomia-480w-ea775a6cc5.jpg 480w, assets-build/img/local-gastronomia-800w-ea775a6cc5.jpg 800w, assets-build/img/local-gastronomia-1280w-ea775a6cc5.jpg 1280w, assets-build/img/local-gastronomia-1920w-ea775a6cc5.jpg 1920w" sizes="(min-width: 1024px) 30vw, 78vw"><img src="assets-build/img/local-gastronomia-1920w-ea775a6cc5.jpg" width="4088" height="2730" alt="Restaurante do complexo" loading="lazy" decoding="async"></picture>
-              <h5>Restaurante &amp; Área Verde</h5>
+              <picture class="card__media"><source type="image/avif" srcset="assets-build/img/local-gastronomia-480w-ea775a6cc5.avif 480w, assets-build/img/local-gastronomia-800w-ea775a6cc5.avif 800w, assets-build/img/local-gastronomia-1280w-ea775a6cc5.avif 1280w, assets-build/img/local-gastronomia-1920w-ea775a6cc5.avif 1920w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 34vw, 60vw"><source type="image/jpeg" srcset="assets-build/img/local-gastronomia-480w-ea775a6cc5.jpg 480w, assets-build/img/local-gastronomia-800w-ea775a6cc5.jpg 800w, assets-build/img/local-gastronomia-1280w-ea775a6cc5.jpg 1280w, assets-build/img/local-gastronomia-1920w-ea775a6cc5.jpg 1920w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 34vw, 60vw"><img src="assets-build/img/local-gastronomia-1920w-ea775a6cc5.jpg" width="4088" height="2730" alt="Restaurante do complexo" loading="lazy" decoding="async"></picture>
+              <h3>Restaurante &amp; Área Verde</h3>
               <p>Restaurante e área verde.</p>
             </div>
-            <div class="card carrossel__item" data-reveal>
+            <div class="card carrossel__item" data-reveal role="group" aria-roledescription="slide" aria-label="6 de 6">
               <span class="card__index">06</span>
-              <picture class="card__media"><source type="image/avif" srcset="assets-build/img/estrutura-garagem-480w-4914b1e83d.avif 480w, assets-build/img/estrutura-garagem-800w-4914b1e83d.avif 800w, assets-build/img/estrutura-garagem-1280w-4914b1e83d.avif 1280w, assets-build/img/estrutura-garagem-1920w-4914b1e83d.avif 1920w" sizes="(min-width: 1024px) 30vw, 78vw"><source type="image/jpeg" srcset="assets-build/img/estrutura-garagem-480w-4914b1e83d.jpg 480w, assets-build/img/estrutura-garagem-800w-4914b1e83d.jpg 800w, assets-build/img/estrutura-garagem-1280w-4914b1e83d.jpg 1280w, assets-build/img/estrutura-garagem-1920w-4914b1e83d.jpg 1920w" sizes="(min-width: 1024px) 30vw, 78vw"><img src="assets-build/img/estrutura-garagem-1920w-4914b1e83d.jpg" width="5000" height="3333" alt="Fachada da oficina da Scuderia Bandeiras, com mural dos campeões" loading="lazy" decoding="async"></picture>
-              <h5>Oficina</h5>
+              <picture class="card__media"><source type="image/avif" srcset="assets-build/img/estrutura-garagem-480w-4914b1e83d.avif 480w, assets-build/img/estrutura-garagem-800w-4914b1e83d.avif 800w, assets-build/img/estrutura-garagem-1280w-4914b1e83d.avif 1280w, assets-build/img/estrutura-garagem-1920w-4914b1e83d.avif 1920w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 34vw, 60vw"><source type="image/jpeg" srcset="assets-build/img/estrutura-garagem-480w-4914b1e83d.jpg 480w, assets-build/img/estrutura-garagem-800w-4914b1e83d.jpg 800w, assets-build/img/estrutura-garagem-1280w-4914b1e83d.jpg 1280w, assets-build/img/estrutura-garagem-1920w-4914b1e83d.jpg 1920w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 34vw, 60vw"><img src="assets-build/img/estrutura-garagem-1920w-4914b1e83d.jpg" width="5000" height="3333" alt="Fachada da oficina da Scuderia Bandeiras, com mural dos campeões" loading="lazy" decoding="async"></picture>
+              <h3>Oficina</h3>
               <p>Onde os carros da equipe são preparados.</p>
             </div>
           </div>
@@ -623,64 +496,41 @@
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 5 16 12 9 19"/></svg>
           </button>
         </div>
-        <div class="carrossel__dots" data-carrossel-dots role="tablist" aria-label="Navegação dos espaços">
-          <button class="carrossel__dot" type="button" data-carrossel-dot aria-label="Ir para Auditório"></button>
-          <button class="carrossel__dot" type="button" data-carrossel-dot aria-label="Ir para Coworking"></button>
-          <button class="carrossel__dot" type="button" data-carrossel-dot aria-label="Ir para Espaço Motor e Arena Multiuso"></button>
-          <button class="carrossel__dot" type="button" data-carrossel-dot aria-label="Ir para Heliponto"></button>
-          <button class="carrossel__dot" type="button" data-carrossel-dot aria-label="Ir para Restaurante e Área Verde"></button>
-          <button class="carrossel__dot" type="button" data-carrossel-dot aria-label="Ir para Oficina"></button>
+        <div class="carrossel__dots" data-carrossel-dots role="group" aria-label="Escolher espaço">
+          <button class="carrossel__dot" type="button" data-carrossel-dot aria-label="Ir para Auditório, 1 de 6"></button>
+          <button class="carrossel__dot" type="button" data-carrossel-dot aria-label="Ir para Coworking, 2 de 6"></button>
+          <button class="carrossel__dot" type="button" data-carrossel-dot aria-label="Ir para Espaço Motor e Arena Multiuso, 3 de 6"></button>
+          <button class="carrossel__dot" type="button" data-carrossel-dot aria-label="Ir para Heliponto, 4 de 6"></button>
+          <button class="carrossel__dot" type="button" data-carrossel-dot aria-label="Ir para Restaurante e Área Verde, 5 de 6"></button>
+          <button class="carrossel__dot" type="button" data-carrossel-dot aria-label="Ir para Oficina, 6 de 6"></button>
         </div>
+        <p class="visually-hidden" data-carrossel-status aria-live="polite" aria-atomic="true"></p>
       </div>
 
-      <!-- 3 · VÍDEO INSTITUCIONAL (VIDEO-01) — prova visual de dimensão,
-           estrutura e atmosfera do complexo, no lugar do antigo bloco de
-           texto + case PETRONAS (removidos daqui; PETRONAS passa a existir
-           uma única vez, em 07 · MARCAS & PARCEIROS). Vídeo real, curado de
-           assets/videos/video-instiitucional.mp4 (fonte bruta, fora do
-           build), transcodificado para assets-build/video/bandeiras-
-           complexo-institucional.mp4 (H.264 High + AAC, CRF 30, faststart,
-           metadata removida — 9,8 MB → 5,9 MB). Pedido do usuário: já rodar
-           sozinho na tela, sem precisar dar play — como navegador nenhum
-           permite autoplay com som, entra mudo/loop (play/pause por
-           IntersectionObserver em js/video-sound-toggle.js, que também
-           pausa se prefers-reduced-motion) + botão de som sobreposto pro
-           visitante ativar a narração quando quiser. preload="metadata"
-           para não pesar no carregamento inicial. -->
       <div class="container bandeiras__video">
         <div class="mini-head">
           <p class="eyebrow" data-reveal>O COMPLEXO EM MOVIMENTO</p>
         </div>
         <div class="bandeiras__video-frame" data-reveal>
-          <video autoplay muted loop preload="metadata" playsinline poster="assets-build/img/bandeiras-complexo-institucional-poster.jpg" aria-label="Vídeo institucional do complexo Scuderia Bandeiras, tour pelo Bandeiras Empresarial">
+          <video muted loop preload="none" playsinline poster="assets-build/img/bandeiras-complexo-institucional-poster.jpg" aria-label="Vídeo institucional do complexo Scuderia Bandeiras, tour pelo Bandeiras Empresarial">
             <source src="assets-build/video/bandeiras-complexo-institucional.mp4" type="video/mp4">
           </video>
-          <button type="button" class="video-sound-toggle" aria-pressed="false" aria-label="Ativar som do vídeo">
+          <div class="video-controls">
+            <button type="button" class="video-pause-toggle" aria-label="Pausar vídeo">
+            <svg class="video-pause-toggle__icon video-pause-toggle__icon--pause" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+            <svg class="video-pause-toggle__icon video-pause-toggle__icon--play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg>
+          </button>
+            <button type="button" class="video-sound-toggle" aria-pressed="false" aria-label="Som do vídeo">
             <svg class="video-sound-toggle__icon video-sound-toggle__icon--off" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><line x1="16" y1="9" x2="21" y2="15"/><line x1="21" y1="9" x2="16" y2="15"/></svg>
             <svg class="video-sound-toggle__icon video-sound-toggle__icon--on" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>
           </button>
+          </div>
         </div>
         <p class="bandeiras__video-legenda" data-reveal>Vídeo institucional: tour pelo complexo Scuderia Bandeiras / Bandeiras Empresarial.</p>
-        <a class="btn btn--primary bandeiras__cta" data-cta="project" data-origin="bandeiras-empresarial" href="#" data-reveal>Crie um projeto com a Scuderia</a>
+        <a class="btn btn--primary bandeiras__cta" data-cta="project" data-origin="bandeiras-empresarial" href="https://wa.me/5515998570854?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Scuderia%20Bandeiras%20e%20tenho%20interesse%20em%3A%20Bandeiras%20Empresarial." target="_blank" rel="noopener" data-reveal>Crie um projeto com a Scuderia</a>
       </div>
     </section>
 
-    <!-- ============================================================ 06 · CONTEÚDO + BASTIDORES + INSTAGRAM
-         Reconstrução 2026-09-24 (pedido direto do usuário): seção mais curta,
-         prova social viva — bastidores, público, marca em movimento — sem
-         repetir pilotos (03) / experiências (04) / bandeiras empresarial
-         (05). Saíram o retrato solto (x-img evento-camarotes) e a galeria de
-         4 quadros (Oficina/Auditório/Truck Lounge/Box): repetiam locação já
-         mostrada em 02/05. Texto de abertura reduzido a 1 frase + 1
-         parágrafo (fusão dos 2 parágrafos aprovados) — copy integral segue
-         em doc/copy-final-aprovada.md §07, nada foi perdido, só comprimido.
-         Vídeo pessoas.mp4 (depoimentos falados) vira destaque compacto:
-         controls nativos, sem autoplay — mesmo padrão já usado no vídeo
-         institucional de 05 · BANDEIRAS EMPRESARIAL (nunca autoplay com
-         fala). Fotos de bastidores/público entram como trio editorial ao
-         lado do destaque de Instagram; INSTAGRAM-FEED-PLACEHOLDER segue
-         sendo só isso — placeholder documentado, sem integração real de
-         API/widget nesta rodada. -->
     <section id="conteudo" class="section conteudo">
       <div class="container">
         <div class="section-head">
@@ -692,43 +542,23 @@
         </div>
       </div>
 
-      <!-- Vitrine: texto curto + CTA de um lado, vídeo de bastidores do
-           outro. Mobile: o vídeo sobe visualmente para o topo via CSS
-           (order:-1 em .conteudo__video), a ordem no DOM continua texto →
-           vídeo por leitura lógica/leitor de tela. -->
       <div class="container conteudo__showcase">
         <div class="conteudo__editorial">
           <p class="conteudo__abertura" data-reveal>Carro em pista, box, briefing, oficina, auditório, estúdio de podcast.</p>
           <p data-reveal>Um set sempre montado, com mais de 50 profissionais entre filmmakers, social media e fotógrafo dedicados, pronto para transformar cada etapa em conteúdo da sua marca.</p>
-          <a class="btn btn--primary conteudo__cta" data-cta="project" data-origin="conteudo" href="#" data-reveal>Crie um projeto com a Scuderia</a>
+          <a class="btn btn--primary conteudo__cta" data-cta="project" data-origin="conteudo" href="https://wa.me/5515998570854?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Scuderia%20Bandeiras%20e%20tenho%20interesse%20em%3A%20Conte%C3%BAdo%20%2F%20branded%20content." target="_blank" rel="noopener" data-reveal>Crie um projeto com a Scuderia</a>
         </div>
         <div class="conteudo__video" data-reveal>
           <div class="conteudo__video-frame">
-            <video controls preload="metadata" playsinline poster="assets/Imagens/novos-assets/otimizado/pessoas/pessoas-poster.jpg" aria-label="Bastidores da Scuderia Bandeiras: depoimentos de quem faz acontecer">
-              <source src="assets/Imagens/novos-assets/otimizado/pessoas/pessoas-web-1280w.mp4" type="video/mp4">
+            <video controls preload="none" playsinline aria-describedby="bastidores-legenda" poster="assets-build/img/pessoas-poster-1280w.jpg" aria-label="Bastidores da Scuderia Bandeiras: depoimentos de quem faz acontecer">
+              <source src="assets-build/video/pessoas-bastidores-mobile-720w.mp4" media="(max-width: 767px)" type="video/mp4">
+              <source src="assets-build/video/pessoas-bastidores-desktop-1280w.mp4" type="video/mp4">
             </video>
           </div>
-          <p class="conteudo__video-legenda">Bastidores: histórias contadas por quem faz a Scuderia acontecer.</p>
+          <p class="conteudo__video-legenda" id="bastidores-legenda">Bastidores: histórias contadas por quem faz a Scuderia acontecer.</p>
         </div>
       </div>
 
-      <!-- Nos Bastidores: hub de redes sociais dedicado (redesenho
-           2026-09-25, pedido direto do usuário) — Instagram como
-           protagonista (grade editorial ~70% da faixa) + coluna lateral
-           compacta para as demais redes. Full-bleed: mesma técnica de
-           .frentes/.card-grid-bleed (só o cabeçalho — eyebrow + texto —
-           segue o container/eixo da seção; a faixa do feed em si rompe a
-           largura da página). 8 fotos reais do acervo, nenhuma repetida de
-           outra seção da página (conferido em index.html antes de usar),
-           estáticas no HTML = fallback funcional sem depender de JS/API.
-           js/instagram-feed.js tenta GET /api/instagram-feed (função
-           serverless, ver api/instagram-feed.js) e, se a Graph API estiver
-           configurada, troca só src/href/legenda destas mesmas 8 peças —
-           não recria DOM, não duplica a lógica de
-           [data-reveal]/IntersectionObserver do motion.js. Sem credenciais
-           (ou fetch offline/falho), o fallback abaixo permanece — nunca em
-           branco, nunca scraping. Ver doc/instagram-integration.md para o
-           que falta configurar para ativar o feed real. -->
       <div class="container conteudo__social">
         <div class="mini-head">
           <p class="eyebrow" data-reveal>NOS BASTIDORES</p>
@@ -737,7 +567,7 @@
       </div>
 
       <div class="conteudo__social-hub conteudo__social-hub--bleed">
-        <ul class="conteudo__feed" id="instagramFeed" data-stagger aria-label="Publicações recentes do Instagram da Scuderia Bandeiras">
+        <ul class="conteudo__feed" id="instagramFeed" data-stagger aria-label="Galeria de fotos e vídeos da Scuderia Bandeiras; cada item abre o Instagram @scuderiabandeiras">
           <li class="conteudo__feed-item conteudo__feed-item--featured" data-reveal>
             <a class="conteudo__feed-link" href="https://www.instagram.com/scuderiabandeiras/" target="_blank" rel="noopener" data-ig-link>
               <picture>
@@ -752,7 +582,7 @@
           <li class="conteudo__feed-item" data-reveal>
             <a class="conteudo__feed-link" href="https://www.instagram.com/scuderiabandeiras/" target="_blank" rel="noopener" data-ig-link>
               <picture>
-                <source type="image/avif" srcset="assets-build/img/experiencias-bastidores-480w-9f7b3be16d.avif 480w, assets-build/img/experiencias-bastidores-800w-9f7b3be16d.avif 800w">
+                <source type="image/avif" srcset="assets-build/img/experiencias-bastidores-480w-9f7b3be16d.avif 480w, assets-build/img/experiencias-bastidores-800w-9f7b3be16d.avif 800w" sizes="(min-width: 1024px) 17vw, 44vw">
                 <img class="conteudo__feed-media" data-ig-media src="assets-build/img/experiencias-bastidores-800w-9f7b3be16d.jpg" srcset="assets-build/img/experiencias-bastidores-480w-9f7b3be16d.jpg 480w, assets-build/img/experiencias-bastidores-800w-9f7b3be16d.jpg 800w" sizes="(min-width: 1024px) 17vw, 44vw" alt="Equipe Caterham preparando o carro #7 no box antes da largada" loading="lazy" decoding="async" width="800" height="533">
               </picture>
               <span class="conteudo__feed-scrim" aria-hidden="true"></span>
@@ -763,7 +593,7 @@
           <li class="conteudo__feed-item" data-reveal>
             <a class="conteudo__feed-link" href="https://www.instagram.com/scuderiabandeiras/" target="_blank" rel="noopener" data-ig-link>
               <picture>
-                <source type="image/webp" srcset="assets-build/img/conteudo-publico-1-640w.webp 640w, assets-build/img/conteudo-publico-1-1280w.webp 1280w">
+                <source type="image/webp" srcset="assets-build/img/conteudo-publico-1-640w.webp 640w, assets-build/img/conteudo-publico-1-1280w.webp 1280w" sizes="(min-width: 1024px) 17vw, 44vw">
                 <img class="conteudo__feed-media" data-ig-media src="assets-build/img/conteudo-publico-1-1280w.jpg" srcset="assets-build/img/conteudo-publico-1-640w.jpg 640w, assets-build/img/conteudo-publico-1-1280w.jpg 1280w" sizes="(min-width: 1024px) 17vw, 44vw" alt="Público acompanhando um evento da Scuderia Bandeiras" loading="lazy" decoding="async" width="1280" height="854">
               </picture>
               <span class="conteudo__feed-scrim" aria-hidden="true"></span>
@@ -774,7 +604,7 @@
           <li class="conteudo__feed-item" data-reveal>
             <a class="conteudo__feed-link" href="https://www.instagram.com/scuderiabandeiras/" target="_blank" rel="noopener" data-ig-link>
               <picture>
-                <source type="image/avif" srcset="assets-build/img/evento-boxes-480w-ffb678c8af.avif 480w, assets-build/img/evento-boxes-800w-ffb678c8af.avif 800w">
+                <source type="image/avif" srcset="assets-build/img/evento-boxes-480w-ffb678c8af.avif 480w, assets-build/img/evento-boxes-800w-ffb678c8af.avif 800w" sizes="(min-width: 1024px) 17vw, 44vw">
                 <img class="conteudo__feed-media" data-ig-media src="assets-build/img/evento-boxes-800w-ffb678c8af.webp" srcset="assets-build/img/evento-boxes-480w-ffb678c8af.webp 480w, assets-build/img/evento-boxes-800w-ffb678c8af.webp 800w" sizes="(min-width: 1024px) 17vw, 44vw" alt="Camarote e área VIP da Scuderia Bandeiras com vista para a pista" loading="lazy" decoding="async" width="800" height="542">
               </picture>
               <span class="conteudo__feed-scrim" aria-hidden="true"></span>
@@ -785,7 +615,7 @@
           <li class="conteudo__feed-item" data-reveal>
             <a class="conteudo__feed-link" href="https://www.instagram.com/scuderiabandeiras/" target="_blank" rel="noopener" data-ig-link>
               <picture>
-                <source type="image/webp" srcset="assets-build/img/conteudo-publico-2-640w.webp 640w, assets-build/img/conteudo-publico-2-1280w.webp 1280w">
+                <source type="image/webp" srcset="assets-build/img/conteudo-publico-2-640w.webp 640w, assets-build/img/conteudo-publico-2-1280w.webp 1280w" sizes="(min-width: 1024px) 17vw, 44vw">
                 <img class="conteudo__feed-media" data-ig-media src="assets-build/img/conteudo-publico-2-1280w.jpg" srcset="assets-build/img/conteudo-publico-2-640w.jpg 640w, assets-build/img/conteudo-publico-2-1280w.jpg 1280w" sizes="(min-width: 1024px) 17vw, 44vw" alt="Atmosfera de evento da Scuderia Bandeiras" loading="lazy" decoding="async" width="1280" height="854">
               </picture>
               <span class="conteudo__feed-scrim" aria-hidden="true"></span>
@@ -807,7 +637,7 @@
           <li class="conteudo__feed-item" data-reveal>
             <a class="conteudo__feed-link" href="https://www.instagram.com/scuderiabandeiras/" target="_blank" rel="noopener" data-ig-link>
               <picture>
-                <source type="image/avif" srcset="assets-build/img/eco-estrutura-480w-36f51301d9.avif 480w, assets-build/img/eco-estrutura-800w-36f51301d9.avif 800w">
+                <source type="image/avif" srcset="assets-build/img/eco-estrutura-480w-36f51301d9.avif 480w, assets-build/img/eco-estrutura-800w-36f51301d9.avif 800w" sizes="(min-width: 1024px) 17vw, 44vw">
                 <img class="conteudo__feed-media" data-ig-media src="assets-build/img/eco-estrutura-800w-36f51301d9.jpg" srcset="assets-build/img/eco-estrutura-480w-36f51301d9.jpg 480w, assets-build/img/eco-estrutura-800w-36f51301d9.jpg 800w" sizes="(min-width: 1024px) 17vw, 44vw" alt="Espaço interno da Scuderia Bandeiras com carro de corrida em exposição" loading="lazy" decoding="async" width="800" height="600">
               </picture>
               <span class="conteudo__feed-scrim" aria-hidden="true"></span>
@@ -818,7 +648,7 @@
           <li class="conteudo__feed-item" data-reveal>
             <a class="conteudo__feed-link" href="https://www.instagram.com/scuderiabandeiras/" target="_blank" rel="noopener" data-ig-link>
               <picture>
-                <source type="image/avif" srcset="assets-build/img/race-experience-karts-480w-b662ee37ea.avif 480w, assets-build/img/race-experience-karts-800w-b662ee37ea.avif 800w">
+                <source type="image/avif" srcset="assets-build/img/race-experience-karts-480w-b662ee37ea.avif 480w, assets-build/img/race-experience-karts-800w-b662ee37ea.avif 800w" sizes="(min-width: 1024px) 17vw, 44vw">
                 <img class="conteudo__feed-media" data-ig-media src="assets-build/img/race-experience-karts-800w-b662ee37ea.webp" srcset="assets-build/img/race-experience-karts-480w-b662ee37ea.webp 480w, assets-build/img/race-experience-karts-800w-b662ee37ea.webp 800w" sizes="(min-width: 1024px) 17vw, 44vw" alt="Largada de um Race Experience de kart da Scuderia Bandeiras" loading="lazy" decoding="async" width="800" height="325">
               </picture>
               <span class="conteudo__feed-scrim" aria-hidden="true"></span>
@@ -828,113 +658,46 @@
           </li>
         </ul>
 
-        <!-- Redesenho 2026-09-25 (pedido direto do usuário, ajuste só desta
-             coluna): em vez de 4 sub-painéis abrindo em acordeão, agora é 1
-             painel único (.conteudo__redes-painel) que troca de conteúdo por
-             crossfade conforme o mouse passa por cada rede na lista (desktop)
-             ou o 1º toque no item (mobile — 2º toque no mesmo item, já
-             ativo, segue o link normalmente). Ver js/redes-preview.js.
-             Instagram por padrão (inclusive sem JS — a peça já nasce
-             .is-active no HTML) e volta a ele ao tirar o mouse da lista.
-             Instagram reaproveita ao vivo a mídia/legenda da peça em
-             destaque do feed logo acima (mesmos data-ig-media/data-ig-cap
-             que js/instagram-feed.js já mantém sincronizados com a Graph
-             API) — nunca um post inventado. LinkedIn é só apresentação
-             institucional (rótulo explícito de fallback, sem post
-             fabricado). TikTok/YouTube ficam prontos pro embed oficial
-             (oEmbed / iframe) assim que uma URL/ID real for configurado no
-             topo de js/redes-preview.js — até lá, placeholder explícito,
-             nunca uma miniatura inventada. -->
         <aside class="conteudo__redes" data-reveal>
           <p class="conteudo__redes-titulo">Acompanhe a Scuderia</p>
           <p class="conteudo__redes-handle">@scuderiabandeiras</p>
 
           <div class="conteudo__redes-corpo">
-            <ul class="conteudo__redes-lista">
+            <ul class="conteudo__redes-lista" aria-label="Redes sociais da Scuderia Bandeiras">
               <li>
-                <a class="conteudo__redes-link" data-rede="instagram" href="https://www.instagram.com/scuderiabandeiras/" target="_blank" rel="noopener noreferrer" aria-controls="redesPainel">
+                <a class="conteudo__redes-link" data-rede="instagram" href="https://www.instagram.com/scuderiabandeiras/" target="_blank" rel="noopener noreferrer">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
                   <span>Instagram</span>
                   <span class="conteudo__redes-seta" aria-hidden="true">→</span>
                 </a>
               </li>
               <li>
-                <a class="conteudo__redes-link" data-rede="linkedin" href="https://www.linkedin.com/company/scuderiabandeiras/" target="_blank" rel="noopener noreferrer" aria-controls="redesPainel">
+                <a class="conteudo__redes-link" data-rede="linkedin" href="https://www.linkedin.com/company/scuderiabandeiras/" target="_blank" rel="noopener noreferrer">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7.5" y1="10" x2="7.5" y2="17"/><circle cx="7.5" cy="6.8" r="1"/><path d="M11.5 17v-4.2c0-1.6 1-2.8 2.6-2.8 1.5 0 2.4 1 2.4 2.8V17"/></svg>
                   <span>LinkedIn</span>
                   <span class="conteudo__redes-seta" aria-hidden="true">→</span>
                 </a>
               </li>
               <li>
-                <a class="conteudo__redes-link" data-rede="tiktok" href="https://www.tiktok.com/@scuderiabandeiras" target="_blank" rel="noopener noreferrer" aria-controls="redesPainel">
+                <a class="conteudo__redes-link" data-rede="tiktok" href="https://www.tiktok.com/@scuderiabandeiras" target="_blank" rel="noopener noreferrer">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M14 4v9.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 4c.3 2.2 2 3.9 4.2 4.2"/></svg>
                   <span>TikTok</span>
                   <span class="conteudo__redes-seta" aria-hidden="true">→</span>
                 </a>
               </li>
               <li>
-                <a class="conteudo__redes-link" data-rede="youtube" href="https://www.youtube.com/@ScuderiaBandeiras" target="_blank" rel="noopener noreferrer" aria-controls="redesPainel">
+                <a class="conteudo__redes-link" data-rede="youtube" href="https://www.youtube.com/@ScuderiaBandeiras" target="_blank" rel="noopener noreferrer">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.7l4.5 2.3-4.5 2.3z" fill="currentColor" stroke="none"/></svg>
                   <span>YouTube</span>
                   <span class="conteudo__redes-seta" aria-hidden="true">→</span>
                 </a>
               </li>
             </ul>
-
-            <div class="conteudo__redes-painel" id="redesPainel" aria-live="polite">
-              <div class="conteudo__redes-preview is-active" data-preview="instagram">
-                <div class="conteudo__redes-preview-media">
-                  <img data-preview-media src="assets-build/img/eco-producao-800w-8c6f269cb2.jpg" alt="Pit lane da Scuderia Bandeiras e Caterham Motorsport Brasil em dia de evento" loading="lazy" width="800" height="534">
-                </div>
-                <div class="conteudo__redes-preview-rodape">
-                  <span class="conteudo__redes-preview-id" data-rede="instagram"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>Instagram</span>
-                  <p data-preview-legenda>Um dia de pit lane inteiro documentado pra você.</p>
-                </div>
-              </div>
-
-              <div class="conteudo__redes-preview" data-preview="linkedin">
-                <div class="conteudo__redes-preview-institucional" data-rede="linkedin">
-                  <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7.5" y1="10" x2="7.5" y2="17"/><circle cx="7.5" cy="6.8" r="1"/><path d="M11.5 17v-4.2c0-1.6 1-2.8 2.6-2.8 1.5 0 2.4 1 2.4 2.8V17"/></svg>
-                  <p>Vagas, cases e o lado corporativo da Scuderia Bandeiras no LinkedIn.</p>
-                </div>
-                <div class="conteudo__redes-preview-rodape">
-                  <span class="conteudo__redes-preview-id" data-rede="linkedin"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7.5" y1="10" x2="7.5" y2="17"/><circle cx="7.5" cy="6.8" r="1"/><path d="M11.5 17v-4.2c0-1.6 1-2.8 2.6-2.8 1.5 0 2.4 1 2.4 2.8V17"/></svg>LinkedIn</span>
-                  <span class="conteudo__redes-preview-pendente">Apresentação institucional, post real em breve</span>
-                </div>
-              </div>
-
-              <div class="conteudo__redes-preview" data-preview="tiktok">
-                <div class="conteudo__redes-preview-pendente-box" data-rede="tiktok" data-embed-slot>
-                  <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M14 4v9.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 4c.3 2.2 2 3.9 4.2 4.2"/></svg>
-                  <p>Vídeo em breve, prévia pendente de configuração.</p>
-                </div>
-                <div class="conteudo__redes-preview-rodape">
-                  <span class="conteudo__redes-preview-id" data-rede="tiktok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 4v9.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 4c.3 2.2 2 3.9 4.2 4.2"/></svg>TikTok</span>
-                </div>
-              </div>
-
-              <div class="conteudo__redes-preview" data-preview="youtube">
-                <div class="conteudo__redes-preview-pendente-box" data-rede="youtube" data-embed-slot>
-                  <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.7l4.5 2.3-4.5 2.3z" fill="currentColor" stroke="none"/></svg>
-                  <p>Vídeo em breve, prévia pendente de configuração.</p>
-                </div>
-                <div class="conteudo__redes-preview-rodape">
-                  <span class="conteudo__redes-preview-id" data-rede="youtube"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.7l4.5 2.3-4.5 2.3z" fill="currentColor" stroke="none"/></svg>YouTube</span>
-                </div>
-              </div>
-            </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- ============================================================ 07 · MARCAS & PARCEIROS + CASE PETRONAS
-         Refatoração estrutural: lógica invertida — marcas e parceiros
-         primeiro, PETRONAS depois, como case HISTÓRICO (não é parceria
-         vigente; copy em tempo passado, sem CTA comercial). Título do case
-         conforme aprovado: "PETRONAS | Da pista para a Scuderia Bandeiras".
-         O antigo case da dobra Bandeiras Empresarial foi removido de lá —
-         PETRONAS passa a existir uma única vez, aqui. -->
     <section id="marcas" class="section marcas" aria-label="Marcas e parceiros">
       <div class="container">
         <div class="section-head">
@@ -950,50 +713,40 @@
         <div class="container">
           <h3 class="marcas__subtitulo" data-reveal>Marcas que fazem parte da nossa história</h3>
         </div>
-        <div class="marcas__logos-wrap" data-reveal>
+        <div class="marcas__logos-wrap" data-reveal tabindex="0" role="region" aria-label="Logotipos de marcas e parceiros; role para o lado para ver todos">
           <picture class="marcas__logos"><source type="image/avif" srcset="assets-build/img/marcas-historia-480w-020cec3697.avif 480w, assets-build/img/marcas-historia-800w-020cec3697.avif 800w, assets-build/img/marcas-historia-1280w-020cec3697.avif 1280w" sizes="(min-width: 1024px) 88vw, 760px"><source type="image/webp" srcset="assets-build/img/marcas-historia-480w-020cec3697.webp 480w, assets-build/img/marcas-historia-800w-020cec3697.webp 800w, assets-build/img/marcas-historia-1280w-020cec3697.webp 1280w" sizes="(min-width: 1024px) 88vw, 760px"><img src="assets-build/img/marcas-historia-1280w-020cec3697.webp" width="1392" height="680" alt="Logotipos de marcas que fazem parte da história da Scuderia Bandeiras, entre elas PETRONAS, Sherwin-Williams, ALE, Heliar, Motul, Copa Energia, Banco Sofisa, 3M, Mobil, MAPFRE, BRB, MetLife, EMS, Epson e Autotrac" loading="lazy" decoding="async"></picture>
         </div>
       </div>
 
-      <!-- Case único da PETRONAS (movido de Bandeiras Empresarial + copy
-           adaptada ao tom histórico) — VIDEO-02: mesmo placeholder
-           .video-frame já usado, sem asset real disponível ainda. -->
       <article class="container case" aria-labelledby="case-petronas-titulo">
-        <div class="case__media video-frame" data-reveal role="img" aria-label="VIDEO-02 · Vídeo do case histórico PETRONAS no Bandeiras Empresarial (a inserir, se aprovado)">
-          <span class="video-frame__tag" aria-hidden="true">VIDEO-02 · a inserir</span>
-          <span class="video-frame__play" aria-hidden="true"></span>
-          <span class="video-frame__legenda" aria-hidden="true">Case PETRONAS: convenção de vendas no Bandeiras Empresarial</span>
-          <span class="video-frame__tempo" aria-hidden="true">00:00</span>
-        </div>
+        <figure class="case__media" data-reveal>
+          <picture class="case__img"><source type="image/avif" srcset="assets-build/img/estrutura-espaco-motor-480w-b02ecdbeee.avif 480w, assets-build/img/estrutura-espaco-motor-800w-b02ecdbeee.avif 800w, assets-build/img/estrutura-espaco-motor-1280w-b02ecdbeee.avif 1280w, assets-build/img/estrutura-espaco-motor-1920w-b02ecdbeee.avif 1920w" sizes="(min-width: 1024px) 44vw, 92vw"><source type="image/jpeg" srcset="assets-build/img/estrutura-espaco-motor-480w-b02ecdbeee.jpg 480w, assets-build/img/estrutura-espaco-motor-800w-b02ecdbeee.jpg 800w, assets-build/img/estrutura-espaco-motor-1280w-b02ecdbeee.jpg 1280w, assets-build/img/estrutura-espaco-motor-1920w-b02ecdbeee.jpg 1920w" sizes="(min-width: 1024px) 44vw, 92vw"><img src="assets-build/img/estrutura-espaco-motor-1920w-b02ecdbeee.jpg" width="5000" height="3333" alt="Fórmula 3 de Átila Abreu exposta na parede do Espaço Motor, na estrutura da Scuderia Bandeiras" loading="lazy" decoding="async"></picture>
+        </figure>
 
         <div class="case__texto">
           <p class="eyebrow" data-reveal>CASE HISTÓRICO · PETRONAS</p>
           <h3 class="case__titulo" id="case-petronas-titulo" data-reveal>PETRONAS | Da pista para a <mark class="grifo">Scuderia Bandeiras</mark>.</h3>
-          <!-- RASCUNHO — copy adaptada ao novo título/tom histórico aprovado;
-               ainda não é copy final (mesma pendência de aprovação do texto
-               original). -->
+          
           <p class="case__apoio" data-reveal>A PETRONAS acompanhou a trajetória de Átila Abreu no automobilismo e cresceu junto com a Scuderia Bandeiras, chegou a ter espaço próprio dentro da estrutura e já usou o Bandeiras Empresarial para sua própria convenção de vendas.</p>
         </div>
       </article>
     </section>
 
-    <!-- ============================================================ 08 · CTA FINAL — bookend do Hero (mantido, sem redesenho nesta etapa) -->
     <section class="cta-final" aria-label="Comece um projeto">
       <picture class="cta-final__bg"><source type="image/avif" srcset="assets-build/img/final-imagem-480w-6d0ed19421.avif 480w, assets-build/img/final-imagem-800w-6d0ed19421.avif 800w, assets-build/img/final-imagem-1280w-6d0ed19421.avif 1280w, assets-build/img/final-imagem-1920w-6d0ed19421.avif 1920w" sizes="100vw"><source type="image/jpeg" srcset="assets-build/img/final-imagem-480w-6d0ed19421.jpg 480w, assets-build/img/final-imagem-800w-6d0ed19421.jpg 800w, assets-build/img/final-imagem-1280w-6d0ed19421.jpg 1280w, assets-build/img/final-imagem-1920w-6d0ed19421.jpg 1920w" sizes="100vw"><img src="assets-build/img/final-imagem-1920w-6d0ed19421.jpg" width="2048" height="1366" alt="" loading="lazy" decoding="async"></picture>
       <div class="cta-final__scrim" aria-hidden="true"></div>
       <div class="container cta-final__inner">
         <p class="eyebrow" data-reveal>COMECE UM PROJETO</p>
         <h2 class="cta-final__titulo" data-reveal><span>Qual <mark class="grifo">projeto</mark> sua empresa</span> <span>quer criar?</span></h2>
-        <p class="lead" data-reveal>Conte o que sua empresa precisa resolver e o time comercial entra em contato.</p>
+        <p class="lead" data-reveal>Conte o que sua empresa precisa resolver e o time comercial responde pelo WhatsApp.</p>
         <div class="cta-final__ctas" data-reveal>
-          <a class="btn btn--primary" data-cta="project" data-origin="cta-final" href="#">Crie um projeto com a Scuderia</a>
-          <a class="btn btn--ghost" data-cta="whatsapp" data-origin="cta-final" href="#">Prefere conversar antes? Chame no WhatsApp</a>
+          <a class="btn btn--primary" data-cta="project" data-origin="cta-final" href="https://wa.me/5515998570854?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Scuderia%20Bandeiras%20e%20tenho%20interesse%20em%3A%20Ainda%20n%C3%A3o%20sei." target="_blank" rel="noopener">Crie um projeto com a Scuderia</a>
+          <a class="btn btn--ghost" data-cta="whatsapp" data-origin="cta-final" href="https://wa.me/5515998570854?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Scuderia%20Bandeiras%20e%20tenho%20interesse%20em%3A%20Ainda%20n%C3%A3o%20sei." target="_blank" rel="noopener">Prefere conversar antes? Chame no WhatsApp</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ============================================================ FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer__marca">
@@ -1003,18 +756,18 @@
 
       <nav class="footer__links" aria-label="Navegação (rodapé)">
         <a href="#ecossistema">Ecossistema</a>
+        <a href="#pilotos">Pilotos &amp; Time</a>
         <a href="#experiencias">Experiências</a>
-        <a href="https://caterham.scuderiabandeiras.com/" target="_blank" rel="noopener">Caterham</a>
         <a href="#bandeiras-empresarial">Bandeiras Empresarial</a>
         <a href="#conteudo">Conteúdo</a>
-        <a href="#pilotos">Pilotos &amp; Time</a>
-        <a data-cta="whatsapp" data-origin="footer" href="#">Contato</a>
+        <a href="https://caterham.scuderiabandeiras.com/" target="_blank" rel="noopener">Caterham<span class="visually-hidden"> (abre em nova aba)</span></a>
+        <a data-cta="whatsapp" data-origin="footer" href="https://wa.me/5515998570854?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Scuderia%20Bandeiras%20e%20tenho%20interesse%20em%3A%20Ainda%20n%C3%A3o%20sei." target="_blank" rel="noopener">Contato</a>
       </nav>
 
       <div class="footer__contato">
         <p>Avenida Ireno da Silva Venâncio, 199, Galpão 5D<br>Votorantim/SP</p>
-        <p>WhatsApp<br><a data-cta="whatsapp" data-origin="footer" href="#">+55 15 99857-0854</a></p>
-        <p><a href="https://scuderiabandeiras.com.br">scuderiabandeiras.com.br</a></p>
+        <p>WhatsApp<br><a data-cta="whatsapp" data-origin="footer" href="https://wa.me/5515998570854?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Scuderia%20Bandeiras%20e%20tenho%20interesse%20em%3A%20Ainda%20n%C3%A3o%20sei." target="_blank" rel="noopener">+55 15 99857-0854</a></p>
+        <p><a href="https://www.scuderiabandeiras.com.br/">scuderiabandeiras.com.br</a></p>
       </div>
 
       <ul class="footer__social" aria-label="Redes sociais">
