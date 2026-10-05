@@ -2073,14 +2073,15 @@
   .time-mosaico__foto {
     margin: 0;
     display: block;
-    height: clamp(180px, 46vw, 280px);
+    /* mobile: altura natural da foto (1280x1317), sem recorte — aparecem todos os retratos */
+    height: auto;
     overflow: clip;
   }
   .time-mosaico__foto picture,
   .time-mosaico__foto img {
     display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
   }
   .time-mosaico__foto img {
     object-fit: cover;
@@ -2147,7 +2148,7 @@
       min-height: calc((100vw - var(--sbw, 0px) - var(--mosaico-centro)) / 2 * 1.0287);
     }
     .time-mosaico__foto picture,
-    .time-mosaico__foto img { position: absolute; inset: 0; }
+    .time-mosaico__foto img { position: absolute; inset: 0; height: 100%; }
     .time-mosaico__foto img { object-position: 50% 50%; }
     .time-mosaico__centro {
       padding: var(--space-l) clamp(28px, 3vw, 56px);
